@@ -1,4 +1,4 @@
-<img src="./homework-1/figure/logo.jpg" width="25" height="25">
+<img src="./homework-1/figure/logo.jpg" width="250px">
 # Wascoot 
 
 WASCOOT is a scooter management web application. It allows the company to keep track of scooters, their locations, and their usage patterns.
