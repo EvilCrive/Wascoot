@@ -1,4 +1,4 @@
-![Alt text](./homework-1/figure/logos.jpg?raw=true"INTSEG logo")
+![Alt text](./homework-1/figure/logo.jpg?raw=true"Wascoot logo")
 # Wascoot 
 
 WASCOOT is a scooter management web application. It allows the company to keep track of scooters, their locations, and their usage patterns.
