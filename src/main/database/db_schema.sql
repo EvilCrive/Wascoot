@@ -1,7 +1,7 @@
 -- deleting existing tables
 drop table if exists scooter cascade;
 drop table if exists model cascade;	
-drop table if exists scooterrack cascade;
+drop table if exists scooterracks cascade;
 drop table if exists costumer cascade;
 drop table if exists PaymentMethod cascade;
 drop table if exists Association cascade;
