@@ -2,25 +2,28 @@
 drop table if exists scooter cascade;
 drop table if exists model cascade;	
 drop table if exists scooterracks cascade;
-drop table if exists costumer cascade;
+drop table if exists customer cascade;
 drop table if exists PaymentMethod cascade;
 drop table if exists Association cascade;
 drop table if exists PaymentWithoutSubscription cascade;
 drop table if exists PaymentWithSubscription cascade;
+drop table if exists UsedSubscription cascade;
 drop table if exists RealSubscription cascade;
-drop table if exists EndSubscription cascade;
+--drop table if exists EndSubscription cascade;
 drop table if exists Subscription cascade;
 drop table if exists Rental cascade;
 --drop domains and sequences
 drop domain if exists positive_integer cascade;
 drop domain if exists positive_real cascade;
+drop sequence if exists used_subscription_id_a_seq cascade;
+drop sequence if exists real_subscription_id_a_seq cascade;
 drop sequence if exists realsubscription_id_a_seq cascade;
 drop sequence if exists rental_order_number_seq cascade;
 drop sequence if exists sequence_id_sa cascade;
 drop sequence if exists sequence_id_ca cascade;
 
 --creating sequences: serials personalized
-create sequence if not exists realsubscription_id_a_seq as int increment by 1
+create sequence if not exists usedsubscription_id_a_seq as int increment by 1
     MINVALUE 1 NO MAXVALUE NO CYCLE;	
 create sequence if not exists rental_order_number_seq as int increment by 1
     MINVALUE 1 NO MAXVALUE NO CYCLE;
@@ -61,12 +64,12 @@ create table Model(
     constraint check_model_price check (rate_per_model > 0.0 and rate_per_min > 0.0) --corporate constraints
 );
 
-create table Costumer(
+create table Customer(
     CF char(16), 
     name varchar(30) not null, 
     surname varchar(30) not null, 
     email varchar(60) unique not null,
-    constraint key_costumer primary key (CF)
+    constraint key_customer primary key (CF)
 );
 
 create table PaymentMethod(
@@ -105,7 +108,7 @@ create table Association(
     type varchar(20),
     CF char(16),
     constraint key_association primary key (CF, type),
-    constraint fk_association_costumer foreign key (CF) references Costumer 
+    constraint fk_association_customer foreign key (CF) references Customer
     on update cascade 
     on delete cascade,  
     constraint fk_association_paymentmethod foreign key (type) references PaymentMethod 
@@ -120,7 +123,7 @@ create table Rental(
     id_scooter char(6) not null, 
     scooterrack_delivery char(5) default null, 
     scooterrack_collection char(5) not null, 
-    costumer char(16) not null,
+    customer char(16) not null,
     km_traveled positive_real default 0,
     constraint key_rental primary key (order_number),
     constraint fk_rental_scooter foreign key (id_scooter) references Scooter 
@@ -132,27 +135,27 @@ create table Rental(
     constraint fk_rental_scooterrack_delivery foreign key (scooterrack_delivery) references ScooterRacks
     on update cascade,
     --on delete the old value is ok,
-    constraint fk_rental_costumer foreign key (costumer) references Costumer
+    constraint fk_rental_customer foreign key (customer) references customer
     on update cascade 
     on delete restrict,
     constraint check_collection_delivery check(date_hour_delivery > date_hour_collection), --corporate constraints
     constraint check_collection_scooter unique (date_hour_collection, id_scooter),
-    constraint check_collection_costumer unique (date_hour_collection, costumer)
+    constraint check_collection_customer unique (date_hour_collection, customer)
 );
 
-create table RealSubscription(
-    id_a int default nextval('realsubscription_id_a_seq'),
+create table UsedSubscription(
+    id_a int default nextval('usedsubscription_id_a_seq'),
     activation_date date default current_timestamp not null, 
     expiring_date date not null, 
     num_remaining_rentals positive_integer default '2' not null, 
     remaining_time_of_usage interval hour to second default '2 hour' not null, 
     possession char(16) not null, -- id fiscale 
     typology varchar(20) not null default 'One day',
-    constraint key_real_subscription primary key (id_a),
-    constraint fk_real_subscription foreign key (typology) references Subscription 
+    constraint key_used_subscription primary key (id_a),
+    constraint fk_used_subscription foreign key (typology) references Subscription
     on update restrict
     on delete restrict,
-    constraint fk_realsubscription_costumer foreign key (possession) references Costumer
+    constraint fk_usedsubscription_customer foreign key (possession) references Customer
     on update cascade 
     on delete cascade --corporate constraints (if a customer unsubscribes he loses his subscriptions)
 );
@@ -180,7 +183,7 @@ create table PaymentWithSubscription(
     constraint fk_withsubscription_rental foreign key (order_number) references rental
     on update cascade 
     on delete restrict,
-    constraint fk_withsubscription_realsubscription foreign key (id_card) references RealSubscription
+    constraint fk_withsubscription_usedsubscription foreign key (id_card) references UsedSubscription
     on update cascade 
     on delete restrict
 );
