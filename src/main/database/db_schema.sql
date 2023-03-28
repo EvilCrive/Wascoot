@@ -105,7 +105,7 @@ create table Subscription(
 );
 
 create table Scooter(
-    id char(6), 
+    id char(5),
     date_of_purchase date default current_timestamp, 
     km_traveled positive_real, 
     model varchar(30) not null,
