@@ -11,3 +11,9 @@ insert into wascoot.public.customer(cf, name, surname, email, sex, birthdate, po
 
 insert into wascoot.public.paymentmethod(id, type) VALUES ('PM001', 'Credit Card');
 
+insert into wascoot.public.subscription(id, type, number_daily_locks, validity_per_day, fixed_price) VALUES ('SB001', '1d', 2, '2h', 3.00);
+
+insert into wascoot.public.scooter(id, km_traveled, model, id_scooter_rack) VALUES('SC001',50,'Dot', 'SR001');
+
+
+

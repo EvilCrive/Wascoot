@@ -209,5 +209,6 @@ create table Admin(
     id char(5),
     email varchar,
     password varchar,
+    constraint key_admin primary key (id),
     CONSTRAINT proper_email CHECK (email ~* '^[A-Za-z0-9._+%-]+@[A-Za-z0-9.-]+[.][A-Za-z]+$')
 );
