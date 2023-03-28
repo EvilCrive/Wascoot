@@ -1,7 +1,7 @@
 -- deleting existing tables
 drop table if exists scooter cascade;
 drop table if exists model cascade;	
-drop table if exists scooterracks cascade;
+drop table if exists scooterRacks cascade;
 drop table if exists customer cascade;
 drop table if exists PaymentMethod cascade;
 drop table if exists Association cascade;
@@ -9,12 +9,15 @@ drop table if exists PaymentWithoutSubscription cascade;
 drop table if exists PaymentWithSubscription cascade;
 drop table if exists UsedSubscription cascade;
 drop table if exists RealSubscription cascade;
+drop table if exists Admin cascade;
 --drop table if exists EndSubscription cascade;
 drop table if exists Subscription cascade;
 drop table if exists Rental cascade;
 --drop domains and sequences
 drop domain if exists positive_integer cascade;
 drop domain if exists positive_real cascade;
+drop domain if exists gender cascade;
+drop domain if exists paymentTypes cascade;
 drop sequence if exists used_subscription_id_a_seq cascade;
 drop sequence if exists real_subscription_id_a_seq cascade;
 drop sequence if exists realsubscription_id_a_seq cascade;
@@ -39,29 +42,38 @@ default 0 check (value >=0);
 create domain positive_real as real
 default 0 check (value >=0);
 
+CREATE DOMAIN gender CHAR(1)
+    CHECK (value IN ( 'F' , 'M' ) );
+
+CREATE DOMAIN paymentTypes varchar
+    CHECK (value IN ( 'Cash' , 'Credit Card', 'Visa Debit', 'Paypal' ) );
+
+
 -- creating tables
 create table ScooterRacks(
     id char(5),
-    tot_num_parking_spots positive_integer not null, 
-    latitude numeric(20,18) not null,
-    longitude numeric(21,18) not null,
+    tot_num_parking_spots positive_integer not null,
+    available_parking_spots positive_integer not null,
+    --latitude numeric(20,18) not null,
+    --longitude numeric(21,18) not null,
+    postalCode char(5),
     address varchar(50),
-    constraint key_scooter_rack primary key (id),
-    constraint unique_coordinate unique (latitude, longitude) --corporate constraints
+    constraint key_scooter_rack primary key (id)
+    --constraint unique_coordinate unique (latitude, longitude) --corporate constraints
 );
 
 create table Model(
     name varchar(30), 
     brand varchar(30) not null default 'Unknown',
     battery_life interval hour to minute default '0m',
-    weight positive_real default null, 
-    height positive_real default null, --in cm
-    length positive_real default null, 
-    depth positive_real default null,
-    rate_per_min numeric(4,3) default '0.10' not null, 
-    rate_per_model numeric(4,2) default '1.00' not null,
+    --weight positive_real default null,
+    --height positive_real default null, --in cm
+    --length positive_real default null,
+    --depth positive_real default null,
+    price_per_min numeric(4,3) default '0.10' not null,
+    --rate_per_model numeric(4,2) default '1.00' not null,
     constraint key_model primary key (name),
-    constraint check_model_price check (rate_per_model > 0.0 and rate_per_min > 0.0) --corporate constraints
+    constraint check_model_price check (price_per_min > 0.0) --corporate constraints
 );
 
 create table Customer(
@@ -69,21 +81,26 @@ create table Customer(
     name varchar(30) not null, 
     surname varchar(30) not null, 
     email varchar(60) unique not null,
+    sex gender not null,
+    birthdate date not null default '1922-02-02',
+    postalCode char(5),
     constraint key_customer primary key (CF)
 );
 
 create table PaymentMethod(
-    type varchar(20),
-    constraint key_payment_method primary key (type)
+    id char(5),
+    type paymentTypes not null,
+    constraint key_payment_method primary key (id)
 );
 
 create table Subscription(
-    name varchar(20), -- it is the typology 
-    duration_subscription interval day default '1d' not null, 
-    number_rentals_per_day positive_integer default 2 not null, 
-    validity_per_day interval hour to second default '2h', 
+    id char(5),
+    --type varchar(20), -- it is the typology
+    type interval day default '1d' not null,
+    number_daily_locks positive_integer default 2 not null,
+    validity_per_day interval hour to second default '2h',
     fixed_price numeric(5,2) default '5.00' not null,
-    constraint key_subscription primary key (name),
+    constraint key_subscription primary key (id),
     constraint check_subscription_price check(fixed_price > 0) --corporate constraints
 );
 
@@ -91,9 +108,9 @@ create table Scooter(
     id char(6), 
     date_of_purchase date default current_timestamp, 
     km_traveled positive_real, 
-    model varchar(30) not null, 
-    id_scooter_rack char(5), /*can be null only if
-the scooter is currently rented*/
+    model varchar(30) not null,
+    remaining_battery_life decimal(5,2) not null default '100.00',
+    id_scooter_rack char(5), /*can be null only if the scooter is currently rented*/
     constraint key_scooter primary key (id),
     constraint fk_scooter_scooterrack foreign key (id_scooter_rack) references ScooterRacks 
     on update cascade
@@ -103,8 +120,8 @@ the scooter is currently rented*/
     on delete restrict,
     constraint check_scooter_purchase check(date_of_purchase <= current_timestamp) --corporate constraints
 );
-
-create table Association(
+--need to deleted--
+/*create table Association(
     type varchar(20),
     CF char(16),
     constraint key_association primary key (CF, type),
@@ -114,13 +131,13 @@ create table Association(
     constraint fk_association_paymentmethod foreign key (type) references PaymentMethod 
     on update cascade 
     on delete cascade 
-);
+);*/
 
 create table Rental(
     order_number int default nextval('rental_order_number_seq'),
     date_hour_delivery timestamp default null, 
     date_hour_collection timestamp default current_timestamp not null, 
-    id_scooter char(6) not null, 
+    id_scooter char(6) not null,
     scooterrack_delivery char(5) default null, 
     scooterrack_collection char(5) not null, 
     customer char(16) not null,
@@ -144,14 +161,14 @@ create table Rental(
 );
 
 create table UsedSubscription(
-    id_a int default nextval('usedsubscription_id_a_seq'),
+    id int default nextval('usedsubscription_id_a_seq'),
     activation_date date default current_timestamp not null, 
     expiring_date date not null, 
-    num_remaining_rentals positive_integer default '2' not null, 
+    num_remaining_unlocks positive_integer default '2' not null,
     remaining_time_of_usage interval hour to second default '2 hour' not null, 
     possession char(16) not null, -- id fiscale 
     typology varchar(20) not null default 'One day',
-    constraint key_used_subscription primary key (id_a),
+    constraint key_used_subscription primary key (id),
     constraint fk_used_subscription foreign key (typology) references Subscription
     on update restrict
     on delete restrict,
@@ -188,3 +205,9 @@ create table PaymentWithSubscription(
     on delete restrict
 );
 
+create table Admin(
+    id char(5),
+    email varchar,
+    password varchar,
+    CONSTRAINT proper_email CHECK (email ~* '^[A-Za-z0-9._+%-]+@[A-Za-z0-9.-]+[.][A-Za-z]+$')
+);
