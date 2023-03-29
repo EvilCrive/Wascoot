@@ -76,6 +76,12 @@ create table Model(
     constraint check_model_price check (price_per_min > 0.0) --corporate constraints
 );
 
+create table PaymentMethod(
+                              id char(5),
+                              type paymentTypes not null,
+                              constraint key_payment_method primary key (type)
+);
+
 create table Customer(
     CF char(16), 
     name varchar(30) not null, 
@@ -84,14 +90,14 @@ create table Customer(
     sex gender not null,
     birthdate date not null default '1922-02-02',
     postalCode char(5),
-    constraint key_customer primary key (CF)
+    paymentType paymentTypes,
+    constraint key_customer primary key (CF),
+    constraint fk_paymentmethod foreign key (paymentType) references PaymentMethod
+        on update cascade
+        on delete cascade
 );
 
-create table PaymentMethod(
-    id char(5),
-    type paymentTypes not null,
-    constraint key_payment_method primary key (id)
-);
+
 
 create table Subscription(
     id char(5),
@@ -155,6 +161,7 @@ create table Rental(
     constraint fk_rental_customer foreign key (customer) references customer
     on update cascade 
     on delete restrict,
+
     constraint check_collection_delivery check(date_hour_delivery > date_hour_collection), --corporate constraints
     constraint check_collection_scooter unique (date_hour_collection, id_scooter),
     constraint check_collection_customer unique (date_hour_collection, customer)
