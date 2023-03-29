@@ -10,6 +10,7 @@
               url="jdbc:postgresql://localhost:5432/esami"
               username="nick"
               password="ecam123"
+
               testOnBorrow="true"
               validationQuery="SELECT 1"
               timeBetweenEvictionRunsMillis="30000"
