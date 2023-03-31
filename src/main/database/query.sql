@@ -18,3 +18,18 @@ SELECT COUNT(*) FROM Rental WHERE customer = '1234567890123456';
 SELECT customer, COUNT(*) AS rentals FROM Rental GROUP BY customer ORDER BY rentals DESC;
 
 SELECT name FROM Model WHERE price_per_min = (SELECT MAX(price_per_min) FROM Model);
+
+SELECT rental.id, scooter.id, scooter.model, scooter.id_scooter_rack
+FROM rental
+INNER JOIN scooter ON rental.id_scooter=scooter.id
+
+SELECT customer.name, customer.surname, customer.email, rental.id_scooter, scooter.model
+FROM customer
+JOIN rental ON customer.cf = rental.customer
+JOIN scooter ON rental.id_scooter = scooter.id
+
+SELECT customer.name, customer.surname, customer.email, rental.id_scooter, scooter.model, model.brand
+FROM customer
+JOIN rental ON customer.cf = rental.customer
+JOIN scooter ON rental.id_scooter = scooter.id
+JOIN model ON scooter.model = model.name
