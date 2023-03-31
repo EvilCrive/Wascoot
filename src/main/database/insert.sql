@@ -5,7 +5,7 @@
 -- Dumped from database version 14.7
 -- Dumped by pg_dump version 15.1
 
--- Started on 2023-03-31 16:48:31 CEST
+-- Started on 2023-03-31 17:18:41 CEST
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -24,9 +24,9 @@ SET row_security = off;
 -- Data for Name: admin; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.admin (id, email, password, profile_image) VALUES ('ad001', 'admin@wascoot.com', '123321', NULL);
-INSERT INTO public.admin (id, email, password, profile_image) VALUES ('ad002', 'ferror@gmail.com', '1234', NULL);
-INSERT INTO public.admin (id, email, password, profile_image) VALUES ('ad003', 'paria@gmail.com', '1357', NULL);
+INSERT INTO public.admin VALUES ('ad001', 'admin@wascoot.com', '123321', NULL);
+INSERT INTO public.admin VALUES ('ad002', 'ferror@gmail.com', '1234', NULL);
+INSERT INTO public.admin VALUES ('ad003', 'paria@gmail.com', '1357', NULL);
 
 
 --
@@ -35,6 +35,8 @@ INSERT INTO public.admin (id, email, password, profile_image) VALUES ('ad003', '
 -- Data for Name: paymentmethod; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public.paymentmethod VALUES ('PM001', 'Credit Card');
+INSERT INTO public.paymentmethod VALUES ('PM002', 'Cash');
 
 
 --
@@ -43,10 +45,10 @@ INSERT INTO public.admin (id, email, password, profile_image) VALUES ('ad003', '
 -- Data for Name: customer; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.customer (cf, name, surname, email, sex, birthdate, postalcode, paymenttype) VALUES ('PHNTEW74B37Z444L', 'Paria', 'Tahan', 'paria.tahan@gmail.com', 'F', '1994-02-09', '35141', NULL);
-INSERT INTO public.customer (cf, name, surname, email, sex, birthdate, postalcode, paymenttype) VALUES ('PHNTEW74B37Z449L', 'Fabio', 'Vandin', 'fabio.vandin@gmail.com', 'M', '1977-04-05', '54321', NULL);
-INSERT INTO public.customer (cf, name, surname, email, sex, birthdate, postalcode, paymenttype) VALUES ('PHNTEW74B37Z555L', 'Nicola', 'Ferro', 'nicola.ferro@gmail.com', 'M', '1970-01-01', '14891', NULL);
-INSERT INTO public.customer (cf, name, surname, email, sex, birthdate, postalcode, paymenttype) VALUES ('PHNTEW76B37Z344L', 'Matteo', 'Fischetti', 'matteo.fischetti@gmail.com', 'M', '1966-10-03', '98765', NULL);
+INSERT INTO public.customer VALUES ('PHNTEW74B37Z444L', 'Paria', 'Tahan', 'paria.tahan@gmail.com', 'F', '1994-02-09', '35141', 'Credit Card');
+INSERT INTO public.customer VALUES ('PHNTEW74B37Z555L', 'Nicola', 'Ferro', 'nicola.ferro@gmail.com', 'M', '1970-01-01', '14891', 'Credit Card');
+INSERT INTO public.customer VALUES ('PHNTEW74B37Z449L', 'Fabio', 'Vandin', 'fabio.vandin@gmail.com', 'M', '1977-04-05', '54321', 'Cash');
+INSERT INTO public.customer VALUES ('PHNTEW76B37Z344L', 'Matteo', 'Fischetti', 'matteo.fischetti@gmail.com', 'M', '1966-10-03', '98765', 'Cash');
 
 
 --
@@ -55,12 +57,12 @@ INSERT INTO public.customer (cf, name, surname, email, sex, birthdate, postalcod
 -- Data for Name: model; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.model (name, brand, battery_life, price_per_min) VALUES ('Dot', 'Decathlon', '01:00:00', 1.000);
-INSERT INTO public.model (name, brand, battery_life, price_per_min) VALUES ('Wolf', 'Giant', '03:00:00', 3.000);
-INSERT INTO public.model (name, brand, battery_life, price_per_min) VALUES ('Corona', 'Merida', '02:20:00', 2.000);
-INSERT INTO public.model (name, brand, battery_life, price_per_min) VALUES ('Liszt', 'Giant', '02:02:00', 3.000);
-INSERT INTO public.model (name, brand, battery_life, price_per_min) VALUES ('Mozart', 'ASUS', '10:10:00', 2.000);
-INSERT INTO public.model (name, brand, battery_life, price_per_min) VALUES ('Bach', 'ACER', '04:01:00', 9.000);
+INSERT INTO public.model VALUES ('Dot', 'Decathlon', '01:00:00', 1.000);
+INSERT INTO public.model VALUES ('Wolf', 'Giant', '03:00:00', 3.000);
+INSERT INTO public.model VALUES ('Corona', 'Merida', '02:20:00', 2.000);
+INSERT INTO public.model VALUES ('Liszt', 'Giant', '02:02:00', 3.000);
+INSERT INTO public.model VALUES ('Mozart', 'ASUS', '10:10:00', 2.000);
+INSERT INTO public.model VALUES ('Bach', 'ACER', '04:01:00', 9.000);
 
 
 --
@@ -69,11 +71,11 @@ INSERT INTO public.model (name, brand, battery_life, price_per_min) VALUES ('Bac
 -- Data for Name: scooterracks; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.scooterracks (id, total_parking_spots, available_parking_spots, postalcode, address) VALUES ('SR001', 20, 15, '35141', 'Via Eugana 80');
-INSERT INTO public.scooterracks (id, total_parking_spots, available_parking_spots, postalcode, address) VALUES ('SR002', 20, 2, '12345', 'Via Roma');
-INSERT INTO public.scooterracks (id, total_parking_spots, available_parking_spots, postalcode, address) VALUES ('SR003', 10, 10, '15678', 'Via Strat');
-INSERT INTO public.scooterracks (id, total_parking_spots, available_parking_spots, postalcode, address) VALUES ('SR004', 30, 10, '65432', 'Via Debussey');
-INSERT INTO public.scooterracks (id, total_parking_spots, available_parking_spots, postalcode, address) VALUES ('SR005', 20, 1, '35133', 'The fifth ave.');
+INSERT INTO public.scooterracks VALUES ('SR001', 20, 15, '35141', 'Via Eugana 80');
+INSERT INTO public.scooterracks VALUES ('SR002', 20, 2, '12345', 'Via Roma');
+INSERT INTO public.scooterracks VALUES ('SR003', 10, 10, '15678', 'Via Strat');
+INSERT INTO public.scooterracks VALUES ('SR004', 30, 10, '65432', 'Via Debussey');
+INSERT INTO public.scooterracks VALUES ('SR005', 20, 1, '35133', 'The fifth ave.');
 
 
 --
@@ -82,11 +84,11 @@ INSERT INTO public.scooterracks (id, total_parking_spots, available_parking_spot
 -- Data for Name: scooter; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.scooter (id, date_of_purchase, km_traveled, model, remaining_battery_life, id_scooter_rack) VALUES ('SC005', '2023-03-20', 10, 'Dot', 100.00, 'SR005');
-INSERT INTO public.scooter (id, date_of_purchase, km_traveled, model, remaining_battery_life, id_scooter_rack) VALUES ('SC001', '2023-03-29', 50, 'Dot', 100.00, 'SR001');
-INSERT INTO public.scooter (id, date_of_purchase, km_traveled, model, remaining_battery_life, id_scooter_rack) VALUES ('SC002', '2022-09-09', 120, 'Mozart', 40.11, 'SR002');
-INSERT INTO public.scooter (id, date_of_purchase, km_traveled, model, remaining_battery_life, id_scooter_rack) VALUES ('SC003', '2010-03-01', 1000, 'Bach', 60.00, 'SR003');
-INSERT INTO public.scooter (id, date_of_purchase, km_traveled, model, remaining_battery_life, id_scooter_rack) VALUES ('SC004', '1977-03-09', 700, 'Liszt', 37.69, 'SR004');
+INSERT INTO public.scooter VALUES ('SC005', '2023-03-20', 10, 'Dot', 100.00, 'SR005');
+INSERT INTO public.scooter VALUES ('SC001', '2023-03-29', 50, 'Dot', 100.00, 'SR001');
+INSERT INTO public.scooter VALUES ('SC002', '2022-09-09', 120, 'Mozart', 40.11, 'SR002');
+INSERT INTO public.scooter VALUES ('SC003', '2010-03-01', 1000, 'Bach', 60.00, 'SR003');
+INSERT INTO public.scooter VALUES ('SC004', '1977-03-09', 700, 'Liszt', 37.69, 'SR004');
 
 
 --
@@ -95,9 +97,9 @@ INSERT INTO public.scooter (id, date_of_purchase, km_traveled, model, remaining_
 -- Data for Name: rental; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.rental (id, date_hour_delivery, date_hour_collection, id_scooter, scooterrack_delivery, scooterrack_collection, customer, km_traveled) VALUES (1, NULL, '2016-06-22 19:10:25', 'SC001 ', 'SR002', 'SR001', 'PHNTEW74B37Z444L', 10);
-INSERT INTO public.rental (id, date_hour_delivery, date_hour_collection, id_scooter, scooterrack_delivery, scooterrack_collection, customer, km_traveled) VALUES (2, NULL, '2019-01-01 00:00:00', 'SC002 ', 'SR003', 'SR002', 'PHNTEW74B37Z444L', 4);
-INSERT INTO public.rental (id, date_hour_delivery, date_hour_collection, id_scooter, scooterrack_delivery, scooterrack_collection, customer, km_traveled) VALUES (3, NULL, '2029-01-01 00:00:00', 'SC004 ', 'SR003', 'SR001', 'PHNTEW74B37Z444L', 3);
+INSERT INTO public.rental VALUES (1, NULL, '2016-06-22 19:10:25', 'SC001 ', 'SR002', 'SR001', 'PHNTEW74B37Z444L', 10);
+INSERT INTO public.rental VALUES (2, NULL, '2019-01-01 00:00:00', 'SC002 ', 'SR003', 'SR002', 'PHNTEW74B37Z444L', 4);
+INSERT INTO public.rental VALUES (3, NULL, '2029-01-01 00:00:00', 'SC004 ', 'SR003', 'SR001', 'PHNTEW74B37Z444L', 3);
 
 
 --
@@ -106,9 +108,9 @@ INSERT INTO public.rental (id, date_hour_delivery, date_hour_collection, id_scoo
 -- Data for Name: paymentwithoutsubscription; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.paymentwithoutsubscription (id, price, date_hour, order_id) VALUES (1, 100.00, '2011-01-01 00:00:00', 1);
-INSERT INTO public.paymentwithoutsubscription (id, price, date_hour, order_id) VALUES (2, 50.00, '2020-01-11 00:00:00', 2);
-INSERT INTO public.paymentwithoutsubscription (id, price, date_hour, order_id) VALUES (3, 10.00, '2021-10-01 00:00:00', 3);
+INSERT INTO public.paymentwithoutsubscription VALUES (1, 100.00, '2011-01-01 00:00:00', 1);
+INSERT INTO public.paymentwithoutsubscription VALUES (2, 50.00, '2020-01-11 00:00:00', 2);
+INSERT INTO public.paymentwithoutsubscription VALUES (3, 10.00, '2021-10-01 00:00:00', 3);
 
 
 --
@@ -117,9 +119,9 @@ INSERT INTO public.paymentwithoutsubscription (id, price, date_hour, order_id) V
 -- Data for Name: subscription; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.subscription (id, type, daily_unlocks, validity_per_day, fixed_price) VALUES ('SUB01', '1 day', 1, '00:00:01', 10.00);
-INSERT INTO public.subscription (id, type, daily_unlocks, validity_per_day, fixed_price) VALUES ('SUB02', '1 day', 2, '02:00:00', 10.00);
-INSERT INTO public.subscription (id, type, daily_unlocks, validity_per_day, fixed_price) VALUES ('SUB03', '00:00:00', 3, '00:00:03', 4.00);
+INSERT INTO public.subscription VALUES ('SUB01', '1 day', 1, '00:00:01', 10.00);
+INSERT INTO public.subscription VALUES ('SUB02', '1 day', 2, '02:00:00', 10.00);
+INSERT INTO public.subscription VALUES ('SUB03', '00:00:00', 3, '00:00:03', 4.00);
 
 
 --
@@ -174,7 +176,7 @@ SELECT pg_catalog.setval('public.sequence_id_sa', 1, false);
 SELECT pg_catalog.setval('public.usedsubscription_id_a_seq', 1, false);
 
 
--- Completed on 2023-03-31 16:48:31 CEST
+-- Completed on 2023-03-31 17:18:42 CEST
 
 --
 -- PostgreSQL database dump complete
