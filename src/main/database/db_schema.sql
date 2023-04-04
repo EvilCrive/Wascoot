@@ -10,6 +10,7 @@ drop table if exists PaymentWithSubscription cascade;
 drop table if exists UsedSubscription cascade;
 drop table if exists RealSubscription cascade;
 drop table if exists Admin cascade;
+
 --drop table if exists EndSubscription cascade;
 drop table if exists Subscription cascade;
 drop table if exists Rental cascade;
