@@ -18,6 +18,7 @@ drop domain if exists positive_integer cascade;
 drop domain if exists positive_real cascade;
 drop domain if exists gender cascade;
 drop domain if exists paymentTypes cascade;
+drop domain if exists activationType cascade;
 drop sequence if exists used_subscription_id_a_seq cascade;
 drop sequence if exists real_subscription_id_a_seq cascade;
 drop sequence if exists realsubscription_id_a_seq cascade;
@@ -46,19 +47,22 @@ CREATE DOMAIN gender CHAR(1)
     CHECK (value IN ( 'F' , 'M' ) );
 
 CREATE DOMAIN paymentTypes varchar
-    CHECK (value IN ( 'Cash' , 'Credit Card', 'Visa Debit', 'Paypal' ) );
+    CHECK (value IN ( 'Credit Card', 'Visa Debit', 'Paypal' ) );
+
+CREATE domain activationType varchar
+    check ( value IN ('Active', 'Inactive'));
 
 
 -- creating tables
 create table ScooterRacks(
-    ID char(5),
+    ID serial,
     total_parking_spots positive_integer not null,
     available_parking_spots positive_integer not null,
     --latitude numeric(20,18) not null,
     --longitude numeric(21,18) not null,
     postalCode char(5),
     address varchar(50),
-    constraint key_scooter_rack primary key (id)
+    constraint key_scooter_rack primary key (ID)
     --constraint unique_coordinate unique (latitude, longitude) --corporate constraints
 );
 
@@ -77,8 +81,9 @@ create table Model(
 );
 
 create table PaymentMethod(
-    ID char(5),
+    ID serial,
     type paymentTypes not null,
+    Activation activationType default 'Inactive',
     constraint key_payment_method primary key (type)
 );
 
@@ -100,7 +105,7 @@ create table Customer(
 
 
 create table Subscription(
-    ID char(5),
+    ID serial,
     --type varchar(20), -- it is the typology
     type interval day default '1d' not null,
     daily_unlocks positive_integer default 2 not null,
@@ -111,14 +116,14 @@ create table Subscription(
 );
 
 create table Scooter(
-    ID char(5),
+    ID serial,
     date_of_purchase date default current_timestamp, 
     km_traveled positive_real, 
     model varchar(30) not null,--foreign key
     remaining_battery_life decimal(5,2) not null default '100.00',
     id_scooter_rack char(5), --foreign key /*can be null only if the scooter is currently rented*/
     constraint key_scooter primary key (id),
-    constraint fk_scooter_scooterrack foreign key (id_scooter_rack) references ScooterRacks 
+    constraint fk_scooter_scooterrack foreign key (ID) references ScooterRacks
     on update cascade
     on delete restrict, 
     constraint fk_scooter_model foreign key (model) references model 
@@ -143,13 +148,13 @@ create table Rental(
     ID int default nextval('rental_order_number_seq'),
     date_hour_delivery timestamp default null, 
     date_hour_collection timestamp default current_timestamp not null, 
-    id_scooter char(6) not null, --foreign
-    scooterrack_delivery char(5) default null, --foreign
-    scooterrack_collection char(5) not null, --foreign
+    id_scooter int not null, --foreign
+    scooterrack_delivery int default null, --foreign
+    scooterrack_collection int not null, --foreign
     customer char(16) not null, --foreign
     km_traveled positive_real default 0,
     constraint key_rental primary key (ID),
-    constraint fk_rental_scooter foreign key (id_scooter) references Scooter 
+    constraint fk_rental_scooter foreign key (ID) references Scooter
     on update cascade 
     on delete restrict,
     constraint fk_rental_scooterrack_collection foreign key (scooterrack_collection) references ScooterRacks 
@@ -174,7 +179,7 @@ create table UsedSubscription(
     remaining_unlocks positive_integer default '2' not null,
     remaining_time_of_usage interval hour to second default '2 hour' not null, 
     customer_CF char(16) not null, -- id fiscale foreign
-    subscription_type varchar(20) not null default 'One day', --foreign
+    subscription_type int not null, --foreign
     constraint key_used_subscription primary key (id),
     constraint fk_used_subscription foreign key (subscription_type) references Subscription
     on update restrict
@@ -191,7 +196,7 @@ create table PaymentWithoutSubscription(
     date_hour timestamp default current_timestamp not null,
     order_ID integer unique not null,
     constraint key_without_subscription primary key (ID),
-    constraint fk_withoutsubscription_rental foreign key (order_ID) references rental
+    constraint fk_withoutsubscription_rental foreign key (ID) references rental
     on update cascade 
     on delete restrict,
     constraint check_withoutpayment_price check(price > 0) --corporate constraints
@@ -204,7 +209,7 @@ create table PaymentWithSubscription(
     order_ID integer unique not null,
     usedSubscription_ID integer not null,
     constraint key_with_subscription primary key (ID),
-    constraint fk_withsubscription_rental foreign key (order_ID) references rental
+    constraint fk_withsubscription_rental foreign key (ID) references rental
     on update cascade 
     on delete restrict,
     constraint fk_withsubscription_usedsubscription foreign key (usedSubscription_ID) references UsedSubscription
@@ -213,10 +218,10 @@ create table PaymentWithSubscription(
 );
 
 create table Admin(
-    id char(5),
+    ID serial,
     email varchar,
     password varchar,
     profile_image bytea default null,
-    constraint key_admin primary key (id),
+    constraint key_admin primary key (ID),
     CONSTRAINT proper_email CHECK (email ~* '^[A-Za-z0-9._+%-]+@[A-Za-z0-9.-]+[.][A-Za-z]+$')
 );
