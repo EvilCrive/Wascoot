@@ -111,7 +111,7 @@ create table Subscription(
     daily_unlocks positive_integer default 2 not null,
     validity_per_day interval hour to second default '2h',
     fixed_price numeric(5,2) default '5.00' not null,
-    constraint key_subscription primary key (id),
+    constraint key_subscription primary key (ID),
     constraint check_subscription_price check(fixed_price > 0) --corporate constraints
 );
 
@@ -121,9 +121,9 @@ create table Scooter(
     km_traveled positive_real, 
     model varchar(30) not null,--foreign key
     remaining_battery_life decimal(5,2) not null default '100.00',
-    id_scooter_rack char(5), --foreign key /*can be null only if the scooter is currently rented*/
+    id_scooter_rack int not null, --foreign key /*can be null only if the scooter is currently rented*/
     constraint key_scooter primary key (id),
-    constraint fk_scooter_scooterrack foreign key (ID) references ScooterRacks
+    constraint fk_scooter_scooterrack foreign key (id_scooter_rack) references ScooterRacks
     on update cascade
     on delete restrict, 
     constraint fk_scooter_model foreign key (model) references model 
@@ -154,7 +154,7 @@ create table Rental(
     customer char(16) not null, --foreign
     km_traveled positive_real default 0,
     constraint key_rental primary key (ID),
-    constraint fk_rental_scooter foreign key (ID) references Scooter
+    constraint fk_rental_scooter foreign key (id_scooter) references Scooter
     on update cascade 
     on delete restrict,
     constraint fk_rental_scooterrack_collection foreign key (scooterrack_collection) references ScooterRacks 
@@ -180,7 +180,7 @@ create table UsedSubscription(
     remaining_time_of_usage interval hour to second default '2 hour' not null, 
     customer_CF char(16) not null, -- id fiscale foreign
     subscription_type int not null, --foreign
-    constraint key_used_subscription primary key (id),
+    constraint key_used_subscription primary key (ID),
     constraint fk_used_subscription foreign key (subscription_type) references Subscription
     on update restrict
     on delete restrict,
@@ -196,7 +196,7 @@ create table PaymentWithoutSubscription(
     date_hour timestamp default current_timestamp not null,
     order_ID integer unique not null,
     constraint key_without_subscription primary key (ID),
-    constraint fk_withoutsubscription_rental foreign key (ID) references rental
+    constraint fk_withoutsubscription_rental foreign key (order_ID) references rental
     on update cascade 
     on delete restrict,
     constraint check_withoutpayment_price check(price > 0) --corporate constraints
@@ -209,7 +209,7 @@ create table PaymentWithSubscription(
     order_ID integer unique not null,
     usedSubscription_ID integer not null,
     constraint key_with_subscription primary key (ID),
-    constraint fk_withsubscription_rental foreign key (ID) references rental
+    constraint fk_withsubscription_rental foreign key (order_ID) references rental
     on update cascade 
     on delete restrict,
     constraint fk_withsubscription_usedsubscription foreign key (usedSubscription_ID) references UsedSubscription
