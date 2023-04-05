@@ -78,17 +78,21 @@ INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-17', 2, 'R9 PRO', DEFAULT, 
 INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-01', 14, 'E300', 86, 4); 
 INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-4', 5, 'E90', 100, 5);
 
---
--- TOC entry 3683 (class 0 OID 17856)
--- Dependencies: 219
--- Data for Name: rental; Type: TABLE DATA; Schema: public; Owner: postgres
---
+-- RENTAL(id, date_hour_delivery, date_hour_collection, id_scooter, scooterrack_delivery, scooterrack_collection, customer, km_traveled)
 
-INSERT INTO public.rental VALUES (1, NULL, '2016-06-22 19:10:25', 'SC001 ', 'SR002', 'SR001', 'PHNTEW74B37Z444L', 10);
-INSERT INTO public.rental VALUES (2, NULL, '2019-01-01 00:00:00', 'SC002 ', 'SR003', 'SR002', 'PHNTEW74B37Z444L', 4);
-INSERT INTO public.rental VALUES (3, NULL, '2029-01-01 00:00:00', 'SC004 ', 'SR003', 'SR001', 'PHNTEW74B37Z444L', 3);
+INSERT INTO public.rental VALUES (DEFAULT, NULL, '2016-06-22 19:10:25', 1, 2, 1, 'PHNTEW74B37Z444L', 10);
+INSERT INTO public.rental VALUES (DEFAULT, NULL, '2019-01-01 00:00:00', 2, 3, 2, 'PHNTEW74B37Z444L', 4);
+INSERT INTO public.rental VALUES (DEFAULT, NULL, '2029-01-01 00:00:00', 4, 3, 1, 'PHNTEW74B37Z444L', 3);
+INSERT INTO public.rental VALUES (DEFAULT, '2020-01-01 16:23:00', '2020-01-01 10:23:00', 5, 5, 4, 'SPSGNR86L31B076I', 1.9);
+INSERT INTO public.rental VALUES (DEFAULT, '2020-02-03 14:23:54', '2020-02-03 10:23:54', 6, 4, 5, 'MTRGPP52M65I608H', 1.5);
+INSERT INTO public.rental VALUES(DEFAULT, '2020-01-05 12:20:20', '2020-01-05 12:00:00', 7, 3, 3, 'TRZDIA99L60L157U', 2);
+INSERT INTO public.rental VALUES(DEFAULT, '2020-02-01 13:35:30', '2020-02-01 13:30:30', 8, 3, 3, 'ZREFNC99T16L781Q', 0.2);
+INSERT INTO public.rental VALUES(DEFAULT, '2020-01-02 10:23:54', '2020-01-02 09:23:54', 9, 1, 5, 'LBRPPN14S07D612X', 1.1);
+INSERT INTO public.rental VALUES(DEFAULT, '2020-01-10 10:15:54', '2020-01-10 10:00:54', 1, 1, 5, 'SCNGNN99D09C352U', 2.3); 
+INSERT INTO public.rental VALUES(DEFAULT, '2020-02-01 12:23:54', '2020-02-01 10:23:54', 1, 5, 2, 'PSCGLI56G45I623E', 5.9);
+INSERT INTO public.rental VALUES(DEFAULT, '2020-02-14 14:00:00', '2020-02-14 12:00:00', 1, 2, 7, 'RSSFRC83L49F111G', 6);
 
-
+	 
 --
 -- TOC entry 3685 (class 0 OID 17910)
 -- Dependencies: 221
@@ -109,63 +113,3 @@ INSERT INTO public.paymentwithoutsubscription VALUES (3, 10.00, '2021-10-01 00:0
 INSERT INTO public.subscription VALUES ('SUB01', '1 day', 1, '00:00:01', 10.00);
 INSERT INTO public.subscription VALUES ('SUB02', '1 day', 2, '02:00:00', 10.00);
 INSERT INTO public.subscription VALUES ('SUB03', '00:00:00', 3, '00:00:03', 4.00);
-
-
---
--- TOC entry 3684 (class 0 OID 17890)
--- Dependencies: 220
--- Data for Name: usedsubscription; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- TOC entry 3686 (class 0 OID 17925)
--- Dependencies: 222
--- Data for Name: paymentwithsubscription; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- TOC entry 3693 (class 0 OID 0)
--- Dependencies: 210
--- Name: rental_order_number_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.rental_order_number_seq', 1, false);
-
-
---
--- TOC entry 3694 (class 0 OID 0)
--- Dependencies: 212
--- Name: sequence_id_ca; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.sequence_id_ca', 2, false);
-
-
---
--- TOC entry 3695 (class 0 OID 0)
--- Dependencies: 211
--- Name: sequence_id_sa; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.sequence_id_sa', 1, false);
-
-
---
--- TOC entry 3696 (class 0 OID 0)
--- Dependencies: 209
--- Name: usedsubscription_id_a_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.usedsubscription_id_a_seq', 1, false);
-
-
--- Completed on 2023-03-31 17:18:42 CEST
-
---
--- PostgreSQL database dump complete
---
-
