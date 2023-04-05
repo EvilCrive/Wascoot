@@ -51,15 +51,15 @@ INSERT INTO public.model VALUES ('R9 PRO', 'LEXGO', '01:00:00', 0.2);
 -- SCOOTERRACKS(id, total_parking_spots, available_parking_spots, postalCode, address)
 INSERT INTO public.scooterracks VALUES (DEFAULT, 20, 15, '35141', 'Via Eugana 80');
 INSERT INTO public.scooterracks VALUES (DEFAULT, 20, 2, '12345', 'Via Roma');
-INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 10, '15678', 'Via Strat');
-INSERT INTO public.scooterracks VALUES (DEFAULT, 30, 10, '65432', 'Via Debussey');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 0, '15678', 'Via Strat');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 30, 11, '65432', 'Via Debussey');
 INSERT INTO public.scooterracks VALUES (DEFAULT, 20, 1, '35133', 'The fifth ave.');
-INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 5, NULL, 'Castel Sant''Angelo');
-INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 5, NULL, 'Piazza Navona');
-INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 5, NULL, 'Pantheon');
-INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 5, NULL, 'Piazza Venezia');
-INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 5, NULL, 'Foro Romano');
-INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 5, NULL, 'Colosseo');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 5, '00193', 'Castel Sant''Angelo');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 5, 5, '00186', 'Piazza Navona');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 2, '00186', 'Pantheon');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 7, '00187', 'Piazza Venezia');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 20, 15, '00186', 'Foro Romano');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 20, 5, '00184', 'Colosseo');
 
 --
 -- TOC entry 3682 (class 0 OID 17838)
