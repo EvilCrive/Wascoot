@@ -88,6 +88,7 @@ public final class RestManagerServlet extends AbstractDatabaseServlet {
             return false;
         }
 
+
         if(!accept.contains(JSON_MEDIA_TYPE) && !accept.equals(ALL_MEDIA_TYPE)) {
             m = new Message("Unsupported output media type. Resources are represented only in application/json.",
                     "E4A2", String.format("Requested representation is %s.", accept));
