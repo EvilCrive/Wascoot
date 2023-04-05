@@ -60,7 +60,7 @@ create table ScooterRacks(
     available_parking_spots positive_integer not null,
     --latitude numeric(20,18) not null,
     --longitude numeric(21,18) not null,
-    postalCode char(5),
+    postalCode char(5) not null,
     address varchar(50),
     constraint key_scooter_rack primary key (ID)
     --constraint unique_coordinate unique (latitude, longitude) --corporate constraints
