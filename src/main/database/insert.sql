@@ -23,7 +23,7 @@ INSERT INTO public.paymentmethod VALUES (DEFAULT, 'Paypal', DEFAULT);
 -- CUSTOMER(CF, name, surname, email, sex, birthdate, postalCode)
 INSERT INTO public.customer VALUES ('PSCGLI56G45I623E', 'Giulia', 'Primo', 'g.primo@virgilio.it', 'F', DEFAULT, NULL, 'Credit Card');
 INSERT INTO public.customer VALUES ('SCNGNN99D09C352U', 'Giovanni', 'Secondo', 'g.secondo@gmail.com', 'M', DEFAULT, NULL, 'Credit Card');
-INSERT INTO public.customer VALUES ('LBRPPN14S07D612X', 'Pipino', 'Il Breve', 'p.ilbreve@libero.it'. 'M', DEFAULT, NULL, 'Credit Card');
+INSERT INTO public.customer VALUES ('LBRPPN14S07D612X', 'Pipino', 'Il Breve', 'p.ilbreve@libero.it', 'M', DEFAULT, NULL, 'Credit Card');
 INSERT INTO public.customer VALUES ('RSSFRC83L49F111G', 'Federica', 'Rossi', 'f.rossi@libero.it', 'F', DEFAULT, NULL, 'Visa Debit');
 INSERT INTO public.customer VALUES ('ZREFNC99T16L781Q', 'Francesco', 'Zero', 'f.zero@studenti.unisa.it', 'M', DEFAULT, NULL, 'Paypal');
 INSERT INTO public.customer VALUES ('TRZDIA99L60L157U', 'Ida', 'Terzigno', 'iterzigno@pikolo.it', 'F', DEFAULT, NULL, 'Visa Debit');
@@ -101,23 +101,6 @@ INSERT INTO public.subscription VALUES (DEFAULT, '1 month', 4, '4 hours', 60);
 INSERT INTO public.subscription VALUES (DEFAULT, '1 year', 8, '8 hour', 200);
 INSERT INTO public.subscription VALUES (DEFAULT, '10 days', 4, '2 hour', 20);
 
--- PAYMENTWITHSUBSCRIPTION(id, date_hour, order_ID, usedSubscriptionID)
-INSERT INTO public.paymentwithsubscription(DEFAULT, '2020-02-14 14:00:00', 1, 1);
-INSERT INTO public.paymentwithsubscription(DEFAULT, DEFAULT, 2, 1);
-INSERT INTO public.paymentwithsubscription(DEFAULT, '2020-02-14 18:00:00', 3, 1);
-
-	 
--- PAYMENTWITHOUTSUBSCRIPTION(id, price, date_hour, orderID)
-INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 91, '2020-08-01 16:23:00', 2),
-INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 4.6, '2020-08-05 09:00:50', 3),
-INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 1.5, '2020-08-01 13:35:30', 4),
-INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 31, '2020-08-01 12:00:00', 5),
-INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 16,'2020-08-01 15:15:00', 6),
-INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 91, '2020-02-13 14:00:00', 18);
-INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 100.00, '2011-01-01 00:00:00', 1);
-INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 50.00, '2020-01-11 00:00:00', 2);
-INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 10.00, '2021-10-01 00:00:00', 3);
-
 -- USEDSUBSCRIPTION(id, activation_date, expiration_date, remaining_unlocks, remaining_time_of_usage, customer_CF, subscription_type)
 INSERT INTO public.usedsubscription VALUES(DEFAULT, '2020-01-10', '2020-01-10', 0, '0 minute', 'PSCGLI56G45I623E', 1);
 INSERT INTO public.usedsubscription VALUES(DEFAULT, '2020-02-12', '2020-03-12', 0, '0 minute', 'SCNGNN99D09C352U', 6);
@@ -125,4 +108,18 @@ INSERT INTO public.usedsubscription VALUES(DEFAULT, '2020-02-10', '2020-02-10', 
 INSERT INTO public.usedsubscription VALUES(DEFAULT, '2020-01-10', '2021-01-10', 3, '1 month', 'RSSFRC83L49F111G', 7);
 INSERT INTO public.usedsubscription VALUES(DEFAULT, '2020-04-09', '2020-05-09', 2, '10 day', 'ZREFNC99T16L781Q', 6);
 
-	 
+-- PAYMENTWITHSUBSCRIPTION(id, date_hour, order_ID, usedSubscriptionID)
+INSERT INTO public.paymentwithsubscription VALUES(DEFAULT, '2020-02-14 14:00:00', 1, 1);
+INSERT INTO public.paymentwithsubscription VALUES(DEFAULT, DEFAULT, 2, 1);
+INSERT INTO public.paymentwithsubscription VALUES(DEFAULT, '2020-02-14 18:00:00', 3, 1);
+ 
+-- PAYMENTWITHOUTSUBSCRIPTION(id, price, date_hour, orderID)
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 91, '2020-08-01 16:23:00', 7);
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 4.6, '2020-08-05 09:00:50', 9);
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 1.5, '2020-08-01 13:35:30', 4);
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 31, '2020-08-01 12:00:00', 5);
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 16,'2020-08-01 15:15:00', 6);
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 91, '2020-02-13 14:00:00', 8);
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 100.00, '2011-01-01 00:00:00', 10);
+
+
