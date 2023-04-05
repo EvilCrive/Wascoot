@@ -1,5 +1,4 @@
 
-<<<<<<< HEAD
 -- Dumped from database version 14.7
 -- Dumped by pg_dump version 15.1
 
@@ -20,8 +19,6 @@ SET row_security = off;
 -- TOC entry 3687 (class 0 OID 17944)
 -- Dependencies: 223
 -- Data for Name: admin; Type: TABLE DATA; Schema: public; Owner: postgres
-=======
->>>>>>> origin/master
 --
 
 INSERT INTO public.admin VALUES ('ad001', 'admin@wascoot.com', '123321', NULL);
@@ -35,8 +32,9 @@ INSERT INTO public.admin VALUES ('ad003', 'paria@gmail.com', '1357', NULL);
 -- Data for Name: paymentmethod; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.paymentmethod VALUES ('PM001', 'Credit Card');
-INSERT INTO public.paymentmethod VALUES ('PM002', 'Cash');
+INSERT INTO public.paymentmethod VALUES (DEFAULT, 'Credit Card', DEFAULT);
+INSERT INTO public.paymentmethod VALUES (DEFAULT, 'Visa Debit', DEFAULT);
+INSERT INTO public.paymentmethod VALUES (DEFAULT, 'Paypal', DEFAULT);
 
 
 --
@@ -123,7 +121,6 @@ INSERT INTO public.subscription VALUES ('SUB01', '1 day', 1, '00:00:01', 10.00);
 INSERT INTO public.subscription VALUES ('SUB02', '1 day', 2, '02:00:00', 10.00);
 INSERT INTO public.subscription VALUES ('SUB03', '00:00:00', 3, '00:00:03', 4.00);
 
-<<<<<<< HEAD
 
 --
 -- TOC entry 3684 (class 0 OID 17890)
@@ -183,5 +180,3 @@ SELECT pg_catalog.setval('public.usedsubscription_id_a_seq', 1, false);
 -- PostgreSQL database dump complete
 --
 
-=======
->>>>>>> origin/master
