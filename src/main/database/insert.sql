@@ -61,18 +61,22 @@ INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 7, '00187', 'Piazza Venezia
 INSERT INTO public.scooterracks VALUES (DEFAULT, 20, 15, '00186', 'Foro Romano');
 INSERT INTO public.scooterracks VALUES (DEFAULT, 20, 5, '00184', 'Colosseo');
 
---
--- TOC entry 3682 (class 0 OID 17838)
--- Dependencies: 218
--- Data for Name: scooter; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO public.scooter VALUES ('SC005', '2023-03-20', 10, 'Dot', 100.00, 'SR005');
-INSERT INTO public.scooter VALUES ('SC001', '2023-03-29', 50, 'Dot', 100.00, 'SR001');
-INSERT INTO public.scooter VALUES ('SC002', '2022-09-09', 120, 'Mozart', 40.11, 'SR002');
-INSERT INTO public.scooter VALUES ('SC003', '2010-03-01', 1000, 'Bach', 60.00, 'SR003');
-INSERT INTO public.scooter VALUES ('SC004', '1977-03-09', 700, 'Liszt', 37.69, 'SR004');
-
+-- SCOOTER(id, date_of_purchase, km_traveled, model, remaining_battery_life, id_scooter_rack)
+INSERT INTO public.scooter VALUES (DEFAULT, '2023-03-20', 10, 'Dot', 100.00, 1);
+INSERT INTO public.scooter VALUES (DEFAULT, '2023-03-29', 50, 'Dot', 100.00, 3);
+INSERT INTO public.scooter VALUES (DEFAULT, '2022-09-09', 120, 'Mozart', 40.11, 2);
+INSERT INTO public.scooter VALUES (DEFAULT, '2010-03-01', 1000, 'Bach', 60.00, 3);
+INSERT INTO public.scooter VALUES (DEFAULT, '1977-03-09', 700, 'Liszt', 37.69, 4);
+INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-01', 0, 'E90', 65, 4);
+INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-9', 10, 'E100', 50, 5);
+INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-11', 9, 'E90', DEFAULT, 1); 
+INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-10', 6, 'E100', 20, 2);
+INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-25', 3, 'E300', 100, 3);
+INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-20', 6, 'E90', DEFAULT, 3);
+INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-30', 1.5, 'E90', 70, 5);
+INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-17', 2, 'R9 PRO', DEFAULT, 6);
+INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-01', 14, 'E300', 86, 4); 
+INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-4', 5, 'E90', 100, 5);
 
 --
 -- TOC entry 3683 (class 0 OID 17856)
