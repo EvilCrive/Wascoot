@@ -91,18 +91,6 @@ INSERT INTO public.rental VALUES(DEFAULT, '2020-01-10 10:15:54', '2020-01-10 10:
 INSERT INTO public.rental VALUES(DEFAULT, '2020-02-01 12:23:54', '2020-02-01 10:23:54', 1, 5, 2, 'PSCGLI56G45I623E', 5.9);
 INSERT INTO public.rental VALUES(DEFAULT, '2020-02-14 14:00:00', '2020-02-14 12:00:00', 1, 2, 7, 'RSSFRC83L49F111G', 6);
 
-	 
---
--- TOC entry 3685 (class 0 OID 17910)
--- Dependencies: 221
--- Data for Name: paymentwithoutsubscription; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO public.paymentwithoutsubscription VALUES (1, 100.00, '2011-01-01 00:00:00', 1);
-INSERT INTO public.paymentwithoutsubscription VALUES (2, 50.00, '2020-01-11 00:00:00', 2);
-INSERT INTO public.paymentwithoutsubscription VALUES (3, 10.00, '2021-10-01 00:00:00', 3);
-
-
 -- SUBSCRIPTION(id, type, daily_unlocks, validity_per_day, fixed_price)
 INSERT INTO public.subscription VALUES (DEFAULT, '1 day', 1, '00:00:01', 10.00);
 INSERT INTO public.subscription VALUES (DEFAULT, '1 day', 2, '02:00:00', 10.00);
@@ -112,3 +100,31 @@ INSERT INTO public.subscription VALUES (DEFAULT, '1 week', 4, '4 hours', 20);
 INSERT INTO public.subscription VALUES (DEFAULT, '1 month', 4, '4 hours', 60);
 INSERT INTO public.subscription VALUES (DEFAULT, '1 year', 8, '8 hour', 200);
 INSERT INTO public.subscription VALUES (DEFAULT, '10 days', 4, '2 hour', 20);
+
+-- PAYMENTWITHSUBSCRIPTION(id, date_hour, order_ID, usedSubscriptionID)
+INSERT INTO public.paymentwithsubscription(DEFAULT, '2020-02-14 14:00:00', 1, 1);
+INSERT INTO public.paymentwithsubscription(DEFAULT, DEFAULT, 2, 1);
+INSERT INTO public.paymentwithsubscription(DEFAULT, '2020-02-14 18:00:00', 3, 1);
+
+	 
+	--entering PaymentWithoutSubscription
+	insert into PaymentWithoutSubscription(price, date_hour, order_number) values
+	(91, '2020-08-01 16:23:00', 2),
+	(4.6, '2020-08-05 09:00:50', 3),
+	(1.5, '2020-08-01 13:35:30', 4),
+	(31, '2020-08-01 12:00:00', 5),
+	(16,'2020-08-01 15:15:00', 6),
+	(91, '2020-02-13 14:00:00', 18);
+    INSERT INTO public.paymentwithoutsubscription VALUES (1, 100.00, '2011-01-01 00:00:00', 1);
+INSERT INTO public.paymentwithoutsubscription VALUES (2, 50.00, '2020-01-11 00:00:00', 2);
+INSERT INTO public.paymentwithoutsubscription VALUES (3, 10.00, '2021-10-01 00:00:00', 3);
+
+
+-- USEDSUBSCRIPTION(id, activation_date, expiration_date, remaining_unlocks, remaining_time_of_usage, customer_CF, subscription_type)
+INSERT INTO public.usedsubscription VALUES(DEFAULT, '2020-01-10', '2020-01-10', 0, '0 minute', 'PSCGLI56G45I623E', 1);
+INSERT INTO public.usedsubscription VALUES(DEFAULT, '2020-02-12', '2020-03-12', 0, '0 minute', 'SCNGNN99D09C352U', 6);
+INSERT INTO public.usedsubscription VALUES(DEFAULT, '2020-02-10', '2020-02-10', 1, '2 hour', 'LBRPPN14S07D612X', 1);
+INSERT INTO public.usedsubscription VALUES(DEFAULT, '2020-01-10', '2021-01-10', 3, '1 month', 'RSSFRC83L49F111G', 7);
+INSERT INTO public.usedsubscription VALUES(DEFAULT, '2020-04-09', '2020-05-09', 2, '10 day', 'ZREFNC99T16L781Q', 6);
+
+	 
