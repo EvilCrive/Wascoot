@@ -1,6 +1,4 @@
-
 -- PostgreSQL stuff
-
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
@@ -13,18 +11,14 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 -- ADMIN(id, email, password, profileImage)
-
 INSERT INTO public.admin VALUES (DEFAULT, 'admin@wascoot.com', '123321', NULL);
 INSERT INTO public.admin VALUES (DEFAULT, 'ferror@gmail.com', '1234', NULL);
 INSERT INTO public.admin VALUES (DEFAULT, 'paria@gmail.com', '1357', NULL);
 
-
 -- PAYMENTMETHOD(id, paymenttype, activation)
-
 INSERT INTO public.paymentmethod VALUES (DEFAULT, 'Credit Card', DEFAULT);
 INSERT INTO public.paymentmethod VALUES (DEFAULT, 'Visa Debit', DEFAULT);
 INSERT INTO public.paymentmethod VALUES (DEFAULT, 'Paypal', DEFAULT);
-
 
 -- CUSTOMER(CF, name, surname, email, sex, birthdate, postalCode)
 INSERT INTO public.customer VALUES ('PSCGLI56G45I623E', 'Giulia', 'Primo', 'g.primo@virgilio.it', 'F', DEFAULT, NULL, 'Credit Card');
@@ -42,29 +36,30 @@ INSERT INTO public.customer VALUES ('PHNTEW74B37Z555L', 'Nicola', 'Ferro', 'nico
 INSERT INTO public.customer VALUES ('PHNTEW74B37Z449L', 'Fabio', 'Vandin', 'fabio.vandin@gmail.com', 'M', '1977-04-05', '54321', 'Paypal');
 INSERT INTO public.customer VALUES ('PHNTEW76B37Z344L', 'Matteo', 'Fischetti', 'matteo.fischetti@gmail.com', 'M', '1966-10-03', '98765', 'Paypal');
 
-
 -- MODEL(name, brand, battery_life, price_per_min)
+INSERT INTO public.model VALUES ('Dot', 'Decathlon', '01:00:00', 1);
+INSERT INTO public.model VALUES ('Wolf', 'Giant', '03:00:00', 3);
+INSERT INTO public.model VALUES ('Corona', 'Merida', '02:20:00', 2);
+INSERT INTO public.model VALUES ('Liszt', 'Giant', '02:02:00', 3);
+INSERT INTO public.model VALUES ('Mozart', 'ASUS', '10:10:00', 2);
+INSERT INTO public.model VALUES ('Bach', 'ACER', '04:01:00', 0.900);
+INSERT INTO public.model VALUES ('E90', 'Razor', '01:00:00', 0.25);
+INSERT INTO public.model VALUES ('E100', 'Razor', '02:00:00', 0.15);
+INSERT INTO public.model VALUES ('E300', 'Razor', '01:30:00', 0.1);
+INSERT INTO public.model VALUES ('R9 PRO', 'LEXGO', '01:00:00', 0.2);
 
-INSERT INTO public.model VALUES ('Dot', 'Decathlon', '01:00:00', 1.000);
-INSERT INTO public.model VALUES ('Wolf', 'Giant', '03:00:00', 3.000);
-INSERT INTO public.model VALUES ('Corona', 'Merida', '02:20:00', 2.000);
-INSERT INTO public.model VALUES ('Liszt', 'Giant', '02:02:00', 3.000);
-INSERT INTO public.model VALUES ('Mozart', 'ASUS', '10:10:00', 2.000);
-INSERT INTO public.model VALUES ('Bach', 'ACER', '04:01:00', 9.000);
-
-
---
--- TOC entry 3677 (class 0 OID 17792)
--- Dependencies: 213
--- Data for Name: scooterracks; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO public.scooterracks VALUES ('SR001', 20, 15, '35141', 'Via Eugana 80');
-INSERT INTO public.scooterracks VALUES ('SR002', 20, 2, '12345', 'Via Roma');
-INSERT INTO public.scooterracks VALUES ('SR003', 10, 10, '15678', 'Via Strat');
-INSERT INTO public.scooterracks VALUES ('SR004', 30, 10, '65432', 'Via Debussey');
-INSERT INTO public.scooterracks VALUES ('SR005', 20, 1, '35133', 'The fifth ave.');
-
+-- SCOOTERRACKS(id, total_parking_spots, available_parking_spots, postalCode, address)
+INSERT INTO public.scooterracks VALUES (DEFAULT, 20, 15, '35141', 'Via Eugana 80');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 20, 2, '12345', 'Via Roma');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 10, '15678', 'Via Strat');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 30, 10, '65432', 'Via Debussey');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 20, 1, '35133', 'The fifth ave.');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 5, NULL, 'Castel Sant''Angelo');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 5, NULL, 'Piazza Navona');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 5, NULL, 'Pantheon');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 5, NULL, 'Piazza Venezia');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 5, NULL, 'Foro Romano');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 5, NULL, 'Colosseo');
 
 --
 -- TOC entry 3682 (class 0 OID 17838)
