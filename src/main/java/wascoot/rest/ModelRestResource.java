@@ -43,12 +43,24 @@ public final class ModelRestResource extends RestResource {
         Message m = null;
 
         try{
-            // creates a new object for accessing the database and lists all the employees
+            // creates a new object for accessing the database and lists all the models
             el = new getModelListDatabase(con).getModelList();
 
             if(el != null) {
                 res.setStatus(HttpServletResponse.SC_OK);
                 new ResourceList(el).toJSON(res.getOutputStream());
+
+                m = new Message("Models successfully gettd.");
+
+                // stores the model list and the message as a request attribute
+                req.setAttribute("modelList", el);
+                req.setAttribute("message", m);
+
+                // forwards the control to the model JSP
+                req.getRequestDispatcher("/jsp/model.jsp").forward(req, res);
+
+
+
             } else {
                 // it should not happen
                 m = new Message("Cannot list models: unexpected error.", "E5A1", null);

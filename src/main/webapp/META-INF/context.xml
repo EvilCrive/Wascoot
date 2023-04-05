@@ -2,13 +2,13 @@
 <!-- The contents of this file will be loaded for each web application -->
 <Context>
 
-    <Resource name="jdbc/model"
+    <Resource name="jdbc/wascoot"
               auth="Container"
               type="javax.sql.DataSource"
               factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
               driverClassName="org.postgresql.Driver"
-              url="jdbc:postgresql://localhost:5432/esami"
-              username="nick"
+              url="jdbc:postgresql://localhost:5432/wascoot"
+              username="postgres"
               password="ecam123"
 
               testOnBorrow="true"
