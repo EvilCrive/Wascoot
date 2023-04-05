@@ -79,7 +79,6 @@ INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-01', 14, 'E300', 86, 4);
 INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-4', 5, 'E90', 100, 5);
 
 -- RENTAL(id, date_hour_delivery, date_hour_collection, id_scooter, scooterrack_delivery, scooterrack_collection, customer, km_traveled)
-
 INSERT INTO public.rental VALUES (DEFAULT, NULL, '2016-06-22 19:10:25', 1, 2, 1, 'PHNTEW74B37Z444L', 10);
 INSERT INTO public.rental VALUES (DEFAULT, NULL, '2019-01-01 00:00:00', 2, 3, 2, 'PHNTEW74B37Z444L', 4);
 INSERT INTO public.rental VALUES (DEFAULT, NULL, '2029-01-01 00:00:00', 4, 3, 1, 'PHNTEW74B37Z444L', 3);
@@ -104,12 +103,12 @@ INSERT INTO public.paymentwithoutsubscription VALUES (2, 50.00, '2020-01-11 00:0
 INSERT INTO public.paymentwithoutsubscription VALUES (3, 10.00, '2021-10-01 00:00:00', 3);
 
 
---
--- TOC entry 3681 (class 0 OID 17828)
--- Dependencies: 217
--- Data for Name: subscription; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO public.subscription VALUES ('SUB01', '1 day', 1, '00:00:01', 10.00);
-INSERT INTO public.subscription VALUES ('SUB02', '1 day', 2, '02:00:00', 10.00);
-INSERT INTO public.subscription VALUES ('SUB03', '00:00:00', 3, '00:00:03', 4.00);
+-- SUBSCRIPTION(id, type, daily_unlocks, validity_per_day, fixed_price)
+INSERT INTO public.subscription VALUES (DEFAULT, '1 day', 1, '00:00:01', 10.00);
+INSERT INTO public.subscription VALUES (DEFAULT, '1 day', 2, '02:00:00', 10.00);
+INSERT INTO public.subscription VALUES (DEFAULT, '1 week', 3, '00:00:03', 4.00);
+INSERT INTO public.subscription VALUES (DEFAULT, '1 day', 2, '2 hours', 5);
+INSERT INTO public.subscription VALUES (DEFAULT, '1 week', 4, '4 hours', 20);
+INSERT INTO public.subscription VALUES (DEFAULT, '1 month', 4, '4 hours', 60);
+INSERT INTO public.subscription VALUES (DEFAULT, '1 year', 8, '8 hour', 200);
+INSERT INTO public.subscription VALUES (DEFAULT, '10 days', 4, '2 hour', 20);
