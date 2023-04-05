@@ -107,18 +107,16 @@ INSERT INTO public.paymentwithsubscription(DEFAULT, DEFAULT, 2, 1);
 INSERT INTO public.paymentwithsubscription(DEFAULT, '2020-02-14 18:00:00', 3, 1);
 
 	 
-	--entering PaymentWithoutSubscription
-	insert into PaymentWithoutSubscription(price, date_hour, order_number) values
-	(91, '2020-08-01 16:23:00', 2),
-	(4.6, '2020-08-05 09:00:50', 3),
-	(1.5, '2020-08-01 13:35:30', 4),
-	(31, '2020-08-01 12:00:00', 5),
-	(16,'2020-08-01 15:15:00', 6),
-	(91, '2020-02-13 14:00:00', 18);
-    INSERT INTO public.paymentwithoutsubscription VALUES (1, 100.00, '2011-01-01 00:00:00', 1);
-INSERT INTO public.paymentwithoutsubscription VALUES (2, 50.00, '2020-01-11 00:00:00', 2);
-INSERT INTO public.paymentwithoutsubscription VALUES (3, 10.00, '2021-10-01 00:00:00', 3);
-
+-- PAYMENTWITHOUTSUBSCRIPTION(id, price, date_hour, orderID)
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 91, '2020-08-01 16:23:00', 2),
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 4.6, '2020-08-05 09:00:50', 3),
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 1.5, '2020-08-01 13:35:30', 4),
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 31, '2020-08-01 12:00:00', 5),
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 16,'2020-08-01 15:15:00', 6),
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 91, '2020-02-13 14:00:00', 18);
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 100.00, '2011-01-01 00:00:00', 1);
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 50.00, '2020-01-11 00:00:00', 2);
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 10.00, '2021-10-01 00:00:00', 3);
 
 -- USEDSUBSCRIPTION(id, activation_date, expiration_date, remaining_unlocks, remaining_time_of_usage, customer_CF, subscription_type)
 INSERT INTO public.usedsubscription VALUES(DEFAULT, '2020-01-10', '2020-01-10', 0, '0 minute', 'PSCGLI56G45I623E', 1);
