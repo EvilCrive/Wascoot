@@ -43,11 +43,7 @@ INSERT INTO public.customer VALUES ('PHNTEW74B37Z449L', 'Fabio', 'Vandin', 'fabi
 INSERT INTO public.customer VALUES ('PHNTEW76B37Z344L', 'Matteo', 'Fischetti', 'matteo.fischetti@gmail.com', 'M', '1966-10-03', '98765', 'Paypal');
 
 
---
--- TOC entry 3678 (class 0 OID 17797)
--- Dependencies: 214
--- Data for Name: model; Type: TABLE DATA; Schema: public; Owner: postgres
---
+-- MODEL(name, brand, battery_life, price_per_min)
 
 INSERT INTO public.model VALUES ('Dot', 'Decathlon', '01:00:00', 1.000);
 INSERT INTO public.model VALUES ('Wolf', 'Giant', '03:00:00', 3.000);
