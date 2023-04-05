@@ -1,8 +1,5 @@
 
--- Dumped from database version 14.7
--- Dumped by pg_dump version 15.1
-
--- Started on 2023-03-31 17:18:41 CEST
+-- PostgreSQL stuff
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -15,38 +12,35 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
---
--- TOC entry 3687 (class 0 OID 17944)
--- Dependencies: 223
--- Data for Name: admin; Type: TABLE DATA; Schema: public; Owner: postgres
---
+-- ADMIN(id, email, password, profileImage)
 
-INSERT INTO public.admin VALUES ('ad001', 'admin@wascoot.com', '123321', NULL);
-INSERT INTO public.admin VALUES ('ad002', 'ferror@gmail.com', '1234', NULL);
-INSERT INTO public.admin VALUES ('ad003', 'paria@gmail.com', '1357', NULL);
+INSERT INTO public.admin VALUES (DEFAULT, 'admin@wascoot.com', '123321', NULL);
+INSERT INTO public.admin VALUES (DEFAULT, 'ferror@gmail.com', '1234', NULL);
+INSERT INTO public.admin VALUES (DEFAULT, 'paria@gmail.com', '1357', NULL);
 
 
---
--- TOC entry 3679 (class 0 OID 17806)
--- Dependencies: 215
--- Data for Name: paymentmethod; Type: TABLE DATA; Schema: public; Owner: postgres
---
+-- PAYMENTMETHOD(id, paymenttype, activation)
 
 INSERT INTO public.paymentmethod VALUES (DEFAULT, 'Credit Card', DEFAULT);
 INSERT INTO public.paymentmethod VALUES (DEFAULT, 'Visa Debit', DEFAULT);
 INSERT INTO public.paymentmethod VALUES (DEFAULT, 'Paypal', DEFAULT);
 
 
---
--- TOC entry 3680 (class 0 OID 17813)
--- Dependencies: 216
--- Data for Name: customer; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
+-- CUSTOMER(CF, name, surname, email, sex, birthdate, postalCode)
+INSERT INTO public.customer VALUES ('PSCGLI56G45I623E', 'Giulia', 'Primo', 'g.primo@virgilio.it', 'F', DEFAULT, NULL, 'Credit Card');
+INSERT INTO public.customer VALUES ('SCNGNN99D09C352U', 'Giovanni', 'Secondo', 'g.secondo@gmail.com', 'M', DEFAULT, NULL, 'Credit Card');
+INSERT INTO public.customer VALUES ('LBRPPN14S07D612X', 'Pipino', 'Il Breve', 'p.ilbreve@libero.it'. 'M', DEFAULT, NULL, 'Credit Card');
+INSERT INTO public.customer VALUES ('RSSFRC83L49F111G', 'Federica', 'Rossi', 'f.rossi@libero.it', 'F', DEFAULT, NULL, 'Visa Debit');
+INSERT INTO public.customer VALUES ('ZREFNC99T16L781Q', 'Francesco', 'Zero', 'f.zero@studenti.unisa.it', 'M', DEFAULT, NULL, 'Paypal');
+INSERT INTO public.customer VALUES ('TRZDIA99L60L157U', 'Ida', 'Terzigno', 'iterzigno@pikolo.it', 'F', DEFAULT, NULL, 'Visa Debit');
+INSERT INTO public.customer VALUES ('SNTGPP86E10A465X', 'Giuseppe', 'Senatore', 'g.senatore@libero.it', 'M', DEFAULT, NULL, 'Paypal');
+INSERT INTO public.customer VALUES ('RGNCMN78D10A399I', 'Carmine', 'Ragno', 'c.ragno@virgilio.it', 'M', DEFAULT, NULL, 'Visa Debit');
+INSERT INTO public.customer VALUES ('MTRGPP52M65I608H', 'Giuseppina', 'Amatore', 'g.amatore@gmail.com', 'F', DEFAULT, NULL, 'Paypal');
+INSERT INTO public.customer VALUES ('SPSGNR86L31B076I', 'Gennaro', 'Esposito', 'g.esposito@libero.it', 'M', DEFAULT, NULL, 'Visa Debit');
 INSERT INTO public.customer VALUES ('PHNTEW74B37Z444L', 'Paria', 'Tahan', 'paria.tahan@gmail.com', 'F', '1994-02-09', '35141', 'Credit Card');
 INSERT INTO public.customer VALUES ('PHNTEW74B37Z555L', 'Nicola', 'Ferro', 'nicola.ferro@gmail.com', 'M', '1970-01-01', '14891', 'Credit Card');
-INSERT INTO public.customer VALUES ('PHNTEW74B37Z449L', 'Fabio', 'Vandin', 'fabio.vandin@gmail.com', 'M', '1977-04-05', '54321', 'Cash');
-INSERT INTO public.customer VALUES ('PHNTEW76B37Z344L', 'Matteo', 'Fischetti', 'matteo.fischetti@gmail.com', 'M', '1966-10-03', '98765', 'Cash');
+INSERT INTO public.customer VALUES ('PHNTEW74B37Z449L', 'Fabio', 'Vandin', 'fabio.vandin@gmail.com', 'M', '1977-04-05', '54321', 'Paypal');
+INSERT INTO public.customer VALUES ('PHNTEW76B37Z344L', 'Matteo', 'Fischetti', 'matteo.fischetti@gmail.com', 'M', '1966-10-03', '98765', 'Paypal');
 
 
 --
