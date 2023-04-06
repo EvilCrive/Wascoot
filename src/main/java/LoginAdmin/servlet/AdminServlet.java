@@ -1,10 +1,15 @@
-package it.unipd.dei.webapp.LoginRegister.servlet;
+package LoginAdmin.servlet;
 
-import it.unipd.dei.webapp.LoginRegister.dao.*;
-import it.unipd.dei.webapp.LoginRegister.resource.*;
+import LoginAdmin.dao.AdminLoginDAO;
+import LoginAdmin.dao.AdminRegisterDAO;
+//import LoginAdmin.dao.GetAdminByEmailDAO;
+
+import LoginAdmin.resource.Admin;
+import LoginAdmin.resource.Message;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -12,13 +17,16 @@ import jakarta.servlet.annotation.WebServlet;
 import org.apache.logging.log4j.message.StringFormattedMessage;
 
 import java.sql.SQLException;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
 
 @WebServlet(name = "AdminServlet", value = "/admin/*")
-public class AdminServlet extends AbstractDatabaseServlet {
+public final class AdminServlet extends servlet.AbstractDatabaseServlet {
 
 
     @Override
@@ -35,10 +43,10 @@ public class AdminServlet extends AbstractDatabaseServlet {
         switch (op){
 
             case "login/":
-                request.getRequestDispatcher("/html/adminlogin.html").forward(request, response);
+                request.getRequestDispatcher("/html/login.html").forward(request, response);
                 break;
             case "signup/":
-                request.getRequestDispatcher("/html/adminsignup.html").forward(request, response);
+                request.getRequestDispatcher("/html/signup.html").forward(request, response);
                 break;
 
             default:
@@ -60,7 +68,7 @@ public class AdminServlet extends AbstractDatabaseServlet {
         String op = req.getRequestURI();
 
 
-        op = op.substring(op.lastIndexOf("admin") + 8);
+        op = op.substring(op.lastIndexOf("admin") + 6);
         LOGGER.info("op {}",op);
 
         switch (op){
@@ -82,8 +90,8 @@ public class AdminServlet extends AbstractDatabaseServlet {
         }
     }
 
-
-    public ArrayList<Admin> getAdminEmail(){
+/*
+    public ArrayList<AdminEmail> getAdminEmail(){
         ArrayList<AdminEmail> ae;
 
         try {
@@ -98,45 +106,54 @@ public class AdminServlet extends AbstractDatabaseServlet {
         }
         return ae;
     }
-
+*/
 
 
     public void loginOperations(HttpServletRequest req, HttpServletResponse res, boolean isValid) throws ServletException, IOException {
 
-        Admin Admin = null;
+        Admin a = null;
         Message m = null;
+
 
         String regex_psw = "^(?=.*[A-Z])(?=.*[0-9]).{8,}$";
         String regex_email  = "^[a-z0-9+_.-]+@[a-z0-9.-]+\\.[a-z]{2,}$";
 
         try {
             //take from the request, the parameters (email and password, course and masterdegree)
+            String id = req.getParameter("id");
             String email = req.getParameter("email");
             String password = req.getParameter("password");
-            ArrayList<Admin> admins = getAdmins();
-            boolean found_admin = false;
 
-            for(Admin admin : admins){
-                if (admin.getId().toString().equals(id)) {
+
+            /*
+            //ArrayList<AdminEmail> adminemials = getAdminEmails();
+            //ae = new GetAdminByEmailDAO(getConnection()).access().getOutputParam();
+            //LOGGER.info("adminemail {}:", ae);
+
+            //boolean found_admin = false;
+
+            for(AdminEmail adminemial : adminemials){
+                if (adminemial.getId().toString().equals(id)) {
                     found_admin = true;
                     break;
                 }
             }
-            LOGGER.info("admin: {} is trying to login",email);
+            LOGGER.info("admin: {} is trying to login",id);
+            */
 
             if(isValid){
                 email = email.toLowerCase();
                 LOGGER.info("email to lower {} {} ",email, id);
-                Admin u = new Admin(email,password,id);
+                Admin a = new Admin(id, email,password);
                 // try to find the user in the database
-                admin = new AdminLoginDAO(getConnection(),u).access().getOutputParam();
+                admin = new AdminLoginDAO(getConnection(),a).access().getOutputParam();
                 LOGGER.info("email to lower2 {}",admin);
                 //the UserDAO will tell us if the email exists and the password
                 //matches
                 if (admin == null){
                     //if not, tell it to the user
                     m = new Message("The admin does not exist","E200","Missing admin");
-                    LOGGER.error("problems with student: {}", m.getMessage());
+                    LOGGER.error("problems with admin: {}", m.getMessage());
 
                 }
                 else{
@@ -154,21 +171,10 @@ public class AdminServlet extends AbstractDatabaseServlet {
                 } else if (password == null || password.equals("")) {
                     //the password was empty
 
-                    m = new Message("Insert the password","E200","Missing fields");
+                    m = new Message("Insert the password", "E200", "Missing fields");
                     LOGGER.error("problems with fields: {}", m.getMessage());
-
-                else if (!found_m) {
-                    //the password was empty
-                    m = new Message("Master not found","E200","Missing fields");
-                    LOGGER.error("problems with fields: {}", m.getMessage());
-
                 }
-                else if (!found_c) {
-                    //the password was empty
-                    m = new Message("Course not found","E200","Missing fields");
-                    LOGGER.error("problems with fields: {}", m.getMessage());
 
-                }
                 // check password is compliant
                 else if (!password.matches(regex_psw)){
                     m = new Message("This password is not compliant","E200","Password not compliant");
@@ -182,13 +188,18 @@ public class AdminServlet extends AbstractDatabaseServlet {
                     LOGGER.error("problems with fields: {}", m.getMessage());
 
                 }
+                else if (!found_admin) {
+                    m = new Message("Admin not found","E200","Missing fields");
+                    LOGGER.error("problems with fields: {}", m.getMessage());
+
+                }
                 else{
                     //try to authenticate the user
                     email = email.toLowerCase();
-                    LOGGER.info("email to lower {} {} {}",email,id);
-                    Admin u = new Admin(email,password, id);
+                    LOGGER.info("email to lower {} {} {}",id,email,password);
+                    Admin a = new Admin(id, email,password);
                     // try to find the user in the database
-                    Admin = new AdminLoginDAO(getConnection(),u).access().getOutputParam();
+                    admin = new AdminLoginDAO(getConnection(),a).access().getOutputParam();
                     LOGGER.info("email to lower2 {}",admin);
 
 
@@ -198,7 +209,7 @@ public class AdminServlet extends AbstractDatabaseServlet {
                     if (admin == null){
                         //if not, tell it to the user
                         m = new Message("The admin does not exist","E200","Missing admin");
-                        LOGGER.error("problems with student: {}", m.getMessage());
+                        LOGGER.error("problems with admin: {}", m.getMessage());
 
                     }
                     else{
@@ -229,158 +240,76 @@ public class AdminServlet extends AbstractDatabaseServlet {
         Admin admin = null;
         Message m = null;
         try {
-            // auxiliary method to retrieve the master degrees in the database
-            ArrayList<MasterDegree> masterdegrees = getMasterDegrees();
-            ArrayList<Course> courses = getCourses();
-
 
             //get the registration patameters
+            String id = req.getParameter("id");
             String email = req.getParameter("email");
             String password = req.getParameter("password");
 
-            boolean found_m = false;
-            boolean found_c = false;
-            for(Course course : courses){
-                if (course.getId().toString().equals(courseid)) {
-                    found_c = true;
-                    break;
-                }
-            }
-            for(MasterDegree master : masterdegrees){
-                if (master.getId().toString().equals(masterid)) {
-                    found_m = true;
-                    break;
-                }
-            }
-            LOGGER.info("student {} is trying to register",email);
+            a = new Admin (id, email, password);
+            admin = new AdminRegisterDAO(getConnection(),a).access().getOutputParam();
+
+
+            LOGGER.info("admin {} is trying to register", id);
             // regex to validate email and password
             String regex_psw = "^(?=.*[A-Z])(?=.*[0-9]).{8,}$";
-            String regex_email  = "^[a-z0-9+_.-]+@[a-z0-9.-]+\\.[a-z]{2,}$";
+            String regex_email = "^[a-z0-9+_.-]+@[a-z0-9.-]+\\.[a-z]{2,}$";
 
             //check that all registrations parameters have been set and are not null
-            if (email==null||email.equals("")||
-                    password==null||password.equals("")||
-                    courseid==null||courseid.equals("")||
-                    masterid==null||masterid.equals("")||
-                    name==null||name.equals("")||
-                    surname==null||surname.equals("")){
+            if (email == null || email.equals("") ||
+                    password == null || password.equals("")) {
 
-                m = new Message("Some fields are empty","E200","Missing fields");
+                m = new Message("Some fields are empty", "E200", "Missing fields");
                 LOGGER.error("problems with fields: {}", m.getMessage());
 
             }
             // check password is compliant
-            else if (!password.matches(regex_psw)){
-                m = new Message("This password is not compliant","E200","Password not compliant");
+            else if (!password.matches(regex_psw)) {
+                m = new Message("This password is not compliant", "E200", "Password not compliant");
 
                 LOGGER.error("problems with fields: {}", m.getMessage());
 
             }
             // check email is compliant
-            else if (!email.matches(regex_email)){
-                m = new Message("This is not an email","E200","Email not compliant");
+            else if (!email.matches(regex_email)) {
+                m = new Message("This is not an email", "E200", "Email not compliant");
                 LOGGER.error("problems with fields: {}", m.getMessage());
 
             }
-            else if (!found_m) {
-                //the password was empty
-                m = new Message("Master not found","E200","Missing fields");
+            else if(!found_admin) {
+                m = new Message("Admin not found", "E200", "Missing fields");
                 LOGGER.error("problems with fields: {}", m.getMessage());
 
             }
-            else if (!found_c) {
-                //the password was empty
-                m = new Message("Course not found","E200","Missing fields");
-                LOGGER.error("problems with fields: {}", m.getMessage());
-
-            }
-
             else {
-
-                // deadlines for registration, group creation and assessment --> we use the first one
-                ArrayList<ArrayList<LocalDate>> deadelines ;
-                deadelines = new GetDeadlinesDAO(getConnection(),Long.parseLong(courseid)).access().getOutputParam();
-                LocalDate now = LocalDate.now();
-                ArrayList<LocalDate> regdeadline = deadelines.get(0);
-                boolean expired = !((now.isAfter(regdeadline.get(0)) | now.isEqual(regdeadline.get(0))) & (now.isBefore(regdeadline.get(1)) ));
-
-                // all the parameters are correct
-                // check that the course is in the study plan of a mg
-                boolean course_belongs_master = new CheckCourseMasterDAO(getConnection(),Long.parseLong(courseid),masterid).access().getOutputParam();
-                // initialize a new Student
-                student = new Student(email,password,masterid,Long.parseLong(courseid));
-                // check if the student is already enrolled for this course
-                boolean student_exists_for_this_course = new GetStudentByEmailDAO(getConnection(),student).access().getOutputParam();
-                if(!course_belongs_master){
-                    // the course is not comprised in the master degree study plan of the student
-                    m = new Message("This course is not in the master degree study plan","E200","Course not allowed");
-                    LOGGER.error("problems with fields: {}", m.getMessage());
-
-                }
-                else if(student_exists_for_this_course){
-                    // the student is already signed up for this course
-                    m = new Message("This student already exists","E200","Student already existing");
-                    LOGGER.error("problems with fields: {}", m.getMessage());
-
-                }
-
-                else{
-                    email = email.toLowerCase();
-
-                    //else, create a new user resource
-                    Student student_to_reg = new Student(email,badge,password,masterid,Long.parseLong(courseid),name,surname);
-                    //pass it to the dao to register it
-                    if(!expired){
-                        short cfu = new GetCourseCFUDAO(getConnection(),student_to_reg).access().getOutputParam();
-                        new StudentRegisterDAO(getConnection(),student_to_reg,cfu).access().getOutputParam();
-                        LOGGER.info("REGISTERED STUDENT {} {} {}",email,courseid,masterid);
-
-                        //if the registration ended correctly, forward the user to the
-                        //login service: note that, now the login service will login the user
-                        //and create the session. We are not redirecting the user to the
-                        //login page
-                        loginOperations(req,res, true);
-
-                    }else{
-
-                            m = new Message("The deadline is expired","E200","Deadline expired");
-                            LOGGER.error("problems with fields: {}", m.getMessage());
-
-
-
-                    }
-
-
-                }
-
+                LOGGER.error("problems with fields: {}", m.getMessage());
             }
 
 
-
-
-        } catch (SQLException | ServletException e) {
+            } catch (SQLException | ServletException e) {
 
             m = new Message("An error occurred SQL, SERVLET","E200",e.getMessage());
             LOGGER.error("stacktrace:", e);
 
-        }
-        catch (NumberFormatException e){
+            }
+            catch (NumberFormatException e){
             m = new Message("An error occurred handling numbers","E200",e.getMessage());
             LOGGER.error("stacktrace:", e);
-        }
-        finally{
-            if (m != null){
-                writePage(student,m,res);
             }
-        }
+            finally{
+                if (m != null){
+                    //loginOperations(req,res, true);
+                    writePage(admin,m,res);
+                }
+            }
 
     }
 
-    public void writePage(Student s,Message m, HttpServletResponse res) throws IOException{
+    public void writePage(Admin a, Message m, HttpServletResponse res) throws IOException{
 
         try{
-            if(m == null){
-                m = new Message("An error occurred - null","E200","Unknown error");
+            if(m == null) {
+                m = new Message("An error occurred - null", "E200", "Unknown error");
             }
             // set the MIME media type of the response
             res.setContentType("text/html; charset=utf-8");
@@ -401,7 +330,7 @@ public class AdminServlet extends AbstractDatabaseServlet {
 
 
             if (m.isError()) {
-                out.printf("<h1>LOGIN STUDENT - ERROR</h1>%n");
+                out.printf("<h1>LOGIN ADMIN - ERROR</h1>%n");
                 out.printf("<hr/>%n");
                 out.printf("<ul>%n");
                 out.printf("<li>error code: %s</li>%n", m.getErrorCode());
@@ -409,14 +338,11 @@ public class AdminServlet extends AbstractDatabaseServlet {
                 out.printf("<li>details: %s</li>%n", m.getErrorDetails());
                 out.printf("</ul>%n");
             } else {
-                out.printf("<h1>LOGIN STUDENT - SUCCESS</h1>%n");
+                out.printf("<h1>LOGIN ADMIN - SUCCESS</h1>%n");
                 out.printf("<hr/>%n");
                 out.printf("<p>%s</p>%n", m.getMessage());
                 out.printf("<ul>%n");
-                out.printf("<li>badge: %s</li>%n", s.getBadge());
-                out.printf("<li>surname: %s</li>%n", s.getSurname());
-                out.printf("<li>name: %s</li>%n", s.getName());
-                out.printf("<li>email: %s</li>%n", s.getEmail());
+                out.printf("<li>email: %s</li>%n", a.getEmail());
                 out.printf("</ul>%n");
             }
 
@@ -430,7 +356,7 @@ public class AdminServlet extends AbstractDatabaseServlet {
             // close the output stream
             out.close();
         } catch (IOException ex) {
-            LOGGER.error(new StringFormattedMessage("Unable to send response when logging student %d.", s.getEmail()), ex);
+            LOGGER.error(new StringFormattedMessage("Unable to send response when logging admin %d.", a.getEmail()), ex);
             throw ex;
         } finally {
             LogContext.removeIPAddress();

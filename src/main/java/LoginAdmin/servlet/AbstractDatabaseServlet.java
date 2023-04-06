@@ -1,5 +1,5 @@
 
-package GroupCreation.servlet;
+package servlet;
 
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
@@ -8,12 +8,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import GroupCreation.utils.ErrorCode;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.sql.DataSource;
 import java.io.IOException;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -45,7 +44,7 @@ public abstract class AbstractDatabaseServlet extends HttpServlet {
 
         try {
             cxt = new InitialContext();
-            ds = (DataSource) cxt.lookup("java:/comp/env/jdbc/admin-creation");
+            ds = (DataSource) cxt.lookup("java:/comp/env/jdbc/AdminLoginRegister");
 
             LOGGER.info("Connection pool to the database pool successfully acquired.");
         } catch (NamingException e) {
@@ -65,13 +64,6 @@ public abstract class AbstractDatabaseServlet extends HttpServlet {
         LOGGER.info("Connection pool to the database pool successfully released.");
     }
 
-    /**
-     * Returns a {@link  Connection} for accessing the database.
-     *
-     * @return a {@link Connection} for accessing the database
-     *
-     * @throws java.sql.SQLException if anything goes wrong in obtaining the connection.
-     */
     protected final Connection getConnection() throws SQLException {
         try {
             return ds.getConnection();
@@ -80,9 +72,6 @@ public abstract class AbstractDatabaseServlet extends HttpServlet {
             throw e;
         }
     }
-    public void writeError(HttpServletResponse res, ErrorCode ec) throws IOException {
-        res.setStatus(ec.getHTTPCode());
-        res.getWriter().write(ec.toJSON().toString());
-    }
+
 
 }

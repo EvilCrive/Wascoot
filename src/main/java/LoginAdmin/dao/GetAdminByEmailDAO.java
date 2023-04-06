@@ -1,7 +1,7 @@
-package it.unipd.dei.webapp.LoginRegister.dao;
+package LoginAdmin.dao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import it.unipd.dei.webapp.LoginRegister.resource.Student;
+import LoginAdmin.resource.Admin;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,11 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class GetAdminByEmailDAO extends AbstractDAO<Boolean> {
-    private static final String STATEMENT_STUDENT_INFO = "SELECT id,email,password from admin where email = ?;";
+    private static final String STATEMENT_ADMIN_INFO = "SELECT id,email,password from admin where email = ?;";
 
 
     private final String email;
-    private final long course;
 
     public GetAdminByEmailDAO(final Connection con, final Admin admin) {
         super(con);
@@ -28,7 +27,7 @@ public class GetAdminByEmailDAO extends AbstractDAO<Boolean> {
         // the results of the search
 
         try {
-            stmnt = con.prepareStatement(STATEMENT_STUDENT_INFO);
+            stmnt = con.prepareStatement(STATEMENT_ADMIN_INFO);
             stmnt.setString(1, email);
 
             rs = stmnt.executeQuery();

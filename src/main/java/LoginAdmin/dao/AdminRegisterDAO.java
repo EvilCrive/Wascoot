@@ -1,6 +1,6 @@
-package it.unipd.dei.webapp.LoginRegister.dao;
+package LoginAdmin.dao;
 
-import it.unipd.dei.webapp.LoginRegister.resource.Student;
+import LoginAdmin.resource.Admin;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class AdminRegisterDAO extends AbstractDAO{
 
-    private static final String STATEMENET_REGISTRATION = "insert into admin(email, password) values (?, md5(?))";
+    private static final String STATEMENET_REGISTRATION = "INSERT INTO admin(id, email, password) values (?, ?, ?)";
     private final Admin admin;
 
     public AdminRegisterDAO(final Connection con, final Admin admin) {
