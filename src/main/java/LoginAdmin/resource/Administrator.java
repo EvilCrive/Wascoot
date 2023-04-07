@@ -2,14 +2,14 @@ package LoginAdmin.resource;
 
 import org.json.JSONObject;
 
-public class Admin {
+public class Administrator {
     private final String id;
     private final String email;
     private final String password;
 
 
     // this is used to return a admin after login
-    public Admin(String id, String email, String password){
+    public Administrator(String id, String email, String password){
         this.id = id;
         this.email = email;
         this.password = password;

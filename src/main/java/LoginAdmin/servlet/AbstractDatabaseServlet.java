@@ -1,5 +1,5 @@
 
-package servlet;
+package LoginAdmin.servlet;
 
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;

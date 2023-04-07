@@ -4,7 +4,7 @@ import LoginAdmin.dao.AdminLoginDAO;
 import LoginAdmin.dao.AdminRegisterDAO;
 //import LoginAdmin.dao.GetAdminByEmailDAO;
 
-import LoginAdmin.resource.Admin;
+import LoginAdmin.resource.Administrator;
 import LoginAdmin.resource.Message;
 
 import java.io.IOException;
@@ -26,7 +26,7 @@ import java.util.Arrays;
 import java.util.Locale;
 
 @WebServlet(name = "AdminServlet", value = "/admin/*")
-public final class AdminServlet extends servlet.AbstractDatabaseServlet {
+public final class AdminServlet extends AbstractDatabaseServlet {
 
 
     @Override
@@ -36,7 +36,7 @@ public final class AdminServlet extends servlet.AbstractDatabaseServlet {
         LogContext.setAction("LOGIN");
 
         String op = request.getRequestURI();
-        op = op.substring(op.lastIndexOf("admin") + 8);
+        op = op.substring(op.lastIndexOf("admin") + 6);
         LOGGER.error("op {}",op);
 
 
@@ -111,7 +111,7 @@ public final class AdminServlet extends servlet.AbstractDatabaseServlet {
 
     public void loginOperations(HttpServletRequest req, HttpServletResponse res, boolean isValid) throws ServletException, IOException {
 
-        Admin a = null;
+        Administrator admin = null;
         Message m = null;
 
 
@@ -142,13 +142,14 @@ public final class AdminServlet extends servlet.AbstractDatabaseServlet {
             */
 
             if(isValid){
+                id = id.toLowerCase();
                 email = email.toLowerCase();
-                LOGGER.info("email to lower {} {} ",email, id);
-                Admin a = new Admin(id, email,password);
+                password = password.toLowerCase();
+                LOGGER.info("email to lower {} ",email);
+                Administrator a = new Administrator(id, email, password);
                 // try to find the user in the database
                 admin = new AdminLoginDAO(getConnection(),a).access().getOutputParam();
                 LOGGER.info("email to lower2 {}",admin);
-                //the UserDAO will tell us if the email exists and the password
                 //matches
                 if (admin == null){
                     //if not, tell it to the user
@@ -188,16 +189,12 @@ public final class AdminServlet extends servlet.AbstractDatabaseServlet {
                     LOGGER.error("problems with fields: {}", m.getMessage());
 
                 }
-                else if (!found_admin) {
-                    m = new Message("Admin not found","E200","Missing fields");
-                    LOGGER.error("problems with fields: {}", m.getMessage());
 
-                }
                 else{
                     //try to authenticate the user
                     email = email.toLowerCase();
                     LOGGER.info("email to lower {} {} {}",id,email,password);
-                    Admin a = new Admin(id, email,password);
+                    Administrator a = new Administrator(id, email, password);
                     // try to find the user in the database
                     admin = new AdminLoginDAO(getConnection(),a).access().getOutputParam();
                     LOGGER.info("email to lower2 {}",admin);
@@ -214,7 +211,7 @@ public final class AdminServlet extends servlet.AbstractDatabaseServlet {
                     }
                     else{
                         m = new Message("Login success");
-                        LOGGER.info("the ADMIN {} LOGGED IN",admin.getEmail());
+                        LOGGER.info("the ADMIN {} LOGGED IN",admin.getId());
 
                     }
                 }
@@ -237,7 +234,7 @@ public final class AdminServlet extends servlet.AbstractDatabaseServlet {
 
     public void registrationOperations(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
-        Admin admin = null;
+        Administrator admin = null;
         Message m = null;
         try {
 
@@ -246,7 +243,7 @@ public final class AdminServlet extends servlet.AbstractDatabaseServlet {
             String email = req.getParameter("email");
             String password = req.getParameter("password");
 
-            a = new Admin (id, email, password);
+            Administrator a = new Administrator (id, email, password);
             admin = new AdminRegisterDAO(getConnection(),a).access().getOutputParam();
 
 
@@ -276,11 +273,7 @@ public final class AdminServlet extends servlet.AbstractDatabaseServlet {
                 LOGGER.error("problems with fields: {}", m.getMessage());
 
             }
-            else if(!found_admin) {
-                m = new Message("Admin not found", "E200", "Missing fields");
-                LOGGER.error("problems with fields: {}", m.getMessage());
 
-            }
             else {
                 LOGGER.error("problems with fields: {}", m.getMessage());
             }
@@ -298,14 +291,14 @@ public final class AdminServlet extends servlet.AbstractDatabaseServlet {
             }
             finally{
                 if (m != null){
-                    //loginOperations(req,res, true);
+                    loginOperations(req, res, true);
                     writePage(admin,m,res);
                 }
             }
 
     }
 
-    public void writePage(Admin a, Message m, HttpServletResponse res) throws IOException{
+    public void writePage(Administrator a, Message m, HttpServletResponse res) throws IOException{
 
         try{
             if(m == null) {

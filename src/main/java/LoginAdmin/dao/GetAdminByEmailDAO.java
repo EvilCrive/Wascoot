@@ -1,7 +1,7 @@
 package LoginAdmin.dao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import LoginAdmin.resource.Admin;
+import LoginAdmin.resource.Administrator;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +14,7 @@ public class GetAdminByEmailDAO extends AbstractDAO<Boolean> {
 
     private final String email;
 
-    public GetAdminByEmailDAO(final Connection con, final Admin admin) {
+    public GetAdminByEmailDAO(final Connection con, final Administrator admin) {
         super(con);
         this.email = admin.getEmail();
     }

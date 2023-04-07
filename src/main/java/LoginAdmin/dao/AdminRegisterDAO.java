@@ -1,6 +1,6 @@
 package LoginAdmin.dao;
 
-import LoginAdmin.resource.Admin;
+import LoginAdmin.resource.Administrator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,27 +11,33 @@ import java.sql.SQLException;
 
 public class AdminRegisterDAO extends AbstractDAO{
 
-    private static final String STATEMENET_REGISTRATION = "INSERT INTO admin(id, email, password) values (?, ?, ?)";
-    private final Admin admin;
+    private static final String STATEMENET_REGISTRATION = "INSERT INTO wascoot.admin(id, email, password) values (?, ?, ?)";
+    private final Administrator admin;
 
-    public AdminRegisterDAO(final Connection con, final Admin admin) {
+    public AdminRegisterDAO(final Connection con, final Administrator admin) {
         super(con);
+
+        if (admin == null) {
+            LOGGER.error("The admin cannot be null.");
+            throw new NullPointerException("The admin cannot be null.");
+        }
+
         this.admin = admin;
     }
 
     @Override
-    protected void doAccess() throws Exception {
+    protected final void doAccess() throws Exception {
         PreparedStatement stmnt = null;
-        ResultSet rs1 = null;
         // the results of the search
 
         try {
             stmnt = con.prepareStatement(STATEMENET_REGISTRATION);
-            stmnt.setString(1, student.getEmail());
-            stmnt.setString(2, student.getPassword());
+            stmnt.setString(1, admin.getId());
+            stmnt.setString(2, admin.getEmail());
+            stmnt.setString(3, admin.getPassword());
 
             stmnt.execute();
-            LOGGER.info("Admin registered {}.", admin.getEmail());
+            LOGGER.info("Admin registered {}.", admin.getId());
 
 
         } finally {
