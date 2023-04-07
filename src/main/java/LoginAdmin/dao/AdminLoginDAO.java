@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class AdminLoginDAO extends AbstractDAO<Administrator>  {
 
-    private static final String STATEMENT_LOGIN = "SELECT id,email,password FROM wascoot.Admin WHERE id=? AND email=? AND password=?;";
+    private static final String STATEMENT_LOGIN = "SELECT id,email,password FROM public.admin WHERE id=? AND email=? AND password=?;";
 
     private final Administrator admin;
 

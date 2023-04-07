@@ -232,9 +232,9 @@ public final class AdminServlet extends AbstractDatabaseServlet {
     }
 
 
-    public void registrationOperations(HttpServletRequest req, HttpServletResponse res) throws IOException {
+    public void registrationOperations(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 
-        Administrator admin = null;
+        Administrator a = null;
         Message m = null;
         try {
 
@@ -243,8 +243,8 @@ public final class AdminServlet extends AbstractDatabaseServlet {
             String email = req.getParameter("email");
             String password = req.getParameter("password");
 
-            Administrator a = new Administrator (id, email, password);
-            admin = new AdminRegisterDAO(getConnection(),a).access().getOutputParam();
+            a = new Administrator (id, email, password);
+            new AdminRegisterDAO(getConnection(),a).access().getOutputParam();
 
 
             LOGGER.info("admin {} is trying to register", id);
@@ -279,7 +279,7 @@ public final class AdminServlet extends AbstractDatabaseServlet {
             }
 
 
-            } catch (SQLException | ServletException e) {
+            } catch (SQLException e) {
 
             m = new Message("An error occurred SQL, SERVLET","E200",e.getMessage());
             LOGGER.error("stacktrace:", e);
@@ -292,7 +292,7 @@ public final class AdminServlet extends AbstractDatabaseServlet {
             finally{
                 if (m != null){
                     loginOperations(req, res, true);
-                    writePage(admin,m,res);
+                    writePage(a,m,res);
                 }
             }
 

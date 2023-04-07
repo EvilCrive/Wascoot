@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class AdminRegisterDAO extends AbstractDAO{
 
-    private static final String STATEMENET_REGISTRATION = "INSERT INTO wascoot.admin(id, email, password) values (?, ?, ?)";
+    private static final String STATEMENET_REGISTRATION = "INSERT INTO public.admin VALUES(id, email, password, profile_image) values (?, ?, ?, NULL);";
     private final Administrator admin;
 
     public AdminRegisterDAO(final Connection con, final Administrator admin) {
