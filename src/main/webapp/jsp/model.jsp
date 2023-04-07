@@ -27,15 +27,16 @@
 				<tbody>
 					<c:forEach var="model" items="${modelList}">
 						<tr>
+
 							<td><c:out value="${model.name}"/></td>
 							<td><c:out value="${model.brand}"/></td>
-							<td><c:out value="${model.battery life}"/></td>
+							<td><c:out value="${model.batteryLife}"/></td>
 							<td><c:out value="${model.weight}"/></td>
 							<td><c:out value="${model.height}"/></td>
                             <td><c:out value="${model.length}"/></td>
                             <td><c:out value="${model.depth}"/></td>
-                            <td><c:out value="${model.rate_per_minute}"/></td>
-                            <td><c:out value="${model.rate_per_model}"/></td>
+                            <td><c:out value="${model.ratePerMin}"/></td>
+                            <td><c:out value="${model.ratePerModel}"/></td>
 						</tr>
 					</c:forEach>
 				</tbody>

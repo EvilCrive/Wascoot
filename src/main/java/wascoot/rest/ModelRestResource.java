@@ -43,32 +43,20 @@ public final class ModelRestResource extends RestResource {
         Message m = null;
 
         try{
-            // creates a new object for accessing the database and lists all the models
+            // creates a new object for accessing the database and lists all the employees
             el = new getModelListDatabase(con).getModelList();
 
             if(el != null) {
                 res.setStatus(HttpServletResponse.SC_OK);
                 new ResourceList(el).toJSON(res.getOutputStream());
-
-                m = new Message("Models successfully gettd.");
-
-                // stores the model list and the message as a request attribute
-                req.setAttribute("modelList", el);
-                req.setAttribute("message", m);
-
-                // forwards the control to the model JSP
-                req.getRequestDispatcher("/jsp/model.jsp").forward(req, res);
-
-
-
             } else {
                 // it should not happen
-                m = new Message("Cannot list models: unexpected error.", "E5A1", null);
+                m = new Message("Cannot list models: unexpected error.", "E6A1", null);
                 res.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
                 m.toJSON(res.getOutputStream());
             }
         } catch (Throwable t) {
-            m = new Message("Cannot search models: unexpected error.", "E5A1", t.getMessage());
+            m = new Message("Cannot search models: unexpected error.", "E6A2", t.getMessage());
             res.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             m.toJSON(res.getOutputStream());
         }

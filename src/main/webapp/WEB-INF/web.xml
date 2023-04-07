@@ -8,17 +8,17 @@
     <description> Minimal jsp example with rest architecture</description>
 
     <welcome-file-list>
-        <welcome-file> jsp/hello.jsp</welcome-file>
+        <welcome-file>jsp/hello.jsp</welcome-file>
     </welcome-file-list>
 
     <servlet>
-        <servlet-name>RestManagerServlet</servlet-name>
-        <servlet-class>wascoot.servlet.RestManagerServlet</servlet-class>
+        <servlet-name>getModel</servlet-name>
+        <servlet-class>wascoot.servlet.getModelServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>RestManagerServlet</servlet-name>
-        <url-pattern>/rest/*</url-pattern>
+        <servlet-name>getModel</servlet-name>
+        <url-pattern>/model</url-pattern>
     </servlet-mapping>
 
     <resource-ref>

@@ -177,8 +177,12 @@ public final class RestManagerServlet extends AbstractDatabaseServlet {
                 }
             } else {
                 /**
-                 * To be done other routes
+                 * To be done, other routes
                  */
+                m = new Message("Unexpected error.", "E4A6", method);
+                res.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                m.toJSON(res.getOutputStream());
+
             }
         } catch(Throwable t) {
             m = new Message("Unexpected error.", "E5A1", t.getMessage());

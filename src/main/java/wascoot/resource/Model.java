@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-public class Model extends Resource {
+public class Model {
     /**
      * The identifier of the model PK
      */
@@ -19,7 +19,7 @@ public class Model extends Resource {
     /**
      * The battery life of a model
      */
-    private final String battery_life;
+    private final String batteryLife;
 
     /**
      * The weight of a model
@@ -33,7 +33,7 @@ public class Model extends Resource {
 
     /**
      * The length of a model
-     */
+*/
     private final int length;
 
     /**
@@ -44,12 +44,12 @@ public class Model extends Resource {
     /**
      * The rate per minute of a model
      */
-    private final double rate_per_minute;
+    private final double ratePerMin;
 
     /**
      * The rate per model
      */
-    private final double rate_per_model;
+    private final double ratePerModel;
 
     /**
      * Creates a new model
@@ -58,7 +58,7 @@ public class Model extends Resource {
      *            the name of a model.
      * @param brand
      *            the brand of a model.
-     * @param battery_life
+     * @param batteryLife
      *            the battery life of a model.
      * @param weight
      *            the weight of a model.
@@ -68,21 +68,21 @@ public class Model extends Resource {
      *            the length of a model.
      * @param depth
      *            the depth of a model.
-     * @param rate_per_minute
+     * @param ratePerMin
      *            the rate_per_minute a model.
-     * @param rate_per_model
+     * @param ratePerModel
      *            the rate_per_model.
      */
-    public Model(final String name, final String brand, final String battery_life, final int weight, final int height, final int length, final int depth, final double rate_per_minute, final double rate_per_model) {
+    public Model(final String name, final String brand, final String batteryLife, final int weight, final int height, final int length, final int depth, final double ratePerMin, final double ratePerModel) {
         this.name = name;
         this.brand = brand;
-        this.battery_life = battery_life;
+        this.batteryLife = batteryLife;
         this.weight = weight;
         this.height = height;
         this.length = length;
         this.depth = depth;
-        this.rate_per_minute = rate_per_minute;
-        this.rate_per_model = rate_per_model;
+        this.ratePerMin = ratePerMin;
+        this.ratePerModel = ratePerModel;
     }
 
     /**
@@ -90,7 +90,7 @@ public class Model extends Resource {
      *
      * @return the name of the model.
      */
-    public final String getModelName() {
+    public final String getName() {
         return name;
     }
 
@@ -99,7 +99,7 @@ public class Model extends Resource {
      *
      * @return the brand of the model.
      */
-    public final String getModelBrand() {
+    public final String getBrand() {
         return brand;
     }
 
@@ -108,8 +108,8 @@ public class Model extends Resource {
      *
      * @return the battery life of the model.
      */
-    public final String getModelBatteryLife() {
-        return battery_life;
+    public final String getBatteryLife() {
+        return batteryLife;
     }
 
     /**
@@ -117,7 +117,7 @@ public class Model extends Resource {
      *
      * @return the weight of the model.
      */
-    public final int getModelWeight() {
+    public final int getWeight() {
         return weight;
     }
 
@@ -126,7 +126,7 @@ public class Model extends Resource {
      *
      * @return the height of the model.
      */
-    public final int getModelHeight() {
+    public final int getHeight() {
         return height;
     }
 
@@ -135,7 +135,7 @@ public class Model extends Resource {
      *
      * @return the length of the model.
      */
-    public final int getModelLength() {
+    public final int getLength() {
         return length;
     }
 
@@ -144,7 +144,7 @@ public class Model extends Resource {
      *
      * @return the depth of the model.
      */
-    public final int getModelDepth() {
+    public final int getDepth() {
         return depth;
     }
 
@@ -153,8 +153,8 @@ public class Model extends Resource {
      *
      * @return the rate per minute of the model.
      */
-    public final double getModelRatePerMinute() {
-        return rate_per_minute;
+    public final double getRatePerMin() {
+        return ratePerMin;
     }
 
     /**
@@ -162,9 +162,15 @@ public class Model extends Resource {
      *
      * @return the rate per odel.
      */
-    public final double getModelRatePerModel() {
-        return rate_per_model;
+    public final double getRatePerModel() {
+        return ratePerModel;
     }
+
+
+
+
+    /* FOR REST API but commented coz didnt work
+
 
     @Override
     public final void toJSON(final OutputStream out) throws IOException {
@@ -191,7 +197,7 @@ public class Model extends Resource {
 
         jg.writeNumberField("depth", depth);
 
-        jg.writeNumberField("rate_per_minute ", rate_per_minute);
+        jg.writeNumberField("rate_per_min", rate_per_min);
 
         jg.writeNumberField("rate_per_model", rate_per_model);
 
@@ -211,6 +217,8 @@ public class Model extends Resource {
      *
      * @throws IOException if something goes wrong while parsing.
      */
+
+    /*
     public static Model fromJSON(final InputStream in) throws IOException {
 
         // the fields read from JSON
@@ -221,14 +229,14 @@ public class Model extends Resource {
         int jHeight = -1;
         int jLength = -1;
         int jDepth = -1;
-        double jRate_per_minute = -1.0;
+        double jRate_per_min = -1.0;
         double jRate_per_model = -1.0;
 
         final JsonParser jp = JSON_FACTORY.createParser(in);
 
         // while we are not on the start of an element or the element is not
         // a token element, advance to the next element (if any)
-        while (jp.getCurrentToken() != JsonToken.FIELD_NAME || "employee".equals(jp.getCurrentName()) == false) {
+        while (jp.getCurrentToken() != JsonToken.FIELD_NAME || "model".equals(jp.getCurrentName()) == false) {
 
             // there are no more events
             if (jp.nextToken() == null) {
@@ -269,9 +277,9 @@ public class Model extends Resource {
                         jp.nextToken();
                         jDepth = jp.getIntValue();
                         break;
-                    case "rate_per_minute":
+                    case "rate_per_min":
                         jp.nextToken();
-                        jRate_per_minute= jp.getDoubleValue();
+                        jRate_per_min= jp.getDoubleValue();
                         break;
                     case "rate_per_model":
                         jp.nextToken();
@@ -281,6 +289,9 @@ public class Model extends Resource {
             }
         }
 
-        return new Model(jName, jBrand, jBattery_life, jWeight, jHeight, jLength, jDepth, jRate_per_minute, jRate_per_model);
+        return new Model(jName, jBrand, jBattery_life, jWeight, jHeight, jLength, jDepth, jRate_per_min, jRate_per_model);
     }
+
+     */
+
 }
