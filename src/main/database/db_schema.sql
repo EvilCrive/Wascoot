@@ -60,7 +60,7 @@ create table ScooterRacks(
     available_parking_spots positive_integer not null,
     --latitude numeric(20,18) not null,
     --longitude numeric(21,18) not null,
-    postalCode char(5),
+    postalCode char(5) not null,
     address varchar(50),
     constraint key_scooter_rack primary key (ID)
     --constraint unique_coordinate unique (latitude, longitude) --corporate constraints
@@ -221,7 +221,7 @@ create table Admin(
     ID serial,
     email varchar,
     password varchar,
-    profile_image bytea default null,
+    profile_image varchar(100) default null,
     constraint key_admin primary key (ID),
     CONSTRAINT proper_email CHECK (email ~* '^[A-Za-z0-9._+%-]+@[A-Za-z0-9.-]+[.][A-Za-z]+$')
 );
