@@ -21,6 +21,16 @@
         <url-pattern>/model</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>getScooterRacksForDashboard</servlet-name>
+        <servlet-class>wascoot.servlet.DashboardScooterRackServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>getScooterRacksForDashboard</servlet-name>
+        <url-pattern>/dashboard</url-pattern>
+    </servlet-mapping>
+
     <resource-ref>
         <description>Connection pool to the database</description>
         <res-ref-name>jdbc/wascoot</res-ref-name>
