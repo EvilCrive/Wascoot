@@ -22,14 +22,16 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>getScooterRacksForDashboard</servlet-name>
-        <servlet-class>wascoot.servlet.DashboardScooterRackServlet</servlet-class>
+        <servlet-name>dashboard</servlet-name>
+        <servlet-class>wascoot.servlet.DashboardServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>getScooterRacksForDashboard</servlet-name>
+        <servlet-name>dashboard</servlet-name>
         <url-pattern>/dashboard</url-pattern>
     </servlet-mapping>
+
+
 
     <resource-ref>
         <description>Connection pool to the database</description>
