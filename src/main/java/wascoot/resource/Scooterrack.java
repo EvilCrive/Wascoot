@@ -1,11 +1,6 @@
 package wascoot.resource;
 
-import com.fasterxml.jackson.core.*;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-public class Scooterracks {
+public class Scooterrack {
     /**
      * The identifier of the scooter rack (PK)
      */
@@ -47,7 +42,7 @@ public class Scooterracks {
      * @param address
      *            the address of a scooter rack.
      */
-    public Scooterracks(final int id, final int totalParkingSpots, final int availableParkingSpots, final String postalCode, final String address ) {
+    public Scooterrack(final int id, final int totalParkingSpots, final int availableParkingSpots, final String postalCode, final String address ) {
         this.id = id;
         this.totalParkingSpots = totalParkingSpots;
         this.availableParkingSpots = availableParkingSpots;
