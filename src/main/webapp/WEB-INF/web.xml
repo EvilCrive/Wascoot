@@ -30,7 +30,24 @@
         <servlet-name>dashboard</servlet-name>
         <url-pattern>/dashboard</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>customer</servlet-name>
+        <servlet-class>wascoot.servlet.CustomerServlet</servlet-class>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>customer</servlet-name>
+        <url-pattern>/customer</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>paymentMethod</servlet-name>
+        <servlet-class>wascoot.servlet.PaymentMethodServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>paymentMethod</servlet-name>
+        <url-pattern>/paymentMethod</url-pattern>
+    </servlet-mapping>
 
 
     <resource-ref>

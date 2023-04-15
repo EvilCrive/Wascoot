@@ -1,6 +1,7 @@
 package wascoot.database;
 
-import wascoot.resource.Model;
+
+import wascoot.resource.PaymentMethod;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,11 +10,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class getModelListDatabase {
+public class PaymentMethodListDatabase {
+
     /**
      * The SQL statement to be executed
      */
-    private static final String STATEMENT = "SELECT name, brand, battery_life, price_per_min FROM public.model";
+    private static final String STATEMENT = "SELECT id, type, activation FROM public.PaymentMethod";
 
     /**
      * The connection to the database
@@ -26,7 +28,7 @@ public final class getModelListDatabase {
      * @param con
      *            the connection to the database.
      */
-    public getModelListDatabase(final Connection con) {
+    public PaymentMethodListDatabase(final Connection con) {
         this.con = con;
     }
 
@@ -38,13 +40,13 @@ public final class getModelListDatabase {
      * @throws SQLException
      *             if any error occurs while searching for employees.
      */
-    public List<Model> getModelList() throws SQLException {
+    public List<PaymentMethod> getPaymentMethodList() throws SQLException {
 
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 
         // the results of the search
-        final List<Model> models = new ArrayList<Model>();
+        final List<PaymentMethod> paymentMethods = new ArrayList<PaymentMethod>();
 
         try {
             pstmt = con.prepareStatement(STATEMENT);
@@ -52,9 +54,7 @@ public final class getModelListDatabase {
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                models.add(new Model(rs.getString("name"), rs
-                        .getString("brand"), rs.getString("battery_life"),
-                        rs.getInt("price_per_min")));
+                paymentMethods.add(new PaymentMethod(rs.getInt("id"), rs.getString("type"), rs.getString("activation")));
             }
         } finally {
             if (rs != null) {
@@ -68,6 +68,6 @@ public final class getModelListDatabase {
             con.close();
         }
 
-        return models;
+        return paymentMethods;
     }
 }

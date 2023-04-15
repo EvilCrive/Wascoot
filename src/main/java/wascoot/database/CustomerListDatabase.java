@@ -1,6 +1,7 @@
 package wascoot.database;
 
-import wascoot.resource.Model;
+import wascoot.resource.Customer;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,11 +10,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class getModelListDatabase {
+public class CustomerListDatabase {
     /**
      * The SQL statement to be executed
      */
-    private static final String STATEMENT = "SELECT name, brand, battery_life, price_per_min FROM public.model";
+    private static final String STATEMENT = "SELECT cf, name, surname, email, sex, birthdate, postalCode, paymentType FROM public.Customer";
 
     /**
      * The connection to the database
@@ -26,7 +27,7 @@ public final class getModelListDatabase {
      * @param con
      *            the connection to the database.
      */
-    public getModelListDatabase(final Connection con) {
+    public CustomerListDatabase(final Connection con) {
         this.con = con;
     }
 
@@ -38,13 +39,13 @@ public final class getModelListDatabase {
      * @throws SQLException
      *             if any error occurs while searching for employees.
      */
-    public List<Model> getModelList() throws SQLException {
+    public List<Customer> getCustomerList() throws SQLException {
 
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 
         // the results of the search
-        final List<Model> models = new ArrayList<Model>();
+        final List<Customer> customers = new ArrayList<Customer>();
 
         try {
             pstmt = con.prepareStatement(STATEMENT);
@@ -52,9 +53,10 @@ public final class getModelListDatabase {
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                models.add(new Model(rs.getString("name"), rs
-                        .getString("brand"), rs.getString("battery_life"),
-                        rs.getInt("price_per_min")));
+                customers.add(new Customer(rs.getString("cf"), rs.getString("name"), rs.getString("surname"),
+                        rs.getString("email"), rs.getString("sex"),
+                        rs.getString("birthdate"), rs.getString("postalCode"),
+                        rs.getString("paymentType")));
             }
         } finally {
             if (rs != null) {
@@ -68,6 +70,6 @@ public final class getModelListDatabase {
             con.close();
         }
 
-        return models;
+        return customers;
     }
 }
