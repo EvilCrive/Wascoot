@@ -11,9 +11,9 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 -- ADMIN(id, email, password, profileImage)
-INSERT INTO public.admin VALUES (DEFAULT, 'admin@wascoot.com', '123321', NULL);
-INSERT INTO public.admin VALUES (DEFAULT, 'ferror@gmail.com', '1234', NULL);
-INSERT INTO public.admin VALUES (DEFAULT, 'paria@gmail.com', '1357', NULL);
+INSERT INTO public.admin VALUES (DEFAULT, 'admin@wascoot.com', '123321', NULL, 'image/png');
+INSERT INTO public.admin VALUES (DEFAULT, 'ferror@gmail.com', '1234', NULL, 'image/png');
+INSERT INTO public.admin VALUES (DEFAULT, 'paria@gmail.com', '1357', NULL, 'image/png');
 
 -- PAYMENTMETHOD(id, paymenttype, activation)
 INSERT INTO public.paymentmethod VALUES (DEFAULT, 'Credit Card', DEFAULT);
