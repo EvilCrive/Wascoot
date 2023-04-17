@@ -1,7 +1,9 @@
 package wascoot.servlet;
 
+import wascoot.database.RevenueDatabase;
 import wascoot.database.ScooterRackDatabase;
-import wascoot.database.TopLocation;
+import wascoot.database.RentalDatabase;
+import wascoot.resource.Revenue;
 import wascoot.resource.Scooterrack;
 
 import wascoot.database.PaymentWithoutSubscriptionDatabase;
@@ -44,6 +46,7 @@ public final class DashboardServlet extends AbstractDatabaseServlet {
         List<Scooterrack> el0 = null;
         List<PaymentWithoutSubscription> el1 = null;
         List<Integer> topLocation = null;
+        List<Revenue> revenueList = null;
 
         Message m = null;
 
@@ -52,7 +55,8 @@ public final class DashboardServlet extends AbstractDatabaseServlet {
             // creates a new object for accessing the database and searching the scooterracks and paymentwithoutsubscription
             el0 = new ScooterRackDatabase(getDataSource().getConnection()).getScooterRackList();
             el1 = new PaymentWithoutSubscriptionDatabase(getDataSource().getConnection()).getPaymentWithoutSubscriptionList();
-            topLocation = new TopLocation(getDataSource().getConnection()).getTopLocation();
+            topLocation = new RentalDatabase(getDataSource().getConnection()).getTopLocation();
+            revenueList = new RevenueDatabase(getDataSource().getConnection()).getRevenueInfo();
 
             m = new Message("Successfully searched.");
 
@@ -68,6 +72,7 @@ public final class DashboardServlet extends AbstractDatabaseServlet {
         req.setAttribute("scooterRackList", el0);
         req.setAttribute("paymentWithoutSubscriptionList", el1);
         req.setAttribute("topLocation", topLocation);
+        req.setAttribute("revenueList", revenueList);
         req.setAttribute("message", m);
 
         // forwards the control to the dashboard.jsp
