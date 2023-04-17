@@ -40,26 +40,74 @@
 
 
 		<!-- display the list of found PaymentWithoutSubscriptions, if any -->
-        		<c:if test='${not empty paymentWithoutSubscriptionList}'>
-        			<table>
-        				<thead>
-        					<tr>
-        						<th>id</th><th>price</th><th>date hour</th><th>order id</th
-        					</tr>
-        				</thead>
+		<c:if test='${not empty paymentWithoutSubscriptionList}'>
+			<table>
+				<thead>
+					<tr>
+						<th>id</th><th>price</th><th>date hour</th><th>order id</th>
+					</tr>
+				</thead>
 
-        				<tbody>
-        					<c:forEach var="paymentwithoutsubscription" items="${paymentWithoutSubscriptionList}">
-        						<tr>
+				<tbody>
+					<c:forEach var="paymentwithoutsubscription" items="${paymentWithoutSubscriptionList}">
+						<tr>
 
-        							<td><c:out value="${paymentwithoutsubscription.id}"/></td>
-        							<td><c:out value="${paymentwithoutsubscription.price}"/></td>
-        							<td><c:out value="${paymentwithoutsubscription.dateHour}"/></td>
-        							<td><c:out value="${paymentwithoutsubscription.orderId}"/></td>
-        						</tr>
-        					</c:forEach>
-        				</tbody>
-        			</table>
-        		</c:if>
+							<td><c:out value="${paymentwithoutsubscription.id}"/></td>
+							<td><c:out value="${paymentwithoutsubscription.price}"/></td>
+							<td><c:out value="${paymentwithoutsubscription.dateHour}"/></td>
+							<td><c:out value="${paymentwithoutsubscription.orderId}"/></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</c:if>
+
+		<c:if test='${not empty topLocation}'>
+			<c:set var="count" value="0" scope="page" />
+			<table>
+				<thead>
+				<tr>
+					<th>Rank</th>
+					<th>id</th>
+				</tr>
+				</thead>
+
+				<tbody>
+				<c:forEach var="topLocation" items="${topLocation}">
+					<c:set var="count" value="${count + 1}" scope="page"/>
+					<tr>
+						<td><c:out value="${count}"/></td>
+						<td><c:out value="${topLocation}"/></td>
+					</tr>
+				</c:forEach>
+				</tbody>
+			</table>
+		</c:if>
+
+		<c:if test='${not empty revenueList}'>
+			<c:set var="sum" value="0" scope="page" />
+			<table>
+				<thead>
+				<tr>
+					<th>Month</th>
+					<th>Revenue</th>
+				</tr>
+				</thead>
+
+				<tbody>
+				<c:forEach var="revenue" items="${revenueList}">
+					<c:set var="sum" value="${sum + revenue.price}" scope="page"/>
+					<tr>
+						<td><c:out value="${revenue.date}"/></td>
+						<td><c:out value="${revenue.price}"/> $</td>
+					</tr>
+				</c:forEach>
+				<tr>
+					<td>Total: </td>
+					<td><c:out value="${sum}"/> $ </td>
+				</tr>
+				</tbody>
+			</table>
+		</c:if>
 	</body>
 </html>
