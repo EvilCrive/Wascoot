@@ -27,5 +27,11 @@
 	<form method="get" action="<c:url value="/paymentMethod"/>">
 		<button type="submit">Show Payment Methods</button>
 	</form>
+
+	<h3>Get Subscription Form</h3>
+  	<form method="get" action="<c:url value="/subscription" />">
+
+		<button type="submit">Show Subscriptions</button>
+	</form>
 	</body>
 </html>

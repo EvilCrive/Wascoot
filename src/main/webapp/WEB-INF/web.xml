@@ -48,6 +48,15 @@
         <servlet-name>paymentMethod</servlet-name>
         <url-pattern>/paymentMethod</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>subscription</servlet-name>
+        <servlet-class>wascoot.servlet.SubscriptionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>subscription</servlet-name>
+        <url-pattern>/subscription</url-pattern>
+    </servlet-mapping>
 
 
     <resource-ref>
