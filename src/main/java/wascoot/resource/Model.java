@@ -218,7 +218,7 @@ public class Model {
      * @throws IOException if something goes wrong while parsing.
      */
 
-    /*
+
     public static Model fromJSON(final InputStream in) throws IOException {
 
         // the fields read from JSON
@@ -292,6 +292,6 @@ public class Model {
         return new Model(jName, jBrand, jBattery_life, jWeight, jHeight, jLength, jDepth, jRate_per_min, jRate_per_model);
     }
 
-     */
+
 
 }

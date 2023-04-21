@@ -5,10 +5,8 @@ import wascoot.resource.*;
 
 import java.io.*;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -19,7 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * @since 1.00
  */
 
-public final class ModelRestResource extends RestResource {
+public final class InsertModelRR extends AbstractRR {
     /**
      * Creates a new REST resource for managing {@code Model} resources.
      *
@@ -27,8 +25,8 @@ public final class ModelRestResource extends RestResource {
      * @param res the HTTP response.
      * @param con the connection to the database.
      */
-    public ModelRestResource(final HttpServletRequest req, final HttpServletResponse res, Connection con) {
-        super(req, res, con);
+    public InsertModelRR(final HttpServletRequest req, final HttpServletResponse res, Connection con) {
+        super(Actions.INSERT_NEW_MODEL,req, res, con);
     }
 
     /**
@@ -37,6 +35,30 @@ public final class ModelRestResource extends RestResource {
      * @throws IOException
      *             if any error occurs in the client/server communication.
      */
+    @Override
+    protected void doServe() throws IOException{
+        Message m = null;
+        Model el = null;
+        try {
+            final Model model = Model.fromJSON(req.getInputStream());
+            // DEFINE A NEW DAO QWHICH RECEIVES AS ARGUMENT THE model AND RETURNS A NEW MODEL AFTER INSERTION
+            el = new InsertNewModelDAO(con,model).access();
+            if (el != null){
+                // IN THIS CASE THE MODEL HAS BEEN CORRECTLY INSERTED. RETURN A JSON REPRESENTATION OF THE MODEL RETURNED
+                res.setStatus(HttpServletResponse.SC_CREATED);
+                el.toJSON(res.getOutputStream());
+            }
+            else if(el == null){
+                // IF IT IS NULL THE INSERTION WAS NOT CORRECT HENCE HANDLE THIS CONDITION. MAY BE YOUCN RETURN A MESSAGE WITH THE ERROR THAT OCCURRED
+            }
+
+        }catch (EOFException ex){
+
+
+
+        }
+
+    }
     public void getModelList() throws IOException {
 
         List<Model> el  = null;
