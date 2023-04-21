@@ -13,7 +13,7 @@ public final class getModelListDatabase {
     /**
      * The SQL statement to be executed
      */
-    private static final String STATEMENT = "SELECT name, brand, battery_life, weight, height, length, depth, rate_per_min, rate_per_model FROM public.model";
+    private static final String STATEMENT = "SELECT name, brand, battery_life, price_per_min FROM public.model";
 
     /**
      * The connection to the database
@@ -53,9 +53,7 @@ public final class getModelListDatabase {
 
             while (rs.next()) {
                 models.add(new Model(rs.getString("name"), rs
-                        .getString("brand"), rs.getString("battery_life"),
-                        rs.getInt("weight"), rs.getInt("height"),rs.getInt("length"),
-                        rs.getInt("depth"), rs.getInt("rate_per_min"),rs.getInt("rate_per_model")));
+                        .getString("brand"), rs.getString("battery_life"), rs.getInt("price_per_model")));
             }
         } finally {
             if (rs != null) {

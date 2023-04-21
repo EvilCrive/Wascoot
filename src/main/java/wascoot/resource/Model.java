@@ -2,10 +2,10 @@ package wascoot.resource;
 
 import com.fasterxml.jackson.core.*;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-public class Model {
+import java.io.*;
+
+
+public class Model extends Resource {
     /**
      * The identifier of the model PK
      */
@@ -21,35 +21,13 @@ public class Model {
      */
     private final String batteryLife;
 
-    /**
-     * The weight of a model
-     */
-    private final int weight;
 
     /**
-     * The height of a model
+     * The price per minute of a model
      */
-    private final int height;
+    private final double pricePerMin;
 
-    /**
-     * The length of a model
-*/
-    private final int length;
 
-    /**
-     * The depth of a model
-     */
-    private final int depth;
-
-    /**
-     * The rate per minute of a model
-     */
-    private final double ratePerMin;
-
-    /**
-     * The rate per model
-     */
-    private final double ratePerModel;
 
     /**
      * Creates a new model
@@ -60,29 +38,14 @@ public class Model {
      *            the brand of a model.
      * @param batteryLife
      *            the battery life of a model.
-     * @param weight
-     *            the weight of a model.
-     * @param height
-     *            the height of a model.
-     * @param length
-     *            the length of a model.
-     * @param depth
-     *            the depth of a model.
-     * @param ratePerMin
-     *            the rate_per_minute a model.
-     * @param ratePerModel
-     *            the rate_per_model.
+     * @param pricePerMin
+     *            the price_per_min a model.
      */
-    public Model(final String name, final String brand, final String batteryLife, final int weight, final int height, final int length, final int depth, final double ratePerMin, final double ratePerModel) {
+    public Model(final String name, final String brand, final String batteryLife, final double pricePerMin) {
         this.name = name;
         this.brand = brand;
         this.batteryLife = batteryLife;
-        this.weight = weight;
-        this.height = height;
-        this.length = length;
-        this.depth = depth;
-        this.ratePerMin = ratePerMin;
-        this.ratePerModel = ratePerModel;
+        this.pricePerMin = pricePerMin;
     }
 
     /**
@@ -113,57 +76,12 @@ public class Model {
     }
 
     /**
-     * Returns the weight of the model.
+     * Returns the price per min.
      *
-     * @return the weight of the model.
+     * @return the price per min.
      */
-    public final int getWeight() {
-        return weight;
-    }
-
-    /**
-     * Returns the height of the model.
-     *
-     * @return the height of the model.
-     */
-    public final int getHeight() {
-        return height;
-    }
-
-    /**
-     * Returns the length of the model.
-     *
-     * @return the length of the model.
-     */
-    public final int getLength() {
-        return length;
-    }
-
-    /**
-     * Returns the depth of the model.
-     *
-     * @return the depth of the model.
-     */
-    public final int getDepth() {
-        return depth;
-    }
-
-    /**
-     * Returns the rate per minute of the model.
-     *
-     * @return the rate per minute of the model.
-     */
-    public final double getRatePerMin() {
-        return ratePerMin;
-    }
-
-    /**
-     * Returns the rate per model.
-     *
-     * @return the rate per odel.
-     */
-    public final double getRatePerModel() {
-        return ratePerModel;
+    public final double getPricePerMin() {
+        return pricePerMin;
     }
 
 
@@ -225,12 +143,7 @@ public class Model {
         String jName = null;
         String jBrand = null;
         String jBattery_life = null;
-        int jWeight = -1;
-        int jHeight = -1;
-        int jLength = -1;
-        int jDepth = -1;
-        double jRate_per_min = -1.0;
-        double jRate_per_model = -1.0;
+        double jPrice_per_min = -1.0;
 
         final JsonParser jp = JSON_FACTORY.createParser(in);
 
@@ -261,37 +174,20 @@ public class Model {
                         jp.nextToken();
                         jBattery_life = jp.getText();
                         break;
-                    case "weight":
+                    case "price_per_min":
                         jp.nextToken();
-                        jWeight= jp.getIntValue();
-                        break;
-                    case "height":
-                        jp.nextToken();
-                        jHeight = jp.getIntValue();
-                        break;
-                    case "length":
-                        jp.nextToken();
-                        jLength= jp.getIntValue();
-                        break;
-                    case "depth":
-                        jp.nextToken();
-                        jDepth = jp.getIntValue();
-                        break;
-                    case "rate_per_min":
-                        jp.nextToken();
-                        jRate_per_min= jp.getDoubleValue();
-                        break;
-                    case "rate_per_model":
-                        jp.nextToken();
-                        jRate_per_model = jp.getDoubleValue();
+                        jPrice_per_min= jp.getDoubleValue();
                         break;
                 }
             }
         }
 
-        return new Model(jName, jBrand, jBattery_life, jWeight, jHeight, jLength, jDepth, jRate_per_min, jRate_per_model);
+        return new Model(jName, jBrand, jBattery_life, jPrice_per_min);
     }
 
 
+    @Override
+    public void toJSON(OutputStream out) throws IOException {
 
+    }
 }

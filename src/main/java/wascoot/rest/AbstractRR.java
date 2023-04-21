@@ -1,8 +1,8 @@
 package wascoot.rest;
 
-import GroupCreation.resource.Message;
-import GroupCreation.servlet.LogContext;
-import GroupCreation.resource.Actions;
+import wascoot.resource.Message;
+import wascoot.resource.Actions;
+import wascoot.resource.LogContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;

@@ -5,6 +5,7 @@ import wascoot.resource.*;
 
 import java.io.*;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -42,7 +43,7 @@ public final class InsertModelRR extends AbstractRR {
         try {
             final Model model = Model.fromJSON(req.getInputStream());
             // DEFINE A NEW DAO QWHICH RECEIVES AS ARGUMENT THE model AND RETURNS A NEW MODEL AFTER INSERTION
-            el = new InsertNewModelDAO(con,model).access();
+            el = new InsertNewModelDAO(con,model).access().getOutputParam();
             if (el != null){
                 // IN THIS CASE THE MODEL HAS BEEN CORRECTLY INSERTED. RETURN A JSON REPRESENTATION OF THE MODEL RETURNED
                 res.setStatus(HttpServletResponse.SC_CREATED);
@@ -55,6 +56,7 @@ public final class InsertModelRR extends AbstractRR {
         }catch (EOFException ex){
 
 
+        } catch (SQLException ex){
 
         }
 

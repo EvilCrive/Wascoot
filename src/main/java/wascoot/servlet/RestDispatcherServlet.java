@@ -26,7 +26,7 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
 
         try {
 
-            // if the requested resource was an Student, delegate its processing and return
+            // if the requested resource was a Model, delegate its processing and return
             if (processModel(req, res)) {
                 return;
             }
@@ -91,18 +91,18 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
 
 
 
-        // the request URI is: /student
-        // if method GET, list students
+        // the request URI is: /model
+        // if method GET, list model
         if (path.length() == 0) {
 
             switch (method) {
                 case "GET":
-                    new ListModelRR(req, res, getConnection()).serve();
+                    //new ListModelRR(req, res, getConnection()).serve();
                     break;
                 case "POST":
                     new InsertModelRR(req,res,getConnection()).serve();
                 case "DELETE":
-                    new DeleteModelRR(req,res,getConnection()).serve();
+                    //new DeleteModelRR(req,res,getConnection()).serve();
                 default:
                     LOGGER.warn("Unsupported operation for URI /model: %s.", method);
 
