@@ -27,6 +27,15 @@
     </servlet>
 
     <servlet-mapping>
+        <servlet-name>RestDispatcherServlet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RestDispatcherServlet</servlet-name>
+        <servlet-class>wascoot.servlet.RestDispatcherServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
         <servlet-name>dashboard</servlet-name>
         <url-pattern>/dashboard</url-pattern>
     </servlet-mapping>

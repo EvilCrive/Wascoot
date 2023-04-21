@@ -221,7 +221,8 @@ create table Admin(
     ID serial,
     email varchar,
     password varchar,
-    profile_image varchar(100) default null,
+    photo BYTEA default null,
+	photoMediaType TEXT,
     constraint key_admin primary key (ID),
     CONSTRAINT proper_email CHECK (email ~* '^[A-Za-z0-9._+%-]+@[A-Za-z0-9.-]+[.][A-Za-z]+$')
 );

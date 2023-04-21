@@ -1,11 +1,21 @@
 package wascoot.servlet;
 
+
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.message.StringFormatterMessageFactory;
+
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 /**
  * Gets the {@code DataSource} for managing the connection pool to the database.
@@ -14,6 +24,10 @@ import javax.sql.DataSource;
  * @since 1.00
  */
 public abstract class AbstractDatabaseServlet extends HttpServlet {
+
+    protected static final Logger LOGGER = LogManager.getLogger(AbstractDatabaseServlet.class,
+            StringFormatterMessageFactory.INSTANCE);
+
     /**
      * The connection pool to the database.
      */
@@ -62,4 +76,20 @@ public abstract class AbstractDatabaseServlet extends HttpServlet {
         return ds;
     }
 
+
+    /**
+     * Returns a {@link  Connection} for accessing the database.
+     *
+     * @return a {@link Connection} for accessing the database
+     *
+     * @throws SQLException if anything goes wrong in obtaining the connection.
+     */
+    protected final Connection getConnection() throws SQLException {
+        try {
+            return ds.getConnection();
+        } catch (final SQLException e) {
+            LOGGER.error("Unable to acquire the connection from the pool.", e);
+            throw e;
+        }
+    }
 }
