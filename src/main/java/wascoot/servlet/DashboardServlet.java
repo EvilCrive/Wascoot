@@ -1,6 +1,6 @@
 package wascoot.servlet;
 
-import wascoot.database.RevenueDatabase;
+import wascoot.database.PaymentWithSubscriptionDatabase;
 import wascoot.database.ScooterRackDatabase;
 import wascoot.database.RentalDatabase;
 import wascoot.resource.Revenue;
@@ -56,7 +56,7 @@ public final class DashboardServlet extends AbstractDatabaseServlet {
             el0 = new ScooterRackDatabase(getDataSource().getConnection()).getScooterRackList();
             el1 = new PaymentWithoutSubscriptionDatabase(getDataSource().getConnection()).getPaymentWithoutSubscriptionList();
             topLocation = new RentalDatabase(getDataSource().getConnection()).getTopLocation();
-            revenueList = new RevenueDatabase(getDataSource().getConnection()).getRevenueInfo();
+            revenueList = new PaymentWithSubscriptionDatabase(getDataSource().getConnection()).getRevenueInfo();
 
             m = new Message("Successfully searched.");
 
