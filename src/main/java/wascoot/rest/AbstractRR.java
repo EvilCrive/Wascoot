@@ -8,10 +8,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.message.StringFormatterMessageFactory;
+import wascoot.resource.Message;
 
+import javax.security.auth.login.LoginContext;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.sql.Connection;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 /**
  * Represents a generic REST resource.
@@ -59,7 +63,7 @@ public abstract class AbstractRR implements RestResource {
     protected final Connection con;
 
     /**
-     * The {@link Actions} performed by this REST resource.
+     * The {@link wascoot.resource.Actions} performed by this REST resource.
      */
     private final String action;
 
@@ -71,13 +75,13 @@ public abstract class AbstractRR implements RestResource {
      * @param res    the HTTP response.
      * @param con    the connection to the database.
      */
-    protected AbstractRR(final String action, final HttpServletRequest req, final HttpServletResponse res, final Connection con) {
+    (final String action, final HttpServletRequest req, final HttpServletResponse res, final Connection con) {
 
         if (action == null || action.isBlank()) {
             LOGGER.warn("Action is null or empty.");
         }
         this.action = action;
-        LogContext.setAction(action);
+        LoginContext.setAction(action);protected AbstractRR
 
         if (req == null) {
             LOGGER.error("The HTTP request cannot be null.");

@@ -60,7 +60,7 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
 
 
     /**
-     * Checks whether the request if for an {@link Student} resource and, in case, processes it.
+     * Checks whether the request if for an {@link wascoot.rest.Model} resource and, in case, processes it.
      *
      * @param req the HTTP request.
      * @param res the HTTP response.
@@ -76,7 +76,7 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
         String path = req.getRequestURI();
         Message m = null;
 
-        // the requested resource was not a student
+        // the requested resource was not a Model
         if (path.lastIndexOf("rest/model/") <= 0) {
             return false;
         }
@@ -114,7 +114,7 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
             }
         }else{
             // IN THIS CASE I HAVE AN URI SUCH AS /rest/model/{id_mode}
-            // we can use get method to retrieve the information about a secific model
+            // we can use get method to retrieve the information about a specific model
 
         }
 
