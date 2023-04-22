@@ -1,7 +1,7 @@
 package wascoot.servlet;
 
 import wascoot.resource.*;
-import wascoot.rest.ModelRestResource;
+import wascoot.rest.InsertModelRR;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -165,7 +165,7 @@ public final class RestManagerServlet extends AbstractDatabaseServlet {
 
                 switch (method) {
                     case "GET":
-                        new ModelRestResource(req, res, getDataSource().getConnection()).getModelList();
+                        new InsertModelRR(req, res, getDataSource().getConnection()).getModelList();
                         break;
 
                     default:
