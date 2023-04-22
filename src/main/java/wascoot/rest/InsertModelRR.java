@@ -42,6 +42,16 @@ public final class InsertModelRR extends AbstractRR {
         Model el = null;
         try {
             final Model model = Model.fromJSON(req.getInputStream());
+            LOGGER.info(Model.getname());
+            LOGGER.info(Model.getbrand());
+            LOGGER.info(Model.getbattery-life());
+            String path = req.getRequestURI();
+            path = path.substring(path.lastIndexOf("model") + 5);
+            String course = path.split("/")[0];
+            String group = path.split("/")[1];
+            LogContext.setResource(path);
+            LogContext.setResource(model.price-per-min());
+
             // DEFINE A NEW DAO QWHICH RECEIVES AS ARGUMENT THE model AND RETURNS A NEW MODEL AFTER INSERTION
             el = new InsertNewModelDAO(con,model).access().getOutputParam();
             if (el != null){
