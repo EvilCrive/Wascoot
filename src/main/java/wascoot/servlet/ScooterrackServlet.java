@@ -1,9 +1,6 @@
 package wascoot.servlet;
 
-//import wascoot.database.RevenueDatabase;
 import wascoot.database.ScooterRackDatabase;
-import wascoot.database.RentalDatabase;
-import wascoot.resource.Revenue;
 import wascoot.resource.Scooterrack;
 
 import wascoot.database.PaymentWithoutSubscriptionDatabase;
@@ -25,10 +22,10 @@ import jakarta.servlet.http.HttpServletResponse;
  * @version 1.00
  * @since 1.00
  */
-public final class DashboardServlet extends AbstractDatabaseServlet {
+public final class ScooterrackServlet extends AbstractDatabaseServlet {
 
     /**
-     * Dashboard servlet
+     * Scooter Racks servlet
      *
      * @param req
      *            the HTTP request from the client.
@@ -43,41 +40,30 @@ public final class DashboardServlet extends AbstractDatabaseServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
 
-        List<Scooterrack> el0 = null;
-        List<PaymentWithoutSubscription> el1 = null;
-        List<Integer> topLocation = null;
-        List<Revenue> revenueList = null;
-
+        List<Scooterrack> el = null;
         Message m = null;
 
         try {
 
             // creates a new object for accessing the database and searching the scooterracks and paymentwithoutsubscription
-            el0 = new ScooterRackDatabase(getDataSource().getConnection()).getScooterRackList();
-            el1 = new PaymentWithoutSubscriptionDatabase(getDataSource().getConnection()).getPaymentWithoutSubscriptionList();
-            topLocation = new RentalDatabase(getDataSource().getConnection()).getTopLocation();
-           // revenueList = new RevenueDatabase(getDataSource().getConnection()).getRevenueInfo();
+            el = new ScooterRackDatabase(getDataSource().getConnection()).getScooterRackList();
 
-            m = new Message("Successfully searched.");
+            m = new Message("Scooter Racks successfully searched.");
 
         } catch (NumberFormatException ex) {
-            m = new Message("Cannot search for the ressources in the db.",
+            m = new Message("Cannot search for the scooter racks in the db.",
                     "E100", ex.getMessage());
         } catch (SQLException ex) {
-            m = new Message("Cannot search for the ressources: unexpected error while accessing the database.",
+            m = new Message("Cannot search for the scooter racks: unexpected error while accessing the database.",
                     "E200", ex.getMessage());
         }
 
         // stores the lists and the message as a request attribute
-        req.setAttribute("scooterRackList", el0);
-        req.setAttribute("paymentWithoutSubscriptionList", el1);
-        req.setAttribute("topLocation", topLocation);
-        req.setAttribute("revenueList", revenueList);
+        req.setAttribute("scooterRackList", el);
         req.setAttribute("message", m);
 
-        // forwards the control to the dashboard.jsp
-        req.getRequestDispatcher("/jsp/dashboard.jsp").forward(req, res);
+        // forwards the control to the scooterracks.jsp
+        req.getRequestDispatcher("/jsp/scooterrack.jsp").forward(req, res);
 
     }
 }
-// code

@@ -31,6 +31,9 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
                 return;
             }
 
+            if (processScooterRack(req, res)) {
+                return;
+            }
 
             // if none of the above process methods succeeds, it means an unknown resource has been requested
             LOGGER.warn("Unknown resource requested: %s.", req.getRequestURI());
@@ -64,9 +67,7 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
      *
      * @param req the HTTP request.
      * @param res the HTTP response.
-     *
      * @return {@code true} if the request was for an {@code Employee}; {@code false} otherwise.
-     *
      * @throws Exception if any error occurs.
      */
     private boolean processModel(final HttpServletRequest req, final HttpServletResponse res) throws Exception {
@@ -76,19 +77,16 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
         String path = req.getRequestURI();
         Message m = null;
 
-        // the requested resource was not a student
+        // the requested resource was not a model
         if (path.lastIndexOf("rest/model/") <= 0) {
             return false;
         }
-
-
 
 
         path = path.substring(path.lastIndexOf("model/") + 6);
 //
 //        // I can have multiple paths. Split on "/"
 //        String[] splitted_path = path.split("/");
-
 
 
         // the request URI is: /model
@@ -100,7 +98,7 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
                     //new ListModelRR(req, res, getConnection()).serve();
                     break;
                 case "POST":
-                    new InsertModelRR(req,res,getConnection()).serve();
+                    new InsertModelRR(req, res, getConnection()).serve();
                 case "DELETE":
                     //new DeleteModelRR(req,res,getConnection()).serve();
                 default:
@@ -112,7 +110,7 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
                     m.toJSON(res.getOutputStream());
                     break;
             }
-        }else{
+        } else {
             // IN THIS CASE I HAVE AN URI SUCH AS /rest/model/{id_mode}
             // we can use get method to retrieve the information about a secific model
 
@@ -121,5 +119,52 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
 
         return true;
 
+    }
+
+    private boolean processScooterRack(final HttpServletRequest req, final HttpServletResponse res) throws Exception {
+
+        final String method = req.getMethod();
+
+        String path = req.getRequestURI();
+        Message m = null;
+
+
+        // the requested resource was not a scooterrack
+        if (path.lastIndexOf("rest/scooterrack/") <= 0) {
+            return false;
+        }
+
+
+        path = path.substring(path.lastIndexOf("scooterrack/") + 12);
+//
+//        // I can have multiple paths. Split on "/"
+//        String[] splitted_path = path.split("/");
+
+        LOGGER.warn(path);
+        // the request URI is: /model
+        // if method GET, list model
+        if (path.length() == 0) {
+
+            switch (method) {
+                case "GET":
+                    new ListScooterracksRR(req, res, getConnection()).serve();
+                    break;
+                default:
+                    LOGGER.warn("Unsupported operation for URI /model: %s.", method);
+
+                    m = new Message("Unsupported operation for URI /model.", "E4A5",
+                            String.format("Requested operation %s.", method));
+                    res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+                    m.toJSON(res.getOutputStream());
+                    break;
+            }
+        } else {
+            // IN THIS CASE I HAVE AN URI SUCH AS /rest/scooterracks/{id_mode}
+            // we can use get method to retrieve the information about a specific scooterrack
+
+        }
+
+
+        return true;
     }
 }
