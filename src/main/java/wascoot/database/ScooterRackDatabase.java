@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class ScooterRackDatabase {
+public final class ScooterRackDatabase extends AbstractDAO<List<Scooterrack>> {
     /**
      * The SQL statement to be executed
      */
@@ -18,7 +18,7 @@ public final class ScooterRackDatabase {
     /**
      * The connection to the database
      */
-    private final Connection con;
+
 
     /**
      * Creates a new object for listing all the scooterracks.
@@ -27,7 +27,41 @@ public final class ScooterRackDatabase {
      *            the connection to the database.
      */
     public ScooterRackDatabase(final Connection con) {
-        this.con = con;
+        super(con);
+    }
+
+    @Override
+    protected void doAccess() throws Exception {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        // the results of the search
+        final List<Scooterrack> scooterracks = new ArrayList<Scooterrack>();
+
+        try {
+            pstmt = con.prepareStatement(STATEMENT);
+
+            rs = pstmt.executeQuery();
+//id, total_parking_spots, available_parking_spots, postalcode, address
+            while (rs.next()) {
+                scooterracks.add(new Scooterrack(rs.getInt("id"), rs.getInt("total_parking_spots"), rs.getInt("available_parking_spots"),
+                        rs.getString("postalCode"), rs.getString("address")));
+            }
+
+            LOGGER.info("Scooterrack(s) successfully listed.");
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+
+            if (pstmt != null) {
+                pstmt.close();
+            }
+
+        }
+
+        outputParam = scooterracks;
     }
 
     /**

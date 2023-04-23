@@ -1,6 +1,10 @@
 package wascoot.resource;
 
-public class Scooterrack {
+import com.fasterxml.jackson.core.*;
+
+import java.io.*;
+
+public class Scooterrack extends Resource {
     /**
      * The identifier of the scooter rack (PK)
      */
@@ -93,5 +97,33 @@ public class Scooterrack {
      */
     public final String getAddress() {
         return address;
+    }
+
+    @Override
+    public void toJSON(OutputStream out) throws IOException {
+
+        final JsonGenerator jg = JSON_FACTORY.createGenerator(out);
+
+        jg.writeStartObject();
+
+        jg.writeFieldName("scooterrack");
+
+        jg.writeStartObject();
+
+        jg.writeNumberField("id", id);
+
+        jg.writeNumberField("totalParkingSpots", totalParkingSpots);
+
+        jg.writeNumberField("availableParkingSpots", availableParkingSpots);
+
+        jg.writeStringField("postalCode", postalCode);
+
+        jg.writeStringField("address", address);
+
+        jg.writeEndObject();
+
+        jg.writeEndObject();
+
+        jg.flush();
     }
 }
