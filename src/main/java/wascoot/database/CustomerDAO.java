@@ -10,16 +10,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerListDatabase {
+public class CustomerDAO extends AbstractDAO<List<Customer>>{
     /**
      * The SQL statement to be executed
      */
     private static final String STATEMENT = "SELECT cf, name, surname, email, sex, birthdate, postalCode, paymentType FROM public.Customer";
-
-    /**
-     * The connection to the database
-     */
-    private final Connection con;
 
     /**
      * Creates a new object for listing all the models.
@@ -27,8 +22,8 @@ public class CustomerListDatabase {
      * @param con
      *            the connection to the database.
      */
-    public CustomerListDatabase(final Connection con) {
-        this.con = con;
+    public CustomerDAO(final Connection con) {
+        super(con);
     }
 
     /**
@@ -71,5 +66,41 @@ public class CustomerListDatabase {
         }
 
         return customers;
+    }
+
+
+    protected void doAccess() throws Exception {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        // the results of the search
+        final List<Customer> customers = new ArrayList<Customer>();
+
+        try {
+            pstmt = con.prepareStatement(STATEMENT);
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                customers.add(new Customer(rs.getString("cf"), rs.getString("name"), rs.getString("surname"),
+                        rs.getString("email"), rs.getString("sex"),
+                        rs.getString("birthdate"), rs.getString("postalCode"),
+                        rs.getString("paymentType")));
+            }
+
+            LOGGER.info("Customer(s) successfully listed.");
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+
+            if (pstmt != null) {
+                pstmt.close();
+            }
+
+        }
+
+        outputParam = customers;
     }
 }

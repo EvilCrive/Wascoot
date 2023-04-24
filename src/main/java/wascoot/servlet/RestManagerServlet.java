@@ -1,6 +1,7 @@
 package wascoot.servlet;
 
 import wascoot.resource.*;
+import wascoot.rest.CustomerRR;
 import wascoot.rest.InsertModelRR;
 
 import jakarta.servlet.ServletException;
@@ -47,6 +48,11 @@ public final class RestManagerServlet extends AbstractDatabaseServlet {
 
             // if the requested resource was an Model, delegate its processing and return
             if (processModel(req, res)) {
+                return;
+            }
+
+            // if the requested resource was an Customer, delegate its processing and return
+            if (processCustomer(req, res)) {
                 return;
             }
 
@@ -193,5 +199,67 @@ public final class RestManagerServlet extends AbstractDatabaseServlet {
         return true;
 
     }
+
+    /**
+     * Checks whether the request if for an {@link Customer} resource and, in case, processes it.
+     *
+     * @param req the HTTP request.
+     * @param res the HTTP response.
+     * @return {@code true} if the request was for an {@code Customer}; {@code false} otherwise.
+     *
+     * @throws IOException if any error occurs in the client/server communication.
+     */
+    private boolean processCustomer(HttpServletRequest req, HttpServletResponse res) throws IOException {
+
+        final String method = req.getMethod();
+        final OutputStream out = res.getOutputStream();
+
+        String path = req.getRequestURI();
+        Message m = null;
+
+        // the requested resource was not an model
+        if(path.lastIndexOf("rest/customer") <= 0) {
+            return false;
+        }
+
+        try {
+            // strip everything until after the /customer
+            path = path.substring(path.lastIndexOf("customer") + 8);
+
+            // the request URI is: /customer
+            // if method GET, list customer(s)
+            if (path.length() == 0 || path.equals("/")) {
+
+                switch (method) {
+                    case "GET":
+                        new CustomerRR(req, res, getDataSource().getConnection()).getCustomerList();
+                        break;
+
+                    default:
+                        m = new Message("Unsupported operation for URI /customer.",
+                                "E4A5", String.format("Requested operation %s.", method));
+                        res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+                        m.toJSON(res.getOutputStream());
+                        break;
+                }
+            } else {
+                /**
+                 * To be done, other routes
+                 */
+                m = new Message("Unexpected error.", "E4A6", method);
+                res.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                m.toJSON(res.getOutputStream());
+
+            }
+        } catch(Throwable t) {
+            m = new Message("Unexpected error.", "E5A1", t.getMessage());
+            res.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            m.toJSON(res.getOutputStream());
+        }
+
+        return true;
+
+    }
+
 
 }

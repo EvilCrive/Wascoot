@@ -1,6 +1,11 @@
 package wascoot.resource;
 
-public class Customer {
+import com.fasterxml.jackson.core.JsonGenerator;
+
+import java.io.IOException;
+import java.io.OutputStream;
+
+public class Customer extends Resource{
 
     private final String cf;
 
@@ -52,5 +57,38 @@ public class Customer {
     }
     public final String getPaymentType() {
         return paymentType;
+    }
+
+    public void toJSON(OutputStream out) throws IOException {
+
+        final JsonGenerator jg = JSON_FACTORY.createGenerator(out);
+
+        jg.writeStartObject();
+
+        jg.writeFieldName("customer");
+
+        jg.writeStartObject();
+
+        jg.writeStringField("cf", cf);
+
+        jg.writeStringField("name", name);
+
+        jg.writeStringField("surname", surname);
+
+        jg.writeStringField("email", email);
+
+        jg.writeStringField("sex", sex);
+
+        jg.writeStringField("birthdate", birthdate);
+
+        jg.writeStringField("postalCode", postalCode);
+
+        jg.writeStringField("paymentType", paymentType);
+
+        jg.writeEndObject();
+
+        jg.writeEndObject();
+
+        jg.flush();
     }
 }
