@@ -69,7 +69,7 @@ create table ScooterRacks(
 create table Model(
     name varchar(30), 
     brand varchar(30) not null default 'Unknown',
-    battery_life interval hour to minute default '0m',
+    battery_life time without time zone,
     --weight positive_real default null,
     --height positive_real default null, --in cm
     --length positive_real default null,
@@ -107,9 +107,9 @@ create table Customer(
 create table Subscription(
     ID serial,
     --type varchar(20), -- it is the typology
-    type interval day default '1d' not null,
+    type varchar(60) default '1d' not null,
     daily_unlocks positive_integer default 2 not null,
-    validity_per_day interval hour to second default '2h',
+    validity_per_day time without time zone,
     fixed_price numeric(5,2) default '5.00' not null,
     constraint key_subscription primary key (ID),
     constraint check_subscription_price check(fixed_price > 0) --corporate constraints
