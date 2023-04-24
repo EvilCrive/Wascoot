@@ -1,92 +1,76 @@
+/*
+ * Copyright 2018-2023 University of Padua, Italy
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package wascoot.resource;
 
-import com.fasterxml.jackson.core.*;
+import java.sql.Time;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+
 public class Model {
-    /**
-     * The identifier of the model PK
-     */
-    private final String name;
 
-    /**
-     * The brand of the model
-     */
-    private final String brand;
+	/**
+	 * The badge number (identifier) of the employee
+	 */
+	//private final int badge;
+	private final String name;
 
-    /**
-     * The battery life of a model
-     */
-    private final String batteryLife;
-    /**
-     * The rate per minute of a model
-     */
-    private final double pricePerMin;
+	/**
+	 * The surname of the employee
+	 */
+	private final String brand;
+
+	/**
+	 * The age of the employee
+	 */
+	//private final int age;
+	//private final String batteryLife;
+	private final Time batteryLife;
+	//private final LocalTime batteryLife;
+
+	/**
+	 * The salary of the employee
+	 */
+	private final double pricePerMin;
 
 
-    /**
-     * Creates a new model
-     *
-     * @param name
-     *            the name of a model.
-     * @param brand
-     *            the brand of a model.
-     * @param batteryLife
-     *            the battery life of a model.
-     * @param pricePerMin
-     *            the rate_per_minute a model.
+	public Model(final String name, final String brand, final Time batteryLife, final double pricePerMin) {
+		this.name = name;
+		this.brand = brand;
+		this.batteryLife = batteryLife;
+		this.pricePerMin = pricePerMin;
+	}
 
-     */
-    public Model(final String name, final String brand, final String batteryLife, final double pricePerMin) {
-        this.name = name;
-        this.brand = brand;
-        this.batteryLife = batteryLife;
-        this.pricePerMin = pricePerMin;
-    }
 
-    /**
-     * Returns the name of the model.
-     *
-     * @return the name of the model.
-     */
-    public final String getName() {
-        return name;
-    }
+	public final String getName() {
+		return name;
+	}
 
-    /**
-     * Returns the brand of the model.
-     *
-     * @return the brand of the model.
-     */
-    public final String getBrand() {
-        return brand;
-    }
 
-    /**
-     * Returns the battery life of the model.
-     *
-     * @return the battery life of the model.
-     */
-    public final String getBatteryLife() {
-        return batteryLife;
-    }
+	public final String getBrand() {
+		return brand;
+	}
 
-    /**
-     * Returns the weight of the model.
-     *
-     * @return the weight of the model.
-     */
 
-    /**
-     * Returns the rate per minute of the model.
-     *
-     * @return the rate per minute of the model.
-     */
-    public final double getPricePerMin() {
-        return pricePerMin;
-    }
+	public final Time getBatteryLife() {
+		return batteryLife;
+	}
 
+
+	public final double getPricePerMin() {
+		return pricePerMin;
+	}
 
 }

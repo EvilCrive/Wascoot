@@ -1,5 +1,7 @@
 package wascoot.resource;
 
+import java.util.Date;
+
 public class Customer {
 
     private final String cf;
@@ -53,4 +55,5 @@ public class Customer {
     public final String getPaymentType() {
         return paymentType;
     }
+
 }
