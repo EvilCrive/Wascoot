@@ -5,6 +5,7 @@
 <html lang="en">
 	<head>
 		<title>Dashboard</title>
+		 <script src="${pageContext.request.contextPath}/js/dashboard.js"></script>
 	</head>
 
 	<body>
@@ -109,5 +110,8 @@
 				</tbody>
 			</table>
 		</c:if>
+
+		<div id="customer-content"></div>
+
 	</body>
 </html>
