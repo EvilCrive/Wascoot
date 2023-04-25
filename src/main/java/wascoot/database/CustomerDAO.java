@@ -26,47 +26,6 @@ public class CustomerDAO extends AbstractDAO<List<Customer>>{
         super(con);
     }
 
-    /**
-     * Lists all the models in the database.
-     *
-     * @return a list of {@code model} object.
-     *
-     * @throws SQLException
-     *             if any error occurs while searching for employees.
-     */
-    public List<Customer> getCustomerList() throws SQLException {
-
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-
-        // the results of the search
-        final List<Customer> customers = new ArrayList<Customer>();
-
-        try {
-            pstmt = con.prepareStatement(STATEMENT);
-
-            rs = pstmt.executeQuery();
-
-            while (rs.next()) {
-                customers.add(new Customer(rs.getString("cf"), rs.getString("name"), rs.getString("surname"),
-                        rs.getString("email"), rs.getString("sex"),
-                        rs.getString("birthdate"), rs.getString("postalCode"),
-                        rs.getString("paymentType")));
-            }
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-
-            if (pstmt != null) {
-                pstmt.close();
-            }
-
-            con.close();
-        }
-
-        return customers;
-    }
 
 
     protected void doAccess() throws Exception {
@@ -102,5 +61,49 @@ public class CustomerDAO extends AbstractDAO<List<Customer>>{
         }
 
         outputParam = customers;
+    }
+
+
+    /**
+     * Lists all the models in the database.
+     *
+     * @return a list of {@code model} object.
+     *
+     * @throws SQLException
+     *             if any error occurs while searching for employees.
+     */
+    public List<Customer> getCustomerList() throws SQLException {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        // the results of the search
+        final List<Customer> customers = new ArrayList<Customer>();
+
+        try {
+            pstmt = con.prepareStatement(STATEMENT);
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                customers.add(new Customer(rs.getString("cf"), rs.getString("name"), rs.getString("surname"),
+                        rs.getString("email"), rs.getString("sex"),
+                        rs.getString("birthdate"), rs.getString("postalCode"),
+                        rs.getString("paymentType")));
+            }
+            LOGGER.info("Customer(s) successfully listed.");
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+
+            if (pstmt != null) {
+                pstmt.close();
+            }
+
+            con.close();
+        }
+
+        return customers;
     }
 }

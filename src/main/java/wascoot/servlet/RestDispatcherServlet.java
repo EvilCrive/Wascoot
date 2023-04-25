@@ -68,7 +68,7 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
 
 
     /**
-     * Checks whether the request if for an {@link Student} resource and, in case, processes it.
+     * Checks whether the request if for an {@link Model} resource and, in case, processes it.
      *
      * @param req the HTTP request.
      * @param res the HTTP response.
@@ -187,7 +187,7 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
         }
 
 
-        path = path.substring(path.lastIndexOf("customer/") + 12);
+        path = path.substring(path.lastIndexOf("customer/") + 9);
 //
 //        // I can have multiple paths. Split on "/"
 //        String[] splitted_path = path.split("/");

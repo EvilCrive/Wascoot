@@ -35,41 +35,18 @@ public final class CustomerRR extends AbstractRR {
             } else { // it should not happen
                 LOGGER.error("Fatal error while listing customer(s).");
 
-                m = new Message("Cannot list customer(s): unexpected error.", "E5A1", null);
+                m = new Message("Cannot list customer(s): unexpected error.", "E10A1", null);
                 res.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
                 m.toJSON(res.getOutputStream());
             }
         } catch (SQLException ex) {
             LOGGER.error("Cannot list customer(s): unexpected database error.", ex);
 
-            m = new Message("Cannot list customer(s): unexpected database error.", "E5A1", ex.getMessage());
+            m = new Message("Cannot list customer(s): unexpected database error.", "E10A1", ex.getMessage());
             res.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             m.toJSON(res.getOutputStream());
         }
     }
 
-    public void getCustomerList() throws IOException {
 
-        List<Customer> el  = null;
-        Message m = null;
-
-        try{
-            // creates a new object for accessing the database and lists all the employees
-            el = new CustomerDAO(con).getCustomerList();
-
-            if(el != null) {
-                res.setStatus(HttpServletResponse.SC_OK);
-                new ResourceList(el).toJSON(res.getOutputStream());
-            } else {
-                // it should not happen
-                m = new Message("Cannot list customer(s): unexpected error.", "E6A1", null);
-                res.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                m.toJSON(res.getOutputStream());
-            }
-        } catch (Throwable t) {
-            m = new Message("Cannot search customer(s): unexpected error.", "E6A2", t.getMessage());
-            res.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            m.toJSON(res.getOutputStream());
-        }
-    }
 }
