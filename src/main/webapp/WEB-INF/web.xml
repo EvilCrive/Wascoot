@@ -21,6 +21,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>getScooters</servlet-name>
+        <servlet-class>wascoot.servlet.ListScooterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>getScooters</servlet-name>
+        <url-pattern>/scooters</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>getScooterRacks</servlet-name>
         <servlet-class>wascoot.servlet.ListScooterrackServlet</servlet-class>
     </servlet>
