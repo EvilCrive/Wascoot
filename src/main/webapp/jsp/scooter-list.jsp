@@ -39,22 +39,25 @@
   </table>
 </c:if>
 
-<h1>Update Scooterrack</h1>
-<form method="POST" action="<c:url value="/update-scooterrack"/>">
+<h1>Update Scooter</h1>
+<form method="POST" action="<c:url value="/update-scooter"/>">
   <label for="ID">ID:</label>
   <input id="ID" name="id" type="text"/><br/>
 
-  <label for="totalParkingSpotsID">total parking spots:</label>
-  <input id="totalParkingSpotsID" name="total_parking_spots" type="text"/><br/>
+  <label for="dateOfPurchaseID">date of purchase:</label>
+  <input id="dateOfPurchaseID" name="date_of_purchase" type="text"/><br/>
 
-  <label for="availableParkingSpotsID">available parking spots:</label>
-  <input id="availableParkingSpotsID" name="available_parking_spots" type="text"/><br/>
+  <label for="kmTraveledID">km traveled:</label>
+  <input id="kmTraveledID" name="km_traveled" type="text"/><br/>
 
-  <label for="postalCodeID">postal code:</label>
-  <input id="postalCodeID" name="postalcode" type="text"/><br/><br/>
+  <label for="modelID">model:</label>
+  <input id="modelID" name="model" type="text"/><br/><br/>
 
-  <label for="addressID">address:</label>
-  <input id="addressID" name="address" type="text"/><br/><br/>
+  <label for="remainingBatteryLifeID">remaining battery life:</label>
+  <input id="remainingBatteryLifeID" name="remaining_battery_life" type="text"/><br/><br/>
+
+  <label for="idScooterrackID">id scooterrack:</label>
+  <input id="idScooterrackID" name="id_scooterrack" type="text"/><br/><br/>
 
   <button type="submit">Update</button><br/>
   <button type="reset">Reset the form</button>

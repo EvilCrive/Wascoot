@@ -28,20 +28,21 @@ Since: 1.0
 </head>
 
 <body>
-<h1>Update Scooterrack</h1>
+<h1>Update Scooter</h1>
 <hr/>
 
 <!-- display the message -->
 <c:import url="/jsp/include/show-message.jsp"/>
 
-<!-- display the just created scooterrack, if any and no errors -->
-<c:if test='${not empty updateScooterrack && !message.error}'>
+<!-- display the just created scooter, if any and no errors -->
+<c:if test='${not empty updateScooter && !message.error}'>
   <ul>
-    <li>name: <c:out value="${updateScooterrack.id}"/></li>
-    <li>total parking spots: <c:out value="${updateScooterrack.totalParkingSpots}"/></li>
-    <li>available parking spots: <c:out value="${updateScooterrack.availableParkingSpots}"/></li>
-    <li>postal code: <c:out value="${updateScooterrack.postalCode}"/></li>
-    <li>address: <c:out value="${updateScooterrack.address}"/></li>
+    <li>id: <c:out value="${updateScooter.id}"/></li>
+    <li>date of purchase: <c:out value="${updateScooter.dateOfPurchase}"/></li>
+    <li>km traveled: <c:out value="${updateScooter.kmTraveled}"/></li>
+    <li>model: <c:out value="${updateScooter.model}"/></li>
+    <li>remaining battery life: <c:out value="${updateScooter.remainingBatteryLife}"/></li>
+    <li>id scooterrack: <c:out value="${updateScooter.idScooterrack}"/></li>
   </ul>
 </c:if>
 

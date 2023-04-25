@@ -3,7 +3,7 @@ package wascoot.resource;
 import com.fasterxml.jackson.core.*;
 
 import java.io.*;
-import java.util.Date;
+import java.sql.Date;
 
 public class Scooter extends Resource {
     /**
