@@ -3,9 +3,6 @@ package wascoot.servlet;
 import wascoot.database.ScooterRackDatabase;
 import wascoot.resource.Scooterrack;
 
-import wascoot.database.PaymentWithoutSubscriptionDatabase;
-import wascoot.resource.PaymentWithoutSubscription;
-
 import wascoot.resource.Message;
 
 import java.io.IOException;
@@ -22,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * @version 1.00
  * @since 1.00
  */
-public final class ScooterrackServlet extends AbstractDatabaseServlet {
+public final class ListScooterrackServlet extends AbstractDatabaseServlet {
 
     /**
      * Scooter Racks servlet
@@ -59,11 +56,11 @@ public final class ScooterrackServlet extends AbstractDatabaseServlet {
         }
 
         // stores the lists and the message as a request attribute
-        req.setAttribute("scooterRackList", el);
+        req.setAttribute("scooterrackList", el);
         req.setAttribute("message", m);
 
         // forwards the control to the scooterracks.jsp
-        req.getRequestDispatcher("/jsp/scooterrack.jsp").forward(req, res);
+        req.getRequestDispatcher("/jsp/scooterrack-list.jsp").forward(req, res);
 
     }
 }

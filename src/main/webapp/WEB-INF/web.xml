@@ -15,7 +15,6 @@
         <servlet-name>getModel</servlet-name>
         <servlet-class>wascoot.servlet.getModelServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>getModel</servlet-name>
         <url-pattern>/model</url-pattern>
@@ -23,9 +22,8 @@
 
     <servlet>
         <servlet-name>getScooterRacks</servlet-name>
-        <servlet-class>wascoot.servlet.ScooterrackServlet</servlet-class>
+        <servlet-class>wascoot.servlet.ListScooterrackServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>getScooterRacks</servlet-name>
         <url-pattern>/scooterracks</url-pattern>
@@ -35,22 +33,19 @@
         <servlet-name>dashboard</servlet-name>
         <servlet-class>wascoot.servlet.DashboardServlet</servlet-class>
     </servlet>
-
-    <servlet-mapping>
-        <servlet-name>RestDispatcherServlet</servlet-name>
-        <url-pattern>/rest/*</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>RestDispatcherServlet</servlet-name>
-        <servlet-class>wascoot.servlet.RestDispatcherServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>dashboard</servlet-name>
         <url-pattern>/dashboard</url-pattern>
     </servlet-mapping>
 
-
+    <servlet-mapping>
+        <servlet-name>RestDispatcherServlet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RestDispatcherServlet</servlet-name>
+        <servlet-class>wascoot.servlet.RestDispatcherServlet</servlet-class>
+    </servlet>
 
     <resource-ref>
         <description>Connection pool to the database</description>
