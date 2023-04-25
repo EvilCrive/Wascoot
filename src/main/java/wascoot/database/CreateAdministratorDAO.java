@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 
 
-public final class CreateAdministratorDAO extends AbstractDAO {
+public final class CreateAdministratorDAO extends AbstractDAO<Administrator>  {
 
 	/**
 	 * The SQL statement to be executed

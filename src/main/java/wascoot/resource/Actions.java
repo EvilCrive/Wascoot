@@ -10,6 +10,13 @@ public class Actions {
     public static final String LOAD_ADMINISTRATOR_PHOTO = "LOAD_ADMINISTRATOR_PHOTO";
     public static final String SEARCH_ADMINISTRATOR_BY_ID = "SEARCH_ADMINISTRATOR_BY_ID";
     public static final String SEARCH_ADMINISTRATOR_BY_EMAIL = "SEARCH_ADMINISTRATOR_BY_EMAIL";
+
+    public static final String READ_ADMINISTRATOR = "READ_ADMINISTRATOR";
+
+    public static final String UPDATE_ADMINISTRATOR = "UPDATE_ADMINISTRATOR";
+    public static final String DELETE_ADMINISTRATOR = "DELETE_ADMINISTRATOR";
+    public static final String LIST_ADMINISTRATOR = "LIST_ADMINISTRATOR";
+
     private Actions() {
         throw new AssertionError(String.format("No instances of %s allowed.", Actions.class.getName()));
     }
