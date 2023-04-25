@@ -40,7 +40,22 @@
         <url-pattern>/dashboard</url-pattern>
     </servlet-mapping>
 
+</servlet-mapping>
 
+<servlet>
+       <servlet-name>getScooter</servlet-name>
+       <servlet-class>wascoot.servlet.ScooterServlet</servlet-class>
+ </servlet>
+
+            <servlet-mapping>
+        <servlet-name>getScooter</servlet-name>
+       <url-pattern>/scooter</url-pattern>
+    </servlet-mapping>
+
+            <servlet>
+<servlet-name>dashboard</servlet-name>
+<servlet-class>wascoot.servlet.DashboardServlet</servlet-class>
+</servlet>
 
     <resource-ref>
         <description>Connection pool to the database</description>
