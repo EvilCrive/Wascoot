@@ -7,6 +7,7 @@ import wascoot.resource.Administrator;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 
 
 public final class CreateAdministratorDAO extends AbstractDAO {
