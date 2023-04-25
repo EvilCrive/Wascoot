@@ -81,6 +81,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>getRentals</servlet-name>
+        <servlet-class>wascoot.servlet.ListRentalsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>getRentals</servlet-name>
+        <url-pattern>/rentals</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>getScooters</servlet-name>
         <servlet-class>wascoot.servlet.ListScooterServlet</servlet-class>
     </servlet>
