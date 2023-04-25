@@ -5,7 +5,7 @@
 <html lang="en">
     <head>
        <meta charset="utf-8">
-       <title>Administrator login</title>
+       <title>Welcome to WASCOOT</title>
     </head>
     <body>
 
@@ -18,10 +18,8 @@
             <button type="submit">Submit</button><br/>
 
         </form>
-        <input type=button onClick="location.href='../jsp/dashboard.jsp'" value='Login'>
+        <input type=button onClick="location.href='./jsp/homepage.jsp'" value='Fake Login'>
 
 
-        <br/><br/>
-        <input type=button onClick="location.href='../html/homepage.html'" value='home page'>
     </body>
 </html>
