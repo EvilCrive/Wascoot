@@ -42,11 +42,12 @@ import java.util.ArrayList;
          * @param con the connection to the database.
          */
         public SearchModelbyNameRR(final HttpServletRequest req, final HttpServletResponse res, Connection con) {
-            super(Actions.GET_Model_BY_NAme, req, res, con);
+            super(Actions.GET_Model_BY_Name, req, res, con);
         }
 
 
-        @Override
+    @Override
+
         protected void doServe() throws IOException {
 
             ArrayList<Model> el = null;
@@ -84,7 +85,7 @@ import java.util.ArrayList;
                     m.toJSON(res.getOutputStream());
                 }
             } catch (IndexOutOfBoundsException | NumberFormatException ex) {
-                LOGGER.warn("Cannot search name(s): wrong format for URI /name/model.", ex);
+              LOGGER.warn("Cannot search name(s): wrong format for URI /name/model.", ex);
 
                 m = new Message("Cannot search name(s): wrong format for URI /name/model/.", "E4A7",
                         ex.getMessage());
