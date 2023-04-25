@@ -35,6 +35,11 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
                 return;
             }
 
+            if (processCustomer(req, res)) {
+                return;
+            }
+
+
             // if none of the above process methods succeeds, it means an unknown resource has been requested
             LOGGER.warn("Unknown resource requested: %s.", req.getRequestURI());
 
@@ -63,7 +68,7 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
 
 
     /**
-     * Checks whether the request if for an {@link Student} resource and, in case, processes it.
+     * Checks whether the request if for an {@link Model} resource and, in case, processes it.
      *
      * @param req the HTTP request.
      * @param res the HTTP response.
@@ -165,6 +170,51 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
         }
 
 
+        return true;
+    }
+
+    private boolean processCustomer(final HttpServletRequest req, final HttpServletResponse res) throws Exception {
+
+        final String method = req.getMethod();
+
+        String path = req.getRequestURI();
+        Message m = null;
+
+
+        // the requested resource was not a customer
+        if (path.lastIndexOf("rest/customer/") <= 0) {
+            return false;
+        }
+
+
+        path = path.substring(path.lastIndexOf("customer/") + 9);
+//
+//        // I can have multiple paths. Split on "/"
+//        String[] splitted_path = path.split("/");
+
+        LOGGER.warn(path);
+        // the request URI is: /customer
+        // if method GET, list customer(s)
+        if (path.length() == 0) {
+
+            switch (method) {
+                case "GET":
+                    new CustomerRR(req, res, getConnection()).serve();
+                    break;
+                default:
+                    LOGGER.warn("Unsupported operation for URI /customer: %s.", method);
+
+                    m = new Message("Unsupported operation for URI /model.", "E4A5",
+                            String.format("Requested operation %s.", method));
+                    res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+                    m.toJSON(res.getOutputStream());
+                    break;
+            }
+        } else {
+            // IN THIS CASE I HAVE AN URI SUCH AS /rest/customer/{id_mode}
+            // we can use get method to retrieve the information about a specific customer
+
+        }
         return true;
     }
 }

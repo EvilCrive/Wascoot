@@ -1,6 +1,7 @@
 package wascoot.servlet;
 
 import wascoot.resource.*;
+import wascoot.rest.CustomerRR;
 import wascoot.rest.InsertModelRR;
 
 import jakarta.servlet.ServletException;
@@ -49,6 +50,8 @@ public final class RestManagerServlet extends AbstractDatabaseServlet {
             if (processModel(req, res)) {
                 return;
             }
+
+
 
             // if none of the above process methods succeeds, it means an unknow resource has been requested
             final Message m = new Message("Unknown resource requested.", "E4A6",
@@ -193,5 +196,8 @@ public final class RestManagerServlet extends AbstractDatabaseServlet {
         return true;
 
     }
+
+
+
 
 }
