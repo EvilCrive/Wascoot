@@ -39,6 +39,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>createScooterrack</servlet-name>
+        <servlet-class>wascoot.servlet.CreateScooterrackServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>createScooterrack</servlet-name>
+        <url-pattern>/create-scooterrack</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>dashboard</servlet-name>
         <servlet-class>wascoot.servlet.DashboardServlet</servlet-class>
     </servlet>
