@@ -22,7 +22,7 @@ public final class ListScootersDAO extends AbstractDAO<List<Scooter>> {
 
 
     /**
-     * Creates a new object for listing all the scooterracks.
+     * Creates a new object for listing all the scooter.
      *
      * @param con
      *            the connection to the database.
@@ -66,9 +66,9 @@ public final class ListScootersDAO extends AbstractDAO<List<Scooter>> {
     }
 
     /**
-     * Lists all the scooter racks in the database.
+     * Lists all the scooter in the database.
      *
-     * @return a list of {@code scooterrack} object.
+     * @return a list of {@code scooter} object.
      *
      * @throws SQLException
      *             if any error occurs while searching for scooterracks.
