@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function(event) {
-    getCustomerList();
+    getUsersList();
 });
 
 function getUsersList() {
@@ -8,27 +8,26 @@ function getUsersList() {
 }
 
 function getCustomerList(req){
-    if (req.readyState === XMLHttpRequest.DONE) {
-        if (req.status == 200) {
-             var jsonData = JSON.parse(req.responseText);
-             var customer = jsonData['customer'];
+      if (req.status == 200) {
+            var jsonData = JSON.parse(req.responseText);
+            var customers = jsonData['resource-list'];
 
             var hpcontent = "";
-            for(let i=0; i<customer.length; i++){
-                hpcontent += "<h1>"+sanitize(customer[i]['cf'])+"</h1>";
-                hpcontent += "<p>name: "+sanitize(customer[i]['email'])+"</p>";
-                hpcontent += "<p>surname: "+sanitize(customer[i]['surname'])+"</p>";
-                hpcontent += "<p>email: "+sanitize(customer[i]['email'])+"</p>";
-                hpcontent += "<p>sex: "+sanitize(customer[i]['sex'])+"</p>";
-                hpcontent += "<p>birthdate: "+sanitize(customer[i]['birthdate'])+"</p>";
-                hpcontent += "<p>postalCode: "+sanitize(customer[i]['postalCode'])+"</p>";
-                hpcontent += "<p>paymentType: "+sanitize(customer[i]['paymentType'])+"</p>";
+            for(let i=0; i<customers.length; i++){
+                  var customer = customers[i]['customer'];
+                  hpcontent += "<h1>"+sanitize(customer['cf'])+"</h1>";
+                  hpcontent += "<p>name: "+sanitize(customer['name'])+"</p>";
+                  hpcontent += "<p>surname: "+sanitize(customer['surname'])+"</p>";
+                  hpcontent += "<p>email: "+sanitize(customer['email'])+"</p>";
+                  hpcontent += "<p>sex: "+sanitize(customer['sex'])+"</p>";
+                  hpcontent += "<p>birthdate: "+sanitize(customer['birthdate'])+"</p>";
+                  hpcontent += "<p>postalCode: "+sanitize(customer['postalCode'])+"</p>";
+                  hpcontent += "<p>paymentType: "+sanitize(customer['paymentType'])+"</p>";
             }
             document.getElementById("customer-content").innerHTML = hpcontent;
-        }
-        else {
+      }
+      else {
             console.log(JSON.parse(httpRequest.responseText));
             alert("Problem processing the request");
-        }
-    }
+      }
 }
