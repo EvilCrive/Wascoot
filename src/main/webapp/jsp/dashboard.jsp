@@ -5,7 +5,9 @@
 <html lang="en">
 	<head>
 		<title>Dashboard</title>
+		 <script src="${pageContext.request.contextPath}/js/utils.js"></script>
 		 <script src="${pageContext.request.contextPath}/js/dashboard.js"></script>
+
 	</head>
 
 	<body>
