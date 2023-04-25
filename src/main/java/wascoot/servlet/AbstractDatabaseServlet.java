@@ -4,6 +4,7 @@ package wascoot.servlet;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.message.StringFormatterMessageFactory;
@@ -13,7 +14,10 @@ import javax.naming.NamingException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
+import wascoot.utils.ErrorCode;
+
 import javax.sql.DataSource;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -91,5 +95,10 @@ public abstract class AbstractDatabaseServlet extends HttpServlet {
             LOGGER.error("Unable to acquire the connection from the pool.", e);
             throw e;
         }
+    }
+
+    public void writeError(HttpServletResponse res, ErrorCode ec) throws IOException {
+        res.setStatus(ec.getHTTPCode());
+        res.getWriter().write(ec.toJSON().toString());
     }
 }

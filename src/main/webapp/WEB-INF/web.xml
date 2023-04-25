@@ -8,8 +8,68 @@
     <description> Minimal jsp example with rest architecture</description>
 
     <welcome-file-list>
-        <welcome-file>jsp/hello.jsp</welcome-file>
+        <welcome-file>html/homepage.html</welcome-file>
     </welcome-file-list>
+
+    <servlet>
+        <servlet-name>LoginAdministrator</servlet-name>
+        <servlet-class>wascoot.servlet.AdminLoginJspServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginAdministrator</servlet-name>
+        <url-pattern>/admin/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreateAdministratorPhoto</servlet-name>
+        <servlet-class>wascoot.servlet.CreateAdministratorServlet</servlet-class>
+        <multipart-config>
+            <max-file-size>1048576</max-file-size> <!-- 1 Mbyte -->
+            <max-request-size>1049600</max-request-size> <!-- 1 Mbyte + 1 Kbyte -->
+            <file-size-threshold>524288</file-size-threshold> <!-- 500 Kbyte -->
+        </multipart-config>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateAdministratorPhoto</servlet-name>
+        <url-pattern>/create-administrator-photo</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>CreateAdministratorNoPhoto</servlet-name>
+        <servlet-class>wascoot.servlet.CreateAdministratorNoPhotoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateAdministratorNoPhoto</servlet-name>
+        <url-pattern>/create-administrator-no-photo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoadAdministratorPhoto</servlet-name>
+        <servlet-class>wascoot.servlet.LoadAdministratorPhotoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoadAdministratorPhoto</servlet-name>
+        <url-pattern>/load-administrator-photo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SearchAdministratorById</servlet-name>
+        <servlet-class>wascoot.servlet.SearchAdministratorByIdServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchAdministratorById</servlet-name>
+        <url-pattern>/search-administrator-by-id</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SearchAdministratorByEmail</servlet-name>
+        <servlet-class>wascoot.servlet.SearchAdministratorByEmailServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchAdministratorByEmail</servlet-name>
+        <url-pattern>/search-administrator-by-email</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>getModel</servlet-name>
