@@ -81,6 +81,33 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>getScooters</servlet-name>
+        <servlet-class>wascoot.servlet.ListScooterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>getScooters</servlet-name>
+        <url-pattern>/scooters</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>updateScooter</servlet-name>
+        <servlet-class>wascoot.servlet.UpdateScooterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>updateScooter</servlet-name>
+        <url-pattern>/update-scooter</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>createScooter</servlet-name>
+        <servlet-class>wascoot.servlet.CreateScooterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>createScooter</servlet-name>
+        <url-pattern>/create-scooter</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>getScooterRacks</servlet-name>
         <servlet-class>wascoot.servlet.ListScooterrackServlet</servlet-class>
     </servlet>
