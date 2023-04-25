@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.List;
 public final class ListScooterracksRR extends AbstractRR {
     public ListScooterracksRR(HttpServletRequest req, HttpServletResponse res, Connection con) {
-        super(Actions.GET_ALL_SCOOTERRACKS,req, res, con);
+        super(Actions.LIST_SCOOTERRACKS,req, res, con);
     }
 
     @Override

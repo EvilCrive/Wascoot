@@ -1,7 +1,9 @@
 package wascoot.servlet;
 
 import wascoot.database.ScooterRackDatabase;
+import wascoot.resource.LogContext;
 import wascoot.resource.Scooterrack;
+import wascoot.resource.Actions;
 
 import wascoot.resource.Message;
 
@@ -36,6 +38,9 @@ public final class ListScooterrackServlet extends AbstractDatabaseServlet {
      */
     public void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
+
+        LogContext.setIPAddress(req.getRemoteAddr());
+        LogContext.setAction(Actions.LIST_SCOOTERRACKS);
 
         List<Scooterrack> el = null;
         Message m = null;

@@ -30,6 +30,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>updateScooterrack</servlet-name>
+        <servlet-class>wascoot.servlet.UpdateScooterrackServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>updateScooterrack</servlet-name>
+        <url-pattern>/update-scooterrack</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>dashboard</servlet-name>
         <servlet-class>wascoot.servlet.DashboardServlet</servlet-class>
     </servlet>
