@@ -63,7 +63,7 @@
   <button type="reset">Reset the form</button>
 </form>
 
-<button type="button" onclick="window.location.href='${pageContext.request.contextPath}/jsp/create-scooterrack-form.jsp';">Create</button>
+<button type="button" onclick="window.location.href='${pageContext.request.contextPath}/jsp/create-scooter-form.jsp';">Create</button>
 
 <a href="${pageContext.request.contextPath}/jsp/Menu.jsp">go back to the homepage</a>
 </body>
