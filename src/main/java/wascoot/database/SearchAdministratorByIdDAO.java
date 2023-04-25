@@ -41,7 +41,7 @@ public final class SearchAdministratorByIdDAO extends AbstractDAO<List<Administr
 		ResultSet rs = null;
 
 		// the results of the search
-		final List<Administrator> administrator = new ArrayList<Administrator>();
+		final List<Administrator> administrators = new ArrayList<Administrator>();
 
 		try {
 			pstmt = con.prepareStatement(STATEMENT);
@@ -50,7 +50,7 @@ public final class SearchAdministratorByIdDAO extends AbstractDAO<List<Administr
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				administrator.add(new Administrator(rs.getInt("id"), rs.getString("email"),
+				administrators.add(new Administrator(rs.getInt("id"), rs.getString("email"),
 						rs.getString("password"), null, "image/png"));
 			}
 
@@ -66,6 +66,6 @@ public final class SearchAdministratorByIdDAO extends AbstractDAO<List<Administr
 
 		}
 
-		this.outputParam = administrator;
+		this.outputParam = administrators;
 	}
 }
