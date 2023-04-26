@@ -18,7 +18,6 @@
             <button type="submit">Submit</button><br/>
 
         </form>
-        <input type=button onClick="location.href='./jsp/homepage.jsp'" value='Fake Login'>
 
 
     </body>

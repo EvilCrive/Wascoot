@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 
 public class AdminLoginDAO extends AbstractDAO<Administrator>  {
 
-    private static final String STATEMENT_ADMIN_INFO = "SELECT id FROM public.admin WHERE email=? AND password=?";
+    private static final String STATEMENT_ADMIN_INFO = "SELECT id, email, password FROM public.admin WHERE email=? AND password=?";
 
 
     private final Administrator administrator;

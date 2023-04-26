@@ -117,7 +117,7 @@ public class AdminLoginJspServlet extends AbstractDatabaseServlet {
                     session.setAttribute("email", administrator.getEmail());
                     // login credentials were correct: we redirect the user to the homepage with all the courses
                     // now the session is active and its data can used to change the homepage
-                    res.sendRedirect(req.getContextPath() + "/jsp/hello.jsp");
+                    res.sendRedirect(req.getContextPath() + "/jsp/homepage.jsp");
                     //res.sendRedirect(req.getContextPath()+"/html/homepage.html");
                     //req.getRequestDispatcher("/jsp/hello.jsp").forward(req, res);
                     //req.getRequestDispatcher("/html/login.html").forward(req, res);
