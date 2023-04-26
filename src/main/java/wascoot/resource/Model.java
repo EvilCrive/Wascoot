@@ -85,47 +85,6 @@ public class Model extends Resource {
     }
 
 
-
-
-    /* FOR REST API but commented coz didnt work
-
-
-    @Override
-    public final void toJSON(final OutputStream out) throws IOException {
-
-        final JsonGenerator jg = JSON_FACTORY.createGenerator(out);
-
-        jg.writeStartObject();
-
-        jg.writeFieldName("model");
-
-        jg.writeStartObject();
-
-        jg.writeStringField("name", name);
-
-        jg.writeStringField("brand", brand);
-
-        jg.writeStringField("battery_life", battery_life);
-
-        jg.writeNumberField("weight", weight);
-
-        jg.writeNumberField("height", height);
-
-        jg.writeNumberField("length", length);
-
-        jg.writeNumberField("depth", depth);
-
-        jg.writeNumberField("rate_per_min", rate_per_min);
-
-        jg.writeNumberField("rate_per_model", rate_per_model);
-
-        jg.writeEndObject();
-
-        jg.writeEndObject();
-
-        jg.flush();
-    }
-
     /**
      * Creates a {@code Model} from its JSON representation.
      *
@@ -188,6 +147,26 @@ public class Model extends Resource {
 
     @Override
     public void toJSON(OutputStream out) throws IOException {
+        final JsonGenerator jg = JSON_FACTORY.createGenerator(out);
 
+        jg.writeStartObject();
+
+        jg.writeFieldName("model");
+
+        jg.writeStartObject();
+
+        jg.writeStringField("name", name);
+
+        jg.writeStringField("brand", brand);
+
+        jg.writeStringField("batteryLife", batteryLife);
+
+        jg.writeNumberField("pricePerMin", pricePerMin);
+
+        jg.writeEndObject();
+
+        jg.writeEndObject();
+
+        jg.flush();
     }
 }

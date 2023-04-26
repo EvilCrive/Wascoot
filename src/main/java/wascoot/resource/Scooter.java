@@ -84,6 +84,30 @@ public class Scooter extends Resource {
 
     @Override
     public void toJSON(OutputStream out) throws IOException {
+        final JsonGenerator jg = JSON_FACTORY.createGenerator(out);
 
+        jg.writeStartObject();
+
+        jg.writeFieldName("scooter");
+
+        jg.writeStartObject();
+
+        jg.writeNumberField("id", id);
+
+        jg.writeStringField("dateOfPurchase", dateOfPurchase.toString());
+
+        jg.writeNumberField("kmTraveled", kmTraveled);
+
+        jg.writeStringField("model", model);
+
+        jg.writeNumberField("remainingBatteryLife", remainingBatteryLife);
+
+        jg.writeNumberField("idScooterrack", idScooterrack);
+
+        jg.writeEndObject();
+
+        jg.writeEndObject();
+
+        jg.flush();
     }
 }

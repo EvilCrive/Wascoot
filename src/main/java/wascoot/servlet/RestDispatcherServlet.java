@@ -39,6 +39,13 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
                 return;
             }
 
+            if (processScooter(req, res)) {
+                return;
+            }
+
+            if (processAdministrator(req, res)) {
+                return;
+            }
 
             // if none of the above process methods succeeds, it means an unknown resource has been requested
             LOGGER.warn("Unknown resource requested: %s.", req.getRequestURI());
@@ -83,12 +90,12 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
         Message m = null;
 
         // the requested resource was not a model
-        if (path.lastIndexOf("rest/model/") <= 0) {
+        if (path.lastIndexOf("rest/model") <= 0) {
             return false;
         }
 
 
-        path = path.substring(path.lastIndexOf("model/") + 6);
+        path = path.substring(path.lastIndexOf("model") + 5);
 //
 //        // I can have multiple paths. Split on "/"
 //        String[] splitted_path = path.split("/");
@@ -100,12 +107,8 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
 
             switch (method) {
                 case "GET":
-                    //new ListModelRR(req, res, getConnection()).serve();
+                    new ListModelRR(req, res, getConnection()).serve();
                     break;
-                case "POST":
-                    new InsertModelRR(req, res, getConnection()).serve();
-                case "DELETE":
-                    //new DeleteModelRR(req,res,getConnection()).serve();
                 default:
                     LOGGER.warn("Unsupported operation for URI /model: %s.", method);
 
@@ -126,17 +129,59 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
 
     }
 
+    private boolean processScooter(final HttpServletRequest req, final HttpServletResponse res) throws Exception {
+        final String method = req.getMethod();
+        String path = req.getRequestURI();
+        Message m = null;
+
+        // the requested resource was not a scooter
+        if (path.lastIndexOf("rest/scooter") <= 0) {
+            return false;
+        }
+
+        path = path.substring(path.lastIndexOf("scooter") + 7);
+//
+//        // I can have multiple paths. Split on "/"
+//        String[] splitted_path = path.split("/");
+
+        LOGGER.warn(path);
+        // the request URI is: /model
+        // if method GET, list model
+        if (path.length() == 0) {
+
+            switch (method) {
+                case "GET":
+                    new ListScooterRR(req, res, getConnection()).serve();
+                    break;
+                default:
+                    LOGGER.warn("Unsupported operation for URI /scooter: %s.", method);
+
+                    m = new Message("Unsupported operation for URI /scooter.", "E4A5",
+                            String.format("Requested operation %s.", method));
+                    res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+                    m.toJSON(res.getOutputStream());
+                    break;
+            }
+        } else {
+            // IN THIS CASE I HAVE AN URI SUCH AS /rest/scooter/{id_mode}
+            // we can use get method to retrieve the information about a specific scooter
+
+        }
+
+
+        return true;
+    }
     private boolean processScooterRack(final HttpServletRequest req, final HttpServletResponse res) throws Exception {
         final String method = req.getMethod();
         String path = req.getRequestURI();
         Message m = null;
 
         // the requested resource was not a scooterrack
-        if (path.lastIndexOf("rest/scooterrack/") <= 0) {
+        if (path.lastIndexOf("rest/scooterrack") <= 0) {
             return false;
         }
 
-        path = path.substring(path.lastIndexOf("scooterrack/") + 12);
+        path = path.substring(path.lastIndexOf("scooterrack") + 11);
 //
 //        // I can have multiple paths. Split on "/"
 //        String[] splitted_path = path.split("/");
@@ -151,9 +196,9 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
                     new ListScooterracksRR(req, res, getConnection()).serve();
                     break;
                 default:
-                    LOGGER.warn("Unsupported operation for URI /model: %s.", method);
+                    LOGGER.warn("Unsupported operation for URI /scooterrack: %s.", method);
 
-                    m = new Message("Unsupported operation for URI /model.", "E4A5",
+                    m = new Message("Unsupported operation for URI /scooterrack.", "E4A5",
                             String.format("Requested operation %s.", method));
                     res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
                     m.toJSON(res.getOutputStream());
@@ -180,7 +225,7 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
             return false;
         }
 
-        path = path.substring(path.lastIndexOf("customer/") + 9);
+        path = path.substring(path.lastIndexOf("customer") + 8);
 //
 //        // I can have multiple paths. Split on "/"
 //        String[] splitted_path = path.split("/");
@@ -276,6 +321,8 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
                     }
                 }
             } else if (path.contains("id")) {
+                ///administrator/id/{id}
+
                 path = path.substring(path.lastIndexOf("id") + 1);
 
                 if (path.length() == 0 || path.equals("/")) {
