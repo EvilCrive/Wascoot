@@ -221,7 +221,7 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
         Message m = null;
 
         // the requested resource was not a customer
-        if (path.lastIndexOf("rest/customer/") <= 0) {
+        if (path.lastIndexOf("rest/customer") <= 0) {
             return false;
         }
 
