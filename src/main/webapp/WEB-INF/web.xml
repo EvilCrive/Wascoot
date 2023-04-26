@@ -8,7 +8,7 @@
     <description> Minimal jsp example with rest architecture</description>
 
     <welcome-file-list>
-        <welcome-file>html/homepage.html</welcome-file>
+        <welcome-file>/jsp/login-page.jsp</welcome-file>
     </welcome-file-list>
 
     <servlet>
@@ -19,6 +19,15 @@
         <servlet-name>LoginAdministrator</servlet-name>
         <url-pattern>/admin/login</url-pattern>
     </servlet-mapping>
+
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>wascoot.filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/jsp/homepage.jsp</url-pattern>
+    </filter-mapping>
 
     <servlet>
         <servlet-name>CreateAdministratorPhoto</servlet-name>
