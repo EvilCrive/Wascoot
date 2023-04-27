@@ -90,12 +90,12 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
         Message m = null;
 
         // the requested resource was not a model
-        if (path.lastIndexOf("rest/model") <= 0) {
+        if (path.lastIndexOf("rest/model/") <= 0) {
             return false;
         }
 
 
-        path = path.substring(path.lastIndexOf("model") + 5);
+        path = path.substring(path.lastIndexOf("model/") + 6);
 //
 //        // I can have multiple paths. Split on "/"
 //        String[] splitted_path = path.split("/");
@@ -135,11 +135,11 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
         Message m = null;
 
         // the requested resource was not a scooter
-        if (path.lastIndexOf("rest/scooter") <= 0) {
+        if (path.lastIndexOf("rest/scooter/") <= 0) {
             return false;
         }
 
-        path = path.substring(path.lastIndexOf("scooter") + 7);
+        path = path.substring(path.lastIndexOf("scooter/") + 8);
 //
 //        // I can have multiple paths. Split on "/"
 //        String[] splitted_path = path.split("/");
@@ -177,11 +177,11 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
         Message m = null;
 
         // the requested resource was not a scooterrack
-        if (path.lastIndexOf("rest/scooterrack") <= 0) {
+        if (path.lastIndexOf("rest/scooterrack/") <= 0) {
             return false;
         }
 
-        path = path.substring(path.lastIndexOf("scooterrack") + 11);
+        path = path.substring(path.lastIndexOf("scooterrack/") + 12);
 //
 //        // I can have multiple paths. Split on "/"
 //        String[] splitted_path = path.split("/");
@@ -225,7 +225,7 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
             return false;
         }
 
-        path = path.substring(path.lastIndexOf("customer") + 9);
+        path = path.substring(path.lastIndexOf("customer/") + 9);
 //
 //        // I can have multiple paths. Split on "/"
 //        String[] splitted_path = path.split("/");
