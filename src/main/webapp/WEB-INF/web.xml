@@ -170,6 +170,52 @@
         <servlet-class>wascoot.servlet.RestDispatcherServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>ListPaymentMethod</servlet-name>
+        <servlet-class>wascoot.servlet.ListPaymentMethod</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ListPaymentMethod</servlet-name>
+        <url-pattern>/paymentmethod</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdatePaymentMethod</servlet-name>
+        <servlet-class>wascoot.servlet.UpdatePaymentMethodServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdatePaymentMethod</servlet-name>
+        <url-pattern>/update-paymentmethod</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ListSubscription</servlet-name>
+        <servlet-class>wascoot.servlet.ListSubscriptionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListSubscription</servlet-name>
+        <url-pattern>/list-subscription</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateSubscription</servlet-name>
+        <servlet-class>wascoot.servlet.UpdateSubscriptionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateSubscription</servlet-name>
+        <url-pattern>/update-subscription</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreateSubscription</servlet-name>
+        <servlet-class>wascoot.servlet.CreateSubscriptionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateSubscription</servlet-name>
+        <url-pattern>/create-subscription</url-pattern>
+    </servlet-mapping>
+
     <resource-ref>
         <description>Connection pool to the database</description>
         <res-ref-name>jdbc/wascoot</res-ref-name>

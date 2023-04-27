@@ -13,6 +13,16 @@
     <br/><br/>
     <input type=button onClick="location.href='../jsp/model.jsp'" value='Enter model'>
     <br/><br/>
+    <form method="GET" action="<c:url value="/paymentmethod"/>">
+
+        <button type="submit">Enter Payment Method</button><br/>
+    </form>
+    <br/>
+    <form method="GET" action="<c:url value="/list-subscription"/>">
+
+        <button type="submit">Enter Subscription</button><br/>
+    </form>
+    <br/>
     <input type=button onClick="location.href='../jsp/rental-list.jsp'" value='Enter rental list'>
     <br/><br/>
     <input type=button onClick="location.href='../jsp/scooterrack-list.jsp'" value='Enter scooterrack list'>
@@ -25,7 +35,7 @@
         Administrator
     </h1>
     <form method="POST" action="../html/create-administrator-form.html">
-        <label for="id">create administrator:</label><br/>
+        <label>create administrator:</label><br/>
         <button type="submit">without photo</button>
     </form>
 
@@ -34,7 +44,7 @@
     </form>
 
     <form method="POST" action="../jsp/search-administrator-Id-form.jsp">
-        <label for="id">Forget Password:</label><br/>
+        <label>Forget Password:</label><br/>
         <button type="submit">Enter ID </button>
     </form>
 
