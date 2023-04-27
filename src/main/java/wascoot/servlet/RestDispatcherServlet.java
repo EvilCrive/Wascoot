@@ -221,11 +221,11 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
         Message m = null;
 
         // the requested resource was not a customer
-        if (path.lastIndexOf("rest/customer") <= 0) {
+        if (path.lastIndexOf("rest/customer/") <= 0) {
             return false;
         }
 
-        path = path.substring(path.lastIndexOf("customer") + 8);
+        path = path.substring(path.lastIndexOf("customer") + 9);
 //
 //        // I can have multiple paths. Split on "/"
 //        String[] splitted_path = path.split("/");
@@ -248,8 +248,6 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
                     break;
             }
         } else {
-            // IN THIS CASE I HAVE AN URI SUCH AS /rest/customer/{id_mode}
-            // we can use get method to retrieve the information about a specific customer
 
         }
         return true;
