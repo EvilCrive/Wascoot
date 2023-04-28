@@ -244,6 +244,15 @@
         <url-pattern>/list-customer</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ModelServlet</servlet-name>
+        <servlet-class>wascoot.servlet.ModelServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModelServlet</servlet-name>
+        <url-pattern>/model/*</url-pattern>
+    </servlet-mapping>
+
     <resource-ref>
         <description>Connection pool to the database</description>
         <res-ref-name>jdbc/wascoot</res-ref-name>

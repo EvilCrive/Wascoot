@@ -38,7 +38,7 @@
 </c:if>
 
 <h1>Update Employee</h1>
-<form method="POST" action="<c:url value="/update-model"/>">
+<form method="POST" action="<c:url value="/model/update/"/>">
     <label for="nameID">name:</label>
     <input id="nameID" name="name" type="text"/><br/>
 

@@ -13,7 +13,7 @@
   <body>
 	<h1>Create Model Form</h1>
 	
-	<form method="POST" action="<c:url value="/create-model"/>">
+	<form method="POST" action="<c:url value="/model/insert/"/>">
 		<label for="nameID">name:</label>
 		<input id="nameID" name="name" type="text"/><br/>
 		
