@@ -29,7 +29,7 @@ public final class UpdateAdministratorDAO extends AbstractDAO<Administrator> {
 	/**
 	 * The SQL statement to be executed
 	 */
-	private static final String STATEMENT = "UPDATE public.admin SET id = ?, email = ?, password = ? WHERE email = ? RETURNING *";
+	private static final String UPDATE_ADMINISTRATOR = "UPDATE public.admin SET id = ?, email = ?, password = ? WHERE email = ? RETURNING *";
 
 	/**
 	 * The administrator to be updated in the database
@@ -65,7 +65,7 @@ public final class UpdateAdministratorDAO extends AbstractDAO<Administrator> {
 		Administrator e = null;
 
 		try {
-			pstmt = con.prepareStatement(STATEMENT);
+			pstmt = con.prepareStatement(UPDATE_ADMINISTRATOR);
 			pstmt.setInt(1, administrator.getId());
 			pstmt.setString(2, administrator.getEmail());
 			pstmt.setString(3, administrator.getPassword());

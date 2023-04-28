@@ -30,7 +30,7 @@ public final class ListAdministratorDAO extends AbstractDAO<List<Administrator>>
 	/**
 	 * The SQL statement to be executed
 	 */
-	private static final String STATEMENT = "SELECT id, email, password FROM pubic.admin";
+	private static final String LIST_ADMINISTRATOR = "SELECT id, email, password FROM pubic.admin";
 
 	/**
 	 * Creates a new object for listing all the administrator.
@@ -51,7 +51,7 @@ public final class ListAdministratorDAO extends AbstractDAO<List<Administrator>>
 		final List<Administrator> administrators = new ArrayList<Administrator>();
 
 		try {
-			pstmt = con.prepareStatement(STATEMENT);
+			pstmt = con.prepareStatement(LIST_ADMINISTRATOR);
 
 			rs = pstmt.executeQuery();
 
