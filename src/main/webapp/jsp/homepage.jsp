@@ -31,7 +31,7 @@
     <button type="submit">Enter Subscription</button><br/>
 </form>
 <br/>
-<input type=button onClick="location.href='../jsp/rental-list.jsp'" value='Enter rental list'>
+<input type=button onClick="location.href='../jsp/manage-pages/rental-list.jsp'" value='Enter rental list'>
 <br/><br/>
 <form method="GET" action="<c:url value="/scooterrack/list/"/>">
 
@@ -58,7 +58,7 @@
 </form>
 
 <form method="POST" action="../jsp/search-administrator-Id-form.jsp">
-    <label>Forget Password:</label><br/>
+    <label>Search Admin:</label><br/>
     <button type="submit">Enter ID </button>
 </form>
 

@@ -80,7 +80,7 @@
         <url-pattern>/search-administrator-by-email</url-pattern>
     </servlet-mapping>
 
-    <servlet>
+    <!--<servlet>
         <servlet-name>getModel</servlet-name>
         <servlet-class>wascoot.servlet.ListModelServlet</servlet-class>
     </servlet>
@@ -96,7 +96,7 @@
     <servlet-mapping>
         <servlet-name>UpdateModel</servlet-name>
         <url-pattern>/update-model</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
 
     <servlet>
         <servlet-name>getRentals</servlet-name>
@@ -107,7 +107,7 @@
         <url-pattern>/rentals</url-pattern>
     </servlet-mapping>
 
-    <servlet>
+    <!--<servlet>
         <servlet-name>getScooters</servlet-name>
         <servlet-class>wascoot.servlet.ListScooterServlet</servlet-class>
     </servlet>
@@ -160,7 +160,7 @@
         <servlet-name>createScooterrack</servlet-name>
         <url-pattern>/create-scooterrack</url-pattern>
     </servlet-mapping>
-
+-->
     <servlet>
         <servlet-name>dashboard</servlet-name>
         <servlet-class>wascoot.servlet.DashboardServlet</servlet-class>
@@ -179,7 +179,7 @@
         <servlet-class>wascoot.servlet.RestDispatcherServlet</servlet-class>
     </servlet>
 
-    <servlet>
+    <!--<servlet>
         <servlet-name>ListPaymentMethod</servlet-name>
         <servlet-class>wascoot.servlet.ListPaymentMethod</servlet-class>
     </servlet>
@@ -233,7 +233,7 @@
     <servlet-mapping>
         <servlet-name>CreateModel</servlet-name>
         <url-pattern>/create-model</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
 
     <servlet>
         <servlet-name>ListCustomer</servlet-name>

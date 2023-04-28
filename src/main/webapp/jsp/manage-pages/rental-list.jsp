@@ -4,17 +4,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>get scooters</title>
+    <title>get Rentals</title>
 </head>
 
 <body>
-<h1>get scooters</h1>
+<h1>get rentals</h1>
 <hr/>
 
 <!-- display the message -->
 <c:import url="/jsp/include/show-message.jsp"/>
 
-<!-- display the list of found model, if any -->
+<!-- display the list of found rental, if any -->
 <c:if test='${not empty rentalsList}'>
     <table>
         <thead>

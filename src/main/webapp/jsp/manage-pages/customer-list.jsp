@@ -14,7 +14,7 @@
 <!-- display the message -->
 <c:import url="/jsp/include/show-message.jsp"/>
 
-<!-- display the list of found model, if any -->
+<!-- display the list of found customer, if any -->
 <c:if test='${not empty customerList}'>
     <table>
         <thead>

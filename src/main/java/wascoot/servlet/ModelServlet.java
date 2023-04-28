@@ -45,7 +45,7 @@ public class ModelServlet extends AbstractDatabaseServlet{
                 req.setAttribute("modelList", el);
                 req.setAttribute("message", m);
 
-                req.getRequestDispatcher("/jsp/model-list.jsp").forward(req, res);
+                req.getRequestDispatcher("/jsp/manage-pages/model-list.jsp").forward(req, res);
                 break;
             default:
                 writeError(res, ErrorCode.OPERATION_UNKNOWN);
@@ -101,7 +101,7 @@ public class ModelServlet extends AbstractDatabaseServlet{
 
             e = new Model(name, brand, Time.valueOf(batteryLife), pricePerMin);
 
-            // creates a new object for accessing the database and stores the employee
+            // creates a new object for accessing the database and stores the model
             new CreateModelDAO(getConnection(), e).access();
 
             m = new Message(String.format("Model %s successfully created.", name));
@@ -136,7 +136,7 @@ public class ModelServlet extends AbstractDatabaseServlet{
             req.setAttribute("newModel", e);
             req.setAttribute("message", m);
 
-            req.getRequestDispatcher("/jsp/create-model-result.jsp").forward(req, res);
+            req.getRequestDispatcher("/jsp/manage-pages/create-model-result.jsp").forward(req, res);
         } catch(Exception ex) {
             LOGGER.error(new StringFormattedMessage("Unable to send response when creating model %s.", name), ex);
             throw ex;
@@ -182,11 +182,11 @@ public class ModelServlet extends AbstractDatabaseServlet{
 
         } catch (NumberFormatException ex) {
             m = new Message(
-                    "Cannot create the employee. Invalid input parameters: badge, age, and salary must be integer.",
+                    "Cannot update the model. Invalid input parameters: Price per min should be double.",
                     "E100", ex.getMessage());
 
             LOGGER.error(
-                    "Cannot create the employee. Invalid input parameters: badge, age, and salary must be integer.",
+                    "Cannot create the model. Invalid input parameters: Price per min should be double.",
                     ex);
         } catch (SQLException ex) {
             m = new Message("Cannot create the model: unexpected error while accessing the database.", "E200",
@@ -202,7 +202,7 @@ public class ModelServlet extends AbstractDatabaseServlet{
             req.setAttribute("message", m);
 
             // forwards the control to the create-employee-result JSP
-            req.getRequestDispatcher("/jsp/update-model.jsp").forward(req, res);
+            req.getRequestDispatcher("/jsp/manage-pages/update-model.jsp").forward(req, res);
         } catch(Exception ex) {
             LOGGER.error(new StringFormattedMessage("Unable to send response when updating model %s.", name), ex);
             throw ex;

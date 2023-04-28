@@ -9,8 +9,9 @@
     </head>
     <body>
     <h1>
-        MAMMMA MIA !!
+        Wascoot Login Page
     </h1>
+    <h3>Please Enter your Email and Password to login</h3>
         <form method="POST" action="<c:url value="/admin/login/"/>">
             <label for="email">Email:</label>
             <input  id="email" name="email" type="text"

@@ -55,7 +55,7 @@
     <button type="reset">Reset the form</button>
 </form>
 
-<button type="button" onclick="window.location.href='${pageContext.request.contextPath}/jsp/create-model-form.jsp';">Create</button>
+<button type="button" onclick="window.location.href='create-model-form.jsp';">Create</button>
 
 <a href="${pageContext.request.contextPath}/jsp/homepage.jsp">go back to the homepage</a>
 </body>

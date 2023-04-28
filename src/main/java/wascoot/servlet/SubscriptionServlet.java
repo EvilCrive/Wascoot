@@ -47,8 +47,7 @@ public class SubscriptionServlet extends AbstractDatabaseServlet{
                 req.setAttribute("subscriptionList", el);
                 req.setAttribute("message", m);
 
-                // forwards the control to the search-employee-result JSP
-                req.getRequestDispatcher("/jsp/subscription-list.jsp").forward(req, res);
+                req.getRequestDispatcher("/jsp/manage-pages/subscription-list.jsp").forward(req, res);
                 break;
             default:
                 writeError(res, ErrorCode.OPERATION_UNKNOWN);
@@ -122,10 +121,10 @@ public class SubscriptionServlet extends AbstractDatabaseServlet{
                     ex);
         } catch (SQLException ex) {
 
-                m = new Message("Cannot create the employee: unexpected error while accessing the database.", "E200",
+                m = new Message("Cannot create the subscription: unexpected error while accessing the database.", "E200",
                         ex.getMessage());
 
-                LOGGER.error("Cannot create the employee: unexpected error while accessing the database.", ex);
+                LOGGER.error("Cannot create the subscription: unexpected error while accessing the database.", ex);
 
         }
 
@@ -135,7 +134,7 @@ public class SubscriptionServlet extends AbstractDatabaseServlet{
             req.setAttribute("message", m);
 
             // forwards the control to the create-employee-result JSP
-            req.getRequestDispatcher("/jsp/create-subscription-result.jsp").forward(req, res);
+            req.getRequestDispatcher("/jsp/manage-pages/create-subscription-result.jsp").forward(req, res);
         } catch(Exception ex) {
             LOGGER.error(new StringFormattedMessage("Unable to send response when creating subscription %s.", type), ex);
             throw ex;
@@ -203,8 +202,7 @@ public class SubscriptionServlet extends AbstractDatabaseServlet{
             req.setAttribute("updateSubscription", e);
             req.setAttribute("message", m);
 
-            // forwards the control to the create-employee-result JSP
-            req.getRequestDispatcher("/jsp/update-subscription.jsp").forward(req, res);
+            req.getRequestDispatcher("/jsp/manage-pages/update-subscription.jsp").forward(req, res);
         } catch(Exception ex) {
             LOGGER.error(new StringFormattedMessage("Unable to send response when updating subscription %d.", id), ex);
             throw ex;

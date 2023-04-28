@@ -47,7 +47,7 @@ public class PaymentMethodServlet extends AbstractDatabaseServlet {
                 req.setAttribute("paymentList", el);
                 req.setAttribute("message", m);
 
-                req.getRequestDispatcher("/jsp/payment-list.jsp").forward(req, res);
+                req.getRequestDispatcher("/jsp/manage-pages/payment-list.jsp").forward(req, res);
                 break;
             default:
                 writeError(res, ErrorCode.OPERATION_UNKNOWN);
@@ -107,7 +107,7 @@ public class PaymentMethodServlet extends AbstractDatabaseServlet {
                     req.setAttribute("updatePaymentMethod", e);
                     req.setAttribute("message", m);
 
-                    req.getRequestDispatcher("/jsp/update-paymentmethod.jsp").forward(req, res);
+                    req.getRequestDispatcher("/jsp/manage-pages/update-paymentmethod.jsp").forward(req, res);
                 } catch(Exception ex) {
                     LOGGER.error(new StringFormattedMessage("Unable to send response when updating payment method %s.", type), ex);
                     throw ex;

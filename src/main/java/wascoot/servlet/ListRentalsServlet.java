@@ -63,7 +63,7 @@ public final class ListRentalsServlet extends AbstractDatabaseServlet {
         req.setAttribute("message", m);
 
         // forwards the control to the rentals.jsp
-        req.getRequestDispatcher("/jsp/rental-list.jsp").forward(req, res);
+        req.getRequestDispatcher("/jsp/manage-pages/rental-list.jsp").forward(req, res);
 
     }
 }

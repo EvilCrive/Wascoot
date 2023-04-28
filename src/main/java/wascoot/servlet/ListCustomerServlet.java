@@ -23,7 +23,7 @@ public class ListCustomerServlet extends AbstractDatabaseServlet{
 
         try {
 
-            // creates a new object for accessing the database and searching the models
+            // creates a new object for accessing the database and searching the customers
             el = new CustomerDAO(getConnection()).access().getOutputParam();
 
             m = new Message("Customers successfully searched.");
@@ -36,12 +36,10 @@ public class ListCustomerServlet extends AbstractDatabaseServlet{
                     "E200", ex.getMessage());
         }
 
-        // stores the model list and the message as a request attribute
         req.setAttribute("customerList", el);
         req.setAttribute("message", m);
 
-        // forwards the control to the search-employee-result JSP
-        req.getRequestDispatcher("/jsp/customer-list.jsp").forward(req, res);
+        req.getRequestDispatcher("/jsp/manage-pages/customer-list.jsp").forward(req, res);
 
     }
 }
