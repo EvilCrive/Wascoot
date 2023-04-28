@@ -21,7 +21,7 @@
     <button type="submit">Enter Customer</button><br/>
 </form>
 <br/>
-<form method="GET" action="<c:url value="/paymentmethod"/>">
+<form method="GET" action="<c:url value="/paymentmethod/list/"/>">
 
     <button type="submit">Enter Payment Method</button><br/>
 </form>

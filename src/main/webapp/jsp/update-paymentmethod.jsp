@@ -16,7 +16,7 @@
 <!-- display the message -->
 <c:import url="/jsp/include/show-message.jsp"/>
 
-<!-- display the just created employee, if any and no errors -->
+<!-- display the just updated payment method, if any and no errors -->
 <c:if test='${not empty updatePaymentMethod && !message.error}'>
     <ul>
         <li>type: <c:out value="${updatePaymantMethod.type}"/></li>

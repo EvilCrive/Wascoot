@@ -280,6 +280,15 @@
         <url-pattern>/scooter/*</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>PaymentMethodServlet</servlet-name>
+        <servlet-class>wascoot.servlet.PaymentMethodServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PaymentMethodServlet</servlet-name>
+        <url-pattern>/paymentmethod/*</url-pattern>
+    </servlet-mapping>
+
     <resource-ref>
         <description>Connection pool to the database</description>
         <res-ref-name>jdbc/wascoot</res-ref-name>

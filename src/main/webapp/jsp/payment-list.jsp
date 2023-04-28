@@ -14,7 +14,7 @@
 <!-- display the message -->
 <c:import url="/jsp/include/show-message.jsp"/>
 
-<!-- display the list of found model, if any -->
+<!-- display the list of found payment method, if any -->
 <c:if test='${not empty paymentList}'>
     <table>
         <thead>
@@ -37,21 +37,21 @@
 </c:if>
 
 <h1>Update Payment Method</h1>
-<form method="POST" action="<c:url value="/update-paymentmethod"/>">
+<form method="POST" action="<c:url value="/paymentmethod/update/"/>">
     <label for="typeID">type:</label>
-    <select name="type" id="typeID">
+    <%--<select name="type" id="typeID">
         <option value="CreditCard">Credit Card</option>
         <option value="VisaDebit">Visa Debit</option>
         <option value="Paypal">Paypal</option>
-    </select>
-    <%--<input id="typeID" name="type" type="text"/><br/>--%>
+    </select>--%>
+    <input id="typeID" name="type" type="text"/><br/>
 
     <label for="activationID">activation:</label>
-    <select name="activation" id="activationID">
+    <%--<select name="activation" id="activationID">
         <option value="Inactive">Inactive</option>
         <option value="Active">Active</option>
-    </select>
-    <%--<input id="activationID" name="activation" type="text"/><br/>--%>
+    </select>--%>
+    <input id="activationID" name="activation" type="text"/><br/>
 
     <button type="submit">Update</button><br/>
     <button type="reset">Reset the form</button>
