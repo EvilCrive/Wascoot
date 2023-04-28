@@ -40,10 +40,10 @@ Scooter racks & Structures designed to store and secure scooters when not in use
 Rental & This entity represents the process of renting a scooter. & 
 \begin{itemize}
     \vspace{-1em}
-    \item \textbf{ID}: id of a specific scooter rental transaction;
+    \item \textbf{ID}: ID of a specific scooter rental transaction;
     \item \textbf{Date and hour collection}: date and hour in which a scooter is rented;
     \item \textbf{Date and hour delivery}: date and hour in which a scooter is returned  and delivered;
-    \item \textbf{Km traveled}: km traveled by the customer with this rental.
+    \item \textbf{Km traveled}: km traveled by the customer with this rental scooter.
  \end{itemize} & ID \\\hline
 
 Customer & People registered in the application that can rent a scooter. & 
@@ -55,7 +55,7 @@ Customer & People registered in the application that can rent a scooter. &
     \item \textbf{Surname}; The surname of customer;
     \item \textbf{Postal code}; The address of postal of customer;
     \item \textbf{Sex}: customer's gender;
-    \item \textbf{Birthdate}: date when the customer was born on. 
+    \item \textbf{Birthdate}: customer's birthdate. 
 \end{itemize} & CF \\\hline
 
 Admin & Entity representing the information regarding application's admins. & 
@@ -63,22 +63,22 @@ Admin & Entity representing the information regarding application's admins. &
     \vspace{-1em}
     \item \textbf{ID}; Admin identifier; 
     \item \textbf{Profile image}: admin's profile picture;
-    \item \textbf{Email}; The email address of admin
-    \item \textbf{Password}. Secret access to admin; 
+    \item \textbf{Email}; Email address of the  administrator
+    \item \textbf{Password}. Secret access to the administrator; 
 \end{itemize} & ID \\\hline
 
 Payment Method & Entity that lists the various types of payment methods. & 
 \begin{itemize}
     \vspace{-1em}
-    \item \textbf{ID}; Payment methods identifier; 
+    \item \textbf{ID}; Payment method's identifier; 
     \item \textbf{Type}: name of the payment method.
 \end{itemize} & ID \\\hline
 
-Payment without Subscription & Entity representing the one time payments. & 
+Payment without Subscription & Entity representing the one-time payments. & 
 \begin{itemize}
     \vspace{-1em}
     \item \textbf{ID}; The one-time payment identifier; 
-    \item \textbf{Price}: price payed at the checkout after using the scooter;
+    \item \textbf{Price}: price paid at the checkout after using the scooter;
     \item \textbf{Date and hour}: when the payment has been received.
 \end{itemize}
 & ID \\\hline
@@ -91,23 +91,23 @@ Payment with Subscription &  Entity representing payments &
 \end{itemize}
 & ID \\\hline
 
-Used Subscription & & 
+Used Subscription & This entity represents the information about the subscription process that the user has selected and paid for  & 
 \begin{itemize}
     \vspace{-1em}
     \item \textbf{ID}; Usage identifier;
-    \item \textbf{Remaining time of usage}: how much time until the subscription ends;
-    \item \textbf{Activation date}: when the subscription started;
-    \item \textbf{Expiration date}: when the subscription ends;
+    \item \textbf{Remaining time of usage}: The amount of time left until the subscription ends;
+    \item \textbf{Activation date}: The date when the subscription was purchased;
+    \item \textbf{Expiration date}: The date when the subscription ends;
     \item \textbf{Remaining unlocks}: how many other times can the customer unlock a scooter today.
 \end{itemize}
 & ID \\\hline
 
-Subscription & & 
+Subscription & This entity represents the information about the subscription process that allows the user to rent the scooters for a certain time and price & 
 \begin{itemize}
     \vspace{-1em}
     \item \textbf{ID}; Subscription identifier;
-    \item \textbf{Fixed Price}: price of this subscription;
-    \item \textbf{Type}: subscriptions' types differ based on how many days it covers (examples: 1day, 30days, 6months, ...) 
+    \item \textbf{Fixed Price}: price of the subscription;
+    \item \textbf{Type}: subscriptions' types differ based on how many days it covers (examples: 1-day, 30-days, 6-months, …) 
     \item \textbf{Daily Unlocks}: how many times can the customer unlock scooters in a day with this subscription.
     \item \textbf{Validity per Day}: how many hours can the customer use scooters with this subscription.
 \end{itemize}
