@@ -252,6 +252,15 @@
         <servlet-name>ModelServlet</servlet-name>
         <url-pattern>/model/*</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SubscriptionServlet</servlet-name>
+        <servlet-class>wascoot.servlet.SubscriptionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SubscriptionServlet</servlet-name>
+        <url-pattern>/subscription/*</url-pattern>
+    </servlet-mapping>
 
     <resource-ref>
         <description>Connection pool to the database</description>

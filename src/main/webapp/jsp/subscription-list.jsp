@@ -39,7 +39,7 @@
 </c:if>
 
 <h1>Update Subscription</h1>
-<form method="POST" action="<c:url value="/update-subscription"/>">
+<form method="POST" action="<c:url value="/subscription/update/"/>">
 
     <label for="idID">ID:</label>
     <input id="idID" name="id" type="text"/><br/>

@@ -13,7 +13,7 @@
 <body>
 <h1>Create Subscription Form</h1>
 
-<form method="POST" action="<c:url value="/create-subscription"/>">
+<form method="POST" action="<c:url value="/subscription/insert/"/>">
 
     <label for="typeID">type:</label>
     <input id="typeID" name="type" type="text"/><br/>
