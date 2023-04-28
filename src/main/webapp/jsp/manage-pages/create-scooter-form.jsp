@@ -12,7 +12,7 @@
 
 <body>
 <h1>Create Scooter Form</h1>
-<form method="POST" action="<c:url value="/create-scooter"/>">
+<form method="POST" action="<c:url value="/scooter/insert/"/>">
   <label for="dateOfPurchaseID">date of purchase:</label>
   <input id="dateOfPurchaseID" name="date_of_purchase" type="text"/><br/>
 

@@ -39,7 +39,7 @@
 </c:if>
 
 <h1>Update Subscription</h1>
-<form method="POST" action="<c:url value="/update-subscription"/>">
+<form method="POST" action="<c:url value="/subscription/update/"/>">
 
     <label for="idID">ID:</label>
     <input id="idID" name="id" type="text"/><br/>
@@ -60,7 +60,7 @@
     <button type="reset">Reset the form</button>
 </form>
 
-<button type="button" onclick="window.location.href='${pageContext.request.contextPath}/jsp/create-subscription-form.jsp';">Create</button>
+<button type="button" onclick="window.location.href='create-subscription-form.jsp';">Create</button>
 
 <a href="${pageContext.request.contextPath}/jsp/homepage.jsp">go back to the homepage</a>
 </body>

@@ -37,7 +37,7 @@ function searchAdministratorById() {
 
 	console.log("Id: %s.", id);
 
-	const url = "http://localhost:8080/administrator-rest-ajax-1.00/rest/administrator/id/" + id;
+	const url = "http://localhost:8080/wascoot-1.0/rest/administrator/id/" + id;
 
 	console.log("Request URL: %s.", url)
 

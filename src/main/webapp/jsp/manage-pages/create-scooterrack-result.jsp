@@ -26,6 +26,6 @@
   </ul>
 </c:if>
 
-<a href="${pageContext.request.contextPath}/jsp/Menu.jsp">go back to the homepage</a>
+<a href="${pageContext.request.contextPath}/jsp/homepage.jsp">go back to the homepage</a>
 </body>
 </html>

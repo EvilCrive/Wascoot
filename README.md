@@ -10,7 +10,7 @@ The application provides data analytics and reporting features, allowing the com
 | Crivellari	| Alberto	| 2061934	 |
 | Gharehzad		| Shiva	| 2043889  |
 | Huang	| Borwoei	| 2044019	 |
-| kuijpers        | nickclauder	| 2043889	 |
-| Mada | Sreeshalini | 2043889  |
-| Niknamhesar | Sara | 2043889  |
+| kuijpers        | nickclauder	| 2096202	 |
+| Mada | Sreeshalini | 2049543  |
+| Niknamhesar | Sara | 2085443  |
 | Tahan		| Paria		| 2043889	 |

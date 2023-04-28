@@ -27,4 +27,5 @@ public abstract class Resource {
      * @throws IOException if something goes wrong during the parsing.
      */
     public abstract void toJSON(final OutputStream out) throws IOException;
+
 }

@@ -69,7 +69,7 @@ public final class SearchAdministratorByIdRR extends AbstractRR {
 				LOGGER.info("Administrator(s) successfully searched by id %d.", id);
 
 				res.setStatus(HttpServletResponse.SC_OK);
-				new ResourceList(el).toJSON(res.getOutputStream());
+				new ResourceList2(el).toJSON(res.getOutputStream());
 			} else { // it should not happen
 				LOGGER.error("Fatal error while searching administrator(s).");
 

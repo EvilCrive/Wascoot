@@ -36,7 +36,7 @@ function searchAdministratorByEmail() {
 
 	console.log("Email: %s.", email);
 
-	const url = "http://localhost:8080/administrator-rest-ajax-1.00/rest/administrator/email/" + email;
+	const url = "http://localhost:8080/wascoot-1.0/rest/administrator/email/" + email;
 
 	console.log("Request URL: %s.", url)
 

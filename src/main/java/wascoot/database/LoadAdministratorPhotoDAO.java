@@ -14,7 +14,7 @@ public final class LoadAdministratorPhotoDAO extends AbstractDAO<Administrator> 
 	/**
 	 * The SQL statement to be executed
 	 */
-	private static final String STATEMENT = "SELECT * FROM public.admin  WHERE id = ?";
+	private static final String LOAD_ADMINISTRATOR_PHOTO = "SELECT * FROM public.admin  WHERE id = ?";
 
 	/**
 	 * The id of the Administrator
@@ -36,7 +36,7 @@ public final class LoadAdministratorPhotoDAO extends AbstractDAO<Administrator> 
 		Administrator e = null;
 
 		try {
-			pstmt = con.prepareStatement(STATEMENT);
+			pstmt = con.prepareStatement(LOAD_ADMINISTRATOR_PHOTO);
 			pstmt.setInt(1, id);
 
 			rs = pstmt.executeQuery();

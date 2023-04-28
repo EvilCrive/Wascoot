@@ -24,27 +24,26 @@ Since: 1.0
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Update Scooterrack</title>
+    <title>Update Employee</title>
 </head>
 
 <body>
-<h1>Update Scooterrack</h1>
+<h1>Update Employee</h1>
 <hr/>
 
 <!-- display the message -->
 <c:import url="/jsp/include/show-message.jsp"/>
 
-<!-- display the just created scooterrack, if any and no errors -->
-<c:if test='${not empty updateScooterrack && !message.error}'>
-  <ul>
-    <li>name: <c:out value="${updateScooterrack.id}"/></li>
-    <li>total parking spots: <c:out value="${updateScooterrack.totalParkingSpots}"/></li>
-    <li>available parking spots: <c:out value="${updateScooterrack.availableParkingSpots}"/></li>
-    <li>postal code: <c:out value="${updateScooterrack.postalCode}"/></li>
-    <li>address: <c:out value="${updateScooterrack.address}"/></li>
-  </ul>
+<!-- display the just created employee, if any and no errors -->
+<c:if test='${not empty updateModel && !message.error}'>
+    <ul>
+        <li>name: <c:out value="${updateModel.name}"/></li>
+        <li>brand: <c:out value="${updateModel.brand}"/></li>
+        <li>battery life: <c:out value="${updateModel.batteryLife}"/></li>
+        <li>price per min: <c:out value="${updateModel.pricePerMin}"/></li>
+    </ul>
 </c:if>
 
-<a href="${pageContext.request.contextPath}/jsp/Menu.jsp">go back to the homepage</a>
+<a href="${pageContext.request.contextPath}/jsp/homepage.jsp">go back to the homepage</a>
 </body>
 </html>

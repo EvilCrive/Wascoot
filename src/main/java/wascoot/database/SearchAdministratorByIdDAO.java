@@ -16,7 +16,7 @@ public final class SearchAdministratorByIdDAO extends AbstractDAO<List<Administr
 	/**
 	 * The SQL statement to be executed
 	 */
-	private static final String STATEMENT = "SELECT id, email, password FROM public.admin WHERE id= ?";
+	private static final String SEARCH_ADMINISTRATOR_BY_ID = "SELECT id, email, password FROM public.admin WHERE id= ?";
 
 	/**
 	 * The ID of the administrator
@@ -44,17 +44,16 @@ public final class SearchAdministratorByIdDAO extends AbstractDAO<List<Administr
 		final List<Administrator> administrators = new ArrayList<Administrator>();
 
 		try {
-			pstmt = con.prepareStatement(STATEMENT);
+			pstmt = con.prepareStatement(SEARCH_ADMINISTRATOR_BY_ID);
 			pstmt.setInt(1, id);
 
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				administrators.add(new Administrator(rs.getInt("id"), rs.getString("email"),
-						rs.getString("password"), null, "image/png"));
+				administrators.add(new Administrator(rs.getInt("id"), rs.getString("email"), rs.getString("password")));
 			}
 
-			LOGGER.info("Administrator(s) successfully listed.");
+			LOGGER.info("Administrator successfully listed.");
 		} finally {
 			if (rs != null) {
 				rs.close();
