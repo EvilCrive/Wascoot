@@ -16,7 +16,7 @@ public final class SearchAdministratorByEmailDAO extends AbstractDAO<List<Admini
 	/**
 	 * The SQL statement to be executed
 	 */
-	private static final String STATEMENT = "SELECT *FROM public.admin WHERE email= ?";
+	private static final String STATEMENT = "SELECT id, email, password FROM public.admin WHERE email= ?";
 
 	/**
 	 * The email of the administrator
@@ -46,7 +46,7 @@ public final class SearchAdministratorByEmailDAO extends AbstractDAO<List<Admini
 
 			while (rs.next()) {
 				administrators.add(new Administrator(rs.getInt("id"), rs.getString("email"),
-						rs.getString("password"), null, "image/png"));
+						rs.getString("password")));
 			}
 
 			LOGGER.info("Administrator successfully returned.");

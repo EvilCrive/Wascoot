@@ -29,20 +29,14 @@ public class Administrator extends AbstractResource{
 	 */
 	public final String password;
 
-	public final byte[] photo;
+	public byte[] photo;
 
 	/**
-	 * The MIME media type of photo of the employee
+	 * The MIME media type of photo of the Administrator
 	 */
-	public final String photoMediaType;
+	public String photoMediaType;
 
-	/**
-	 * The salary of the Administrator
-	 */
-
-	/**
-	 * Creates a new employee
-	 * 
+	/*
 	 * @param id
 	 *            the id of the Administrator
 	 * @param email
@@ -50,14 +44,18 @@ public class Administrator extends AbstractResource{
 	 * @param password
 	 *            the password of the Administrator.
 	 */
-	public Administrator(final int id, final String email, final String password, final byte[] photo, final String photoMediaType) {
+	public Administrator(final int id, final String email, final String password, byte[] photo, String photoMediaType) {
 		this.id = id;
 		this.email = email;
 		this.password = password;
 		this.photo = photo;
 		this.photoMediaType = photoMediaType;
 	}
-
+	public Administrator(final int id, final String email, final String password) {
+		this.id = id;
+		this.email = email;
+		this.password = password;
+	}
 
 	/**
 	 * Returns the id of the Administrator.
@@ -169,6 +167,6 @@ public class Administrator extends AbstractResource{
 			throw e;
 		}
 
-		return new Administrator(jId, jEmail, jPassword, null, null);
+		return new Administrator(jId, jEmail, jPassword);
 	}
 }

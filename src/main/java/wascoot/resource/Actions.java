@@ -17,7 +17,6 @@ public class Actions {
 
 
     public static final String READ_ADMINISTRATOR = "READ_ADMINISTRATOR";
-
     public static final String UPDATE_ADMINISTRATOR = "UPDATE_ADMINISTRATOR";
     public static final String DELETE_ADMINISTRATOR = "DELETE_ADMINISTRATOR";
     public static final String LIST_ADMINISTRATOR = "LIST_ADMINISTRATOR";

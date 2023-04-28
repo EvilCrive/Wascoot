@@ -43,7 +43,6 @@
 
 
 
-		<input type=button onClick="location.href='./jsp/login-page.jsp'" value='Login'>
-		<input type=button onClick="location.href='./html/homepage.html'" value='back to home page'>
+		<input type=button onClick="location.href='./jsp/homepage.jsp'" value='back to home page'>
 	</body>
 </html>

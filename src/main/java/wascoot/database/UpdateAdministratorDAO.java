@@ -73,7 +73,7 @@ public final class UpdateAdministratorDAO extends AbstractDAO<Administrator> {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				e = new Administrator(rs.getInt("id"), rs.getString("email"), rs.getString("password"), null, null);
+				e = new Administrator(rs.getInt("id"), rs.getString("email"), rs.getString("password"));
 
 				LOGGER.info("Administrator %d successfully updated in the database.", e.getId());
 			}

@@ -50,11 +50,10 @@ public final class SearchAdministratorByIdDAO extends AbstractDAO<List<Administr
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				administrators.add(new Administrator(rs.getInt("id"), rs.getString("email"),
-						rs.getString("password"), null, "image/png"));
+				administrators.add(new Administrator(rs.getInt("id"), rs.getString("email"), rs.getString("password")));
 			}
 
-			LOGGER.info("Administrator(s) successfully listed.");
+			LOGGER.info("Administrator successfully listed.");
 		} finally {
 			if (rs != null) {
 				rs.close();

@@ -15,7 +15,7 @@ public final class CreateAdministratorDAO extends AbstractDAO<Administrator>  {
 	/**
 	 * The SQL statement to be executed
 	 */
-	private static final String STATEMENT = "INSERT INTO public.admin (id, email, password, photo, photoMediaType) VALUES (?, ?, ?, ?, ?)";
+	private static final String STATEMENT = "INSERT INTO public.admin (id, email, password) VALUES (?, ?,  ?)";
 
 	/**
 	/**
@@ -52,8 +52,6 @@ public final class CreateAdministratorDAO extends AbstractDAO<Administrator>  {
 			pstmt.setInt(1, administrator.getId());
 			pstmt.setString(2, administrator.getEmail());
 			pstmt.setString(3, administrator.getPassword());
-			pstmt.setBytes(4, administrator.getPhoto());
-			pstmt.setString(5, administrator.getPhotoMediaType());
 
 			pstmt.execute();
 

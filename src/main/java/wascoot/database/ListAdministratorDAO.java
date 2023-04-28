@@ -57,7 +57,7 @@ public final class ListAdministratorDAO extends AbstractDAO<List<Administrator>>
 
 			while (rs.next()) {
 				administrators.add(new Administrator(rs.getInt("id"), rs.getString("email"),
-						rs.getString("password"), null, "image/png"));
+						rs.getString("password")));
 			}
 
 			LOGGER.info("Administrator(s) successfully listed.");
