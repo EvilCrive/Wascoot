@@ -38,7 +38,7 @@ public final class UpdateScooterServlet extends AbstractDatabaseServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         LogContext.setIPAddress(req.getRemoteAddr());
-        LogContext.setAction(Actions.UPDATE_SCOOTERRACK);
+        LogContext.setAction(Actions.UPDATE_SCOOTER);
 
         Integer id = null;
         java.util.Date dateOfPurchase = null;

@@ -40,7 +40,7 @@
 </c:if>
 
 <h1>Update Scooter</h1>
-<form method="POST" action="<c:url value="/update-scooter"/>">
+<form method="POST" action="<c:url value="/scooter/update/"/>">
   <label for="ID">ID:</label>
   <input id="ID" name="id" type="text"/><br/>
 
@@ -65,6 +65,6 @@
 
 <button type="button" onclick="window.location.href='${pageContext.request.contextPath}/jsp/create-scooter-form.jsp';">Create</button>
 
-<a href="${pageContext.request.contextPath}/jsp/Menu.jsp">go back to the homepage</a>
+<a href="${pageContext.request.contextPath}/jsp/homepage.jsp">go back to the homepage</a>
 </body>
 </html>
