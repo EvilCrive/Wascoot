@@ -39,7 +39,7 @@
 </c:if>
 
 <h1>Update Scooterrack</h1>
-<form method="POST" action="<c:url value="/update-scooterrack"/>">
+<form method="POST" action="<c:url value="/scooterrack/update/"/>">
   <label for="ID">ID:</label>
   <input id="ID" name="id" type="text"/><br/>
 
@@ -61,6 +61,6 @@
 
 <button type="button" onclick="window.location.href='${pageContext.request.contextPath}/jsp/create-scooterrack-form.jsp';">Create</button>
 
-<a href="${pageContext.request.contextPath}/jsp/Menu.jsp">go back to the homepage</a>
+<a href="${pageContext.request.contextPath}/jsp/homepage.jsp.jsp">go back to the homepage</a>
 </body>
 </html>

@@ -13,7 +13,7 @@
 <body>
 <h1>Create Scooterrack Form</h1>
 
-<form method="POST" action="<c:url value="/create-scooterrack"/>">
+<form method="POST" action="<c:url value="/scooterrack/insert/"/>">
   <label for="totalParkingSpotsID">total parking spots:</label>
   <input id="totalParkingSpotsID" name="total_parking_spots" type="text"/><br/>
 

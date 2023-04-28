@@ -32,9 +32,12 @@
 </form>
 <br/>
 <input type=button onClick="location.href='../jsp/rental-list.jsp'" value='Enter rental list'>
-<br/><br/>
-<input type=button onClick="location.href='../jsp/scooterrack-list.jsp'" value='Enter scooterrack list'>
-<br/><br/>
+<br/>
+<form method="GET" action="<c:url value="/scooterrack/list/"/>">
+
+    <button type="submit">Enter Subscription</button><br/>
+</form>
+<br/>
 <input type=button onClick="location.href='../jsp/scooter-list.jsp'" value='Enter scooter list'>
 
 

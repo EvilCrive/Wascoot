@@ -262,6 +262,15 @@
         <url-pattern>/subscription/*</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ScooterrackServlet</servlet-name>
+        <servlet-class>wascoot.servlet.ScooterrackServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ScooterrackServlet</servlet-name>
+        <url-pattern>/scooterrack/*</url-pattern>
+    </servlet-mapping>
+
     <resource-ref>
         <description>Connection pool to the database</description>
         <res-ref-name>jdbc/wascoot</res-ref-name>
