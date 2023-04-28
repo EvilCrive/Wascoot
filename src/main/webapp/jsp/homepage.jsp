@@ -33,7 +33,7 @@
         <button type="submit">with photo</button><br/><br/><br/>
     </form>
 
-    <form method="POST" action="../jsp/search-administrator-id-form.jsp">
+    <form method="POST" action="../jsp/search-administrator-Id-form.jsp">
         <label for="id">Forget Password:</label><br/>
         <button type="submit">Enter ID </button>
     </form>

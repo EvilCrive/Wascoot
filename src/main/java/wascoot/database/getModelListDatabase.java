@@ -2,10 +2,7 @@ package wascoot.database;
 
 import wascoot.resource.Model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +50,7 @@ public final class getModelListDatabase {
 
             while (rs.next()) {
                 models.add(new Model(rs.getString("name"), rs
-                        .getString("brand"), rs.getString("battery_life"), rs.getInt("price_per_model")));
+                        .getString("brand"), Time.valueOf(rs.getString("battery_life")), rs.getInt("price_per_model")));
             }
         } finally {
             if (rs != null) {

@@ -28,7 +28,7 @@ public final class ListModelDAO extends AbstractDAO<List<Model>> {
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                models.add(new Model(rs.getString("name"), rs.getString("brand"), rs.getString("battery_life"),
+                models.add(new Model(rs.getString("name"), rs.getString("brand"), Time.valueOf(rs.getString("battery_life")),
                         rs.getDouble("price_per_min")));
             }
 

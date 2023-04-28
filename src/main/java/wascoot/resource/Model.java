@@ -3,6 +3,7 @@ package wascoot.resource;
 import com.fasterxml.jackson.core.*;
 
 import java.io.*;
+import java.sql.Time;
 
 
 public class Model extends Resource {
@@ -19,7 +20,8 @@ public class Model extends Resource {
     /**
      * The battery life of a model
      */
-    private final String batteryLife;
+    //private final String batteryLife;
+    private final Time batteryLife;
 
 
     /**
@@ -41,7 +43,7 @@ public class Model extends Resource {
      * @param pricePerMin
      *            the price_per_min a model.
      */
-    public Model(final String name, final String brand, final String batteryLife, final double pricePerMin) {
+    public Model(final String name, final String brand, final Time batteryLife, final double pricePerMin) {
         this.name = name;
         this.brand = brand;
         this.batteryLife = batteryLife;
@@ -71,7 +73,7 @@ public class Model extends Resource {
      *
      * @return the battery life of the model.
      */
-    public final String getBatteryLife() {
+    public final Time getBatteryLife() {
         return batteryLife;
     }
 
@@ -101,7 +103,7 @@ public class Model extends Resource {
         // the fields read from JSON
         String jName = null;
         String jBrand = null;
-        String jBattery_life = null;
+        Time jBattery_life = null;
         double jPrice_per_min = -1.0;
 
         final JsonParser jp = JSON_FACTORY.createParser(in);
@@ -131,7 +133,7 @@ public class Model extends Resource {
                         break;
                     case "battery_life":
                         jp.nextToken();
-                        jBattery_life = jp.getText();
+                        jBattery_life = Time.valueOf(jp.getText());
                         break;
                     case "price_per_min":
                         jp.nextToken();
@@ -159,7 +161,7 @@ public class Model extends Resource {
 
         jg.writeStringField("brand", brand);
 
-        jg.writeStringField("batteryLife", batteryLife);
+        jg.writeStringField("batteryLife", batteryLife.toString());
 
         jg.writeNumberField("pricePerMin", pricePerMin);
 

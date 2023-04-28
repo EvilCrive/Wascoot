@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-    <display-name> Model get all</display-name>
-    <description> Minimal jsp example with rest architecture</description>
+    <display-name> Wascoot Web Application</display-name>
+    <description> Backend part of Wascoot web application HW1</description>
 
     <welcome-file-list>
         <welcome-file>/jsp/login-page.jsp</welcome-file>
@@ -82,11 +82,20 @@
 
     <servlet>
         <servlet-name>getModel</servlet-name>
-        <servlet-class>wascoot.servlet.getModelServlet</servlet-class>
+        <servlet-class>wascoot.servlet.ListModelServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>getModel</servlet-name>
-        <url-pattern>/model</url-pattern>
+        <url-pattern>/list-model</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateModel</servlet-name>
+        <servlet-class>wascoot.servlet.UpdateModelServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateModel</servlet-name>
+        <url-pattern>/update-model</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -169,6 +178,71 @@
         <servlet-name>RestDispatcherServlet</servlet-name>
         <servlet-class>wascoot.servlet.RestDispatcherServlet</servlet-class>
     </servlet>
+
+    <servlet>
+        <servlet-name>ListPaymentMethod</servlet-name>
+        <servlet-class>wascoot.servlet.ListPaymentMethod</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ListPaymentMethod</servlet-name>
+        <url-pattern>/paymentmethod</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdatePaymentMethod</servlet-name>
+        <servlet-class>wascoot.servlet.UpdatePaymentMethodServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdatePaymentMethod</servlet-name>
+        <url-pattern>/update-paymentmethod</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ListSubscription</servlet-name>
+        <servlet-class>wascoot.servlet.ListSubscriptionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListSubscription</servlet-name>
+        <url-pattern>/list-subscription</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateSubscription</servlet-name>
+        <servlet-class>wascoot.servlet.UpdateSubscriptionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateSubscription</servlet-name>
+        <url-pattern>/update-subscription</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreateSubscription</servlet-name>
+        <servlet-class>wascoot.servlet.CreateSubscriptionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateSubscription</servlet-name>
+        <url-pattern>/create-subscription</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreateModel</servlet-name>
+        <servlet-class>wascoot.servlet.CreateModelServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CreateModel</servlet-name>
+        <url-pattern>/create-model</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ListCustomer</servlet-name>
+        <servlet-class>wascoot.servlet.ListCustomerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListCustomer</servlet-name>
+        <url-pattern>/list-customer</url-pattern>
+    </servlet-mapping>
 
     <resource-ref>
         <description>Connection pool to the database</description>
