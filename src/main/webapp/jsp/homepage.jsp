@@ -11,8 +11,16 @@
 
     <input type=button onClick="location.href='../jsp/dashboard.jsp'" value='Enter dashboard'>
     <br/><br/>
-    <input type=button onClick="location.href='../jsp/model.jsp'" value='Enter model'>
-    <br/><br/>
+    <form method="GET" action="<c:url value="/list-model"/>">
+
+        <button type="submit">Enter Model</button><br/>
+    </form>
+    <br/>
+    <form method="GET" action="<c:url value="/list-customer"/>">
+
+        <button type="submit">Enter Customer</button><br/>
+    </form>
+    <br/>
     <form method="GET" action="<c:url value="/paymentmethod"/>">
 
         <button type="submit">Enter Payment Method</button><br/>

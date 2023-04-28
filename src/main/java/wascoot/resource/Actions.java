@@ -15,6 +15,8 @@ public class Actions {
     public static final String UPDATE_PAYMENT_METHOD = "UPDATE_PAYMENT_METHOD";
     public static final String CREATE_SUBSCRIPTION = "CREATE_SUBSCRIPTION";
     public static final String UPDATE_SUBSCRIPTION = "UPDATE_SUBSCRIPTION";
+    public static final String CREATE_MODEL = "CREATE_MODEL";
+    public static final String UPDATE_MODEL = "UPDATE_MODEL";
 
     public static final String GET_ALL_CUSTOMERS= "GET_ALL_CUSTOMERS";
 
