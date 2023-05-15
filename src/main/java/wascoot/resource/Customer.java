@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public class Customer extends Resource{
+public class Customer extends AbstractResource{
 
     private final String cf;
 
@@ -59,7 +59,7 @@ public class Customer extends Resource{
         return paymentType;
     }
 
-    public void toJSON(OutputStream out) throws IOException {
+    public void writeJSON(OutputStream out) throws IOException {
 
         final JsonGenerator jg = JSON_FACTORY.createGenerator(out);
 
@@ -91,4 +91,5 @@ public class Customer extends Resource{
 
         jg.flush();
     }
+
 }

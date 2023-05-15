@@ -26,7 +26,7 @@ import org.apache.logging.log4j.message.StringFormatterMessageFactory;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public abstract class AbstractResource implements Resource2 {
+public abstract class AbstractResource implements Resource {
 
 	/**
 	 * A LOGGER available for all the subclasses.

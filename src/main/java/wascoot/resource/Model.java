@@ -6,7 +6,7 @@ import java.io.*;
 import java.sql.Time;
 
 
-public class Model extends Resource {
+public class Model extends AbstractResource {
     /**
      * The identifier of the model PK
      */
@@ -148,7 +148,7 @@ public class Model extends Resource {
 
 
     @Override
-    public void toJSON(OutputStream out) throws IOException {
+    public void writeJSON(OutputStream out) throws IOException {
         final JsonGenerator jg = JSON_FACTORY.createGenerator(out);
 
         jg.writeStartObject();

@@ -69,7 +69,7 @@ public final class SearchAdministratorByEmailRR extends AbstractRR {
 				LOGGER.info("Administrator(s) successfully searched by email %s.", email);
 
 				res.setStatus(HttpServletResponse.SC_OK);
-				new ResourceList2(el).toJSON(res.getOutputStream());
+				new ResourceList(el).toJSON(res.getOutputStream());
 			} else { // it should not happen
 				LOGGER.error("Fatal error while searching administrator(s).");
 

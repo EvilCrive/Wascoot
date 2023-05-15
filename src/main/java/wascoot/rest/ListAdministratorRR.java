@@ -22,7 +22,7 @@ import wascoot.database.ListAdministratorDAO;
 import wascoot.resource.Actions;
 import wascoot.resource.Administrator;
 import wascoot.resource.Message;
-import wascoot.resource.ResourceList2;
+import wascoot.resource.ResourceList;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -65,7 +65,7 @@ public final class ListAdministratorRR extends AbstractRR {
 				LOGGER.info("Administrator(s) successfully listed.");
 
 				res.setStatus(HttpServletResponse.SC_OK);
-				new ResourceList2(el).toJSON(res.getOutputStream());
+				new ResourceList(el).toJSON(res.getOutputStream());
 			} else { // it should not happen
 				LOGGER.error("Fatal error while listing administrator(s).");
 

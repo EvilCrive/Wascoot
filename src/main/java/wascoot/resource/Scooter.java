@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.*;
 import java.io.*;
 import java.sql.Date;
 
-public class Scooter extends Resource {
+public class Scooter extends AbstractResource {
     /**
      * The identifier of the scooter
      */
@@ -83,7 +83,7 @@ public class Scooter extends Resource {
     }
 
     @Override
-    public void toJSON(OutputStream out) throws IOException {
+    public void writeJSON(OutputStream out) throws IOException {
         final JsonGenerator jg = JSON_FACTORY.createGenerator(out);
 
         jg.writeStartObject();

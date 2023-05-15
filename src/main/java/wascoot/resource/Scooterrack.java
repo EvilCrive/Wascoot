@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.*;
 
 import java.io.*;
 
-public class Scooterrack extends Resource {
+public class Scooterrack extends AbstractResource {
     /**
      * The identifier of the scooter rack (PK)
      */
@@ -100,7 +100,7 @@ public class Scooterrack extends Resource {
     }
 
     @Override
-    public void toJSON(OutputStream out) throws IOException {
+    public void writeJSON(OutputStream out) throws IOException {
 
         final JsonGenerator jg = JSON_FACTORY.createGenerator(out);
 

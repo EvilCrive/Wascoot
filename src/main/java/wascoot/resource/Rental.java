@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.*;
 import java.io.*;
 import java.sql.Date;
 
-public class Rental extends Resource {
+public class Rental extends AbstractResource {
     private final int id;
     private final Date dateHourDelivery;
     private final Date dateHourCollection;
@@ -54,7 +54,7 @@ public class Rental extends Resource {
     }
 
     @Override
-    public void toJSON(OutputStream out) throws IOException {
+    public void writeJSON(OutputStream out) throws IOException {
 
     }
 }
