@@ -8,8 +8,8 @@
               factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
               driverClassName="org.postgresql.Driver"
               url="jdbc:postgresql://localhost:5432/wascoot"
-              username="postgres"
-              password="ecam123"
+              username="wascoot"
+              password="wascoot"
 
               testOnBorrow="true"
               validationQuery="SELECT 1"
