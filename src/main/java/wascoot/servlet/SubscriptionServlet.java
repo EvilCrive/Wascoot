@@ -18,8 +18,18 @@ import java.sql.SQLException;
 import java.sql.Time;
 import java.util.List;
 
+/**
+ * Subscription servlet
+ */
 public class SubscriptionServlet extends AbstractDatabaseServlet{
 
+    /**
+     * doGet method
+     * @param req   HTTP request from client
+     * @param res  HTTP response from server
+     * @throws ServletException
+     * @throws IOException
+     */
     public void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
         String op = req.getRequestURI();
@@ -56,6 +66,13 @@ public class SubscriptionServlet extends AbstractDatabaseServlet{
         }
     }
 
+    /**
+     * doPost method
+     * @param req   HTTP request from client
+     * @param res  HTTP response from server
+     * @throws ServletException
+     * @throws IOException
+     */
     public void doPost(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
 

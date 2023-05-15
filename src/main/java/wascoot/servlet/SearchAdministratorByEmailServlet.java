@@ -16,9 +16,19 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Servlet that provide the feature of :
+ * 		Search administrators by email
+ */
 public final class SearchAdministratorByEmailServlet extends AbstractDatabaseServlet {
 
-
+	/**
+	 * doPost method, actually does the search
+	 * @param req request from client
+	 * @param res response from server
+	 * @throws IOException
+	 * @throws ServletException
+	 */
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 
 		LogContext.setIPAddress(req.getRemoteAddr());

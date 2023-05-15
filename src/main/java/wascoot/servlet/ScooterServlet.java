@@ -19,8 +19,18 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+/**
+ * Servlet that provides features for scooter resource : add, edit and list
+ */
 public class ScooterServlet extends AbstractDatabaseServlet{
 
+    /**
+     * List scooters if url is correct
+     * @param req
+     * @param res
+     * @throws ServletException
+     * @throws IOException
+     */
     public void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
         String op = req.getRequestURI();
@@ -66,6 +76,13 @@ public class ScooterServlet extends AbstractDatabaseServlet{
 
     }
 
+    /**
+     * Provides features of add and edit for scooters
+     * @param req
+     * @param res
+     * @throws ServletException
+     * @throws IOException
+     */
     public void doPost(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
 
@@ -87,6 +104,13 @@ public class ScooterServlet extends AbstractDatabaseServlet{
 
     }
 
+    /**
+     * Adds a scooter in the database.
+     * @param req
+     * @param res
+     * @throws IOException
+     * @throws ServletException
+     */
     private void insertOperation(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 
         LogContext.setIPAddress(req.getRemoteAddr());
@@ -156,6 +180,13 @@ public class ScooterServlet extends AbstractDatabaseServlet{
         }
     }
 
+    /**
+     * Updates a scooter
+     * @param req
+     * @param res
+     * @throws IOException
+     * @throws ServletException
+     */
     private void updateOperation(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 
         LogContext.setIPAddress(req.getRemoteAddr());

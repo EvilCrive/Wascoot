@@ -1,5 +1,7 @@
 package wascoot.database;
 
+import wascoot.resource.Rental;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,14 +9,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RentalDatabase {
+public class RentalDatabase extends AbstractDAO<Rental> {
 
     private static final String STATEMENT = "select scooterrack_collection , count(scooterrack_collection) as ct from rental group by scooterrack_collection order by ct desc";
 
-    private final Connection con;
-
     public RentalDatabase(Connection con) {
-        this.con = con;
+        super(con);
+    }
+
+    @Override
+    protected void doAccess() throws Exception {
+
     }
 
 

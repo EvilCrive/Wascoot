@@ -11,6 +11,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class that provide the functionality of searching by email, among administrators
+ */
 public final class SearchAdministratorByEmailDAO extends AbstractDAO<List<Administrator>> {
 
 	/**
@@ -24,6 +27,9 @@ public final class SearchAdministratorByEmailDAO extends AbstractDAO<List<Admini
 	private final String email;
 
 
+	/**
+	 * Creates the object to search administrators by email
+	 */
 	public SearchAdministratorByEmailDAO(final Connection con, final String email) {
 		super(con);
 		this.email = email;

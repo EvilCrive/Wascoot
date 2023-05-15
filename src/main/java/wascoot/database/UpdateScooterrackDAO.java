@@ -7,12 +7,26 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Updates a scooterrack in the database
+ */
 public final class UpdateScooterrackDAO extends AbstractDAO<Scooterrack>{
 
+    /**
+     * The SQL statement to be executed
+     */
     private static final String STATEMENT = "UPDATE public.scooterracks SET id=?, total_parking_spots=?, available_parking_spots=?, postalcode=?, address=? WHERE id=? RETURNING *";
 
+    /**
+     * Scooter object with information for the update
+     */
     private final Scooterrack scooterrack;
 
+    /**
+     * Creates the object to update a scooterrack
+     * @param con   connection to DB
+     * @param s  object with information for the update
+     */
     public UpdateScooterrackDAO(final Connection con, final Scooterrack s) {
         super(con);
 

@@ -9,7 +9,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 
-
+/**
+ * Inserts a new administrator in the database.
+ */
 public final class CreateAdministratorDAO extends AbstractDAO<Administrator>  {
 
 	/**

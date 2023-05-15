@@ -13,9 +13,18 @@ import wascoot.utils.ErrorCode;
 import java.io.IOException;
 import java.sql.SQLException;
 
-
+/**
+ * Admin Login Servlet
+ */
 @WebServlet(name = "AdminLoginJspServlet", value = "/admin/*")
 public class AdminLoginJspServlet extends AbstractDatabaseServlet {
+    /**
+     * provide login feature
+     * @param request   HTTP request from client
+     * @param response  HTTP response from server
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String op = request.getRequestURI();
@@ -36,6 +45,13 @@ public class AdminLoginJspServlet extends AbstractDatabaseServlet {
         }
     }
 
+    /**
+     * doPost method
+     * @param request   HTTP request from client
+     * @param response  HTTP response from server
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String op = request.getRequestURI();

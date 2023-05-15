@@ -11,10 +11,19 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Reads all payment methods from database.
+ */
 public final class ListPaymentMethodDAO extends AbstractDAO<List<PaymentMethod>> {
-
+    /**
+     * The SQL statement to be executed.
+     */
     private static final String STATEMENT = "SELECT ID, type, Activation FROM public.paymentmethod";
 
+    /**
+     * Creates a new object to read all payment methods.
+     * @param con connection to DB
+     */
     public ListPaymentMethodDAO(final Connection con){
         super(con);
     }

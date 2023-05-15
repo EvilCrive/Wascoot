@@ -23,7 +23,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
+/**
+ * Updates a given administrator
+ */
 public final class UpdateAdministratorDAO extends AbstractDAO<Administrator> {
 
 	/**
@@ -37,7 +39,7 @@ public final class UpdateAdministratorDAO extends AbstractDAO<Administrator> {
 	private final Administrator administrator;
 
 	/**
-	 * Creates a new object for updat an administrator.
+	 * Creates a new object to update an administrator.
 	 * 
 	 * @param con
 	 *            the connection to the database.

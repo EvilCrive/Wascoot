@@ -9,7 +9,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
 
-
+/**
+ * Dispatches the request to the proper REST resource.
+ *
+ * @author Nicola Ferro (ferro@dei.unipd.it)
+ * @version 1.00
+ * @since 1.00
+ */
 public final class RestDispatcherServlet extends AbstractDatabaseServlet {
 
     /**
@@ -129,6 +135,14 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
 
     }
 
+    /**
+     * Checks whether the request is for an {@link Scooter} resource and, in case, processes it.
+     *
+     * @param req the HTTP request.
+     * @param res the HTTP response.
+     * @return {@code true} if the request was for an {@code Scooter}; {@code false} otherwise.
+     * @throws Exception if any error occurs.
+     */
     private boolean processScooter(final HttpServletRequest req, final HttpServletResponse res) throws Exception {
         final String method = req.getMethod();
         String path = req.getRequestURI();
@@ -171,6 +185,15 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
 
         return true;
     }
+
+    /**
+     * Checks whether the request is for an {@link Scooterrack} resource and, in case, processes it.
+     *
+     * @param req the HTTP request.
+     * @param res the HTTP response.
+     * @return {@code true} if the request was for an {@code Scooterrack}; {@code false} otherwise.
+     * @throws Exception if any error occurs.
+     */
     private boolean processScooterRack(final HttpServletRequest req, final HttpServletResponse res) throws Exception {
         final String method = req.getMethod();
         String path = req.getRequestURI();
@@ -214,7 +237,14 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
         return true;
     }
 
-
+    /**
+     * Checks whether the request is for an {@link Customer} resource and, in case, processes it.
+     *
+     * @param req the HTTP request.
+     * @param res the HTTP response.
+     * @return {@code true} if the request was for an {@code Customer}; {@code false} otherwise.
+     * @throws Exception if any error occurs.
+     */
     private boolean processCustomer(final HttpServletRequest req, final HttpServletResponse res) throws Exception {
         final String method = req.getMethod();
         String path = req.getRequestURI();
@@ -253,7 +283,14 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
         return true;
     }
 
-
+    /**
+     * Checks whether the request is for an {@link Administrator} resource and, in case, processes it.
+     *
+     * @param req the HTTP request.
+     * @param res the HTTP response.
+     * @return {@code true} if the request was for an {@code Administrator}; {@code false} otherwise.
+     * @throws Exception if any error occurs.
+     */
     private boolean processAdministrator(final HttpServletRequest req, final HttpServletResponse res) throws Exception {
 
         final String method = req.getMethod();

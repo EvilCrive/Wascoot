@@ -22,7 +22,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-
+/**
+ * Inserts a new model in the database
+ */
 public final class CreateModelDAO extends AbstractDAO {
 
 	/**

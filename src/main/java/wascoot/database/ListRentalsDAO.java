@@ -10,6 +10,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Reads all rentals in the database.
+ */
 public final class ListRentalsDAO extends AbstractDAO<List<Rental>> {
     /**
      * The SQL statement to be executed

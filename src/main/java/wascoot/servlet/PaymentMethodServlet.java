@@ -16,6 +16,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Servlet that provides list, edit and add functionalities on payment methods
+ */
 public class PaymentMethodServlet extends AbstractDatabaseServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res)

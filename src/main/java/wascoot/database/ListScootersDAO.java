@@ -10,6 +10,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Reads all scooters in the database.
+ */
 public final class ListScootersDAO extends AbstractDAO<List<Scooter>> {
     /**
      * The SQL statement to be executed

@@ -1,5 +1,3 @@
-
-
 package wascoot.database;
 
 import wascoot.resource.Administrator;
@@ -11,6 +9,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class that provide the functionality of searching by id, among administrators
+ */
 public final class SearchAdministratorByIdDAO extends AbstractDAO<List<Administrator>> {
 
 	/**
@@ -24,7 +25,7 @@ public final class SearchAdministratorByIdDAO extends AbstractDAO<List<Administr
 	private final int id;
 
 	/**
-	 * Creates a new object for searching administrator by salary.
+	 * Creates a new object for searching administrator by id.
 	 *
 	 * @param con    the connection to the database.
 	 * @param id the id of the administrator.
@@ -53,7 +54,7 @@ public final class SearchAdministratorByIdDAO extends AbstractDAO<List<Administr
 				administrators.add(new Administrator(rs.getInt("id"), rs.getString("email"), rs.getString("password")));
 			}
 
-			LOGGER.info("Administrator successfully listed.");
+			LOGGER.info("Administrators successfully listed.");
 		} finally {
 			if (rs != null) {
 				rs.close();

@@ -6,14 +6,26 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-
+/**
+ * Checks if the administrator credentials match to an admin in database.
+ */
 public class AdminLoginDAO extends AbstractDAO<Administrator>  {
 
+    /**
+     * The SQL statament to be executed
+     */
     private static final String STATEMENT_ADMIN_INFO = "SELECT id, email, password FROM public.admin WHERE email=? AND password=?";
 
-
+    /**
+     * The administrator that has to be logged in
+     */
     private final Administrator administrator;
 
+    /**
+     * Creates a new object to check the login of an administrator
+     * @param con   connection to database
+     * @param administrator
+     */
     public AdminLoginDAO(final Connection con, final Administrator administrator) {
         super(con);
         this.administrator = administrator;

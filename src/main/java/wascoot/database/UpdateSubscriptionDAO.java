@@ -7,12 +7,26 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Updates a subscription in the database.
+ */
 public final class UpdateSubscriptionDAO extends AbstractDAO{
 
+    /**
+     * The SQL statement to be executed
+     */
     private static final String STATEMENT = "UPDATE public.Subscription SET type=?, daily_unlocks=?, validity_per_day=?, fixed_price=? WHERE ID=? RETURNING *";
 
+    /**
+     * Scooter object with information for the update
+     */
     private final Subscription subscription;
 
+    /**
+     * Creates the object to update a scooter
+     * @param con   connection to DB
+     * @param subscription  object with information for the update
+     */
     public UpdateSubscriptionDAO(final Connection con, final Subscription subscription) {
         super(con);
 

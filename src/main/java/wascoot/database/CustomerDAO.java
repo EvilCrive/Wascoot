@@ -10,6 +10,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Reads the list of customers from the database
+ */
 public class CustomerDAO extends AbstractDAO<List<Customer>>{
     /**
      * The SQL statement to be executed
@@ -17,7 +20,7 @@ public class CustomerDAO extends AbstractDAO<List<Customer>>{
     private static final String STATEMENT = "SELECT cf, name, surname, email, sex, birthdate, postalCode, paymentType FROM public.Customer";
 
     /**
-     * Creates a new object for listing all the models.
+     * Creates a new object for listing all the customers.
      *
      * @param con
      *            the connection to the database.
@@ -25,8 +28,6 @@ public class CustomerDAO extends AbstractDAO<List<Customer>>{
     public CustomerDAO(final Connection con) {
         super(con);
     }
-
-
 
     protected void doAccess() throws Exception {
 
@@ -65,9 +66,9 @@ public class CustomerDAO extends AbstractDAO<List<Customer>>{
 
 
     /**
-     * Lists all the models in the database.
+     * Lists all the customers in the database.
      *
-     * @return a list of {@code model} object.
+     * @return a list of {@code customer} object.
      *
      * @throws SQLException
      *             if any error occurs while searching for employees.

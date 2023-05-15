@@ -8,12 +8,26 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Updates payment methods
+ */
 public final class UpdatePaymentMethodDAO extends AbstractDAO{
 
+    /**
+     * The SQL statement to be executed
+     */
     private static final String STATEMENT = "UPDATE public.PaymentMethod SET Activation=? WHERE type=? RETURNING *";
 
+    /**
+     * Payment method object
+     */
     private final PaymentMethod paymentMethod;
 
+    /**
+     * Creates the object to update a payment method
+     * @param con   connection to DB
+     * @param paymentMethod  object with information for the update
+     */
     public UpdatePaymentMethodDAO(final Connection con, final PaymentMethod paymentMethod) {
         super(con);
 

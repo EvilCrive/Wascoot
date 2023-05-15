@@ -14,7 +14,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
-
+/**
+ * servlet to create an administrator without a photo
+ */
 public final class CreateAdministratorNoPhotoServlet extends AbstractDatabaseServlet {
 
 	/**

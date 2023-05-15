@@ -24,7 +24,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-
+/**
+ * Inserts a new scooter in the database.
+ */
 public final class CreateScooterDAO extends AbstractDAO<Scooter> {
 
     /**

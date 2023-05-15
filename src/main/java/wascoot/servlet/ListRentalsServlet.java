@@ -14,7 +14,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Dashboard Servlet
+ * List rentals Servlet
+ *  get the list of all rentals
  *
  * @version 1.00
  * @since 1.00

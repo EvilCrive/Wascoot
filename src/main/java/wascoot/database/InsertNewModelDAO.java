@@ -5,17 +5,30 @@ import wascoot.resource.Model;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * Inserts a new model in the database.
+ */
 public class InsertNewModelDAO extends AbstractDAO<Model>{
+    /**
+     * The SQL statement to be executed
+     */
     private static final String STATEMENT = "INSERT INTO public.model (name, brand, battery_life, price_per_min) VALUES (?, ?, ?, ?) RETURNING *";
-
-
+    /**
+     * Model to be added.
+     */
     private final Model model;
 
+    /**
+     * Creates a new object for inserting a new model
+     * @param con   connection
+     * @param model object of model to be addedd
+     */
     public InsertNewModelDAO(final Connection con, final Model model) {
         super(con);
 
         if (model == null) {
-            throw new NullPointerException("The employee cannot be null.");
+            throw new NullPointerException("The model cannot be null.");
         }
 
         this.model = model;

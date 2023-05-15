@@ -18,8 +18,19 @@ import java.sql.SQLException;
 import java.sql.Time;
 import java.util.List;
 
+/**
+ * Servlet that provides list, insert and update features
+ * of models
+ */
 public class ModelServlet extends AbstractDatabaseServlet{
 
+    /**
+     * Feature of list models
+     * @param req
+     * @param res
+     * @throws ServletException
+     * @throws IOException
+     */
     public void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
         String op = req.getRequestURI();
@@ -55,6 +66,13 @@ public class ModelServlet extends AbstractDatabaseServlet{
 
     }
 
+    /**
+     * Insert and edit features of models
+     * @param req
+     * @param res
+     * @throws ServletException
+     * @throws IOException
+     */
     public void doPost(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
 

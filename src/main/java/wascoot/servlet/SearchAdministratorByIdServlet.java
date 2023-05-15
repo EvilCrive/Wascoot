@@ -16,9 +16,16 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Search administrators by id - servlet
+ */
 public final class SearchAdministratorByIdServlet extends AbstractDatabaseServlet {
-
-
+	/**
+	 * doPost method
+	 * @param req HTTP request from client
+	 * @param res HTTP response from server
+	 * @throws IOException
+	 */
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
 		LogContext.setIPAddress(req.getRemoteAddr());

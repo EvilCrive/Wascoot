@@ -1,21 +1,18 @@
 package wascoot.database;
 
+import wascoot.resource.Administrator;
 import wascoot.resource.Model;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class getModelListDatabase {
+
+public final class getModelListDatabase extends AbstractDAO<List<Model>>{
     /**
      * The SQL statement to be executed
      */
     private static final String STATEMENT = "SELECT name, brand, battery_life, price_per_min FROM public.model";
-
-    /**
-     * The connection to the database
-     */
-    private final Connection con;
 
     /**
      * Creates a new object for listing all the models.
@@ -24,7 +21,39 @@ public final class getModelListDatabase {
      *            the connection to the database.
      */
     public getModelListDatabase(final Connection con) {
-        this.con = con;
+        super(con);
+    }
+
+    @Override
+    protected void doAccess() throws Exception {
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        // the results of the search
+        final List<Model> models = new ArrayList<Model>();
+
+        try {
+            pstmt = con.prepareStatement(STATEMENT);
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                models.add(new Model(rs.getString("name"), rs
+                        .getString("brand"), Time.valueOf(rs.getString("battery_life")), rs.getInt("price_per_model")));
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+
+            if (pstmt != null) {
+                pstmt.close();
+            }
+
+            con.close();
+        }
+
+        outputParam = models;
     }
 
     /**

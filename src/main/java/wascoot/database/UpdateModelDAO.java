@@ -7,12 +7,26 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Updates a certain model, given the name
+ */
 public final class UpdateModelDAO extends AbstractDAO{
 
+    /**
+     * The SQL statement to be executed
+     */
     private static final String STATEMENT = "UPDATE public.Model SET brand=?, battery_life=?, price_per_Min=? WHERE name=? RETURNING *";
 
+    /**
+     * model object
+     */
     private final Model model;
 
+    /**
+     * Creates the object to update a model
+     * @param con   connection to DB
+     * @param model model object with information for the update
+     */
     public UpdateModelDAO(final Connection con, final Model model) {
         super(con);
 

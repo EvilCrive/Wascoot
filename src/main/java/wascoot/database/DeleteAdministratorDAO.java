@@ -38,7 +38,7 @@ public final class DeleteAdministratorDAO extends AbstractDAO<Administrator> {
 	private static final String DELETE_ADMINISTRATOR = "DELETE FROM public.admin WHERE id = ? RETURNING *";
 
 	/**
-	 * The badge of the Administrator
+	 * The id of the Administrator
 	 */
 	private final int id;
 

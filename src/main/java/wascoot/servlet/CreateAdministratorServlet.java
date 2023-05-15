@@ -18,7 +18,9 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 
-
+/**
+ * Servlet to create an administrator
+ */
 public final class CreateAdministratorServlet extends AbstractDatabaseServlet {
 
 	/**

@@ -9,16 +9,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class PaymentWithoutSubscriptionDatabase {
+/**
+ * Reads all payments without subscription in database.
+ */
+public final class PaymentWithoutSubscriptionDatabase extends AbstractDAO<List<PaymentWithoutSubscription>> {
     /**
      * The SQL statement to be executed
      */
     private static final String STATEMENT = "SELECT id, price, date_hour, order_id  FROM public.paymentwithoutsubscription";
-
-    /**
-     * The connection to the database
-     */
-    private final Connection con;
 
     /**
      * Creates a new object for listing all the paymentwithoutsubscription.
@@ -27,7 +25,40 @@ public final class PaymentWithoutSubscriptionDatabase {
      *            the connection to the database.
      */
     public PaymentWithoutSubscriptionDatabase(final Connection con) {
-        this.con = con;
+        super(con);
+    }
+
+    @Override
+    protected void doAccess() throws Exception {
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        // the results of the search
+        final List<PaymentWithoutSubscription> paymentWithoutSubscriptionList = new ArrayList<PaymentWithoutSubscription>();
+
+        try {
+            pstmt = con.prepareStatement(STATEMENT);
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                paymentWithoutSubscriptionList.add(new PaymentWithoutSubscription(rs.getInt("id"), rs
+                        .getInt("price"), rs.getString("date_hour"),
+                        rs.getInt("order_id") ));
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+
+            if (pstmt != null) {
+                pstmt.close();
+            }
+
+            con.close();
+        }
+
+        outputParam = paymentWithoutSubscriptionList;
     }
 
     /**

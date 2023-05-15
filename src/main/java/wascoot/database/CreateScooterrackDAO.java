@@ -23,7 +23,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-
+/**
+ * Inserts a new scooterrack in the database.
+ */
 public final class CreateScooterrackDAO extends AbstractDAO<Scooterrack> {
 
     /**

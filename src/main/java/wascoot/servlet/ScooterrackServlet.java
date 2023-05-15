@@ -17,8 +17,18 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Servlet that provides features for scooterracks: add, edit and list
+ */
 public class ScooterrackServlet extends AbstractDatabaseServlet{
 
+    /**
+     * Provides list scooterrack feature
+     * @param req
+     * @param res
+     * @throws ServletException
+     * @throws IOException
+     */
     public void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
         String op = req.getRequestURI();
@@ -61,6 +71,13 @@ public class ScooterrackServlet extends AbstractDatabaseServlet{
 
     }
 
+    /**
+     * Provides edit and add scooterrack features
+     * @param req
+     * @param res
+     * @throws ServletException
+     * @throws IOException
+     */
     public void doPost(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
 
@@ -82,6 +99,13 @@ public class ScooterrackServlet extends AbstractDatabaseServlet{
 
     }
 
+    /**
+     * Inserts a scooterrack in the database
+     * @param req
+     * @param res
+     * @throws IOException
+     * @throws ServletException
+     */
     private void insertOperation(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
         LogContext.setIPAddress(req.getRemoteAddr());
         LogContext.setAction(Actions.INSERT_NEW_SCOOTERRACK);
@@ -146,6 +170,13 @@ public class ScooterrackServlet extends AbstractDatabaseServlet{
 
     }
 
+    /**
+     * Updates a scooterrack in database.
+     * @param req
+     * @param res
+     * @throws IOException
+     * @throws ServletException
+     */
     private void updateOperation(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 
         LogContext.setIPAddress(req.getRemoteAddr());

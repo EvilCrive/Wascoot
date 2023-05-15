@@ -8,7 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
+/**
+ * Loads photo of one specific administrator from the database.
+ */
 public final class LoadAdministratorPhotoDAO extends AbstractDAO<Administrator> {
 
 	/**

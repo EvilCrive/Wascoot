@@ -11,8 +11,18 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Servlet to get the list of all customers
+ */
 public class ListCustomerServlet extends AbstractDatabaseServlet{
 
+    /**
+     * get the customers' list and print them into a jsp
+     * @param req the HTTP request from the client.
+     * @param res the HTTP response from the server.
+     * @throws ServletException
+     * @throws IOException
+     */
     public void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
 

@@ -4,19 +4,32 @@ import wascoot.resource.Scooter;
 import wascoot.resource.Scooterrack;
 
 import java.sql.*;
-
+/**
+ * Updates a scooter in the database
+ */
 public final class UpdateScooterDAO extends AbstractDAO<Scooter>{
 
+    /**
+     * The SQL statement to be executed
+     */
     private static final String STATEMENT = "UPDATE public.scooter SET id=?, date_of_purchase=?, km_traveled=?, model=?, remaining_battery_life=?, id_scooter_rack=? WHERE id=? RETURNING *";
 
+    /**
+     * Scooter object with information for the update
+     */
     private final Scooter scooter;
 
+    /**
+     * Creates the object to update a scooter
+     * @param con   connection to DB
+     * @param s  object with information for the update
+     */
     public UpdateScooterDAO(final Connection con, final Scooter s) {
         super(con);
 
         if (s == null) {
-            LOGGER.error("The scooterrack cannot be null.");
-            throw new NullPointerException("The scooterrack cannot be null.");
+            LOGGER.error("The scooter cannot be null.");
+            throw new NullPointerException("The scooter cannot be null.");
         }
 
         this.scooter = s;

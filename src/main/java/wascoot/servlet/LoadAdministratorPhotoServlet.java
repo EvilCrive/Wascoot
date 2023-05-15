@@ -12,10 +12,18 @@ import wascoot.resource.LogContext;
 
 import java.io.IOException;
 
-
+/**
+ * Servlet to load the photo of the administrator
+ */
 public final class LoadAdministratorPhotoServlet extends AbstractDatabaseServlet {
 
-
+	/**
+	 * Get the administrator photo
+	 * @param req
+	 * @param res
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
 		LogContext.setIPAddress(req.getRemoteAddr());

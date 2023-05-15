@@ -25,6 +25,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Reads all the administrators in the database.
+ */
 public final class ListAdministratorDAO extends AbstractDAO<List<Administrator>> {
 
 	/**

@@ -9,6 +9,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Reads the list of all scooterracks in the database.
+ */
 public final class ScooterRackDatabase extends AbstractDAO<List<Scooterrack>> {
     /**
      * The SQL statement to be executed
