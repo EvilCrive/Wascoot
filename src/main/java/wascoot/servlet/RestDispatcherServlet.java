@@ -53,6 +53,11 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
                 return;
             }
 
+            if (processCustomerAvgAge(req, res)){
+                return;
+            }
+
+
             // if none of the above process methods succeeds, it means an unknown resource has been requested
             LOGGER.warn("Unknown resource requested: %s.", req.getRequestURI());
 
@@ -409,6 +414,51 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
         }
 
         return true;
+    }
 
+    /**
+     * Checks whether the request is for an {@link CustomerAvgAgePC} resource and, in case, processes it.
+     *
+     * @param req the HTTP request.
+     * @param res the HTTP response.
+     * @return {@code true} if the request was for an {@code CustomerAvgAgePC}; {@code false} otherwise.
+     * @throws Exception if any error occurs.
+     */
+    private boolean processCustomerAvgAge(final HttpServletRequest req, final HttpServletResponse res) throws Exception {
+        final String method = req.getMethod();
+        String path = req.getRequestURI();
+        Message m = null;
+
+        // the requested resource was not a customer
+        if (path.lastIndexOf("rest/customerAvgAge/") <= 0) {
+            return false;
+        }
+
+        path = path.substring(path.lastIndexOf("customerAvgAge/") + 15);
+//
+//        // I can have multiple paths. Split on "/"
+//        String[] splitted_path = path.split("/");
+
+        LOGGER.warn(path);
+        // the request URI is: /customer
+        // if method GET, list customer(s)
+        if (path.length() == 0) {
+
+            switch (method) {
+                case "GET":
+                    new CustomerAvgAgeRR(req, res, getConnection()).serve();
+                    break;
+                default:
+                    LOGGER.warn("Unsupported operation for URI /customer: %s.", method);
+
+                    m = new Message("Unsupported operation for URI /customerAvgAge.", "E4A5", String.format("Requested operation %s.", method));
+                    res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+                    m.toJSON(res.getOutputStream());
+                    break;
+            }
+        } else {
+
+        }
+        return true;
     }
 }

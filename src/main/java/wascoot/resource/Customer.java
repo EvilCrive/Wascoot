@@ -91,5 +91,4 @@ public class Customer extends AbstractResource{
 
         jg.flush();
     }
-
 }
