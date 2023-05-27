@@ -115,5 +115,7 @@
 
 		<div id="customer-content"></div>
 
+		<div id="customer-content-2"></div>
+
 	</body>
 </html>

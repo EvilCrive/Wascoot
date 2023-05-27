@@ -24,6 +24,8 @@ public class Actions {
     public static final String DELETE_ADMINISTRATOR = "DELETE_ADMINISTRATOR";
     public static final String LIST_ADMINISTRATOR = "LIST_ADMINISTRATOR";
     public static final String GET_AVG_AGE_CUSTOMERS = "GET_AVG_AGE_CUSTOMERS";
+    public static final String GET_GENDER_DIS_CUSTOMERS = "GET_GENDER_DIS_CUSTOMERS";
+
 
     private Actions() {
         throw new AssertionError(String.format("No instances of %s allowed.", Actions.class.getName()));

@@ -53,28 +53,4 @@ public final class CustomerAvgAgeRR extends AbstractRR {
             m.toJSON(res.getOutputStream());
         }
     }
-
-    /**
-     * A helper class to represent a Map entry.
-     *
-     * @param <K> the type of the key
-     * @param <V> the type of the value
-     */
-    private static class MapEntry<K, V> {
-        private final K key;
-        private final V value;
-
-        public MapEntry(K key, V value) {
-            this.key = key;
-            this.value = value;
-        }
-
-        public K getKey() {
-            return key;
-        }
-
-        public V getValue() {
-            return value;
-        }
-    }
 }
