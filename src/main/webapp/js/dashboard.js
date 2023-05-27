@@ -48,7 +48,7 @@ function showCustomerAvgAge(req){
       if (req.status == 200) {
             var jsonData = JSON.parse(req.responseText);
             var data = jsonData['resource-list'];
-
+            /*
             var hpcontent = "";
             for(let i=0; i<data.length; i++){
                   var entry = data[i];
@@ -56,6 +56,16 @@ function showCustomerAvgAge(req){
                   hpcontent += "<p>Average age : "+sanitize(entry['averageAge'])+"</p>";
             }
             document.getElementById("customer-content").innerHTML = hpcontent;
+            */
+            var postalCodes = [];
+            var averageAges = [];
+
+            for(let i=0; i<data.length; i++){
+                var entry = data[i];
+                postalCodes.push(sanitize(entry['postalCode']));
+                averageAges.push(sanitize(entry['averageAge']));
+            }
+            renderAgeChart(postalCodes, averageAges);
       }
       else {
             console.log(JSON.parse(httpRequest.responseText));
@@ -67,7 +77,7 @@ function showCustomerGender(req){
       if (req.status == 200) {
             var jsonData = JSON.parse(req.responseText);
             var data = jsonData['resource-list'];
-
+            /*
             var hpcontent = "";
             for(let i=0; i<data.length; i++){
                   var entry = data[i];
@@ -75,9 +85,67 @@ function showCustomerGender(req){
                   hpcontent += "<p> Female count : "+sanitize(entry['femaleCount'])+"</p>";
             }
             document.getElementById("customer-content-2").innerHTML = hpcontent;
+            */
+            var maleCount = 0;
+            var femaleCount = 0;
+
+            for(let i=0; i<data.length; i++){
+                var entry = data[i];
+                maleCount = sanitize(entry['maleCount']);
+                femaleCount = sanitize(entry['femaleCount']);
+            }
+
+            renderGenderChart(maleCount, femaleCount);
       }
       else {
             console.log(JSON.parse(httpRequest.responseText));
             alert("Problem processing the request");
       }
+}
+
+function renderAgeChart(postalCodes, averageAges) {
+    var ctx = document.getElementById('age-chart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: postalCodes,
+            datasets: [{
+                label: 'Average Age',
+                data: averageAges,
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+function renderGenderChart(maleCount, femaleCount) {
+    var ctx = document.getElementById('gender-chart').getContext('2d');
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Male', 'Female'],
+            datasets: [{
+                label: 'Gender Distribution',
+                data: [maleCount, femaleCount],
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        }
+    });
 }

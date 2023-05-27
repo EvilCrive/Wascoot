@@ -7,15 +7,20 @@
 		<title>Dashboard</title>
 		 <script src="${pageContext.request.contextPath}/js/utils.js"></script>
 		 <script src="${pageContext.request.contextPath}/js/dashboard.js"></script>
-
+		 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/dashboard.css">
 	</head>
 
 	<body>
+	    <div class="parent">
 		<h1>Dashboard</h1>
+
 		<hr/>
 
 		<!-- display the message -->
 		<c:import url="/jsp/include/show-message.jsp"/>
+
+        <div class="div1">
 
 		<!-- display the list of found scooterracks, if any -->
 		<c:if test='${not empty scooterRackList}'>
@@ -41,6 +46,8 @@
 			</table>
 		</c:if>
 
+        </div>
+        <div class="div2">
 
 		<!-- display the list of found PaymentWithoutSubscriptions, if any -->
 		<c:if test='${not empty paymentWithoutSubscriptionList}'>
@@ -65,6 +72,9 @@
 			</table>
 		</c:if>
 
+		</div>
+        <div class="div3">
+
 		<c:if test='${not empty topLocation}'>
 			<c:set var="count" value="0" scope="page" />
 			<table>
@@ -86,6 +96,9 @@
 				</tbody>
 			</table>
 		</c:if>
+
+        </div>
+        <div class="div4">
 
 		<c:if test='${not empty revenueList}'>
 			<c:set var="sum" value="0" scope="page" />
@@ -113,9 +126,21 @@
 			</table>
 		</c:if>
 
-		<div id="customer-content"></div>
+        </div>
+        <div class="div5">
 
-		<div id="customer-content-2"></div>
+        <div id="age-chart-container">
+            <canvas id="age-chart"></canvas>
+        </div>
+
+        </div>
+        <div class="div6">
+
+        <div id="gender-chart-container">
+            <canvas id="gender-chart"></canvas>
+        </div>
+
+        </div>
 
 	</body>
 </html>
