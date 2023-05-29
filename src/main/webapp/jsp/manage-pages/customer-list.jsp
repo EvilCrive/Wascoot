@@ -260,30 +260,6 @@ Preloader end
                                             <td><span class="badge badge-success light border-0"><c:out value="${customer.paymentType}"/></span></td>
                                         </tr>
                                     </c:forEach>
-                                    <tr>
-                                        <td><span>PHNTEW74B37Z444L</span></td>
-                                        <td>
-                                            <div class="products">
-                                                <div>
-                                                    <h6>Paria</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td><span>Tahan</span></td>
-                                        <td><span class="text-primary">abc@gmail.com</span></td>
-                                        <td>
-                                            <span>M</span>
-                                        </td>
-                                        <td>
-                                            <span>1998/02/02</span>
-                                        </td>
-                                        <td>
-                                            <span>35121</span>
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-success light border-0">Credit Card</span>
-                                        </td>
-                                    </tr>
                                     </tbody>
 
                                 </table>
@@ -326,7 +302,7 @@ Preloader end
     </table>
 </c:if>--%>
 
-<a href="${pageContext.request.contextPath}/jsp/homepage.jsp">go back to the homepage</a>
+<%--<a href="${pageContext.request.contextPath}/jsp/homepage.jsp">go back to the homepage</a>--%>
 </div>
 
 <!--**********************************
