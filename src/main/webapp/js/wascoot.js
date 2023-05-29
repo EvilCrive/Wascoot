@@ -1,47 +1,59 @@
 var body = $('body');
 var html = $('html');
 
-function wasSettings({typography, version, layout, navheaderBg, headerBg, sidebarStyle, sidebarBg, sidebarPosition, headerPosition, containerLayout, direction, primary, secondary}) {
+function wascootSettings({typography, layout, sidebarStyle, sidebarPosition, headerPosition, containerLayout}) {
     this.typography = typography || "poppins";
-    this.version = version || "light";
-    this.layout = layout || "vertical";
-    this.navheaderBg = navheaderBg || "color_1";
-    this.headerBg = headerBg || "color_1";
+    this.layout = layout||"vertical";
     this.sidebarStyle = sidebarStyle || "full";
-    this.sidebarBg = sidebarBg || "color_1";
     this.sidebarPosition = sidebarPosition || "static";
     this.headerPosition = headerPosition || "static";
     this.containerLayout = containerLayout || "wide";
-    this.direction = direction || "ltr";
-    this.primary = primary || "color_1";
-    this.secondary = secondary || "color_1";
 
     this.manageTypography();
-    this.manageVersion();
-    this.manageLayout();
-    this.manageNavHeaderBg();
-    this.manageHeaderBg();
     this.manageSidebarStyle();
-    this.manageSidebarBg();
     this.manageSidebarPosition();
     this.manageHeaderPosition();
     this.manageContainerLayout();
-    this.manageRtlLayout();
     this.manageResponsiveSidebar();
-    this.managePrimaryColor();
-    this.manageSecondaryColor();
 }
 
-wasSettings.prototype.manageTypography = function() {
-    body.attr("data-typography", "helveticaneue");
-
+wascootSettings.prototype.manageTypography = function() {
+    switch(this.typography) {
+        case "cairo":
+            body.attr("data-typography", "cairo");
+            break;
+        case "poppins":
+            body.attr("data-typography", "poppins");
+            break;
+        case "roboto":
+            body.attr("data-typography", "roboto");
+            break;
+        case "opensans":
+            body.attr("data-typography", "opensans");
+            break;
+        case "helveticaneue":
+            body.attr("data-typography", "helveticaneue");
+            break;
+        default:
+            body.attr("data-typography", "poppins");
+    }
 }
-wasSettings.prototype.manageLayout = function() {
-    body.attr("data-layout", "vertical");
-
+wascootSettings.prototype.manageLayout = function() {
+    switch(this.layout) {
+        case "horizontal":
+            this.sidebarStyle === "overlay" ? body.attr("data-sidebar-style", "full") : body.attr("data-sidebar-style", `${this.sidebarStyle}`);
+            body.attr("data-layout", "horizontal");
+            break;
+        case "vertical":
+            body.attr("data-layout", "vertical");
+            break;
+        default:
+            body.attr("data-layout", "vertical");
+    }
 }
 
-wasSettings.prototype.manageSidebarStyle = function() {
+
+wascootSettings.prototype.manageSidebarStyle = function() {
 
 
     switch(this.sidebarStyle) {
@@ -75,20 +87,50 @@ wasSettings.prototype.manageSidebarStyle = function() {
     }
 }
 
-wasSettings.prototype.manageSidebarPosition = function() {
-    body.attr("data-sidebar-position", "static");
-
+wascootSettings.prototype.manageSidebarPosition = function() {
+    switch(this.sidebarPosition) {
+        case "fixed":
+            this.sidebarStyle === "overlay" && this.layout === "vertical" || this.sidebarStyle === "modern" ? body.attr("data-sidebar-position", "static") : body.attr("data-sidebar-position", "fixed");
+            break;
+        case "static":
+            body.attr("data-sidebar-position", "static");
+            break;
+        default:
+            body.attr("data-sidebar-position", "static");
+    }
 }
-wasSettings.prototype.manageHeaderPosition = function() {
-    body.attr("data-header-position", "static");
-
+wascootSettings.prototype.manageHeaderPosition = function() {
+    switch(this.headerPosition) {
+        case "fixed":
+            body.attr("data-header-position", "fixed");
+            break;
+        case "static":
+            body.attr("data-header-position", "static");
+            break;
+        default:
+            body.attr("data-header-position", "static");
+    }
 }
-wasSettings.prototype.manageContainerLayout = function() {
-    body.attr("data-container", "wide");
-
+wascootSettings.prototype.manageContainerLayout = function() {
+    switch(this.containerLayout) {
+        case "boxed":
+            if(this.layout === "vertical" && this.sidebarStyle === "full") {
+                body.attr("data-sidebar-style", "overlay");
+            }
+            body.attr("data-container", "boxed");
+            break;
+        case "wide":
+            body.attr("data-container", "wide");
+            break;
+        case "wide-boxed":
+            body.attr("data-container", "wide-boxed");
+            break;
+        default:
+            body.attr("data-container", "wide");
+    }
 }
 
-wasSettings.prototype.manageResponsiveSidebar = function() {
+wascootSettings.prototype.manageResponsiveSidebar = function() {
     const innerWidth = $(window).innerWidth();
     if(innerWidth < 1024) {
         body.attr("data-layout", "vertical");
@@ -105,6 +147,9 @@ wasSettings.prototype.manageResponsiveSidebar = function() {
 }
 
 
+//////////////
+//////////////
+/////////////
 var W3Crm = function(){
     "use strict"
     /* Search Bar ============ */
@@ -195,35 +240,6 @@ var W3Crm = function(){
         };
     }
 
-    var handleDataAction = function() {
-        $('a[data-action="collapse"]').on("click", function(i) {
-            i.preventDefault(),
-                $(this).closest(".card").find('[data-action="collapse"] i').toggleClass("mdi-arrow-down mdi-arrow-up"),
-                $(this).closest(".card").children(".card-body").collapse("toggle");
-        });
-
-        $('a[data-action="expand"]').on("click", function(i) {
-            i.preventDefault(),
-                $(this).closest(".card").find('[data-action="expand"] i').toggleClass("icon-size-actual icon-size-fullscreen"),
-                $(this).closest(".card").toggleClass("card-fullscreen");
-        });
-
-
-
-        $('[data-action="close"]').on("click", function() {
-            $(this).closest(".card").removeClass().slideUp("fast");
-        });
-
-        $('[data-action="reload"]').on("click", function() {
-            var e = $(this);
-            e.parents(".card").addClass("card-load"),
-                e.parents(".card").append('<div class="card-loader"><i class=" ti-reload rotate-refresh"></div>'),
-                setTimeout(function() {
-                    e.parents(".card").children(".card-loader").remove(),
-                        e.parents(".card").removeClass("card-load")
-                }, 2000)
-        });
-    }
 
     var handleHeaderHight = function() {
         const headerHight = $('.header').innerHeight();
@@ -278,62 +294,6 @@ var W3Crm = function(){
         /* Main navigation fixed on top  when scroll down function custom end*/
     }
 
-    var handleChatbox = function() {
-        jQuery('.bell-link').on('click',function(){
-            jQuery('.chatbox').addClass('active');
-        });
-        jQuery('.chatbox-close').on('click',function(){
-            jQuery('.chatbox').removeClass('active');
-        });
-    }
-
-    var handlePerfectScrollbar = function() {
-        if(jQuery('.wasnav-scroll').length > 0)
-        {
-
-            const qs = new PerfectScrollbar('.wasnav-scroll');
-
-            qs.isRtl = false;
-        }
-    }
-
-    var handleBtnNumber = function() {
-        $('.btn-number').on('click', function(e) {
-            e.preventDefault();
-
-            fieldName = $(this).attr('data-field');
-            type = $(this).attr('data-type');
-            var input = $("input[name='" + fieldName + "']");
-            var currentVal = parseInt(input.val());
-            if (!isNaN(currentVal)) {
-                if (type == 'minus')
-                    input.val(currentVal - 1);
-                else if (type == 'plus')
-                    input.val(currentVal + 1);
-            } else {
-                input.val(0);
-            }
-        });
-    }
-
-    var handleDzChatUser = function() {
-        jQuery('.dz-chat-user-box .dz-chat-user').on('click',function(){
-            jQuery('.dz-chat-user-box').addClass('d-none');
-            jQuery('.dz-chat-history-box').removeClass('d-none');
-        });
-
-        jQuery('.dz-chat-history-back').on('click',function(){
-            jQuery('.dz-chat-user-box').removeClass('d-none');
-            jQuery('.dz-chat-history-box').addClass('d-none');
-        });
-
-        jQuery('.dz-fullscreen').on('click',function(){
-            jQuery('.dz-fullscreen').toggleClass('active');
-        });
-
-
-
-    }
 
 
     var handleDzFullScreen = function() {
@@ -364,37 +324,28 @@ var W3Crm = function(){
         });
     }
 
-    var handleshowPass = function(){
-        jQuery('.show-pass').on('click',function(){
-            jQuery(this).toggleClass('active');
-            if(jQuery('#dz-password').attr('type') == 'password'){
-                jQuery('#dz-password').attr('type','text');
-            }else if(jQuery('#dz-password').attr('type') == 'text'){
-                jQuery('#dz-password').attr('type','password');
-            }
-        });
+
+    var handleDatetimepicker = function(){
+        if(jQuery("#datetimepicker1").length>0) {
+            $('#datetimepicker1').datetimepicker({
+                inline: true,
+            });
+        }
     }
 
-
-    var handleDzLoadMore = function() {
-        $(".dz-load-more").on('click', function(e)
-        {
-            e.preventDefault();	//STOP default action
-            $(this).append(' <i class="fas fa-sync"></i>');
-
-            var dzLoadMoreUrl = $(this).attr('rel');
-            var dzLoadMoreId = $(this).attr('id');
-
-            $.ajax({
-                method: "POST",
-                url: dzLoadMoreUrl,
-                dataType: 'html',
-                success: function(data) {
-                    $( "#"+dzLoadMoreId+"Content").append(data);
-                    $('.dz-load-more i').remove();
-                }
-            })
-        });
+    var handleCkEditor = function(){
+        if(jQuery("#ckeditor").length>0) {
+            ClassicEditor
+                .create( document.querySelector( '#ckeditor' ), {
+                    // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+                } )
+                .then( editor => {
+                    window.editor = editor;
+                } )
+                .catch( err => {
+                    console.error( err.stack );
+                } );
+        }
     }
 
     var handleMenuPosition = function(){
@@ -424,16 +375,6 @@ var W3Crm = function(){
                 }
             });
         }
-    }
-
-    var handleChartSidebar = function(){
-        $('.chat-rightarea-btn').on('click',function(){
-            $(this).toggleClass('active');
-            $('.chat-right-area').toggleClass('active');
-        })
-        $('.chat-hamburger').on('click',function(){
-            $('.chat-left-area').toggleClass('active');
-        })
     }
 
     /* Handle Page On Scroll ============ */
@@ -513,45 +454,22 @@ var W3Crm = function(){
             handleCurrentActive();
             handleMiniSidebar();
             handleMinHeight();
-            handleDataAction();
             handleHeaderHight();
             handleMenuTabs();
-            handleChatbox();
-            //handlePerfectScrollbar();
-            handleBtnNumber();
-            handleDzChatUser();
             handleDzFullScreen();
-            handleshowPass();
-            heartBlast();
-            handleDzLoadMore();
-            handleLightgallery();
-            handleCustomFileInput();
-            vHeight();
-            //handleDatetimepicker();
-            //handleCkEditor();
+            handleDatetimepicker();
+            handleCkEditor();
             headerFix();
-            //handleChartSidebar();
-            //MagnificPopup();
-            //handleDraggableCard();
-            //handleConverterTheme();
-            //handleImageSelect();
             handleSelectPicker();
             handlePageOnScroll();
-            //tagify();
-            // masonryBox();
         },
 
 
         load:function(){
             handlePreloader();
-            //handleNiceSelect();
             masonryBox();
         },
 
-        resize:function(){
-            vHeight();
-
-        },
 
         handleMenuPosition:function(){
 
@@ -590,6 +508,9 @@ jQuery(window).on('resize',function () {
 });
 /*  Window Resize END */
 
+//////
+//////
+//////
 
 "use strict"
 
@@ -615,13 +536,27 @@ function getUrlParams(dParam)
 
     "use strict"
 
+    dzSettingsOptions = {
+        typography: "poppins",
+        layout: "vertical",
+        sidebarStyle: "full",
+        sidebarPosition: "fixed",
+        headerPosition: "fixed",
+        containerLayout: "full",
+    };
+
+
+
+
+    new wascootSettings(dzSettingsOptions);
+
     jQuery(window).on('resize',function(){
         /*Check container layout on resize */
         ///alert(dzSettingsOptions.primary);
         dzSettingsOptions.containerLayout = $('#container_layout').val();
         /*Check container layout on resize END */
 
-        new wasSettings(dzSettingsOptions);
+        new wascootSettings(dzSettingsOptions);
     });
 
 })(jQuery);
