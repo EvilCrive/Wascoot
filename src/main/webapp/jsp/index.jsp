@@ -1,3 +1,6 @@
+<%@ page contentType="text/html;charset=utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,10 +8,10 @@
     <meta name="viewport" content="width=device-width">
     <title>Wascoot Empty Page</title>
     <!-- FAVICONS ICON -->
-    <link rel="shortcut icon" type="image/png" href="media/logo-pre.png">
+    <link rel="shortcut icon" type="image/png" href="${pageContext.request.contextPath}/media/logo-pre.png">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/metismenu/dist/metisMenu.min.css">
 
 </head>
@@ -33,7 +36,7 @@ Preloader end
         Nav header start
     ***********************************-->
     <div class="nav-header">
-        <a href="index.html" class="brand-logo"><img class="logo-abbr" width="40" height="40" viewBox="0 0 50 50" src="media/logo/logo-orange-white.png"><span class="brand-title" style="font-size: medium;color: white;">WASCOOT</span></a>
+        <a href="index.jsp" class="brand-logo"><img class="logo-abbr" width="40" height="40" viewBox="0 0 50 50" src="${pageContext.request.contextPath}/media/logo/logo-orange-white.png"><span class="brand-title" style="font-size: medium;color: white;">WASCOOT</span></a>
         <div class="nav-control">
             <div class="hamburger">
                 <span class="line"></span>
@@ -54,7 +57,7 @@ Preloader end
             <nav class="navbar navbar-expand">
                 <div class="collapse navbar-collapse justify-content-between">
                     <div class="header-left">
-                        
+
                     </div>
                     <ul class="navbar-nav header-right">
                         <li class="nav-item align-items-center header-border"><a href="page-login.html" class="btn btn-primary btn-sm">Logout</a></li>
@@ -62,7 +65,7 @@ Preloader end
                             <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="header-info2 d-flex align-items-center">
                                     <div class="header-media">
-                                        <img src="media/avatar/admin_girl.png" alt="">
+                                        <img src="${pageContext.request.contextPath}/media/avatar/admin_girl.png" alt="">
                                     </div>
                                     <div class="header-info">
                                         <h6>WASCOOT Admin</h6>
@@ -88,7 +91,7 @@ Preloader end
         <div class="wasnav-scroll">
             <ul class="metismenu" id="menu">
                 <li class="menu-title">Sidebar Menu</li>
-                <li><a href="index.html" class=""  aria-expanded="false">
+                <li><a href="index.jsp" class=""  aria-expanded="false">
                     <div class="menu-icon">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2.5 7.49999L10 1.66666L17.5 7.49999V16.6667C17.5 17.1087 17.3244 17.5326 17.0118 17.8452C16.6993 18.1577 16.2754 18.3333 15.8333 18.3333H4.16667C3.72464 18.3333 3.30072 18.1577 2.98816 17.8452C2.67559 17.5326 2.5 17.1087 2.5 16.6667V7.49999Z" stroke="#888888" stroke-linecap="round" stroke-linejoin="round"/>
@@ -231,7 +234,7 @@ Preloader end
     ***********************************-->
     <div class="footer">
         <div class="copyright">
-            <p>Developed by <a href="/index.html/" target="_blank">WASCOOT</a> 2023</p>
+            <p>Developed by <a href="index.jsp" target="_blank">WASCOOT</a> 2023</p>
         </div>
     </div>
     <!--**********************************
@@ -247,11 +250,11 @@ Preloader end
 ***********************************-->
 <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-<script src="js/jquery-3.7.0.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-3.7.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
 <script src="https://cdn.jsdelivr.net/npm/metismenu"></script>
 <script src="https://unpkg.com/@popperjs/core@2"></script>
-<script src="js/wascoot.js"></script>
+<script src="${pageContext.request.contextPath}/js/wascoot.js"></script>
 
 
 
