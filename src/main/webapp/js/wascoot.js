@@ -552,7 +552,6 @@ function getUrlParams(dParam)
 
     jQuery(window).on('resize',function(){
         /*Check container layout on resize */
-        ///alert(dzSettingsOptions.primary);
         dzSettingsOptions.containerLayout = $('#container_layout').val();
         /*Check container layout on resize END */
 
