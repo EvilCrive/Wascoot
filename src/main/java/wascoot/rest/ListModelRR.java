@@ -17,11 +17,11 @@ public class ListModelRR
         +
         +import jakarta.servlet.http.HttpServletRequest;
         +import jakarta.servlet.http.HttpServletResponse;
-        +import wascoot.database.ScooterRackDatabase;
+        +import wascoot.database.ModelDatabase;
         +import wascoot.resource.Actions;
         +import wascoot.resource.Message;
         +import wascoot.resource.ResourceList;
-        +import wascoot.resource.Scooterrack;
+        +import wascoot.resource.Model;
         +
         +import java.io.IOException;
         +import java.sql.Connection;
