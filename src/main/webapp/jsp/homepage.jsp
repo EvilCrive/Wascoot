@@ -37,13 +37,6 @@ Preloader end
     ***********************************-->
     <div class="nav-header">
         <a href="homepage.jsp" class="brand-logo"><img class="logo-abbr" width="40" height="40" viewBox="0 0 50 50" src="${pageContext.request.contextPath}/media/logo/logo-orange-white.png"><span class="brand-title" style="font-size: medium;color: white;">WASCOOT</span></a>
-        <div class="nav-control">
-            <div class="hamburger">
-                <span class="line"></span>
-                <span class="line"></span>
-                <span class="line"></span>
-            </div>
-        </div>
     </div>
     <!--**********************************
         Nav header end
