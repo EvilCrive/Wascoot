@@ -820,7 +820,6 @@ h1, .h1, .h1, h2, .h2, .h2, h3, .h3, .h3, h4, .h4, .h4, h5, .h5, .h5, h6, .h6, .
         left: 0;
         top: 3.2rem; } }
 
-
 .dz-scroll {
     overflow-y: scroll; }
 
@@ -1229,3 +1228,132 @@ button:focus {
 
 .border-0 {
     border: 0 !important; }
+
+/*////////*/
+
+.vh-100 {
+    height: 100vh !important; }
+.overflow-hidden {
+    overflow: hidden !important; }
+.gx-0 {
+    --bs-gutter-x: 0; }
+.bg-white {
+    --bs-bg-opacity: 1;
+    --bs-white-rgb: 255, 255, 255;
+    background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity)) !important; }
+
+div#mCSB_1 {
+    margin-top: 60px; }
+.login-form {
+    margin: 0 58px;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px; }
+@media only screen and (max-width: 35.9375rem) {
+    .login-form {
+        margin: 0 10px; } }
+
+.login-form .forget-pass {
+    display: block;
+    margin-top: 20px;
+    text-align: center; }
+
+.logo-header {
+    /*margin-bottom: 2rem;*/ }
+.logo-header .logo-white {
+    margin-left: 0.625rem; }
+
+.border-bottom-0 {
+    border-bottom: 0 !important; }
+
+.nav {
+    --bs-nav-link-padding-x: 1rem;
+    --bs-nav-link-padding-y: 0.5rem;
+    --bs-nav-link-color: #0D99FFFF;
+    --bs-nav-link-hover-color: #0A7ACCFF;
+    --bs-nav-link-disabled-color: #6c757d;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none; }
+
+.nav-link {
+    display: block;
+    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+    color: var(--bs-nav-link-color);
+    text-decoration: none;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out; }
+@media (prefers-reduced-motion: reduce) {
+    .nav-link {
+        transition: none; } }
+.nav-link:hover, .nav-link:focus {
+    color: var(--bs-nav-link-hover-color); }
+.nav-link.disabled {
+    color: var(--bs-nav-link-disabled-color);
+    pointer-events: none;
+    cursor: default; }
+
+
+.nav-tabs {
+    --bs-nav-tabs-border-width: 1px;
+    --bs-nav-tabs-border-color: #dee2e6;
+    --bs-nav-tabs-border-radius: 0.75rem;
+    --bs-nav-tabs-link-hover-border-color: #e9ecef #e9ecef #dee2e6;
+    --bs-nav-tabs-link-active-color: #495057;
+    --bs-nav-tabs-link-active-bg: #F5F5F5;
+    --bs-nav-tabs-link-active-border-color: #dee2e6 #dee2e6 #F5F5F5;
+    border-bottom: var(--bs-nav-tabs-border-width) solid var(--bs-nav-tabs-border-color); }
+.nav-tabs .nav-link {
+    margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
+    background: none;
+    border: var(--bs-nav-tabs-border-width) solid transparent;
+    border-top-left-radius: var(--bs-nav-tabs-border-radius);
+    border-top-right-radius: var(--bs-nav-tabs-border-radius); }
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+    isolation: isolate;
+    border-color: var(--bs-nav-tabs-link-hover-border-color); }
+.nav-tabs .nav-link.disabled, .nav-tabs .nav-link:disabled {
+    color: var(--bs-nav-link-disabled-color);
+    background-color: transparent;
+    border-color: transparent; }
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    color: var(--bs-nav-tabs-link-active-color);
+    background-color: var(--bs-nav-tabs-link-active-bg);
+    border-color: var(--bs-nav-tabs-link-active-border-color); }
+.nav-tabs .dropdown-menu {
+    margin-top: calc(-1 * var(--bs-nav-tabs-border-width));
+    border-top-left-radius: 0;
+    border-top-right-radius: 0; }
+
+.tab-content > .tab-pane {
+    display: none; }
+
+.tab-content > .active {
+    display: block; }
+.w-100 {
+    width: 100% !important; }
+
+.fade {
+    transition: opacity 0.15s linear; }
+@media (prefers-reduced-motion: reduce) {
+    .fade {
+        transition: none; } }
+.fade:not(.show) {
+    opacity: 0; }
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    color: var(--bs-nav-tabs-link-active-color);
+    background-color: var(--bs-nav-tabs-link-active-bg);
+    border-color: var(--bs-nav-tabs-link-active-border-color); }
+
+.pb-3 {
+    padding-bottom: 1rem !important; }
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
