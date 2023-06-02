@@ -95,6 +95,8 @@ create table Customer(
     sex gender not null,
     birthdate date not null default '1922-02-02',
     postalCode char(5),
+    update customers
+        SET postalCode='-'
     paymentType paymentTypes,
     constraint key_customer primary key (CF),
     constraint fk_paymentmethod foreign key (paymentType) references PaymentMethod
