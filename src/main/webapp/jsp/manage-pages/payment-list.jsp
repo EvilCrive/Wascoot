@@ -30,6 +30,9 @@
                 <td><c:out value="${paymentMethod.id}"/></td>
                 <td><c:out value="${paymentMethod.type}"/></td>
                 <td><c:out value="${paymentMethod.activation}"/></td>
+                <td bgcolor="yellow">Credit Card</td>
+                <td bgcolor="green">Visa Debit</td>
+                <td bgcolor="blue">Paypal</td>
             </tr>
         </c:forEach>
         </tbody>
