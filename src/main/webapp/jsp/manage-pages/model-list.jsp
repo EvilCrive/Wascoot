@@ -249,7 +249,7 @@ Preloader end
                                 <div class="form-group mb-3">
                                     <label for="batteryLifeID" class="">Battery Life<span class="text-danger">*</span>
                                     </label>
-                                    <input id="batteryLifeID" name="battery_life" type="text" class="form-control"  placeholder="modify battery life">
+                                    <input id="batteryLifeID" name="battery_life" type="text" class="form-control"  placeholder="modify battery life" required>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="pricePerMinID">Price Per Min<span class="text-danger">*</span>
@@ -382,13 +382,22 @@ Preloader end
 
 <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-<!--<script src="${pageContext.request.contextPath}/js/jquery-3.7.0.min.js"></script>-->
-<script src="https://cdn.jsdelivr.net/npm/jquery"></script>
-<script src="https://cdn.jsdelivr.net/npm/metismenu"></script>
-<script src="https://unpkg.com/@popperjs/core@2"></script>
-<script src="${pageContext.request.contextPath}/js/wascoot.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/metismenu"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script>
+    $(document).ready(function() {
+        $('#batteryLifeID').flatpickr({
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: 'H:i:S',
+            time_24hr: true,
+            enableSeconds: true
+        });
+    });</script>
+<script src="${pageContext.request.contextPath}/js/wascoot.js"></script>
+
 
 
 

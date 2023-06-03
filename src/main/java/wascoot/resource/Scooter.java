@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.*;
 import java.io.*;
 import java.sql.Date;
 
-public class Scooter extends AbstractResource {
+public class Scooter extends AbstractResource implements Comparable<Scooter> {
     /**
      * The identifier of the scooter
      */
@@ -109,5 +109,10 @@ public class Scooter extends AbstractResource {
         jg.writeEndObject();
 
         jg.flush();
+    }
+
+    @Override
+    public int compareTo(Scooter o) {
+        return Integer.compare(this.id, o.id);
     }
 }
