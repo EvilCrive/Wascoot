@@ -118,9 +118,9 @@ function processResponse(xhr) {
 	eee.appendChild(document.createTextNode("Email"));
 	ee.appendChild(eee); // append the cell to the row
 
-	eee = document.createElement("th");
-	eee.appendChild(document.createTextNode("Password"));
-	ee.appendChild(eee); // append the cell to the row
+	//eee = document.createElement("th");
+	//eee.appendChild(document.createTextNode("Password"));
+	//ee.appendChild(eee); // append the cell to the row
 
 	// table body
 	e = document.createElement("tbody");
@@ -148,9 +148,9 @@ function processResponse(xhr) {
 		ee.appendChild(eee); // append the cell to the row
 
 		// create a cell for the age of the administrator
-		eee = document.createElement("td");
-		eee.appendChild(document.createTextNode(administrator["password"]));
-		ee.appendChild(eee); // append the cell to the row
+		//eee = document.createElement("td");
+		//eee.appendChild(document.createTextNode(administrator["password"]));
+		//ee.appendChild(eee); // append the cell to the row
 
 
 		console.log("HTTP GET request successfully performed and processed.");

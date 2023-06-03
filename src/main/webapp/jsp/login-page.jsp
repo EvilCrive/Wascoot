@@ -41,7 +41,6 @@
 
                                     <nav>
                                         <div class="nav nav-tabs border-bottom-0" id="nav-tab" role="tablist">
-
                                             <div class="tab-content w-100" id="nav-tabContent">
                                                 <div class="tab-pane fade show active" id="nav-personal" role="tabpanel" aria-labelledby="nav-personal-tab">
                                                     <form method="POST" action="<c:url value="/admin/login/"/>" class=" dz-form pb-3">
@@ -62,7 +61,6 @@
                                                     </form>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </nav>
                                 </div>

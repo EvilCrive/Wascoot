@@ -20,6 +20,15 @@
         <url-pattern>/admin/login</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>LogoutAdministrator</servlet-name>
+        <servlet-class>wascoot.servlet.AdminLogoutJspServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutAdministrator</servlet-name>
+        <url-pattern>/admin/logout</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>LoginFilter</filter-name>
         <filter-class>wascoot.filter.LoginFilter</filter-class>

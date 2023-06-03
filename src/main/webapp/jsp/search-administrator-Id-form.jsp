@@ -36,7 +36,7 @@
 		<label for="idID">ID:</label>
 		<input id="idID" type="text"/><br/><br/>
 		
-		<button type="submit" id="ajaxButton">Submit</button><br/>
+		<button type="submit" id="ajaxButton">Search</button><br/>
 
 	</div>
 

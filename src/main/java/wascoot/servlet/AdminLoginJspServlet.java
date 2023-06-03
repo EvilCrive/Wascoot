@@ -28,16 +28,19 @@ public class AdminLoginJspServlet extends AbstractDatabaseServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String op = request.getRequestURI();
-        //remove everything prior to /user/ (included) and use the remainder as
+        //remove everything prior to /admin/ (included) and use the remainder as
         //indicator for the required operation
         op = op.substring(op.lastIndexOf("admin") + 5);
-        //op = request.getRequestURI().split("/", 4)[2];
 
         switch (op) {
             case "login/":
                 request.getSession().invalidate();
                 // the requested operation is login
                 request.getRequestDispatcher("/jsp/login-page.jsp").forward(request, response);
+                break;
+            case "logout/":
+                request.getSession().invalidate();
+                response.sendRedirect(request.getContextPath() + "/jsp/homepage.jsp");
                 break;
             default:
                 // the requested operation is unknown
@@ -55,7 +58,7 @@ public class AdminLoginJspServlet extends AbstractDatabaseServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String op = request.getRequestURI();
-        //remove everything prior to /user/ (included) and use the remainder as
+        //remove everything prior to /admin/ (included) and use the remainder as
         //indicator for the required operation
         op = op.substring(op.lastIndexOf("admin") + 6);
 
@@ -121,7 +124,6 @@ public class AdminLoginJspServlet extends AbstractDatabaseServlet {
                     m = new Message("Credentials are wrong");
                     req.setAttribute("message", m);
                     req.getRequestDispatcher("/jsp/login-page.jsp").forward(req, res);
-                    //req.getRequestDispatcher("/html/login.html").forward(req, res);
 
                     m = new Message("The administrator does not exist","E200","Missing administrator");
                     LOGGER.error("problems with administrator: {}", m.getMessage());
@@ -131,12 +133,7 @@ public class AdminLoginJspServlet extends AbstractDatabaseServlet {
                     HttpSession session = req.getSession();
                     session.setAttribute("id", administrator.getId());
                     session.setAttribute("email", administrator.getEmail());
-                    // login credentials were correct: we redirect the user to the homepage with all the courses
-                    // now the session is active and its data can used to change the homepage
                     res.sendRedirect(req.getContextPath() + "/jsp/homepage.jsp");
-                    //res.sendRedirect(req.getContextPath()+"/html/homepage.html");
-                    //req.getRequestDispatcher("/jsp/hello.jsp").forward(req, res);
-                    //req.getRequestDispatcher("/html/login.html").forward(req, res);
 
 
                     m = new Message("Login success");
@@ -151,68 +148,5 @@ public class AdminLoginJspServlet extends AbstractDatabaseServlet {
 
     }
 
-    public void loginOperations2(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        try {
-
-            boolean loggable=true;
-            ErrorCode ec = null;
-            Message m = null;
-
-
-            //take from the request, the parameters (email and password)
-            int id = Integer.parseInt(req.getParameter("id"));
-            String email = req.getParameter("email");
-            String password = req.getParameter("password");
-            String photoMediaType = "image/png";
-
-            Administrator u = new Administrator(id, email, password, null, photoMediaType);
-            Administrator loggedUser=null;
-            if (email == null || email.equals("")) {
-                //the email is empty
-                loggable = false;
-                ec = ErrorCode.EMAIL_MISSING;
-                m = new Message("missing email");
-
-            } else if (password == null || password.equals("")) {
-                //the password was empty
-                loggable = false;
-                ec = ErrorCode.EMAIL_MISSING;
-                m = new Message("missing password");
-
-            } else{
-                //try to authenticate the user
-                //check if email exists and the password matches
-                loggedUser = new AdminLoginDAO(getConnection(), u).access().getOutputParam();
-                if (loggedUser == null) {
-                    loggable = false;
-                    //if not, tell it to the user
-                    ec = ErrorCode.WRONG_CREDENTIALS;
-                    m = new Message("credentials are wrong");
-                }
-            }
-
-
-            if (loggable){
-                // activate a session to keep the user data
-                HttpSession session = req.getSession();
-
-                // insert in the session the email an the role
-                session.setAttribute("email", loggedUser.getEmail());
-
-                // login credentials were correct: we redirect the user to the homepage
-                // now the session is active and its data can used to change the homepage
-                res.sendRedirect(req.getContextPath()+"/jsp/hello.jsp");
-            } else {
-                res.setStatus(ec.getHTTPCode());
-                req.setAttribute("message", m);
-                req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
-            }
-
-        } catch (SQLException e){
-            //something unexpected happened: we write it into the logger
-            writeError(res, ErrorCode.INTERNAL_ERROR);
-            LOGGER.error("stacktrace:", e);
-        }
-    }
 
 }

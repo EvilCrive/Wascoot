@@ -53,7 +53,7 @@ Preloader end
 
                     </div>
                     <ul class="navbar-nav header-right">
-                        <li class="nav-item align-items-center header-border"><a href=".." class="btn btn-primary btn-sm">Logout</a></li>
+                        <li class="nav-item align-items-center header-border"><a href="${pageContext.request.contextPath}/admin/logout" class="btn btn-primary btn-sm">Logout</a></li>
                         <li class="nav-item ps-3">
                             <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="header-info2 d-flex align-items-center">
@@ -221,19 +221,40 @@ Preloader end
                 Administrator
             </h1>
 
+            <form method="POST" action="<c:url value="/search-administrator-by-email"/>">
+                <label for="email">Email:</label>
+                <input id="email" name="email" type="text"/>
+                <button type="submit">Submit</button>
+                <button type="reset">Clear</button>
+            </form>
+        </div>
+
+        <div>
+            <label for="idID">ID:</label>
+            <!--
+            <input id="idID" type="text"/>
+            <button type="submit" id="ajaxButton">Search</button><br/>
+            -->
+            <select id="ajaxButton">
+                <option value="1">Nick</option>
+                <option value="2">Paria</option>
+                <option value="3">Shalini</option>
+                <option value="4">Shiva</option>
+                <option value="5">Alberto</option>
+                <option value="6">Sara</option>
+                <option value="7">Borwoei</option>
+            </select>
+
+        </div>
+
+        <div id="results" style="margin: 2em;">
+
+        </div>
+
+        <div>
             <form method="POST" action="../jsp/create-administrator-form.jsp">
-                <button type="submit">with photo</button><br/><br/><br/>
+                <button type="submit">create</button><br/><br/><br/>
             </form>
-
-            <form method="POST" action="../jsp/search-administrator-Id-form.jsp">
-                <label>Search Admin:</label><br/>
-                <button type="submit">Enter ID </button>
-            </form>
-
-            <form method="POST" action="../jsp/search-administrator-form.jsp">
-                <button type="submit">Enter Email</button>
-            </form>
-
         </div>
     </div>
 
@@ -267,6 +288,7 @@ Preloader end
 <script src="https://cdn.jsdelivr.net/npm/metismenu"></script>
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="${pageContext.request.contextPath}/js/wascoot.js"></script>
+<script type="text/javascript" src="<c:url value="/js/ajax_administrator_id.js"/>"></script>
 
 
 <%--<input type=button onClick="location.href='../jsp/dashboard.jsp'" value='Enter dashboard'>
