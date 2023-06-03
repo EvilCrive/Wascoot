@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -54,6 +55,11 @@ public final class ListScootersDAO extends AbstractDAO<List<Scooter>> {
             }
 
             LOGGER.info("Scooter(s) successfully listed.");
+
+            Collections.sort(scooters);
+
+            LOGGER.info("Scooter(s) successfully sorted.");
+
         } finally {
             if (rs != null) {
                 rs.close();

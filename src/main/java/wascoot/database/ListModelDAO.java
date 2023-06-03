@@ -43,8 +43,11 @@ public final class ListModelDAO extends AbstractDAO<List<Model>> {
                         rs.getDouble("price_per_min")));
             }
 
-            Collections.sort(models);
             LOGGER.info("Model(s) successfully listed.");
+
+            Collections.sort(models);
+
+            LOGGER.info("Model(s) successfully sorted.");
         } finally {
             if (rs != null) {
                 rs.close();
