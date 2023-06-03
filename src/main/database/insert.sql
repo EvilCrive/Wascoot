@@ -1,231 +1,126 @@
--- deleting existing tables
-drop table if exists scooter cascade;
-drop table if exists model cascade;	
-drop table if exists scooterRacks cascade;
-drop table if exists customer cascade;
-drop table if exists PaymentMethod cascade;
-drop table if exists Association cascade;
-drop table if exists PaymentWithoutSubscription cascade;
-drop table if exists PaymentWithSubscription cascade;
-drop table if exists UsedSubscription cascade;
-drop table if exists RealSubscription cascade;
-drop table if exists Admin cascade;
---drop table if exists EndSubscription cascade;
-drop table if exists Subscription cascade;
-drop table if exists Rental cascade;
---drop domains and sequences
-drop domain if exists positive_integer cascade;
-drop domain if exists positive_real cascade;
-drop domain if exists gender cascade;
-drop domain if exists paymentTypes cascade;
-drop domain if exists activationType cascade;
-drop sequence if exists used_subscription_id_a_seq cascade;
-drop sequence if exists real_subscription_id_a_seq cascade;
-drop sequence if exists realsubscription_id_a_seq cascade;
-drop sequence if exists rental_order_number_seq cascade;
-drop sequence if exists sequence_id_sa cascade;
-drop sequence if exists sequence_id_ca cascade;
 
-drop schema if exists public cascade;
-create schema public;
+-- PostgreSQL stuff
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
 
---creating sequences: serials personalized
-create sequence if not exists usedsubscription_id_a_seq as int increment by 1
-    MINVALUE 1 NO MAXVALUE NO CYCLE;	
-create sequence if not exists rental_order_number_seq as int increment by 1
-    MINVALUE 1 NO MAXVALUE NO CYCLE;
-create sequence if not exists sequence_id_sa as int increment by 2
-    MINVALUE 1 NO MAXVALUE NO CYCLE;
-create sequence  if not exists sequence_id_ca as int increment by 2
-    MINVALUE 2 NO MAXVALUE NO CYCLE;	
+-- ADMIN(id, email, password, profileImage)
+INSERT INTO public.admin VALUES (DEFAULT, 'admin@wascoot.com', '123321', NULL, 'image/png');
+INSERT INTO public.admin VALUES (DEFAULT, 'ferror@gmail.com', '1234', NULL, 'image/png');
+INSERT INTO public.admin VALUES (DEFAULT, 'paria@gmail.com', '1357', NULL, 'image/png');
 
---creating domains
-create domain positive_integer as integer
-default 0 check (value >=0);
+-- PAYMENTMETHOD(id, paymenttype, activation)
+INSERT INTO public.paymentmethod VALUES (DEFAULT, 'Credit Card', DEFAULT);
+INSERT INTO public.paymentmethod VALUES (DEFAULT, 'Visa Debit', DEFAULT);
+INSERT INTO public.paymentmethod VALUES (DEFAULT, 'Paypal', DEFAULT);
 
-create domain positive_real as real
-default 0 check (value >=0);
+-- CUSTOMER(CF, name, surname, email, sex, birthdate, postalCode)
+INSERT INTO public.customer VALUES ('PSCGLI56G45I623E', 'Giulia', 'Primo', 'g.primo@virgilio.it', 'F', '1961-10-03', NULL, 'Credit Card');
+INSERT INTO public.customer VALUES ('SCNGNN99D09C352U', 'Giovanni', 'Secondo', 'g.secondo@gmail.com', 'M', '1946-10-03', NULL, 'Credit Card');
+INSERT INTO public.customer VALUES ('LBRPPN14S07D612X', 'Pipino', 'Il Breve', 'p.ilbreve@libero.it', 'M', DEFAULT, NULL, 'Credit Card');
+INSERT INTO public.customer VALUES ('RSSFRC83L49F111G', 'Federica', 'Rossi', 'f.rossi@libero.it', 'F', '1996-10-03', NULL, 'Visa Debit');
+INSERT INTO public.customer VALUES ('ZREFNC99T16L781Q', 'Francesco', 'Zero', 'f.zero@studenti.unisa.it', 'M', DEFAULT, NULL, 'Paypal');
+INSERT INTO public.customer VALUES ('TRZDIA99L60L157U', 'Ida', 'Terzigno', 'iterzigno@pikolo.it', 'F', DEFAULT, NULL, 'Visa Debit');
+INSERT INTO public.customer VALUES ('SNTGPP86E10A465X', 'Giuseppe', 'Senatore', 'g.senatore@libero.it', 'M', '1999-01-01', NULL, 'Paypal');
+INSERT INTO public.customer VALUES ('RGNCMN78D10A399I', 'Carmine', 'Ragno', 'c.ragno@virgilio.it', 'M', DEFAULT, NULL, 'Visa Debit');
+INSERT INTO public.customer VALUES ('MTRGPP52M65I608H', 'Giuseppina', 'Amatore', 'g.amatore@gmail.com', 'F', '1993-02-09', NULL, 'Paypal');
+INSERT INTO public.customer VALUES ('SPSGNR86L31B076I', 'Gennaro', 'Esposito', 'g.esposito@libero.it', 'M', DEFAULT, NULL, 'Visa Debit');
+INSERT INTO public.customer VALUES ('PHNTEW74B37Z444L', 'Paria', 'Tahan', 'paria.tahan@gmail.com', 'F', '1994-02-09', '35141', 'Credit Card');
+INSERT INTO public.customer VALUES ('PHNTEW74B37Z555L', 'Nicola', 'Ferro', 'nicola.ferro@gmail.com', 'M', '1970-01-01', '14891', 'Credit Card');
+INSERT INTO public.customer VALUES ('PHNTEW74B37Z449L', 'Fabio', 'Vandin', 'fabio.vandin@gmail.com', 'M', '1977-04-05', '54321', 'Paypal');
+INSERT INTO public.customer VALUES ('PHNTEW76B37Z344L', 'Matteo', 'Fischetti', 'matteo.fischetti@gmail.com', 'M', '1966-10-03', '98765', 'Paypal');
 
-CREATE DOMAIN gender CHAR(1)
-    CHECK (value IN ( 'F' , 'M' ) );
+-- MODEL(name, brand, battery_life, price_per_min)
+INSERT INTO public.model VALUES ('Dot', 'Decathlon', '01:00:00', 1);
+INSERT INTO public.model VALUES ('Wolf', 'Giant', '03:00:00', 3);
+INSERT INTO public.model VALUES ('Corona', 'Merida', '02:20:00', 2);
+INSERT INTO public.model VALUES ('Liszt', 'Giant', '02:02:00', 3);
+INSERT INTO public.model VALUES ('Mozart', 'ASUS', '10:10:00', 2);
+INSERT INTO public.model VALUES ('Bach', 'ACER', '04:01:00', 0.900);
+INSERT INTO public.model VALUES ('E90', 'Razor', '01:00:00', 0.25);
+INSERT INTO public.model VALUES ('E100', 'Razor', '02:00:00', 0.15);
+INSERT INTO public.model VALUES ('E300', 'Razor', '01:30:00', 0.1);
+INSERT INTO public.model VALUES ('R9 PRO', 'LEXGO', '01:00:00', 0.2);
 
-CREATE DOMAIN paymentTypes varchar
-    CHECK (value IN ( 'Credit Card', 'Visa Debit', 'Paypal' ) );
+-- SCOOTERRACKS(id, total_parking_spots, available_parking_spots, postalCode, address)
+INSERT INTO public.scooterracks VALUES (DEFAULT, 20, 15, '35141', 'Via Eugana 80');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 20, 2, '12345', 'Via Roma');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 0, '15678', 'Via Strat');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 30, 11, '65432', 'Via Debussey');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 20, 1, '35133', 'The fifth ave.');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 5, '00193', 'Castel Sant''Angelo');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 5, 5, '00186', 'Piazza Navona');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 2, '00186', 'Pantheon');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 10, 7, '00187', 'Piazza Venezia');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 20, 15, '00186', 'Foro Romano');
+INSERT INTO public.scooterracks VALUES (DEFAULT, 20, 5, '00184', 'Colosseo');
 
-CREATE domain activationType varchar
-    check ( value IN ('Active', 'Inactive'));
+-- SCOOTER(id, date_of_purchase, km_traveled, model, remaining_battery_life, id_scooter_rack)
+INSERT INTO public.scooter VALUES (DEFAULT, '2023-03-20', 10, 'Dot', 100.00, 1);
+INSERT INTO public.scooter VALUES (DEFAULT, '2023-03-29', 50, 'Dot', 100.00, 3);
+INSERT INTO public.scooter VALUES (DEFAULT, '2022-09-09', 120, 'Mozart', 40.11, 2);
+INSERT INTO public.scooter VALUES (DEFAULT, '2010-03-01', 1000, 'Bach', 60.00, 3);
+INSERT INTO public.scooter VALUES (DEFAULT, '1977-03-09', 700, 'Liszt', 37.69, 4);
+INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-01', 0, 'E90', 65, 4);
+INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-9', 10, 'E100', 50, 5);
+INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-11', 9, 'E90', DEFAULT, 1); 
+INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-10', 6, 'E100', 20, 2);
+INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-25', 3, 'E300', 100, 3);
+INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-20', 6, 'E90', DEFAULT, 3);
+INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-30', 1.5, 'E90', 70, 5);
+INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-17', 2, 'R9 PRO', DEFAULT, 6);
+INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-01', 14, 'E300', 86, 4); 
+INSERT INTO public.scooter VALUES (DEFAULT, '2020-01-4', 5, 'E90', 100, 5);
+
+-- RENTAL(id, date_hour_delivery, date_hour_collection, id_scooter, scooterrack_delivery, scooterrack_collection, customer, km_traveled)
+INSERT INTO public.rental VALUES (DEFAULT, NULL, '2016-06-22 19:10:25', 1, 2, 1, 'PHNTEW74B37Z444L', 10);
+INSERT INTO public.rental VALUES (DEFAULT, NULL, '2019-01-01 00:00:00', 2, 3, 2, 'PHNTEW74B37Z444L', 4);
+INSERT INTO public.rental VALUES (DEFAULT, NULL, '2029-01-01 00:00:00', 4, 3, 1, 'PHNTEW74B37Z444L', 3);
+INSERT INTO public.rental VALUES (DEFAULT, '2020-01-01 16:23:00', '2020-01-01 10:23:00', 5, 5, 4, 'SPSGNR86L31B076I', 1.9);
+INSERT INTO public.rental VALUES (DEFAULT, '2020-02-03 14:23:54', '2020-02-03 10:23:54', 6, 4, 5, 'MTRGPP52M65I608H', 1.5);
+INSERT INTO public.rental VALUES(DEFAULT, '2020-01-05 12:20:20', '2020-01-05 12:00:00', 7, 3, 3, 'TRZDIA99L60L157U', 2);
+INSERT INTO public.rental VALUES(DEFAULT, '2020-02-01 13:35:30', '2020-02-01 13:30:30', 8, 3, 3, 'ZREFNC99T16L781Q', 0.2);
+INSERT INTO public.rental VALUES(DEFAULT, '2020-01-02 10:23:54', '2020-01-02 09:23:54', 9, 1, 5, 'LBRPPN14S07D612X', 1.1);
+INSERT INTO public.rental VALUES(DEFAULT, '2020-01-10 10:15:54', '2020-01-10 10:00:54', 1, 1, 5, 'SCNGNN99D09C352U', 2.3); 
+INSERT INTO public.rental VALUES(DEFAULT, '2020-02-01 12:23:54', '2020-02-01 10:23:54', 1, 5, 2, 'PSCGLI56G45I623E', 5.9);
+INSERT INTO public.rental VALUES(DEFAULT, '2020-02-14 14:00:00', '2020-02-14 12:00:00', 1, 2, 7, 'RSSFRC83L49F111G', 6);
+
+-- SUBSCRIPTION(id, type, daily_unlocks, validity_per_day, fixed_price)
+INSERT INTO public.subscription VALUES (DEFAULT, '1 day', 1, '00:00:01', 10.00);
+INSERT INTO public.subscription VALUES (DEFAULT, '1 day', 2, '02:00:00', 10.00);
+INSERT INTO public.subscription VALUES (DEFAULT, '1 week', 3, '00:00:03', 4.00);
+INSERT INTO public.subscription VALUES (DEFAULT, '1 day', 2, '02:00:00', 5);
+INSERT INTO public.subscription VALUES (DEFAULT, '1 week', 4, '04:00:00', 20);
+INSERT INTO public.subscription VALUES (DEFAULT, '1 month', 4, '04:00:00', 60);
+INSERT INTO public.subscription VALUES (DEFAULT, '1 year', 8, '08:00:00', 200);
+INSERT INTO public.subscription VALUES (DEFAULT, '10 days', 4, '02:00:00', 20);
+
+-- USEDSUBSCRIPTION(id, activation_date, expiration_date, remaining_unlocks, remaining_time_of_usage, customer_CF, subscription_type)
+INSERT INTO public.usedsubscription VALUES(DEFAULT, '2020-01-10', '2020-01-10', 0, '0 minute', 'PSCGLI56G45I623E', 1);
+INSERT INTO public.usedsubscription VALUES(DEFAULT, '2020-02-12', '2020-03-12', 0, '0 minute', 'SCNGNN99D09C352U', 6);
+INSERT INTO public.usedsubscription VALUES(DEFAULT, '2020-02-10', '2020-02-10', 1, '2 hour', 'LBRPPN14S07D612X', 1);
+INSERT INTO public.usedsubscription VALUES(DEFAULT, '2020-01-10', '2021-01-10', 3, '1 month', 'RSSFRC83L49F111G', 7);
+INSERT INTO public.usedsubscription VALUES(DEFAULT, '2020-04-09', '2020-05-09', 2, '10 day', 'ZREFNC99T16L781Q', 6);
+
+-- PAYMENTWITHSUBSCRIPTION(id, date_hour, order_ID, usedSubscriptionID)
+INSERT INTO public.paymentwithsubscription VALUES(DEFAULT, '2020-02-14 14:00:00', 1, 1);
+INSERT INTO public.paymentwithsubscription VALUES(DEFAULT, DEFAULT, 2, 1);
+INSERT INTO public.paymentwithsubscription VALUES(DEFAULT, '2020-02-14 18:00:00', 3, 1);
+ 
+-- PAYMENTWITHOUTSUBSCRIPTION(id, price, date_hour, orderID)
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 91, '2020-08-01 16:23:00', 7);
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 4.6, '2020-08-05 09:00:50', 9);
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 1.5, '2020-08-01 13:35:30', 4);
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 31, '2020-08-01 12:00:00', 5);
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 16,'2020-08-01 15:15:00', 6);
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 91, '2020-02-13 14:00:00', 8);
+INSERT INTO public.paymentwithoutsubscription VALUES (DEFAULT, 100.00, '2011-01-01 00:00:00', 10);
 
 
--- creating tables
-create table ScooterRacks(
-    ID serial,
-    total_parking_spots positive_integer not null,
-    available_parking_spots positive_integer not null,
-    --latitude numeric(20,18) not null,
-    --longitude numeric(21,18) not null,
-    postalCode char(5) not null,
-    address varchar(50),
-    constraint key_scooter_rack primary key (ID)
-    --constraint unique_coordinate unique (latitude, longitude) --corporate constraints
-);
-
-create table Model(
-    name varchar(30), 
-    brand varchar(30) not null default 'Unknown',
-    battery_life time without time zone,
-    --weight positive_real default null,
-    --height positive_real default null, --in cm
-    --length positive_real default null,
-    --depth positive_real default null,
-    price_per_min numeric(4,3) default '0.10' not null,
-    --rate_per_model numeric(4,2) default '1.00' not null,
-    constraint key_model primary key (name),
-    constraint check_model_price check (price_per_min > 0.0) --corporate constraints
-);
-
-create table PaymentMethod(
-    ID serial,
-    type paymentTypes not null,
-    Activation activationType default 'Inactive',
-    constraint key_payment_method primary key (type)
-);
-
-create table Customer(
-    CF char(16), 
-    name varchar(30) not null, 
-    surname varchar(30) not null, 
-    email varchar(60) unique not null,
-    sex gender not null,
-    birthdate date not null default '1922-02-02',
-    postalCode char(5),
-    paymentType paymentTypes,
-    constraint key_customer primary key (CF),
-    constraint fk_paymentmethod foreign key (paymentType) references PaymentMethod
-        on update cascade
-        on delete cascade
-);
-
-
-
-create table Subscription(
-    ID serial,
-    --type varchar(20), -- it is the typology
-    type varchar(60) default '1d' not null,
-    daily_unlocks positive_integer default 2 not null,
-    validity_per_day time without time zone,
-    fixed_price numeric(5,2) default '5.00' not null,
-    constraint key_subscription primary key (ID),
-    constraint check_subscription_price check(fixed_price > 0) --corporate constraints
-);
-
-create table Scooter(
-    ID serial,
-    date_of_purchase date default current_timestamp, 
-    km_traveled positive_real, 
-    model varchar(30) not null,--foreign key
-    remaining_battery_life decimal(5,2) not null default '100.00',
-    id_scooter_rack int not null, --foreign key /*can be null only if the scooter is currently rented*/
-    constraint key_scooter primary key (id),
-    constraint fk_scooter_scooterrack foreign key (id_scooter_rack) references ScooterRacks
-    on update cascade
-    on delete restrict, 
-    constraint fk_scooter_model foreign key (model) references model 
-    on update cascade
-    on delete restrict,
-    constraint check_scooter_purchase check(date_of_purchase <= current_timestamp) --corporate constraints
-);
---need to deleted--
-/*create table Association(
-    type varchar(20),
-    CF char(16),
-    constraint key_association primary key (CF, type),
-    constraint fk_association_customer foreign key (CF) references Customer
-    on update cascade 
-    on delete cascade,  
-    constraint fk_association_paymentmethod foreign key (type) references PaymentMethod 
-    on update cascade 
-    on delete cascade 
-);*/
-
-create table Rental(
-    ID int default nextval('rental_order_number_seq'),
-    date_hour_delivery timestamp default null, 
-    date_hour_collection timestamp default current_timestamp not null, 
-    id_scooter int not null, --foreign
-    scooterrack_delivery int default null, --foreign
-    scooterrack_collection int not null, --foreign
-    customer char(16) not null, --foreign
-    km_traveled positive_real default 0,
-    constraint key_rental primary key (ID),
-    constraint fk_rental_scooter foreign key (id_scooter) references Scooter
-    on update cascade 
-    on delete restrict,
-    constraint fk_rental_scooterrack_collection foreign key (scooterrack_collection) references ScooterRacks 
-    on update cascade,
-    --on delete the old value is ok,
-    constraint fk_rental_scooterrack_delivery foreign key (scooterrack_delivery) references ScooterRacks
-    on update cascade,
-    --on delete the old value is ok,
-    constraint fk_rental_customer foreign key (customer) references customer
-    on update cascade 
-    on delete restrict,
-
-    constraint check_collection_delivery check(date_hour_delivery > date_hour_collection), --corporate constraints
-    constraint check_collection_scooter unique (date_hour_collection, id_scooter),
-    constraint check_collection_customer unique (date_hour_collection, customer)
-);
-
-create table UsedSubscription(
-    ID int default nextval('usedsubscription_id_a_seq'),
-    activation_date date default current_timestamp not null, 
-    expiration_date date not null,
-    remaining_unlocks positive_integer default '2' not null,
-    remaining_time_of_usage interval hour to second default '2 hour' not null, 
-    customer_CF char(16) not null, -- id fiscale foreign
-    subscription_type int not null, --foreign
-    constraint key_used_subscription primary key (ID),
-    constraint fk_used_subscription foreign key (subscription_type) references Subscription
-    on update restrict
-    on delete restrict,
-    constraint fk_usedsubscription_customer foreign key (customer_CF) references Customer
-    on update cascade 
-    on delete cascade --corporate constraints (if a customer unsubscribes he loses his subscriptions)
-);
-
-create table PaymentWithoutSubscription(
-    ID int default nextval('sequence_id_sa') ,
-    --int generated by default as identity (start with 1 increment by 2), another chance in addition to sequence
-    price numeric(5,2) not null, --computed at the checkout --trigger
-    date_hour timestamp default current_timestamp not null,
-    order_ID integer unique not null,
-    constraint key_without_subscription primary key (ID),
-    constraint fk_withoutsubscription_rental foreign key (order_ID) references rental
-    on update cascade 
-    on delete restrict,
-    constraint check_withoutpayment_price check(price > 0) --corporate constraints
-);
-
-create table PaymentWithSubscription(
-    ID int default nextval('sequence_id_ca') ,
-    --generated by default as identity (start with 2 increment by 2),
-    date_hour timestamp default current_timestamp not null, 
-    order_ID integer unique not null,
-    usedSubscription_ID integer not null,
-    constraint key_with_subscription primary key (ID),
-    constraint fk_withsubscription_rental foreign key (order_ID) references rental
-    on update cascade 
-    on delete restrict,
-    constraint fk_withsubscription_usedsubscription foreign key (usedSubscription_ID) references UsedSubscription
-    on update cascade 
-    on delete restrict
-);
-
-create table Admin(
-    ID serial,
-    email varchar,
-    password varchar,
-    photo BYTEA default null,
-	photoMediaType TEXT,
-    constraint key_admin primary key (ID),
-    CONSTRAINT proper_email CHECK (email ~* '^[A-Za-z0-9._+%-]+@[A-Za-z0-9.-]+[.][A-Za-z]+$')
-);
