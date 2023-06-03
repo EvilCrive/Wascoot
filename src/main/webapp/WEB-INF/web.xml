@@ -44,60 +44,60 @@
         <url-pattern>/create-administrator-photo</url-pattern>
     </servlet-mapping>
 
+    <!--
+        <servlet>
+            <servlet-name>CreateAdministratorNoPhoto</servlet-name>
+            <servlet-class>wascoot.servlet.CreateAdministratorNoPhotoServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>CreateAdministratorNoPhoto</servlet-name>
+            <url-pattern>/create-administrator-no-photo</url-pattern>
+        </servlet-mapping>
+    -->
+        <servlet>
+            <servlet-name>LoadAdministratorPhoto</servlet-name>
+            <servlet-class>wascoot.servlet.LoadAdministratorPhotoServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>LoadAdministratorPhoto</servlet-name>
+            <url-pattern>/load-administrator-photo</url-pattern>
+        </servlet-mapping>
 
-    <servlet>
-        <servlet-name>CreateAdministratorNoPhoto</servlet-name>
-        <servlet-class>wascoot.servlet.CreateAdministratorNoPhotoServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CreateAdministratorNoPhoto</servlet-name>
-        <url-pattern>/create-administrator-no-photo</url-pattern>
-    </servlet-mapping>
+        <servlet>
+            <servlet-name>SearchAdministratorById</servlet-name>
+            <servlet-class>wascoot.servlet.SearchAdministratorByIdServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>SearchAdministratorById</servlet-name>
+            <url-pattern>/search-administrator-by-id</url-pattern>
+        </servlet-mapping>
 
-    <servlet>
-        <servlet-name>LoadAdministratorPhoto</servlet-name>
-        <servlet-class>wascoot.servlet.LoadAdministratorPhotoServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LoadAdministratorPhoto</servlet-name>
-        <url-pattern>/load-administrator-photo</url-pattern>
-    </servlet-mapping>
+        <servlet>
+            <servlet-name>SearchAdministratorByEmail</servlet-name>
+            <servlet-class>wascoot.servlet.SearchAdministratorByEmailServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>SearchAdministratorByEmail</servlet-name>
+            <url-pattern>/search-administrator-by-email</url-pattern>
+        </servlet-mapping>
 
-    <servlet>
-        <servlet-name>SearchAdministratorById</servlet-name>
-        <servlet-class>wascoot.servlet.SearchAdministratorByIdServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>SearchAdministratorById</servlet-name>
-        <url-pattern>/search-administrator-by-id</url-pattern>
-    </servlet-mapping>
+        <!--<servlet>
+            <servlet-name>getModel</servlet-name>
+            <servlet-class>wascoot.servlet.ListModelServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>getModel</servlet-name>
+            <url-pattern>/list-model</url-pattern>
+        </servlet-mapping>
 
-    <servlet>
-        <servlet-name>SearchAdministratorByEmail</servlet-name>
-        <servlet-class>wascoot.servlet.SearchAdministratorByEmailServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>SearchAdministratorByEmail</servlet-name>
-        <url-pattern>/search-administrator-by-email</url-pattern>
-    </servlet-mapping>
-
-    <!--<servlet>
-        <servlet-name>getModel</servlet-name>
-        <servlet-class>wascoot.servlet.ListModelServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>getModel</servlet-name>
-        <url-pattern>/list-model</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>UpdateModel</servlet-name>
-        <servlet-class>wascoot.servlet.UpdateModelServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>UpdateModel</servlet-name>
-        <url-pattern>/update-model</url-pattern>
-    </servlet-mapping>-->
+        <servlet>
+            <servlet-name>UpdateModel</servlet-name>
+            <servlet-class>wascoot.servlet.UpdateModelServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>UpdateModel</servlet-name>
+            <url-pattern>/update-model</url-pattern>
+        </servlet-mapping>-->
 
     <servlet>
         <servlet-name>getRentals</servlet-name>

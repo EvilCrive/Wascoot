@@ -220,10 +220,6 @@ Preloader end
             <h1>
                 Administrator
             </h1>
-            <form method="POST" action="../html/create-administrator-form.html">
-                <label>create administrator:</label><br/>
-                <button type="submit">without photo</button>
-            </form>
 
             <form method="POST" action="../jsp/create-administrator-form.jsp">
                 <button type="submit">with photo</button><br/><br/><br/>
