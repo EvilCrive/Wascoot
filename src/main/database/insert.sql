@@ -91,11 +91,11 @@ INSERT INTO public.rental VALUES(DEFAULT, '2020-02-14 14:00:00', '2020-02-14 12:
 INSERT INTO public.subscription VALUES (DEFAULT, '1 day', 1, '00:00:01', 10.00);
 INSERT INTO public.subscription VALUES (DEFAULT, '1 day', 2, '02:00:00', 10.00);
 INSERT INTO public.subscription VALUES (DEFAULT, '1 week', 3, '00:00:03', 4.00);
-INSERT INTO public.subscription VALUES (DEFAULT, '1 day', 2, '2 hours', 5);
-INSERT INTO public.subscription VALUES (DEFAULT, '1 week', 4, '4 hours', 20);
-INSERT INTO public.subscription VALUES (DEFAULT, '1 month', 4, '4 hours', 60);
-INSERT INTO public.subscription VALUES (DEFAULT, '1 year', 8, '8 hour', 200);
-INSERT INTO public.subscription VALUES (DEFAULT, '10 days', 4, '2 hour', 20);
+INSERT INTO public.subscription VALUES (DEFAULT, '1 day', 2, '02:00:00', 5);
+INSERT INTO public.subscription VALUES (DEFAULT, '1 week', 4, '04:00:00', 20);
+INSERT INTO public.subscription VALUES (DEFAULT, '1 month', 4, '04:00:00', 60);
+INSERT INTO public.subscription VALUES (DEFAULT, '1 year', 8, '08:00:00', 200);
+INSERT INTO public.subscription VALUES (DEFAULT, '10 days', 4, '02:00:00', 20);
 
 -- USEDSUBSCRIPTION(id, activation_date, expiration_date, remaining_unlocks, remaining_time_of_usage, customer_CF, subscription_type)
 INSERT INTO public.usedsubscription VALUES(DEFAULT, '2020-01-10', '2020-01-10', 0, '0 minute', 'PSCGLI56G45I623E', 1);
