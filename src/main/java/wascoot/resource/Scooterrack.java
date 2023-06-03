@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.*;
 
 import java.io.*;
 
-public class Scooterrack extends AbstractResource {
+public class Scooterrack extends AbstractResource implements Comparable<Scooterrack> {
     /**
      * The identifier of the scooter rack (PK)
      */
@@ -125,5 +125,12 @@ public class Scooterrack extends AbstractResource {
         jg.writeEndObject();
 
         jg.flush();
+    }
+
+    @Override
+    public int compareTo(Scooterrack o) {
+        if (this.id < o.id) return -1;
+        if (this.id == o.id)  return 0;
+        return 1;
     }
 }

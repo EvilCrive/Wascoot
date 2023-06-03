@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -53,6 +54,10 @@ public final class ScooterRackDatabase extends AbstractDAO<List<Scooterrack>> {
             }
 
             LOGGER.info("Scooterrack(s) successfully listed.");
+
+            Collections.sort(scooterracks);
+
+            LOGGER.info("Scooterrack(s) successfully sorted.");
         } finally {
             if (rs != null) {
                 rs.close();
@@ -93,6 +98,9 @@ public final class ScooterRackDatabase extends AbstractDAO<List<Scooterrack>> {
                         .getInt("total_parking_spots"), rs.getInt("available_parking_spots"),
                         rs.getString("postalcode"), rs.getString("address") ));
             }
+            
+            Collections.sort(scooterracks);
+
         } finally {
             if (rs != null) {
                 rs.close();
