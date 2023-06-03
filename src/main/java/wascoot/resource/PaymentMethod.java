@@ -2,7 +2,7 @@ package wascoot.resource;
 
 public class PaymentMethod implements Comparable<PaymentMethod> {
 
-    private final int id;
+    private int id;
     private final String type;
     private final String activation;
 
