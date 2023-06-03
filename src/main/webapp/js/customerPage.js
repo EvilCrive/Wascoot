@@ -26,11 +26,10 @@ const postalCode_nullToSlash = () => {
 
     for (const element of pC_items) {
         if (element.innerHTML === '') {
-            element.innerHTML = '/';
+            element.innerHTML = '-';
         }
     }
 }
-
 
 const color_PAYPAL = '#7ab2fa';
 const color_VISA = '#fa7a7a';
