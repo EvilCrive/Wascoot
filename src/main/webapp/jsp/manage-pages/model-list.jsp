@@ -234,7 +234,11 @@ Preloader end
                                 <div class="form-group mb-3">
                                     <label for="nameID" class="">Model Name<span class="text-danger">*</span>
                                     </label>
-                                    <input id="nameID" name="name" type="text" class="form-control"  placeholder="select the name">
+                                    <select id="nameID" name="name" type="text" class="form-control"  placeholder="select the name">
+                                        <c:forEach var="model" items="${modelList}">
+                                            <option><c:out value="${model.name}"/></option>
+                                        </c:forEach>
+                                    </select>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="brandID" class="">Brand<span class="text-danger">*</span>
@@ -251,7 +255,7 @@ Preloader end
                                     </label>
                                     <div class="input-group">
                                         <div class="input-group-text">€</div>
-                                        <input id="pricePerMinID" name="price_per_min" type="text" class="form-control" placeholder="modify the price">
+                                        <input id="pricePerMinID" name="price_per_min" type="number" min=0 step=0.1 class="form-control" placeholder="modify the price">
                                     </div>
                                 </div>
                                 <div>
@@ -348,7 +352,7 @@ Preloader end
                         </div>
                         <div class="col-xl-6 mb-3">
                             <label for="canvasModelPrice" class="form-label">Price Per Min<span class="text-danger">*</span></label>
-                            <input name="price_per_min" type="text" class="form-control" id="canvasModelPrice" placeholder="">
+                            <input name="price_per_min" type="number" min=0 step=0.1 class="form-control" id="canvasModelPrice" placeholder="">
                         </div>
                     </div>
                     <div>
