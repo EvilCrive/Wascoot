@@ -250,7 +250,7 @@ Preloader end
                                             <td><span><c:out value="${customer.sex}"/></span></td>
                                             <td><span><c:out value="${customer.birthdate}"/></span></td>
                                             <td><span><c:out value="${customer.postalCode}"/></span></td>
-                                            <td><span class="badge badge-success light border-0"><c:out value="${customer.paymentType}"/></span></td>
+                                            <td><span class="badge badge-success light border-0 paymentMethod"><c:out value="${customer.paymentType}"/></span></td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
@@ -333,6 +333,7 @@ Preloader end
 <script src="https://cdn.jsdelivr.net/npm/metismenu"></script>
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="js/wascoot.js"></script>
+<script src="js/paymentMethods-color.js"></script>
 
 </body>
 </html>
