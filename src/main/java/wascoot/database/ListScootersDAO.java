@@ -99,6 +99,9 @@ public final class ListScootersDAO extends AbstractDAO<List<Scooter>> {
                 scooters.add(new Scooter(rs.getInt("id"), rs.getDate("date_of_purchase"), rs.getDouble("km_traveled"),
                         rs.getString("model"), rs.getDouble("remaining_battery_life"), rs.getInt("id_scooter_rack")));
             }
+
+            Collections.sort(scooters);
+
         } finally {
             if (rs != null) {
                 rs.close();
