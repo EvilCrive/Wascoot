@@ -98,7 +98,7 @@ public final class ScooterRackDatabase extends AbstractDAO<List<Scooterrack>> {
                         .getInt("total_parking_spots"), rs.getInt("available_parking_spots"),
                         rs.getString("postalcode"), rs.getString("address") ));
             }
-            
+
             Collections.sort(scooterracks);
 
         } finally {

@@ -129,8 +129,6 @@ public class Scooterrack extends AbstractResource implements Comparable<Scooterr
 
     @Override
     public int compareTo(Scooterrack o) {
-        if (this.id < o.id) return -1;
-        if (this.id == o.id)  return 0;
-        return 1;
+        return Integer.compare(this.id, o.id);
     }
 }

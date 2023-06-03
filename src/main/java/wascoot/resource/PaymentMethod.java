@@ -26,8 +26,6 @@ public class PaymentMethod implements Comparable<PaymentMethod> {
 
     @Override
     public int compareTo(PaymentMethod o) {
-        if (this.id < o.id) return -1;
-        if (this.id == o.id)  return 0;
-        return 1;
+        return Integer.compare(this.id, o.id);
     }
 }

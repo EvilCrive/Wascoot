@@ -113,8 +113,6 @@ public class Scooter extends AbstractResource implements Comparable<Scooter> {
 
     @Override
     public int compareTo(Scooter o) {
-        if (this.id < o.id) return -1;
-        if (this.id == o.id)  return 0;
-        return 1;
+        return Integer.compare(this.id, o.id);
     }
 }
