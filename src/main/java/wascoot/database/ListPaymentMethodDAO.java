@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -47,6 +48,11 @@ public final class ListPaymentMethodDAO extends AbstractDAO<List<PaymentMethod>>
             }
 
             LOGGER.info("payment method(s) successfully listed.");
+
+            Collections.sort(paymentMethods);
+
+            LOGGER.info("payment method(s) successfully sorted.");
+
         } finally {
             if (rs != null) {
                 rs.close();
