@@ -6,7 +6,7 @@ import java.io.*;
 import java.sql.Time;
 
 
-public class Model extends AbstractResource {
+public class Model extends AbstractResource implements Comparable<Model> {
     /**
      * The identifier of the model PK
      */
@@ -170,5 +170,10 @@ public class Model extends AbstractResource {
         jg.writeEndObject();
 
         jg.flush();
+    }
+
+    @Override
+    public int compareTo(Model o) {
+        return this.name.compareTo(o.name);
     }
 }
