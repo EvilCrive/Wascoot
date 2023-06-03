@@ -4,6 +4,7 @@ import wascoot.resource.Model;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -30,7 +31,7 @@ public final class ListModelDAO extends AbstractDAO<List<Model>> {
         ResultSet rs = null;
 
         // the results of the search
-        final List<Model> models = new ArrayList<Model>();
+        List<Model> models = new ArrayList<>();
 
         try {
             pstmt = con.prepareStatement(STATEMENT);
@@ -43,6 +44,10 @@ public final class ListModelDAO extends AbstractDAO<List<Model>> {
             }
 
             LOGGER.info("Model(s) successfully listed.");
+
+            Collections.sort(models);
+
+            LOGGER.info("Model(s) successfully sorted.");
         } finally {
             if (rs != null) {
                 rs.close();

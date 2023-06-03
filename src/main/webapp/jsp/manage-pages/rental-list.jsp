@@ -245,7 +245,7 @@ Preloader end
                                             <tr>
 
                                                 <td><span><c:out value="${rental.id}"/></span></td>
-                                                <td><span><c:out value="${rental.dateHourDelivery}"/></span></td>
+                                                <td><span class="rental-delivery"><c:out value="${rental.dateHourDelivery}"/></span></td>
                                                 <td><span><c:out value="${rental.dateHourCollection}"/></span></td>
                                                 <td><span><c:out value="${rental.idScooter}"/></span></td>
                                                 <td><span><c:out value="${rental.scooterrackDelivery}"/></span></td>
@@ -305,6 +305,7 @@ Preloader end
 <script src="https://cdn.jsdelivr.net/npm/metismenu"></script>
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="js/wascoot.js"></script>
+<script src="js/managePages.js"></script>
 
 </body>
 </html>

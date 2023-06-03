@@ -333,7 +333,7 @@ Preloader end
 <script src="https://cdn.jsdelivr.net/npm/metismenu"></script>
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="js/wascoot.js"></script>
-<script src="js/customerPage.js"></script>
+<script src="js/managePages.js"></script>
 
 </body>
 </html>

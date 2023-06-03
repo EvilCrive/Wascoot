@@ -31,8 +31,21 @@ const postalCode_nullToSlash = () => {
     }
 }
 
+const nullToSlash = () => {
+    const td_items = document.getElementsByTagName('td');
+    for (const element of td_items) {
+        let span_item = element.children[0];
+
+        if (span_item.innerHTML === '') {
+            span_item.innerHTML = '-';
+        }
+        if (span_item.classList.contains("rental-delivery") && span_item.innerHTML === '-') {
+            span_item.innerHTML = "In delivery";
+        }
+    }
+}
 const color_PAYPAL = '#7ab2fa';
 const color_VISA = '#fa7a7a';
 const color_CREDIT = '#bee0ab';
 paymentMethods_changeColor()
-postalCode_nullToSlash()
+nullToSlash()

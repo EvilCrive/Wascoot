@@ -1,6 +1,6 @@
 package wascoot.resource;
 
-public class PaymentMethod {
+public class PaymentMethod implements Comparable<PaymentMethod> {
 
     private int id;
     private final String type;
@@ -23,4 +23,9 @@ public class PaymentMethod {
     public final String getType(){ return type; }
     public final String getActivation(){ return activation; }
 
+
+    @Override
+    public int compareTo(PaymentMethod o) {
+        return Integer.compare(this.id, o.id);
+    }
 }
