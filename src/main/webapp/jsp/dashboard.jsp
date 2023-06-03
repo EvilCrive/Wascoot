@@ -5,10 +5,15 @@
 <html lang="en">
 	<head>
 		<title>Dashboard</title>
-		 <script src="${pageContext.request.contextPath}/js/utils.js"></script>
-		 <script src="${pageContext.request.contextPath}/js/dashboard.js"></script>
-		 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-		 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/dashboard.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/utils.js"></script>
+        <script src="${pageContext.request.contextPath}/js/dashboard.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/dashboard.css">
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
 	</head>
 
 	<body>
@@ -45,6 +50,8 @@
 				</tbody>
 			</table>
 		</c:if>
+
+         <div id="map"></div>
 
         </div>
         <div class="div2">
@@ -140,7 +147,7 @@
             <canvas id="gender-chart"></canvas>
         </div>
 
-        </div>
+        <div id="map"></div>
 
 	</body>
 </html>
