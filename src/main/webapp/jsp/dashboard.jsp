@@ -66,17 +66,18 @@
                         <div id="map"></div>
                     </div>
                     <div class= "non-chart-container" id="topLocationTable">
+                        <h4 class="chart-text" >Rank of TopLocation Table</h4>
                         <c:if test='${not empty topLocation}'>
                             <c:set var="count" value="0" scope="page" />
-                        <table class="table-top">
-                            <thead class="head-top">
+                        <table class="table">
+                            <thead>
                             <tr>
                                 <th>Rank</th>
                                 <th>id</th>
                             </tr>
                             </thead>
 
-                            <tbody class="body-top">
+                            <tbody>
                             <c:forEach var="topLocation" items="${topLocation}">
                                 <c:set var="count" value="${count + 1}" scope="page"/>
                                 <tr>

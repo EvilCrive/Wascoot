@@ -85,43 +85,12 @@ body {
 }
 
 
-/*
-TABLE TOP RANK CSS
-*/
-.table-rr {
-    border-collapse: collapse;
-    width: 100%;
-}
 
-thead.head-rr tr th{
-    background-color: #ffb2c1;
-    color: white;
-    text-align: left;
-    padding: 8px;
-}
-
-tbody.body-rr tr {
-    text-align: left;
-    padding: 8px;
-}
-
-tbody.body-rr tr:nth-child(even){background-color: #f2f2f2}
-
-.table-top {
-    border-collapse: collapse;
+#topLocationTable,
+#revenue-chart-container {
     width: 50%;
 }
 
-thead.head-top tr th{
-    background-color: #ffb2c1;
-    color: white;
-    text-align: left;
-    padding: 8px;
+#topLocationTable .table {
+    margin: 0 auto;
 }
-
-tbody.body-top tr {
-    text-align: left;
-    padding: 8px;
-}
-
-tbody.body-top tr:nth-child(even){background-color: #f2f2f2}
