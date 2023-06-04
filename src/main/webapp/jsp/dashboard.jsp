@@ -62,21 +62,26 @@
                 <div id="top-elements">
 
                     <div class= "non-chart-container" id="map-container">
-                        <h4 class="chart-text" >Scooterracks available information with geographic representation</h4>
+                        <h4 class="chart-text" >Scooterracks available information with geographic representation :
+                            <button id="button-padova">Padova</button>
+                            <button id="button-rome">Rome</button>
+                        </h4>
                         <div id="map"></div>
                     </div>
+
                     <div class= "non-chart-container" id="topLocationTable">
+                        <h4 class="chart-text" >The most visited places for rent a bike</h4>
                         <c:if test='${not empty topLocation}'>
                             <c:set var="count" value="0" scope="page" />
-                        <table class="table-top">
-                            <thead class="head-top">
+                        <table class="table">
+                            <thead>
                             <tr>
                                 <th>Rank</th>
-                                <th>id</th>
+                                <th>Id of the scooterrack</th>
                             </tr>
                             </thead>
 
-                            <tbody class="body-top">
+                            <tbody>
                             <c:forEach var="topLocation" items="${topLocation}">
                                 <c:set var="count" value="${count + 1}" scope="page"/>
                                 <tr>
@@ -97,7 +102,7 @@
 
                 <div id="bottom-elements" class="row">
                     <div class="chart-container" id="revenue-chart-container">
-                        <h4 class="chart-text">Revenue chart </h4>
+                        <h4 class="chart-text">The amount of bicycle rental income per month</h4>
                         <canvas id="revenue-chart"></canvas>
                     </div>
 

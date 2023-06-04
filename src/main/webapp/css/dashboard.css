@@ -53,6 +53,14 @@ body {
     width: calc(50% - 10px);
 }
 
+#gender-chart{
+    height: 250px !important;
+    width: 250px !important;
+    margin: auto;
+    margin-top:10px;
+}
+
+
 .chart-container canvas {
     width: 100%;
     height: calc(100% - 20px);
@@ -60,9 +68,13 @@ body {
 
 #map-container {
     width: 100%;
-    height: 300px;
 }
-#map { height: 180px; }
+#map {
+    height: 180px;
+    position: relative; /* Set position to relative */
+    z-index: 0; /* Set a lower z-index value */
+}
+
 
 #bottom-elements {
     display: flex;
@@ -84,44 +96,23 @@ body {
     font-weight: 500;
 }
 
-
-/*
-TABLE TOP RANK CSS
-*/
-.table-rr {
-    border-collapse: collapse;
-    width: 100%;
+.chart-text button {
+  margin-right: 10px;
+  margin-left: 50px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  background-color: gray;
+  cursor: pointer;
+  font-size: 10px; /* Adjust the font size as needed */
 }
 
-thead.head-rr tr th{
-    background-color: #ffb2c1;
-    color: white;
-    text-align: left;
-    padding: 8px;
-}
-
-tbody.body-rr tr {
-    text-align: left;
-    padding: 8px;
-}
-
-tbody.body-rr tr:nth-child(even){background-color: #f2f2f2}
-
-.table-top {
-    border-collapse: collapse;
+#topLocationTable,
+#revenue-chart-container {
     width: 50%;
 }
 
-thead.head-top tr th{
-    background-color: #ffb2c1;
-    color: white;
-    text-align: left;
-    padding: 8px;
+#topLocationTable .table {
+    margin: 0 auto;
 }
-
-tbody.body-top tr {
-    text-align: left;
-    padding: 8px;
-}
-
-tbody.body-top tr:nth-child(even){background-color: #f2f2f2}
