@@ -62,9 +62,13 @@
                 <div id="top-elements">
 
                     <div class= "non-chart-container" id="map-container">
-                        <h4 class="chart-text" >Scooterracks available information with geographic representation</h4>
+                        <h4 class="chart-text" >Scooterracks available information with geographic representation :
+                            <button id="button-padova">Padova</button>
+                            <button id="button-rome">Rome</button>
+                        </h4>
                         <div id="map"></div>
                     </div>
+
                     <div class= "non-chart-container" id="topLocationTable">
                         <h4 class="chart-text" >The most visited places for rent a bike</h4>
                         <c:if test='${not empty topLocation}'>
@@ -73,7 +77,7 @@
                             <thead>
                             <tr>
                                 <th>Rank</th>
-                                <th>id</th>
+                                <th>Id of the scooterrack</th>
                             </tr>
                             </thead>
 
