@@ -1,4 +1,4 @@
-const paymentMethods_changeColor = () => {
+const customers_paymentMethods_changeColor = () => {
     const pM_items = document.getElementsByClassName('paymentMethod');
 
     for (const element of pM_items) {
@@ -44,8 +44,35 @@ const nullToSlash = () => {
         }
     }
 }
+
+const paymentMethods_paymentMethods_changeColor = () => {
+    const pM_items = document.getElementsByClassName('ActiveInactive');
+
+    for (const element of pM_items) {
+
+        let color_toAdd;
+        switch (element.innerHTML) {
+            case 'Active' :
+                color_toAdd = color_Active;
+                break;
+            case 'Inactive' :
+                color_toAdd = color_Inactive;
+                break;
+            default :
+                color_toAdd = 'gray';
+                break;
+        }
+        element.style.backgroundColor = color_toAdd;
+        element.style.color = 'black';
+    }
+}
+
 const color_PAYPAL = '#7ab2fa';
 const color_VISA = '#fa7a7a';
 const color_CREDIT = '#bee0ab';
-paymentMethods_changeColor()
-nullToSlash()
+const color_Active = '#bee0ab';
+const color_Inactive = '#fa7a7a';
+customers_paymentMethods_changeColor();
+paymentMethods_paymentMethods_changeColor();
+nullToSlash();
+

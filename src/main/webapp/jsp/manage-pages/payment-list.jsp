@@ -99,7 +99,7 @@
 
                                                 <td><c:out value="${paymentMethod.id}"/></td>
                                                 <td><c:out value="${paymentMethod.type}"/></td>
-                                                <td><c:out value="${paymentMethod.activation}"/></td>
+                                                <td><span class="badge badge-success light border-0 ActiveInactive"><c:out value="${paymentMethod.activation}"/></span></td>
 
                                             </tr>
                                         </c:forEach>
@@ -146,6 +146,7 @@
 ***********************************-->
 
 <jsp:include page="../foot.jsp"/>
+<script src="../../js/managePages.js"></script>
 </body>
 </html>
 
