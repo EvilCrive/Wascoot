@@ -120,7 +120,7 @@ function processResponse(xhr) {
 	ee.appendChild(eee); // append the cell to the row
 
 	eee = document.createElement("th");
-	eee.appendChild(document.createTextNode("Password"));
+	eee.appendChild(document.createTextNode("name"));
 	ee.appendChild(eee); // append the cell to the row
 
 	// table body
@@ -150,7 +150,7 @@ function processResponse(xhr) {
 
 		// create a cell for the age of the administrator
 		eee = document.createElement("td");
-		eee.appendChild(document.createTextNode(administrator["password"]));
+		eee.appendChild(document.createTextNode(administrator["name"]));
 		ee.appendChild(eee); // append the cell to the row
 
 

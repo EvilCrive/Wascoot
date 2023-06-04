@@ -313,7 +313,7 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
         }
 
         // strip everything until after the /administrator
-        path = path.substring(path.lastIndexOf("administrator") + 13);
+        path = path.substring(path.lastIndexOf("administrator/") + 14);
 
         // the request URI is: /administrator
         // if method GET, list administrator

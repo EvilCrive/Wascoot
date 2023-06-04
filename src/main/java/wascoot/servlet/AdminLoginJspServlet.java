@@ -111,7 +111,7 @@ public class AdminLoginJspServlet extends AbstractDatabaseServlet {
             } else {
                 //try to authenticate the user
                 email = email.toLowerCase();
-                u = new Administrator(id, email, password, null, "image/png");
+                u = new Administrator(id, email, password, null, null, "image/png");
                 // try to find the user in the database
                 Administrator administrator = new AdminLoginDAO(getConnection(), u).access().getOutputParam();
 

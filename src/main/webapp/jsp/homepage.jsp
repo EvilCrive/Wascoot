@@ -230,22 +230,33 @@ Preloader end
         </div>
 
         <div>
-            <label for="idID">ID:</label>
+            <label for="idID">Admin name:</label>
             <!--
             <input id="idID" type="text"/>
             <button type="submit" id="ajaxButton">Search</button><br/>
             -->
-            <select id="ajaxButton">
-                <option value="1">Nick</option>
-                <option value="2">Paria</option>
-                <option value="3">Shalini</option>
-                <option value="4">Shiva</option>
-                <option value="5">Alberto</option>
-                <option value="6">Sara</option>
-                <option value="7">Borwoei</option>
-            </select>
 
+
+            <form method="POST" action="<c:url value="/model/update/"/>" >
+                <div class="form-group mb-3">
+                    <label for="idID" class="">Administrator:</label>
+                    <select id="idID" name="name" type="text" class="form-control"  placeholder="select the name">
+                        <option value="1">Nick</option>
+                        <option value="2">Paria</option>
+                        <option value="3">Shalini</option>
+                        <option value="4">Shiva</option>
+                        <option value="5">Alberto</option>
+                        <option value="6">Sara</option>
+                        <option value="7">Borwoei</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit" id="ajaxButton">Search</button>
+                </div>
+            </form>
         </div>
+
+
 
         <div id="results" style="margin: 2em;">
 

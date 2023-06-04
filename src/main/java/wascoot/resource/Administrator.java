@@ -29,6 +29,8 @@ public class Administrator extends AbstractResource{
 	 */
 	public final String password;
 
+	public String name;
+
 	public byte[] photo;
 
 	/**
@@ -44,7 +46,7 @@ public class Administrator extends AbstractResource{
 	 * @param password
 	 *            the password of the Administrator.
 	 */
-	public Administrator(final int id, final String email, final String password, byte[] photo, String photoMediaType) {
+	public Administrator(final int id, final String email, final String password,  String name, byte[] photo, String photoMediaType) {
 		this.id = id;
 		this.email = email;
 		this.password = password;
@@ -55,6 +57,12 @@ public class Administrator extends AbstractResource{
 		this.id = id;
 		this.email = email;
 		this.password = password;
+	}
+	public Administrator(final int id, final String email, final String password, String name) {
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.name = name;
 	}
 
 	/**
@@ -81,6 +89,10 @@ public class Administrator extends AbstractResource{
 	public final String getPassword() {
 		return password;
 	}
+	public final String getName() {
+		return name;
+	}
+
 
 	public final byte[] getPhoto() {
 		return photo;
@@ -112,6 +124,7 @@ public class Administrator extends AbstractResource{
 
 		jg.writeStringField("password", password);
 
+		jg.writeStringField("name", name);
 
 		jg.writeEndObject();
 
@@ -126,6 +139,7 @@ public class Administrator extends AbstractResource{
 		int jId = -1;
 		String jEmail = null;
 		String jPassword = null;
+		String jName = null;
 
 		try {
 			final JsonParser jp = JSON_FACTORY.createParser(in);
@@ -158,6 +172,10 @@ public class Administrator extends AbstractResource{
 							jp.nextToken();
 							jPassword = jp.getText();
 							break;
+						case "name":
+							jp.nextToken();
+							jName = jp.getText();
+							break;
 
 					}
 				}
@@ -167,6 +185,6 @@ public class Administrator extends AbstractResource{
 			throw e;
 		}
 
-		return new Administrator(jId, jEmail, jPassword);
+		return new Administrator(jId, jEmail, jPassword, jName);
 	}
 }

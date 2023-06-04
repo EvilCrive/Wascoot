@@ -224,6 +224,7 @@ create table Admin(
     ID serial,
     email varchar,
     password varchar,
+    name varchar,
     photo BYTEA default null,
 	photoMediaType TEXT,
     constraint key_admin primary key (ID),

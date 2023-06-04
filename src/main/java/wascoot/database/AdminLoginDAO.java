@@ -14,7 +14,7 @@ public class AdminLoginDAO extends AbstractDAO<Administrator>  {
     /**
      * The SQL statament to be executed
      */
-    private static final String STATEMENT_ADMIN_INFO = "SELECT id, email, password FROM public.admin WHERE email=? AND password=?";
+    private static final String STATEMENT_ADMIN_INFO = "SELECT id, email, password , name FROM public.admin WHERE email=? AND password=?";
 
     /**
      * The administrator that has to be logged in
@@ -46,7 +46,7 @@ public class AdminLoginDAO extends AbstractDAO<Administrator>  {
 
             if(rs.next()){
 
-                admin_new = new Administrator(rs.getInt("id"), rs.getString("email"), rs.getString("password"), null, "image/png");
+                admin_new = new Administrator(rs.getInt("id"), rs.getString("email"), rs.getString("password"), rs.getString("name"), null, "image/png");
                 LOGGER.info("administrator logged in %d.", admin_new.getId());
 
             }else{

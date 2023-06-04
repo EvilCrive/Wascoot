@@ -36,6 +36,7 @@ public final class CreateAdministratorNoPhotoServlet extends AbstractDatabaseSer
 		int id = -1;
 		String email = null;
 		String password = null;
+		String name = null;
 		byte[] photo = null;
 		String photoMediaType = "image/png";
 
@@ -48,9 +49,10 @@ public final class CreateAdministratorNoPhotoServlet extends AbstractDatabaseSer
 			id = Integer.parseInt(req.getParameter("id"));
 			email = req.getParameter("email");
 			password = req.getParameter("password");
+			name = req.getParameter("name");
 
 			// creates a new administrator from the request parameters
-			e = new Administrator(id, email, password, null, photoMediaType);
+			e = new Administrator(id, email, password, name, null, photoMediaType);
 
 			// creates a new object for accessing the database and stores the administrator
 			new CreateAdministratorDAO(getConnection(), e).access();

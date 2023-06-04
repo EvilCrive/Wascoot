@@ -44,7 +44,7 @@ public final class LoadAdministratorPhotoDAO extends AbstractDAO<Administrator> 
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				e = new Administrator(Integer.MIN_VALUE, null, null,
+				e = new Administrator(Integer.MIN_VALUE, null, null, null,
 						rs.getBytes("photo"), rs.getString("photoMediaType"));
 
 				LOGGER.info("Photo for administrator %d successfully loaded.", id);

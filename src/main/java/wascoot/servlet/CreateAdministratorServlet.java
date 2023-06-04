@@ -104,6 +104,7 @@ public final class CreateAdministratorServlet extends AbstractDatabaseServlet {
 		int id = -1;
 		String email = null;
 		String password = null;
+		String name =null;
 		byte[] photo = null;
 		String photoMediaType = null;
 
@@ -127,6 +128,12 @@ public final class CreateAdministratorServlet extends AbstractDatabaseServlet {
 				case "password":
 					try (InputStream is = p.getInputStream()) {
 						password = new String(is.readAllBytes(), StandardCharsets.UTF_8).trim();
+					}
+					break;
+
+				case "name":
+					try (InputStream is = p.getInputStream()) {
+						name = new String(is.readAllBytes(), StandardCharsets.UTF_8).trim();
 					}
 					break;
 
@@ -159,7 +166,7 @@ public final class CreateAdministratorServlet extends AbstractDatabaseServlet {
 		}
 
 		// creates a new employee from the request parameters
-		return new Administrator(id, email, password, photo, photoMediaType);
+		return new Administrator(id, email, password, name, photo, photoMediaType);
 	}
 
 }

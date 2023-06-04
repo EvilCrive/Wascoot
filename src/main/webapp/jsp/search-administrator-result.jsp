@@ -30,6 +30,7 @@
 						<tr>
 							<td><c:out value="${administrator.email}"/></td>
 							<td><c:out value="${administrator.password}"/></td>
+							<td><c:out value="${administrator.name}"/></td>
 
 						</tr>
 						<li>image: <br/>

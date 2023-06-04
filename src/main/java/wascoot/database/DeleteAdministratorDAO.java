@@ -72,7 +72,7 @@ public final class DeleteAdministratorDAO extends AbstractDAO<Administrator> {
 
 			if (rs.next()) {
 				e = new Administrator(rs.getInt("id"), rs
-						.getString("email"), rs.getString("password"), null, null);
+						.getString("email"), rs.getString("password"),rs.getString("name"), null, null);
 
 				LOGGER.info("Administrator %d successfully deleted from the database.", e.getId());
 			}

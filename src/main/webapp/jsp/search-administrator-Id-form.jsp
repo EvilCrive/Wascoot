@@ -41,7 +41,6 @@
 	</div>
 
 	<div id="results" style="margin: 2em;">
-
 	</div>
 
 	<script type="text/javascript" src="<c:url value="/js/ajax_administrator_id.js"/>"></script>
