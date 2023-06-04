@@ -22,7 +22,7 @@ function getCustomerGender() {
 
 function getRevenue() {
     const url = new URL('http://localhost:8080/wascoot-1.0/rest/revenue/');
-    genericGETRequest(url, showRevenue);
+    genericGETRequest(url, show_Revenue);
 }
 
 function getCustomerList(req){
@@ -109,7 +109,7 @@ function showCustomerGender(req){
       }
 }
 
-function showRevenue(req){
+function show_Revenue(req){
     if (req.status == 200) {
         var jsonData = JSON.parse(req.responseText);
         var data = jsonData['resource-list'];
