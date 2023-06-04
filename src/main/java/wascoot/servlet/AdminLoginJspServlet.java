@@ -133,7 +133,7 @@ public class AdminLoginJspServlet extends AbstractDatabaseServlet {
                     HttpSession session = req.getSession();
                     session.setAttribute("id", administrator.getId());
                     session.setAttribute("email", administrator.getEmail());
-                    res.sendRedirect(req.getContextPath() + "/jsp/homepage.jsp");
+                    res.sendRedirect(req.getContextPath() + "/dashboard");
 
 
                     m = new Message("Login success");
