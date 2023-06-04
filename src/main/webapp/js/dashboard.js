@@ -23,7 +23,7 @@ function getCustomerGender() {
 
 function getRevenue() {
     const url = new URL('http://localhost:8080/wascoot-1.0/rest/revenue/');
-    genericGETRequest(url, showRevenue);
+    genericGETRequest(url, show_Revenue);
 }
 
 function getMapScooterRacks(){
@@ -114,6 +114,26 @@ function showCustomerGender(req){
             console.log(JSON.parse(httpRequest.responseText));
             alert("Problem processing the request");
       }
+}
+
+function show_Revenue(req){
+    if (req.status == 200) {
+        var jsonData = JSON.parse(req.responseText);
+        var data = jsonData['resource-list'];
+        var date = [];
+        var price = [];
+
+        for(let i=0; i<data.length; i++){
+            var entry = data[i];
+            date.push(sanitize(entry['date']));
+            price.push(sanitize(entry['price']));
+        }
+        renderRevenueChart(date, price);
+    }
+    else {
+        console.log(JSON.parse(httpRequest.responseText));
+        alert("Problem processing the request");
+    }
 }
 
 function renderAgeChart(postalCodes, averageAges) {
