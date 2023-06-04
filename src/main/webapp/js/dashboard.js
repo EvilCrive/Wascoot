@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     //getUsersList();
     getCustomerAvgAge();
     getCustomerGender();
+    getRevenue();
 });
 
 function getUsersList() {
@@ -17,6 +18,11 @@ function getCustomerAvgAge() {
 function getCustomerGender() {
     var url = new URL('http://localhost:8080/wascoot-1.0/rest/customerGender/');
     genericGETRequest(url, showCustomerGender);
+}
+
+function getRevenue() {
+    const url = new URL('http://localhost:8080/wascoot-1.0/rest/revenue/');
+    genericGETRequest(url, showRevenue);
 }
 
 function getCustomerList(req){
@@ -103,6 +109,26 @@ function showCustomerGender(req){
       }
 }
 
+function showRevenue(req){
+    if (req.status == 200) {
+        var jsonData = JSON.parse(req.responseText);
+        var data = jsonData['resource-list'];
+        var date = [];
+        var price = [];
+
+        for(let i=0; i<data.length; i++){
+            var entry = data[i];
+            date.push(sanitize(entry['date']));
+            price.push(sanitize(entry['price']));
+        }
+        renderRevenueChart(date, price);
+    }
+    else {
+        console.log(JSON.parse(httpRequest.responseText));
+        alert("Problem processing the request");
+    }
+}
+
 function renderAgeChart(postalCodes, averageAges) {
     var ctx = document.getElementById('age-chart').getContext('2d');
     var chart = new Chart(ctx, {
@@ -146,6 +172,31 @@ function renderGenderChart(maleCount, femaleCount) {
                 ],
                 borderWidth: 1
             }]
+        }
+    });
+}
+
+
+function renderRevenueChart(date, price) {
+    var ctx = document.getElementById('revenue-chart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: date,
+            datasets: [{
+                label: 'Revenue',
+                data: price,
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
     });
 }

@@ -133,6 +133,10 @@
             <canvas id="age-chart"></canvas>
         </div>
 
+		<div id="revenue-chart-container">
+			<canvas id="revenue-chart"></canvas>
+		</div>
+
         </div>
         <div class="div6">
 

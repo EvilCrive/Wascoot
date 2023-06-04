@@ -26,6 +26,8 @@ public class Actions {
     public static final String GET_AVG_AGE_CUSTOMERS = "GET_AVG_AGE_CUSTOMERS";
     public static final String GET_GENDER_DIS_CUSTOMERS = "GET_GENDER_DIS_CUSTOMERS";
 
+    public static final String GET_REVENUE = "GET_REVENUE";
+
 
     private Actions() {
         throw new AssertionError(String.format("No instances of %s allowed.", Actions.class.getName()));

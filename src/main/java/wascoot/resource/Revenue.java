@@ -1,6 +1,9 @@
 package wascoot.resource;
 
-public class Revenue {
+import java.io.IOException;
+import java.io.OutputStream;
+
+public class Revenue implements Resource{
 
     private String date;
     private int price;
@@ -24,5 +27,11 @@ public class Revenue {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    @Override
+    public void toJSON(OutputStream out) throws IOException {
+        String json = "{\"date\": \"" + date + "\", \"price\": " + price + "}";
+        out.write(json.getBytes());
     }
 }
