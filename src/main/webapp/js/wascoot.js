@@ -479,7 +479,7 @@ var W3Crm = function(){
 
 }();
 jQuery(document).ready(function (){
-    $('#batteryLifeID').flatpickr({
+    $('.batteryLifeID').flatpickr({
         enableTime: true,
         noCalendar: true,
         dateFormat: 'H:i:S',

@@ -21,6 +21,7 @@
 	</head>
 
 	<body>
+
 	<!--*******************
         Preloader start
     ********************-->
@@ -28,14 +29,17 @@
 	<!--*******************
         Preloader end
     ********************-->
+
 	<!--**********************************
         Main wrapper start
     ***********************************-->
+
 	<div id="main-wrapper">
 		<%--**********************************
             Header and Sidebar
        ***********************************--%>
 		<jsp:include page="header-menu.jsp"/>
+
 		<!--**********************************
             Content body start
         ***********************************-->
@@ -44,7 +48,7 @@
 			<div class="page-titles">
 				<ol class="breadcrumb">
 					<li><h5 class="bc-title">Home Page</h5></li>
-					<li class="breadcrumb-item"><a href="javascript:void(0)">
+					<li class="breadcrumb-item"><a href="<c:url value="/dashboard"/>">
 						<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M2.125 6.375L8.5 1.41667L14.875 6.375V14.1667C14.875 14.5424 14.7257 14.9027 14.4601 15.1684C14.1944 15.4341 13.8341 15.5833 13.4583 15.5833H3.54167C3.16594 15.5833 2.80561 15.4341 2.53993 15.1684C2.27426 14.9027 2.125 14.5424 2.125 14.1667V6.375Z" stroke="#2C2C2C" stroke-linecap="round" stroke-linejoin="round"/>
 							<path d="M6.375 15.5833V8.5H10.625V15.5833" stroke="#2C2C2C" stroke-linecap="round" stroke-linejoin="round"/>
@@ -56,80 +60,58 @@
 			</div>
 			<div class="container-fluid">
 
+                <h1 class="title" >Dashboard</h1>
+                <div class="container">
+                    <div id="top-elements">
 
-		<!-- display the message -->
-		<%--<c:import url="/jsp/include/show-message.jsp"/>--%>
+                        <div id="map-container">
+                            <h4 class="chart-text" >Scooterracks available information with geographic representation</h4>
+                            <div id="map"></div>
+                        </div>
+                        <div id="topLocationTable">
+                            <c:if test='${not empty topLocation}'>
+                                <c:set var="count" value="0" scope="page" />
+                            <table class="table-top">
+                                <thead class="head-top">
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>id</th>
+                                </tr>
+                                </thead>
 
-        <div id="map"></div>
+                                <tbody class="body-top">
+                                <c:forEach var="topLocation" items="${topLocation}">
+                                    <c:set var="count" value="${count + 1}" scope="page"/>
+                                    <tr>
+                                        <td><c:out value="${count}"/></td>
+                                        <td><c:out value="${topLocation}"/></td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+                            </c:if>
+                        </div>
 
+                        <div class="chart-container" id="age-chart-container">
+                            <h4 class="chart-text">Age distribution by postal code</h4>
+                            <canvas id="age-chart"></canvas>
+                        </div>
+                    </div>
 
-			<c:if test='${not empty topLocation}'>
-				<c:set var="count" value="0" scope="page" />
-			<table class="table-top">
-				<thead class="head-top">
-				<tr>
-					<th>Rank</th>
-					<th>id</th>
-				</tr>
-				</thead>
+                    <div id="bottom-elements">
+                        <div class="chart-container" id="revenue-chart-container">
+                            <canvas id="revenue-chart"></canvas>
+                            <h4 class="chart-text">Revenue chart </h4>
+                        </div>
 
-				<tbody class="body-top">
-				<c:forEach var="topLocation" items="${topLocation}">
-					<c:set var="count" value="${count + 1}" scope="page"/>
-					<tr>
-						<td><c:out value="${count}"/></td>
-						<td><c:out value="${topLocation}"/></td>
-					</tr>
-				</c:forEach>
-				</tbody>
-			</table>
-			</c:if>
+                        <div class="chart-container" id="gender-chart-container">
+                            <canvas id="gender-chart"></canvas>
+                            <h4 class="chart-text">Gender distribution among customers</h4>
+                        </div>
+                    </div>
 
-			<c:if test='${not empty revenueList}'>
-				<c:set var="sum" value="0" scope="page" />
-			<table class="table-rr">
-				<thead class="head-rr" >
-				<tr>
-					<th>Month</th>
-					<th>Revenue</th>
-				</tr>
-				</thead>
-
-				<tbody class="body-rr">
-				<c:forEach var="revenue" items="${revenueList}">
-					<c:set var="sum" value="${sum + revenue.price}" scope="page"/>
-					<tr>
-						<td><c:out value="${revenue.date}"/></td>
-						<td><c:out value="${revenue.price}"/> $</td>
-					</tr>
-				</c:forEach>
-				<tr>
-					<td>Total: </td>
-					<td><c:out value="${sum}"/> $ </td>
-				</tr>
-				</tbody>
-			</table>
-			</c:if>
-
-
-
-
-        <div id="age-chart-container">
-            <canvas id="age-chart"></canvas>
-        </div>
-
-		<div id="revenue-chart-container">
-			<canvas id="revenue-chart"></canvas>
-		</div>
-
-
-
-
-        <div id="gender-chart-container">
-            <canvas id="gender-chart"></canvas>
-        </div>
-
-</div>
+                </div>
+            </div>
 		</div>
 			<!--**********************************
                 Content body end
@@ -153,8 +135,6 @@
     ***********************************-->
 
 	<jsp:include page="foot.jsp"/>
-
-
 
 	</body>
 </html>
