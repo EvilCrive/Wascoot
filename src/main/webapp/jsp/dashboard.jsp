@@ -20,83 +20,57 @@
 	</head>
 
 	<body>
-		<h1>Dashboard</h1>
+	    <h1 class="title" >Dashboard</h1>
+	    <div class="container">
+            <div id="top-elements">
 
-		<hr/>
+                <div id="map-container">
+                    <h4 class="chart-text" >Scooterracks available information with geographic representation</h4>
+                    <div id="map"></div>
+                </div>
 
-		<!-- display the message -->
-		<c:import url="/jsp/include/show-message.jsp"/>
+                <div id="topLocationTable">
+                    <c:if test='${not empty topLocation}'>
+                        <c:set var="count" value="0" scope="page" />
+                    <table class="table-top">
+                        <thead class="head-top">
+                        <tr>
+                            <th>Rank</th>
+                            <th>id</th>
+                        </tr>
+                        </thead>
 
-        <div id="map"></div>
+                        <tbody class="body-top">
+                        <c:forEach var="topLocation" items="${topLocation}">
+                            <c:set var="count" value="${count + 1}" scope="page"/>
+                            <tr>
+                                <td><c:out value="${count}"/></td>
+                                <td><c:out value="${topLocation}"/></td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                    </c:if>
+                </div>
 
+                <div class="chart-container" id="age-chart-container">
+                    <h4 class="chart-text">Age distribution by postal code</h4>
+                    <canvas id="age-chart"></canvas>
+                </div>
+            </div>
 
-			<c:if test='${not empty topLocation}'>
-				<c:set var="count" value="0" scope="page" />
-			<table class="table-top">
-				<thead class="head-top">
-				<tr>
-					<th>Rank</th>
-					<th>id</th>
-				</tr>
-				</thead>
+            <div id="bottom-elements">
+                <div class="chart-container" id="revenue-chart-container">
+                    <canvas id="revenue-chart"></canvas>
+                    <h4 class="chart-text">Revenue chart </h4>
+                </div>
 
-				<tbody class="body-top">
-				<c:forEach var="topLocation" items="${topLocation}">
-					<c:set var="count" value="${count + 1}" scope="page"/>
-					<tr>
-						<td><c:out value="${count}"/></td>
-						<td><c:out value="${topLocation}"/></td>
-					</tr>
-				</c:forEach>
-				</tbody>
-			</table>
-			</c:if>
+                <div class="chart-container" id="gender-chart-container">
+                    <canvas id="gender-chart"></canvas>
+                    <h4 class="chart-text">Gender distribution among customers</h4>
+                </div>
+            </div>
 
-			<c:if test='${not empty revenueList}'>
-				<c:set var="sum" value="0" scope="page" />
-			<table class="table-rr">
-				<thead class="head-rr" >
-				<tr>
-					<th>Month</th>
-					<th>Revenue</th>
-				</tr>
-				</thead>
-
-				<tbody class="body-rr">
-				<c:forEach var="revenue" items="${revenueList}">
-					<c:set var="sum" value="${sum + revenue.price}" scope="page"/>
-					<tr>
-						<td><c:out value="${revenue.date}"/></td>
-						<td><c:out value="${revenue.price}"/> $</td>
-					</tr>
-				</c:forEach>
-				<tr>
-					<td>Total: </td>
-					<td><c:out value="${sum}"/> $ </td>
-				</tr>
-				</tbody>
-			</table>
-			</c:if>
-
-
-
-
-        <div id="age-chart-container">
-            <canvas id="age-chart"></canvas>
         </div>
-
-		<div id="revenue-chart-container">
-			<canvas id="revenue-chart"></canvas>
-		</div>
-
-
-
-
-        <div id="gender-chart-container">
-            <canvas id="gender-chart"></canvas>
-        </div>
-
-
-
 	</body>
 </html>

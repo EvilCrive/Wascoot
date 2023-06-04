@@ -143,7 +143,7 @@ function renderAgeChart(postalCodes, averageAges) {
         data: {
             labels: postalCodes,
             datasets: [{
-                label: 'Average Age',
+                label: 'Average age',
                 data: averageAges,
                 backgroundColor: 'rgba(54, 162, 235, 0.5)',
                 borderColor: 'rgba(54, 162, 235, 1)',
