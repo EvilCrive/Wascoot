@@ -213,6 +213,18 @@ function showScooterRacks(req){
         var jsonData = JSON.parse(req.responseText);
         var data = jsonData['resource-list'];
 
+        // Eventlistener for buttons
+        var buttonPadova = document.getElementById("button-padova");
+        var buttonRome = document.getElementById("button-rome");
+
+        // Actions for button events
+        buttonPadova.addEventListener("click", function () {
+            map.setView([45.401, 11.862], 13);
+        });
+        buttonRome.addEventListener("click", function () {
+            map.setView([41.8987443, 12.472392], 13);
+        });
+
         var map = L.map('map').setView([45.401, 11.862], 13);
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
