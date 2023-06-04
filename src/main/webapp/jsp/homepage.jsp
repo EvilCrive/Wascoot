@@ -11,16 +11,11 @@
     <link rel="shortcut icon" type="image/png" href="${pageContext.request.contextPath}/media/logo-pre.png">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/cssstyle.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/metismenu/dist/metisMenu.min.css">
-    
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/admin_list.css" />
-    <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-            crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+
+
 
 </head>
 <body>
@@ -225,59 +220,46 @@ Preloader end
             </ol>
         </div>
 
-        <!--
-        <div class="container-fluid">
-            <h1>
-                Administrator
-            </h1>
-
-            <form method="POST" action="<c:url value="/search-administrator-by-email"/>">
-                <label for="email">Email:</label>
-                <input id="email" name="email" type="text"/>
-                <button type="submit">Submit</button>
-                <button type="reset">Clear</button>
-            </form>
+        <div class="container">
+            <div>
+                <h1>Administrators</h1>
+                <div id="admin_container" class="admin_container"></div>
+            </div>
         </div>
-        -->
-        <!--
-        <div>
 
-            <label for="idID">Admin name:</label>
-            <input id="idID" type="text"/>
-            <button type="submit" id="ajaxButton">Search</button><br/>
-            -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="searchbar">
+                        <div id="form_cont">
+                            <select
+                                    class="form-select select"
+                                    id="tv_select"
+                                    aria-label="Default select example"
+                            >
+                                <option value="" selected>Select Administrator</option>
+                                <!-- We will fill the options with javascript. The list is filtered according to the value of the text area above-->
+                            </select>
+                            <div class="buttonform">
+                                <button
+                                        type="button"
+                                        id="confirm"
+                                        class="select btn btn-primary btn-sm"
+                                >
+                                    Confirm
+                                </button>
 
-            <!--
-            <form method="POST" action="<c:url value="/model/update/"/>" >
-                <div class="form-group mb-3">
-                    <label for="idID" class="">Administrator:</label>
-                    <select id="idID" name="name" type="text" class="form-control"  placeholder="select the name">
-                        <option value="1">Nick</option>
-                        <option value="2">Paria</option>
-                        <option value="3">Shalini</option>
-                        <option value="4">Shiva</option>
-                        <option value="5">Alberto</option>
-                        <option value="6">Sara</option>
-                        <option value="7">Borwoei</option>
-                    </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <button type="submit" id="ajaxButton">Search</button>
-                </div>
-            </form>
+                <div class="col-md-3"></div>
+            </div>
+            <div id="film_container" class="film_container">
+            </div>
 
         </div>
-
-        <div id="results" style="margin: 2em;">
-        </div>
-        -->
-        <!--
-        <div>
-            <form method="POST" action="../jsp/create-administrator-form.jsp">
-                <button type="submit">create</button><br/><br/><br/>
-            </form>
-        </div>
-        -->
 
 
         <div
@@ -304,12 +286,7 @@ Preloader end
             </div>
         </div>
 
-        <div class="container">
-            <div>
-                <h1>Administrators</h1>
-                <div id="admin_container" class="admin_container"></div>
-            </div>
-        </div>
+
 
     </div>
 
@@ -343,49 +320,7 @@ Preloader end
 <script src="https://cdn.jsdelivr.net/npm/metismenu"></script>
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="${pageContext.request.contextPath}/js/wascoot.js"></script>
-<script type="text/javascript" src="<c:url value="/js/ajax_administrator_id.js"/>"></script>
-<script src="${pageContext.request.contextPath}/js/admin_list.js"></script>
-<script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"
-></script>
-
-<%--<input type=button onClick="location.href='../jsp/dashboard.jsp'" value='Enter dashboard'>
-<br/><br/>
-<form method="GET" action="<c:url value="/model/list/"/>">
-
-    <button type="submit">Enter Model</button><br/>
-</form>
-<br/>
-<form method="GET" action="<c:url value="/list-customer"/>">
-
-    <button type="submit">Enter Customer</button><br/>
-</form>
-<br/>
-<form method="GET" action="<c:url value="/paymentmethod/list/"/>">
-
-    <button type="submit">Enter Payment Method</button><br/>
-</form>
-<br/>
-<form method="GET" action="<c:url value="/subscription/list/"/>">
-
-    <button type="submit">Enter Subscription</button><br/>
-</form>
-<br/>
-<input type=button onClick="location.href='../jsp/manage-pages/rental-list.jsp'" value='Enter rental list'>
-<br/><br/>
-<form method="GET" action="<c:url value="/scooterrack/list/"/>">
-
-    <button type="submit">Enter Scooter Rack</button><br/>
-</form>
-<br/>
-<form method="GET" action="<c:url value="/scooter/list/"/>">
-
-    <button type="submit">Enter Scooter</button><br/>
-</form>
-
---%>
+<script src="${pageContext.request.contextPath}/js/js_script.js"></script>
 
 
 </body>
