@@ -13,6 +13,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/metismenu/dist/metisMenu.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/admin_list.css" />
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous"
+    />
 
 </head>
 <body>
@@ -300,7 +308,12 @@ Preloader end
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="${pageContext.request.contextPath}/js/wascoot.js"></script>
 <script type="text/javascript" src="<c:url value="/js/ajax_administrator_id.js"/>"></script>
-
+<script src="${pageContext.request.contextPath}/js/admin_list.js"></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"
+></script>
 
 <%--<input type=button onClick="location.href='../jsp/dashboard.jsp'" value='Enter dashboard'>
 <br/><br/>
@@ -336,28 +349,7 @@ Preloader end
     <button type="submit">Enter Scooter</button><br/>
 </form>
 
-
-<br/><br/><br/><br/>
-<h1>
-    Administrator
-</h1>
-<form method="POST" action="../html/create-administrator-form.html">
-    <label>create administrator:</label><br/>
-    <button type="submit">without photo</button>
-</form>
-
-<form method="POST" action="../jsp/create-administrator-form.jsp">
-    <button type="submit">with photo</button><br/><br/><br/>
-</form>
-
-<form method="POST" action="../jsp/search-administrator-Id-form.jsp">
-    <label>Search Admin:</label><br/>
-    <button type="submit">Enter ID </button>
-</form>
-
-<form method="POST" action="../jsp/search-administrator-form.jsp">
-    <button type="submit">Enter Email</button>
-</form>--%>
+--%>
 
 
 </body>
