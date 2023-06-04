@@ -29,17 +29,18 @@
 
         <div id="map"></div>
 
-		<c:if test='${not empty topLocation}'>
-			<c:set var="count" value="0" scope="page" />
-			<table>
-				<thead>
+
+			<c:if test='${not empty topLocation}'>
+				<c:set var="count" value="0" scope="page" />
+			<table class="table-top">
+				<thead class="head-top">
 				<tr>
 					<th>Rank</th>
 					<th>id</th>
 				</tr>
 				</thead>
 
-				<tbody>
+				<tbody class="body-top">
 				<c:forEach var="topLocation" items="${topLocation}">
 					<c:set var="count" value="${count + 1}" scope="page"/>
 					<tr>
@@ -49,19 +50,19 @@
 				</c:forEach>
 				</tbody>
 			</table>
-		</c:if>
+			</c:if>
 
-		<c:if test='${not empty revenueList}'>
-			<c:set var="sum" value="0" scope="page" />
-			<table>
-				<thead>
+			<c:if test='${not empty revenueList}'>
+				<c:set var="sum" value="0" scope="page" />
+			<table class="table-rr">
+				<thead class="head-rr" >
 				<tr>
 					<th>Month</th>
 					<th>Revenue</th>
 				</tr>
 				</thead>
 
-				<tbody>
+				<tbody class="body-rr">
 				<c:forEach var="revenue" items="${revenueList}">
 					<c:set var="sum" value="${sum + revenue.price}" scope="page"/>
 					<tr>
@@ -75,14 +76,27 @@
 				</tr>
 				</tbody>
 			</table>
-		</c:if>
+			</c:if>
+
+
+
 
         <div id="age-chart-container">
             <canvas id="age-chart"></canvas>
         </div>
 
+		<div id="revenue-chart-container">
+			<canvas id="revenue-chart"></canvas>
+		</div>
+
+
+
+
         <div id="gender-chart-container">
             <canvas id="gender-chart"></canvas>
         </div>
+
+
+
 	</body>
 </html>

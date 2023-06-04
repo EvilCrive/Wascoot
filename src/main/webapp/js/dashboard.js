@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     //getUsersList();
     getCustomerAvgAge();
     getCustomerGender();
+    getRevenue();
     getMapScooterRacks();
 });
 
@@ -18,6 +19,11 @@ function getCustomerAvgAge() {
 function getCustomerGender() {
     var url = new URL('http://localhost:8080/wascoot-1.0/rest/customerGender/');
     genericGETRequest(url, showCustomerGender);
+}
+
+function getRevenue() {
+    const url = new URL('http://localhost:8080/wascoot-1.0/rest/revenue/');
+    genericGETRequest(url, showRevenue);
 }
 
 function getMapScooterRacks(){
@@ -153,6 +159,31 @@ function renderGenderChart(maleCount, femaleCount) {
                 ],
                 borderWidth: 1
             }]
+        }
+    });
+}
+
+
+function renderRevenueChart(date, price) {
+    var ctx = document.getElementById('revenue-chart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: date,
+            datasets: [{
+                label: 'Revenue',
+                data: price,
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
     });
 }

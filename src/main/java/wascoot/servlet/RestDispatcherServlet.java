@@ -61,6 +61,10 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
                 return;
             }
 
+            if (processRevenue(req,res)){
+                return;
+            }
+
             if (procesScooterRackPos(req, res)){
                 return;
             }
@@ -513,6 +517,38 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
         } else {
 
         }
+        return true;
+    }
+
+
+    private boolean processRevenue(final HttpServletRequest req, final HttpServletResponse res) throws Exception {
+        final String method = req.getMethod();
+        String path = req.getRequestURI();
+        Message m = null;
+
+        // the requested resource was not a customer
+        if (path.lastIndexOf("rest/revenue/") <= 0) {
+            return false;
+        }
+
+        path = path.substring(path.lastIndexOf("revenue/") + 8);
+
+
+        LOGGER.warn(path);
+
+        if (path.length() == 0) {
+
+            if (method.equals("GET")) {
+                new RevenueRR(req, res, getConnection()).serve();
+            } else {
+                LOGGER.warn("Unsupported operation for URI /revenue: %s.", method);
+
+                m = new Message("Unsupported operation for URI /revenue.", "E4A5", String.format("Requested operation %s.", method));
+                res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+                m.toJSON(res.getOutputStream());
+            }
+        }
+
         return true;
     }
 
