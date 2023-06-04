@@ -325,28 +325,7 @@ Preloader end
     <button type="submit">Enter Scooter</button><br/>
 </form>
 
-
-<br/><br/><br/><br/>
-<h1>
-    Administrator
-</h1>
-<form method="POST" action="../html/create-administrator-form.html">
-    <label>create administrator:</label><br/>
-    <button type="submit">without photo</button>
-</form>
-
-<form method="POST" action="../jsp/create-administrator-form.jsp">
-    <button type="submit">with photo</button><br/><br/><br/>
-</form>
-
-<form method="POST" action="../jsp/search-administrator-Id-form.jsp">
-    <label>Search Admin:</label><br/>
-    <button type="submit">Enter ID </button>
-</form>
-
-<form method="POST" action="../jsp/search-administrator-form.jsp">
-    <button type="submit">Enter Email</button>
-</form>--%>
+--%>
 
 
 </body>
