@@ -7,9 +7,9 @@
               type="javax.sql.DataSource"
               factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
               driverClassName="org.postgresql.Driver"
-              url="jdbc:postgresql://localhost:5432/wascoot"
-              username="wascoot"
-              password="wascoot"
+              url="jdbc:postgresql://localhost:5433/postgres"
+              username="postgres"
+              password="postgres"
 
               testOnBorrow="true"
               validationQuery="SELECT 1"

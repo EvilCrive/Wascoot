@@ -35,10 +35,10 @@ public final class DeleteAdministratorDAO extends AbstractDAO<Administrator> {
 	/**
 	 * The SQL statement to be executed
 	 */
-	private static final String DELETE_ADMINISTRATOR = "DELETE FROM public.admin WHERE id = ? RETURNING *";
+	private static final String STATEMENT = "DELETE FROM public.admin WHERE id = ? RETURNING *";
 
 	/**
-	 * The id of the Administrator
+	 * The badge of the Administrator
 	 */
 	private final int id;
 
@@ -65,14 +65,14 @@ public final class DeleteAdministratorDAO extends AbstractDAO<Administrator> {
 		Administrator e = null;
 
 		try {
-			pstmt = con.prepareStatement(DELETE_ADMINISTRATOR);
+			pstmt = con.prepareStatement(STATEMENT);
 			pstmt.setInt(1, id);
 
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
 				e = new Administrator(rs.getInt("id"), rs
-						.getString("email"), rs.getString("password"), null, null);
+						.getString("email"), rs.getString("password"));
 
 				LOGGER.info("Administrator %d successfully deleted from the database.", e.getId());
 			}

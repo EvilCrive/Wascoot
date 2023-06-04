@@ -16,10 +16,10 @@
 
 package wascoot.rest;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import wascoot.database.SearchAdministratorByEmailDAO;
 import wascoot.resource.*;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.sql.Connection;

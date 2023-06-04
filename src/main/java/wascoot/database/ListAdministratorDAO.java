@@ -26,14 +26,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Reads all the administrators in the database.
+ * Lists all the administrator in the database.
+ *
+ * @author Nicola Ferro (ferro@dei.unipd.it)
+ * @version 1.00
+ * @since 1.00
  */
 public final class ListAdministratorDAO extends AbstractDAO<List<Administrator>> {
 
 	/**
 	 * The SQL statement to be executed
 	 */
-	private static final String LIST_ADMINISTRATOR = "SELECT id, email, password FROM pubic.admin";
+	private static final String STATEMENT = "SELECT id, email, password FROM pubic.admin";
 
 	/**
 	 * Creates a new object for listing all the administrator.
@@ -54,13 +58,12 @@ public final class ListAdministratorDAO extends AbstractDAO<List<Administrator>>
 		final List<Administrator> administrators = new ArrayList<Administrator>();
 
 		try {
-			pstmt = con.prepareStatement(LIST_ADMINISTRATOR);
+			pstmt = con.prepareStatement(STATEMENT);
 
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				administrators.add(new Administrator(rs.getInt("id"), rs.getString("email"),
-						rs.getString("password")));
+				administrators.add(new Administrator(rs.getInt("id"), rs.getString("email"), rs.getString("password")));
 			}
 
 			LOGGER.info("Administrator(s) successfully listed.");

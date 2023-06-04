@@ -24,14 +24,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Updates a given administrator
+ * Updates an administrator in the database.
+ * 
+ * @author Nicola Ferro (ferro@dei.unipd.it)
+ * @version 1.00
+ * @since 1.00
  */
 public final class UpdateAdministratorDAO extends AbstractDAO<Administrator> {
 
 	/**
 	 * The SQL statement to be executed
 	 */
-	private static final String UPDATE_ADMINISTRATOR = "UPDATE public.admin SET id = ?, email = ?, password = ? WHERE email = ? RETURNING *";
+	private static final String STATEMENT = "UPDATE public.admin SET id = ?, email = ?, password = ? WHERE email = ? RETURNING *";
 
 	/**
 	 * The administrator to be updated in the database
@@ -39,7 +43,7 @@ public final class UpdateAdministratorDAO extends AbstractDAO<Administrator> {
 	private final Administrator administrator;
 
 	/**
-	 * Creates a new object to update an administrator.
+	 * Creates a new object for updat an administrator.
 	 * 
 	 * @param con
 	 *            the connection to the database.
@@ -67,7 +71,7 @@ public final class UpdateAdministratorDAO extends AbstractDAO<Administrator> {
 		Administrator e = null;
 
 		try {
-			pstmt = con.prepareStatement(UPDATE_ADMINISTRATOR);
+			pstmt = con.prepareStatement(STATEMENT);
 			pstmt.setInt(1, administrator.getId());
 			pstmt.setString(2, administrator.getEmail());
 			pstmt.setString(3, administrator.getPassword());

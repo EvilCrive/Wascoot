@@ -16,13 +16,13 @@
 
 package wascoot.rest;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import wascoot.database.ListAdministratorDAO;
 import wascoot.resource.Actions;
 import wascoot.resource.Administrator;
 import wascoot.resource.Message;
 import wascoot.resource.ResourceList;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.sql.Connection;
