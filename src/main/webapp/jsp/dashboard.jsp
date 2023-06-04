@@ -111,14 +111,6 @@
                     </div>
 
                 </div>
-
-                <div id="revenue-chart-container">
-                    <canvas id="revenue-chart"></canvas>
-                </div>
-
-                <div id="gender-chart-container">
-                    <canvas id="gender-chart"></canvas>
-                </div>
             </div>
 		</div>
 			<!--**********************************
