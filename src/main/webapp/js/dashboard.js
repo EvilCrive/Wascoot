@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     //getUsersList();
     getCustomerAvgAge();
     getCustomerGender();
+    getMapScooterRacks();
 });
 
 function getUsersList() {
@@ -18,6 +19,12 @@ function getCustomerGender() {
     var url = new URL('http://localhost:8080/wascoot-1.0/rest/customerGender/');
     genericGETRequest(url, showCustomerGender);
 }
+
+function getMapScooterRacks(){
+     var url = new URL('http://localhost:8080/wascoot-1.0/rest/scooterRackPos/');
+    genericGETRequest(url, showScooterRacks);
+}
+
 
 function getCustomerList(req){
       if (req.status == 200) {
@@ -148,4 +155,47 @@ function renderGenderChart(maleCount, femaleCount) {
             }]
         }
     });
+}
+
+function showScooterRacks(req){
+    if (req.status == 200) {
+        var jsonData = JSON.parse(req.responseText);
+        var data = jsonData['resource-list'];
+
+        var map = L.map('map').setView([45.401, 11.862], 13);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        for (let i = 0; i < data.length; i++) {
+            var scooterRack = data[i]['scooterrack'];
+            var latitude = parseFloat(scooterRack['latitude']);
+            var longitude = parseFloat(scooterRack['longitude']);
+            var totalParkingSpots = scooterRack['totalParkingSpots'];
+            var availableParkingSpots = scooterRack['availableParkingSpots'];
+            var postalCode = scooterRack['postalCode'];
+            var address = scooterRack['address'];
+            var id = scooterRack['id'];
+
+            var circle = L.circle([latitude, longitude], {
+                color: 'red',
+                fillColor: '#f03',
+                fillOpacity: 0.5,
+                radius: 500
+            }).addTo(map);
+
+            var popupContent = 'Scooterrack id: ' + id + '<br>' + 'Total Parking Spots: ' + totalParkingSpots + '<br>' +
+            'Available Parking Spots: ' + availableParkingSpots + '<br>' +
+            'Postal Code: ' + postalCode + '<br>' +
+            'Address: ' + address;
+
+            circle.bindPopup(popupContent);
+        }
+
+        } else {
+            console.log(JSON.parse(httpRequest.responseText));
+            alert("Problem processing the request");
+        }
+
 }
