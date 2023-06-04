@@ -69,7 +69,12 @@ body {
 #map-container {
     width: 100%;
 }
-#map { height: 180px; }
+#map {
+    height: 180px;
+    position: relative; /* Set position to relative */
+    z-index: 0; /* Set a lower z-index value */
+}
+
 
 #bottom-elements {
     display: flex;

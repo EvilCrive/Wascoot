@@ -77,7 +77,7 @@
                             <thead>
                             <tr>
                                 <th>Rank</th>
-                                <th>id</th>
+                                <th>Id of the scooterrack</th>
                             </tr>
                             </thead>
 
