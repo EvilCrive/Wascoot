@@ -58,59 +58,55 @@
 					<li class="breadcrumb-item active"><a href="javascript:void(0)">Dashboard</a></li>
 				</ol>
 			</div>
-			<div class="container-fluid">
+            <div class="container">
+                <div id="top-elements">
 
-                <h1 class="title" >Dashboard</h1>
-                <div class="container">
-                    <div id="top-elements">
+                    <div class= "non-chart-container" id="map-container">
+                        <h4 class="chart-text" >Scooterracks available information with geographic representation</h4>
+                        <div id="map"></div>
+                    </div>
+                    <div class= "non-chart-container" id="topLocationTable">
+                        <c:if test='${not empty topLocation}'>
+                            <c:set var="count" value="0" scope="page" />
+                        <table class="table-top">
+                            <thead class="head-top">
+                            <tr>
+                                <th>Rank</th>
+                                <th>id</th>
+                            </tr>
+                            </thead>
 
-                        <div id="map-container">
-                            <h4 class="chart-text" >Scooterracks available information with geographic representation</h4>
-                            <div id="map"></div>
-                        </div>
-                        <div id="topLocationTable">
-                            <c:if test='${not empty topLocation}'>
-                                <c:set var="count" value="0" scope="page" />
-                            <table class="table-top">
-                                <thead class="head-top">
+                            <tbody class="body-top">
+                            <c:forEach var="topLocation" items="${topLocation}">
+                                <c:set var="count" value="${count + 1}" scope="page"/>
                                 <tr>
-                                    <th>Rank</th>
-                                    <th>id</th>
+                                    <td><c:out value="${count}"/></td>
+                                    <td><c:out value="${topLocation}"/></td>
                                 </tr>
-                                </thead>
-
-                                <tbody class="body-top">
-                                <c:forEach var="topLocation" items="${topLocation}">
-                                    <c:set var="count" value="${count + 1}" scope="page"/>
-                                    <tr>
-                                        <td><c:out value="${count}"/></td>
-                                        <td><c:out value="${topLocation}"/></td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
-                            </c:if>
-                        </div>
-
-                        <div class="chart-container" id="age-chart-container">
-                            <h4 class="chart-text">Age distribution by postal code</h4>
-                            <canvas id="age-chart"></canvas>
-                        </div>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                        </c:if>
                     </div>
 
-                    <div id="bottom-elements">
-                        <div class="chart-container" id="revenue-chart-container">
-                            <canvas id="revenue-chart"></canvas>
-                            <h4 class="chart-text">Revenue chart </h4>
-                        </div>
-
-                        <div class="chart-container" id="gender-chart-container">
-                            <canvas id="gender-chart"></canvas>
-                            <h4 class="chart-text">Gender distribution among customers</h4>
-                        </div>
+                    <div class="chart-container" id="age-chart-container">
+                        <h4 class="chart-text">Age distribution by postal code</h4>
+                        <canvas id="age-chart"></canvas>
                     </div>
-
                 </div>
+
+                <div id="bottom-elements" class="row">
+                    <div class="chart-container" id="revenue-chart-container">
+                        <h4 class="chart-text">Revenue chart </h4>
+                        <canvas id="revenue-chart"></canvas>
+                    </div>
+
+                    <div class="chart-container" id="gender-chart-container">
+                        <h4 class="chart-text">Gender distribution among customers</h4>
+                        <canvas id="gender-chart"></canvas>
+                    </div>
+                </div>
+
             </div>
 		</div>
 			<!--**********************************
