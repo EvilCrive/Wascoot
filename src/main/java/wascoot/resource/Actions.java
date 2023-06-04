@@ -25,6 +25,9 @@ public class Actions {
     public static final String LIST_ADMINISTRATOR = "LIST_ADMINISTRATOR";
     public static final String GET_AVG_AGE_CUSTOMERS = "GET_AVG_AGE_CUSTOMERS";
     public static final String GET_GENDER_DIS_CUSTOMERS = "GET_GENDER_DIS_CUSTOMERS";
+    public static final String GET_SCOOTERRACK_POS = "GET_SCOOTERRACK_POS";
+
+    public static final String GET_REVENUE = "GET_REVENUE";
 
 
     private Actions() {

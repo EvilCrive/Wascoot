@@ -61,6 +61,14 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
                 return;
             }
 
+            if (processRevenue(req,res)){
+                return;
+            }
+
+            if (procesScooterRackPos(req, res)){
+                return;
+            }
+
 
             // if none of the above process methods succeeds, it means an unknown resource has been requested
             LOGGER.warn("Unknown resource requested: %s.", req.getRequestURI());
@@ -511,4 +519,80 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
         }
         return true;
     }
+
+
+    private boolean processRevenue(final HttpServletRequest req, final HttpServletResponse res) throws Exception {
+        final String method = req.getMethod();
+        String path = req.getRequestURI();
+        Message m = null;
+
+        // the requested resource was not a customer
+        if (path.lastIndexOf("rest/revenue/") <= 0) {
+            return false;
+        }
+
+        path = path.substring(path.lastIndexOf("revenue/") + 8);
+
+
+        LOGGER.warn(path);
+
+        if (path.length() == 0) {
+
+            if (method.equals("GET")) {
+                new RevenueRR(req, res, getConnection()).serve();
+            } else {
+                LOGGER.warn("Unsupported operation for URI /revenue: %s.", method);
+
+                m = new Message("Unsupported operation for URI /revenue.", "E4A5", String.format("Requested operation %s.", method));
+                res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+                m.toJSON(res.getOutputStream());
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Checks whether the request is for an {@link procesScooterRackPos} resource and, in case, processes it.
+     *
+     * @param req the HTTP request.
+     * @param res the HTTP response.
+     * @return {@code true} if the request was for an {@code procesScooterRackPos}; {@code false} otherwise.
+     * @throws Exception if any error occurs.
+     */
+    private boolean procesScooterRackPos(final HttpServletRequest req, final HttpServletResponse res) throws Exception {
+        final String method = req.getMethod();
+        String path = req.getRequestURI();
+        Message m = null;
+
+        // the requested resource was not a customer
+        if (path.lastIndexOf("rest/scooterRackPos/") <= 0) {
+            return false;
+        }
+
+        path = path.substring(path.lastIndexOf("scooterRackPos/") + 15);
+
+        LOGGER.warn(path);
+        // the request URI is: /customer
+        // if method GET, list customer(s)
+        if (path.length() == 0) {
+
+            switch (method) {
+                case "GET":
+                    new ScooterRackPosRR(req, res, getConnection()).serve();
+                    break;
+                default:
+                    LOGGER.warn("Unsupported operation for URI /scooterRackPos: %s.", method);
+
+                    m = new Message("Unsupported operation for URI /scooterRackPos.", "E4A5", String.format("Requested operation %s.", method));
+                    res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+                    m.toJSON(res.getOutputStream());
+                    break;
+            }
+        } else {
+
+        }
+        return true;
+    }
+
 }

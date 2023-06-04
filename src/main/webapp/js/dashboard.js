@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     //getUsersList();
     getCustomerAvgAge();
     getCustomerGender();
+    getRevenue();
+    getMapScooterRacks();
 });
 
 function getUsersList() {
@@ -18,6 +20,17 @@ function getCustomerGender() {
     var url = new URL('http://localhost:8080/wascoot-1.0/rest/customerGender/');
     genericGETRequest(url, showCustomerGender);
 }
+
+function getRevenue() {
+    const url = new URL('http://localhost:8080/wascoot-1.0/rest/revenue/');
+    genericGETRequest(url, show_Revenue);
+}
+
+function getMapScooterRacks(){
+     var url = new URL('http://localhost:8080/wascoot-1.0/rest/scooterRackPos/');
+    genericGETRequest(url, showScooterRacks);
+}
+
 
 function getCustomerList(req){
       if (req.status == 200) {
@@ -103,6 +116,26 @@ function showCustomerGender(req){
       }
 }
 
+function show_Revenue(req){
+    if (req.status == 200) {
+        var jsonData = JSON.parse(req.responseText);
+        var data = jsonData['resource-list'];
+        var date = [];
+        var price = [];
+
+        for(let i=0; i<data.length; i++){
+            var entry = data[i];
+            date.push(sanitize(entry['date']));
+            price.push(sanitize(entry['price']));
+        }
+        renderRevenueChart(date, price);
+    }
+    else {
+        console.log(JSON.parse(httpRequest.responseText));
+        alert("Problem processing the request");
+    }
+}
+
 function renderAgeChart(postalCodes, averageAges) {
     var ctx = document.getElementById('age-chart').getContext('2d');
     var chart = new Chart(ctx, {
@@ -148,4 +181,72 @@ function renderGenderChart(maleCount, femaleCount) {
             }]
         }
     });
+}
+
+
+function renderRevenueChart(date, price) {
+    var ctx = document.getElementById('revenue-chart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: date,
+            datasets: [{
+                label: 'Revenue',
+                data: price,
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+function showScooterRacks(req){
+    if (req.status == 200) {
+        var jsonData = JSON.parse(req.responseText);
+        var data = jsonData['resource-list'];
+
+        var map = L.map('map').setView([45.401, 11.862], 13);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        for (let i = 0; i < data.length; i++) {
+            var scooterRack = data[i]['scooterrack'];
+            var latitude = parseFloat(scooterRack['latitude']);
+            var longitude = parseFloat(scooterRack['longitude']);
+            var totalParkingSpots = scooterRack['totalParkingSpots'];
+            var availableParkingSpots = scooterRack['availableParkingSpots'];
+            var postalCode = scooterRack['postalCode'];
+            var address = scooterRack['address'];
+            var id = scooterRack['id'];
+
+            var circle = L.circle([latitude, longitude], {
+                color: 'red',
+                fillColor: '#f03',
+                fillOpacity: 0.5,
+                radius: 500
+            }).addTo(map);
+
+            var popupContent = 'Scooterrack id: ' + id + '<br>' + 'Total Parking Spots: ' + totalParkingSpots + '<br>' +
+            'Available Parking Spots: ' + availableParkingSpots + '<br>' +
+            'Postal Code: ' + postalCode + '<br>' +
+            'Address: ' + address;
+
+            circle.bindPopup(popupContent);
+        }
+
+        } else {
+            console.log(JSON.parse(httpRequest.responseText));
+            alert("Problem processing the request");
+        }
+
 }
