@@ -1,0 +1,54 @@
+
+#text_heading {
+    padding-top: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+h1,
+h3 {
+    text-align: center;
+    margin: 5% ;
+}
+
+h6 {
+    height: 1vh;
+}
+
+.adm {
+    margin: 7%;
+}
+.admin_container {
+    margin-top: 3%;
+    text-align: center;
+}
+
+.select,
+.buttonform {
+    text-align: center;
+    margin: 2% 0;
+}
+
+img.image-lst {
+    width: 25vh;
+    height: 25vh;
+    cursor: pointer;
+    margin-bottom: 15%;
+    border-radius: 10%;
+    transition: transform 0.5s ease;
+}
+
+img.image-lst:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+}
+.show {
+    display: block;
+    text-align: center;
+}
+
+.btn-sm {
+    margin: 3%;
+    color: white;
+    visibility: hidden;
+}
+
