@@ -1,18 +1,86 @@
-.parent {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.div1 { grid-area: 1 / 1 / 5 / 2; }
-.div2 { grid-area: 1 / 2 / 5 / 3; }
-.div3 { grid-area: 1 / 3 / 5 / 4; }
-.div4 { grid-area: 1 / 4 / 5 / 5; }
-.div5 { grid-area: 1 / 5 / 3 / 6; }
-.div6 { grid-area: 3 / 5 / 5 / 6; }
+.title {
+  text-align: center;
+}
 
+#top-elements {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.chart-container {
+    width: calc(33.33% - 10px);
+    margin-bottom: 20px;
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.chart-container:nth-child(3n+1) {
+  margin-right: 10px;
+}
+
+.chart-container:nth-child(3n) {
+  margin-left: 10px;
+}
+
+.chart-container:last-child {
+  width: calc(50% - 10px);
+}
+
+.chart-container canvas {
+  width: 100%;
+  height: calc(100% - 20px);
+}
+
+#map-container {
+    width: 100%;
+    height: 300px;
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+}
+#map { height: 180px; }
+
+#bottom-elements {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#revenue-chart-container canvas,
+#gender-chart-container canvas {
+    width: 100%;
+    height: calc(100% - 20px);
+}
+
+.chart-text {
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+
+/*
+PIE CHART : Gender distribution
+#gender-chart-container {
+  width: 300px;
+  height: 300px;
+}
+*/
+
+
+
+/*
+TABLE TOP RANK
+*/
 .table-rr {
     border-collapse: collapse;
     width: 100%;
@@ -50,4 +118,3 @@ tbody.body-top tr {
 }
 
 tbody.body-top tr:nth-child(even){background-color: #f2f2f2}
-#map { height: 250px; }
