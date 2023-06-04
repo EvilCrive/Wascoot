@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function ()
         div.classList.add("adm");
         div.id = item["id"];
         const image = document.createElement("img");
-        image.src = "./images/" + item["id"].toString() + ".png";
+        image.src = "./media/adminPhoto/" + item["id"].toString() + ".png";
         image.id = "img_" + item["id"];
         image.className = "image-lst";
         // this is to open the modal

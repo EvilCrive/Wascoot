@@ -224,6 +224,8 @@ Preloader end
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Homepage</a></li>
             </ol>
         </div>
+
+        <!--
         <div class="container-fluid">
             <h1>
                 Administrator
@@ -236,15 +238,16 @@ Preloader end
                 <button type="reset">Clear</button>
             </form>
         </div>
-
+        -->
+        <!--
         <div>
+
             <label for="idID">Admin name:</label>
-            <!--
             <input id="idID" type="text"/>
             <button type="submit" id="ajaxButton">Search</button><br/>
             -->
 
-
+            <!--
             <form method="POST" action="<c:url value="/model/update/"/>" >
                 <div class="form-group mb-3">
                     <label for="idID" class="">Administrator:</label>
@@ -262,19 +265,52 @@ Preloader end
                     <button type="submit" id="ajaxButton">Search</button>
                 </div>
             </form>
+
         </div>
-
-
 
         <div id="results" style="margin: 2em;">
-
         </div>
-
+        -->
+        <!--
         <div>
             <form method="POST" action="../jsp/create-administrator-form.jsp">
                 <button type="submit">create</button><br/><br/><br/>
             </form>
         </div>
+        -->
+
+
+        <div
+                class="modal fade"
+                id="infoModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="admin_title"></h5>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <h6>Id - <span id="admin_id"></span></h6>
+                        </div>
+                        <div id="adms"></div>
+                        <div><h6>Email - <span id="email"></span></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div>
+                <h1>Administrators</h1>
+                <div id="admin_container" class="admin_container"></div>
+            </div>
+        </div>
+
     </div>
 
     <!--**********************************
