@@ -20,72 +20,19 @@
 		<!-- display the message -->
 		<c:import url="/jsp/include/show-message.jsp"/>
 
-        <div class="div1">
 
-		<!-- display the list of found scooterracks, if any -->
-		<c:if test='${not empty scooterRackList}'>
-			<table>
-				<thead>
-					<tr>
-						<th>id</th><th>Total parking spots</th><th>Available parking spots</th><th>Postal code</th><th>Address</th>
-					</tr>
-				</thead>
 
-				<tbody>
-					<c:forEach var="scooterrack" items="${scooterRackList}">
-						<tr>
-
-							<td><c:out value="${scooterrack.id}"/></td>
-							<td><c:out value="${scooterrack.totalParkingSpots}"/></td>
-							<td><c:out value="${scooterrack.availableParkingSpots}"/></td>
-							<td><c:out value="${scooterrack.postalCode}"/></td>
-							<td><c:out value="${scooterrack.address}"/></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</c:if>
-
-        </div>
-        <div class="div2">
-
-		<!-- display the list of found PaymentWithoutSubscriptions, if any -->
-		<c:if test='${not empty paymentWithoutSubscriptionList}'>
-			<table>
-				<thead>
-					<tr>
-						<th>id</th><th>price</th><th>date hour</th><th>order id</th>
-					</tr>
-				</thead>
-
-				<tbody>
-					<c:forEach var="paymentwithoutsubscription" items="${paymentWithoutSubscriptionList}">
-						<tr>
-
-							<td><c:out value="${paymentwithoutsubscription.id}"/></td>
-							<td><c:out value="${paymentwithoutsubscription.price}"/></td>
-							<td><c:out value="${paymentwithoutsubscription.dateHour}"/></td>
-							<td><c:out value="${paymentwithoutsubscription.orderId}"/></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</c:if>
-
-		</div>
-        <div class="div3">
-
-		<c:if test='${not empty topLocation}'>
-			<c:set var="count" value="0" scope="page" />
-			<table>
-				<thead>
+			<c:if test='${not empty topLocation}'>
+				<c:set var="count" value="0" scope="page" />
+			<table class="table-top">
+				<thead class="head-top">
 				<tr>
 					<th>Rank</th>
 					<th>id</th>
 				</tr>
 				</thead>
 
-				<tbody>
+				<tbody class="body-top">
 				<c:forEach var="topLocation" items="${topLocation}">
 					<c:set var="count" value="${count + 1}" scope="page"/>
 					<tr>
@@ -95,22 +42,19 @@
 				</c:forEach>
 				</tbody>
 			</table>
-		</c:if>
+			</c:if>
 
-        </div>
-        <div class="div4">
-
-		<c:if test='${not empty revenueList}'>
-			<c:set var="sum" value="0" scope="page" />
-			<table>
-				<thead>
+			<c:if test='${not empty revenueList}'>
+				<c:set var="sum" value="0" scope="page" />
+			<table class="table-rr">
+				<thead class="head-rr" >
 				<tr>
 					<th>Month</th>
 					<th>Revenue</th>
 				</tr>
 				</thead>
 
-				<tbody>
+				<tbody class="body-rr">
 				<c:forEach var="revenue" items="${revenueList}">
 					<c:set var="sum" value="${sum + revenue.price}" scope="page"/>
 					<tr>
@@ -124,10 +68,10 @@
 				</tr>
 				</tbody>
 			</table>
-		</c:if>
+			</c:if>
 
-        </div>
-        <div class="div5">
+
+
 
         <div id="age-chart-container">
             <canvas id="age-chart"></canvas>
@@ -137,14 +81,14 @@
 			<canvas id="revenue-chart"></canvas>
 		</div>
 
-        </div>
-        <div class="div6">
+
+
 
         <div id="gender-chart-container">
             <canvas id="gender-chart"></canvas>
         </div>
 
-        </div>
+
 
 	</body>
 </html>

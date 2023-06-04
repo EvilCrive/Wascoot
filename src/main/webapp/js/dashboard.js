@@ -180,7 +180,7 @@ function renderGenderChart(maleCount, femaleCount) {
 function renderRevenueChart(date, price) {
     var ctx = document.getElementById('revenue-chart').getContext('2d');
     var chart = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
             labels: date,
             datasets: [{
