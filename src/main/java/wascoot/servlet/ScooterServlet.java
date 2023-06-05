@@ -169,7 +169,7 @@ public class ScooterServlet extends AbstractDatabaseServlet{
             req.setAttribute("message", m);
 
 
-            req.getRequestDispatcher("/jsp/manage-pages/create-scooter-result.jsp").forward(req, res);
+            req.getRequestDispatcher("/jsp/manage-pages/error-scooter.jsp").forward(req, res);
         } catch(Exception ex) {
             LOGGER.error(new StringFormattedMessage("Unable to send response when creating scooter."), ex);
             throw ex;
@@ -249,7 +249,7 @@ public class ScooterServlet extends AbstractDatabaseServlet{
             req.setAttribute("updateScooter", s);
             req.setAttribute("message", m);
 
-            req.getRequestDispatcher("/jsp/manage-pages/update-scooter.jsp").forward(req, res);
+            req.getRequestDispatcher("/jsp/manage-pages/error-scooter.jsp").forward(req, res);
         } catch(Exception ex) {
             LOGGER.error(new StringFormattedMessage("Unable to send response when updating scooter %d.", id), ex);
             throw ex;

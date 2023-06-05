@@ -37,10 +37,11 @@
   <div class="card-body">
   <!-- display the message -->
     <c:import url="/jsp/include/show-message.jsp"/>
+    <a href="${pageContext.request.contextPath}/scooter/list/">GO BACK TO SCOOTERS PAGE</a>
   </div>
 
   <!-- display the just created model, if any and no errors -->
-  <c:if test='${not empty newScooter && !message.error}'>
+  <c:if test='${(not empty newScooter || not empty updateScooter) && !message.error}'>
     <c:redirect url="/scooter/list/"/>
     <ul>
       <li>id: <c:out value="${newScooter.id}"/></li>
@@ -52,7 +53,7 @@
     </ul>
   </c:if>
 
-  <a href="${pageContext.request.contextPath}/scooter">GO BACK TO SCOOTERS PAGE</a>
+
 </div>
 </div>
 <jsp:include page="../foot.jsp"/>
