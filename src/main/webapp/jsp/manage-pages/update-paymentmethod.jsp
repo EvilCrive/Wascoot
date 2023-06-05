@@ -18,6 +18,7 @@
 
 <!-- display the just updated payment method, if any and no errors -->
 <c:if test='${not empty updatePaymentMethod && !message.error}'>
+    <c:redirect url="/paymentmethod/list/"/>
     <ul>
         <li>type: <c:out value="${updatePaymantMethod.type}"/></li>
         <li>activation: <c:out value="${updatePaymentMethod.activation}"/></li>
