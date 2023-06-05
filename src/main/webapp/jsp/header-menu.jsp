@@ -32,7 +32,7 @@ Header start
                 <ul class="navbar-nav header-right">
                     <li class="nav-item align-items-center header-border"><a href="${pageContext.request.contextPath}/admin/logout" class="btn btn-primary btn-sm">Logout</a></li>
                     <li class="nav-item ps-3">
-                        <a class="nav-link" href="/dashboard" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link" href="<c:url value="/dashboard"/>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="header-info2 d-flex align-items-center">
                                 <div class="header-media" id="infoAccount">
                                     <img src="${pageContext.request.contextPath}/media/adminPhoto/${sessionScope.id}.png" alt="">
