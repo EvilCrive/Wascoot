@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page session="true" %>
 
 <!--**********************************
 Nav header start
@@ -34,12 +35,15 @@ Header start
                         <a class="nav-link" href="/dashboard" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="header-info2 d-flex align-items-center">
                                 <div class="header-media">
-                                    <a href="${pageContext.request.contextPath}/jsp/homepage.jsp"><img src="${pageContext.request.contextPath}/media/avatar/admin_girl.png" alt=""></a>
+                                    <a href="${pageContext.request.contextPath}/jsp/homepage.jsp"><img src="${pageContext.request.contextPath}/media/adminPhoto/${sessionScope.id}.png" alt=""></a>
+
                                 </div>
                                 <div class="header-info">
                                     <a href="${pageContext.request.contextPath}/jsp/homepage.jsp">
                                     <h6>WASCOOT Admin</h6>
-                                    <p>admin@wascoot.com</p>
+                                    <p>${sessionScope.email}</p>
+
+
                                     </a>
                                 </div>
 
