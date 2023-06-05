@@ -48,6 +48,7 @@ public final class changeAdminPasswordServlet extends AbstractDatabaseServlet {
 			m = new Message(String.format("Password %s successfully changed.", password));
 
 			LOGGER.info("Password %s successfully changed in the database.", password);
+			res.sendRedirect(req.getContextPath() + "/dashboard");
 
 		} catch (NumberFormatException ex) {
 			m = new Message(
