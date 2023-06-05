@@ -58,14 +58,11 @@ Header start
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                Administrator
+                Administrator: ${sessionScope.name}
             </div>
             <div class="modal-body">
                 <div>
-                    <h6>Name: ${sessionScope.name}</h6>
-                </div>
-                <div>
-                    <h6>ID number: ${sessionScope.id}</h6>
+                    <h6>ID: ${sessionScope.id}</h6>
                 </div>
                 <div id="adms"></div>
                 <div>
@@ -74,10 +71,39 @@ Header start
                 <div class="header-media">
                     <img src="${pageContext.request.contextPath}/media/adminPhoto/${sessionScope.id}.png" alt="">
                 </div>
+
+
             </div>
             <div class="modal-footer">
                 <button id="updateAdminPassword" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Change Password</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="changeAccountPassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Administrator: ${sessionScope.name}
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="<c:url value="/changeAdminPassword"/>">
+
+                    <label for="email">Enter your email:</label>
+                    <input id="email" name="email" type="text"/><br/><br/>
+
+                    <label for="password">Enter your new password:</label>
+                    <input id="password" name="password" type="text"/><br/><br/>
+
+                    <button type="submit">Submit</button>
+                    <button type="reset">Reset</button>
+                </form>
             </div>
         </div>
     </div>

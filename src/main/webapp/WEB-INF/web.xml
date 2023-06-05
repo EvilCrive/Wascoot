@@ -48,6 +48,15 @@
     </filter-mapping>
 
     <servlet>
+        <servlet-name>ChangeAdminPassword</servlet-name>
+        <servlet-class>wascoot.servlet.changeAdminPasswordServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangeAdminPassword</servlet-name>
+        <url-pattern>/changeAdminPassword</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>CreateAdministratorPhoto</servlet-name>
         <servlet-class>wascoot.servlet.CreateAdministratorServlet</servlet-class>
         <multipart-config>

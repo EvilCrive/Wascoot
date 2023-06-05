@@ -1,23 +1,5 @@
-/*
- * Copyright 2018-2023 University of Padua, Italy
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package wascoot.database;
-
 import wascoot.resource.Administrator;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,7 +13,7 @@ public final class UpdateAdministratorDAO extends AbstractDAO<Administrator> {
 	/**
 	 * The SQL statement to be executed
 	 */
-	private static final String UPDATE_ADMINISTRATOR = "UPDATE public.admin SET id = ?, email = ?, password = ? WHERE email = ? RETURNING *";
+	private static final String UPDATE_ADMINISTRATOR = "UPDATE public.admin SET password = ? WHERE email = ? RETURNING *";
 
 	/**
 	 * The administrator to be updated in the database
@@ -68,14 +50,12 @@ public final class UpdateAdministratorDAO extends AbstractDAO<Administrator> {
 
 		try {
 			pstmt = con.prepareStatement(UPDATE_ADMINISTRATOR);
-			pstmt.setInt(1, administrator.getId());
+			pstmt.setString(1, administrator.getPassword());
 			pstmt.setString(2, administrator.getEmail());
-			pstmt.setString(3, administrator.getPassword());
-
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				e = new Administrator(rs.getInt("id"), rs.getString("email"), rs.getString("password"));
+				e = new Administrator(rs.getInt("id"), rs.getString("email"), rs.getString("password"), rs.getString("name"));
 
 				LOGGER.info("Administrator %d successfully updated in the database.", e.getId());
 			}

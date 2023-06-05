@@ -24,6 +24,11 @@ $(document).ready(function () {
     $("#infoAdmin").modal("show");
   });
 
+  $("#updateAdminPassword").click(function () {
+    console.log("clicked");
+    $("#changeAccountPassword").modal("show");
+  });
+
   var confirm_button = $("#confirm");
   confirm_button.on("click", function () {
     var title_selected = $("#tv_select").val();
