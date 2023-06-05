@@ -154,7 +154,7 @@ public class ModelServlet extends AbstractDatabaseServlet{
             req.setAttribute("newModel", e);
             req.setAttribute("message", m);
 
-            req.getRequestDispatcher("/jsp/manage-pages/create-model-result.jsp").forward(req, res);
+            req.getRequestDispatcher("/jsp/manage-pages/error-model.jsp").forward(req, res);
         } catch(Exception ex) {
             LOGGER.error(new StringFormattedMessage("Unable to send response when creating model %s.", name), ex);
             throw ex;
@@ -220,7 +220,7 @@ public class ModelServlet extends AbstractDatabaseServlet{
             req.setAttribute("message", m);
 
             // forwards the control to the create-employee-result JSP
-            req.getRequestDispatcher("/jsp/manage-pages/update-model.jsp").forward(req, res);
+            req.getRequestDispatcher("/jsp/manage-pages/error-model.jsp").forward(req, res);
         } catch(Exception ex) {
             LOGGER.error(new StringFormattedMessage("Unable to send response when updating model %s.", name), ex);
             throw ex;

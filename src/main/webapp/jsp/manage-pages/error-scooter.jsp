@@ -43,14 +43,6 @@
   <!-- display the just created model, if any and no errors -->
   <c:if test='${(not empty newScooter || not empty updateScooter) && !message.error}'>
     <c:redirect url="/scooter/list/"/>
-    <ul>
-      <li>id: <c:out value="${newScooter.id}"/></li>
-      <li>date of purchase: <c:out value="${newScooter.dateOfPurchase}"/></li>
-      <li>km traveled: <c:out value="${newScooter.kmTraveled}"/></li>
-      <li>model: <c:out value="${newScooter.model}"/></li>
-      <li>remaining battery life: <c:out value="${newScooter.remainingBatteryLife}"/></li>
-      <li>id scooterrack: <c:out value="${newScooter.idScooterrack}"/></li>
-    </ul>
   </c:if>
 
 
