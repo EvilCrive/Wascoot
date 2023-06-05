@@ -12,13 +12,13 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 -- ADMIN(id, email, password, profileImage)
-INSERT INTO public.admin VALUES (DEFAULT, 'nick@gmail.com', '1234', 'Nick', NULL, 'image/png');
-INSERT INTO public.admin VALUES (DEFAULT, 'paria@gmail.com', '1234', 'Paria', NULL, 'image/png');
-INSERT INTO public.admin VALUES (DEFAULT, 'shalini@gmail.com', '1234', 'Shalini', NULL, 'image/png');
-INSERT INTO public.admin VALUES (DEFAULT, 'shiva@gmail.com', '1234', 'Shiva', NULL, 'image/png');
-INSERT INTO public.admin VALUES (DEFAULT, 'alberto@gmail.com', '1234', 'Alberto', NULL, 'image/png');
-INSERT INTO public.admin VALUES (DEFAULT, 'sara@gmail.com', '1234', 'Sara', NULL, 'image/png');
-INSERT INTO public.admin VALUES (DEFAULT, 'borwoei@gmail.com', '1234', 'Borwoei', NULL, 'image/png');
+INSERT INTO public.admin VALUES (DEFAULT, 'nick@wascoot.com', '1234', 'Nick', NULL, 'image/png');
+INSERT INTO public.admin VALUES (DEFAULT, 'paria@wascoot.com', '1234', 'Paria', NULL, 'image/png');
+INSERT INTO public.admin VALUES (DEFAULT, 'shalini@wascoot.com', '1234', 'Shalini', NULL, 'image/png');
+INSERT INTO public.admin VALUES (DEFAULT, 'shiva@wascoot.com', '1234', 'Shiva', NULL, 'image/png');
+INSERT INTO public.admin VALUES (DEFAULT, 'alberto@wascoot.com', '1234', 'Alberto', NULL, 'image/png');
+INSERT INTO public.admin VALUES (DEFAULT, 'sara@wascoot.com', '1234', 'Sara', NULL, 'image/png');
+INSERT INTO public.admin VALUES (DEFAULT, 'borwoei@wascoot.com', '1234', 'Borwoei', NULL, 'image/png');
 
 -- PAYMENTMETHOD(id, paymenttype, activation)
 INSERT INTO public.paymentmethod VALUES (DEFAULT, 'Credit Card', DEFAULT);
