@@ -168,7 +168,7 @@ Preloader end
               <input name="total_parking_spots" type="number" min=0 step=1 class="form-control" id="canvasScooterrackTPS" placeholder="">
             </div>
             <div class="col-xl-6 mb-3">
-              <label for="canvasScooterrackAPS" class="form-label">Available Parking Spots<span class="text-danger">*</span></label>
+              <label for="canvasScooterrackAPS" class="form-label">Avail. Parking Spots<span class="text-danger">*</span></label>
               <input name="available_parking_spots" type="number" min=0 step=1 class="form-control" id="canvasScooterrackAPS" placeholder="" >
             </div>
             <div class="col-xl-6 mb-3">
@@ -181,8 +181,8 @@ Preloader end
             </div>
           </div>
           <div>
-            <button class="btn btn-primary">Submit</button>
-            <button class="btn btn-danger light">Clear Form</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-danger light">Clear Form</button>
           </div>
         </form>
       </div>

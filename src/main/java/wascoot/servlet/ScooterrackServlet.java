@@ -157,7 +157,7 @@ public class ScooterrackServlet extends AbstractDatabaseServlet{
             req.setAttribute("newScooterrack", s);
             req.setAttribute("message", m);
 
-            req.getRequestDispatcher("/jsp/manage-pages/create-scooterrack-result.jsp").forward(req, res);
+            req.getRequestDispatcher("/jsp/manage-pages/error-scooterrack.jsp").forward(req, res);
         } catch(Exception ex) {
             LOGGER.error(new StringFormattedMessage("Unable to send response when creating scooterrack."), ex);
             throw ex;
@@ -237,7 +237,7 @@ public class ScooterrackServlet extends AbstractDatabaseServlet{
             req.setAttribute("message", m);
 
 
-            req.getRequestDispatcher("/jsp/manage-pages/update-scooterrack.jsp").forward(req, res);
+            req.getRequestDispatcher("/jsp/manage-pages/error-scooterrack.jsp").forward(req, res);
         } catch(Exception ex) {
             LOGGER.error(new StringFormattedMessage("Unable to send response when updating scooterrack %s.", id), ex);
             throw ex;
