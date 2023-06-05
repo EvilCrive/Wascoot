@@ -151,7 +151,7 @@ public class SubscriptionServlet extends AbstractDatabaseServlet{
             req.setAttribute("message", m);
 
             // forwards the control to the create-employee-result JSP
-            req.getRequestDispatcher("/jsp/manage-pages/create-subscription-result.jsp").forward(req, res);
+            req.getRequestDispatcher("/jsp/manage-pages/error-subscription.jsp").forward(req, res);
         } catch(Exception ex) {
             LOGGER.error(new StringFormattedMessage("Unable to send response when creating subscription %s.", type), ex);
             throw ex;
@@ -219,7 +219,7 @@ public class SubscriptionServlet extends AbstractDatabaseServlet{
             req.setAttribute("updateSubscription", e);
             req.setAttribute("message", m);
 
-            req.getRequestDispatcher("/jsp/manage-pages/update-subscription.jsp").forward(req, res);
+            req.getRequestDispatcher("/jsp/manage-pages/error-subscription.jsp").forward(req, res);
         } catch(Exception ex) {
             LOGGER.error(new StringFormattedMessage("Unable to send response when updating subscription %d.", id), ex);
             throw ex;
