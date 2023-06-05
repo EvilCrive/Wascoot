@@ -174,7 +174,7 @@ Preloader end
                             <input name="daily_unlocks" type="number" min=0 step=1 class="form-control" id="canvasSubDailyUnlocks" placeholder="" >
                         </div>
                         <div class="col-xl-6 mb-3">
-                            <label for="canvasSubValidityPerDay" class="form-label">Hours of Validity, per day<span class="text-danger">*</span></label>
+                            <label for="canvasSubValidityPerDay" class="form-label">Validity per day<span class="text-danger">*</span></label>
                             <input name="validity_per_day" type="time" class="form-control" id="canvasSubValidityPerDay" placeholder="">
                         </div>
                         <div class="col-xl-6 mb-3">
@@ -186,8 +186,8 @@ Preloader end
                         </div>
                     </div>
                     <div>
-                        <button class="btn btn-primary">Submit</button>
-                        <button class="btn btn-danger light">Clear Form</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-danger light">Clear Form</button>
                     </div>
                 </form>
             </div>
