@@ -124,31 +124,6 @@ Preloader end
         </div>
 
 
-        <div
-                class="modal fade"
-                id="infoModal"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-        >
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="admin_title"></h5>
-                    </div>
-                    <div class="modal-body">
-                        <div>
-                            <h6>Id - <span id="admin_id"></span></h6>
-                        </div>
-                        <div id="adms"></div>
-                        <div><h6>Email - <span id="email"></span></h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
 
     </div>
 

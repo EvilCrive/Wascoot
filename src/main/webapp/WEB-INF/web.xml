@@ -43,6 +43,8 @@
         <url-pattern>/scooter/*</url-pattern>
         <url-pattern>/subscription/*</url-pattern>
         <url-pattern>/rentals</url-pattern>
+        <url-pattern>/list-customer</url-pattern>
+        <url-pattern>/paymentmethod/list/</url-pattern>
     </filter-mapping>
 
     <servlet>
