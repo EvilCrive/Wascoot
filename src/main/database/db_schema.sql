@@ -86,7 +86,7 @@ create table Model(
 create table PaymentMethod(
     ID serial,
     type paymentTypes not null,
-    Activation activationType default 'Inactive',
+    Activation activationType default 'Active',
     constraint key_payment_method primary key (type)
 );
 
