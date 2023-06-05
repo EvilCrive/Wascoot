@@ -235,6 +235,18 @@ Preloader end
       enableSeconds: true
     });
   });
+  document.addEventListener('DOMContentLoaded', function() {
+    flatpickr("#dateOfPurchaseID", {
+      enableTime: false, // Change to true if you want to enable time selection as well
+      dateFormat: "Y-m-d", // Change the date format as desired
+    });
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+    flatpickr("#canvasModelDateofpurchase", {
+      enableTime: false, // Change to true if you want to enable time selection as well
+      dateFormat: "Y-m-d", // Change the date format as desired
+    });
+  });
 </script>
 
 </body>
