@@ -63,9 +63,9 @@ Preloader end
                                     </select>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="typeID" class="">Subscription Type's id<span class="text-danger">*</span>
+                                    <label for="typeID" class="">Subscription Type<span class="text-danger">*</span>
                                     </label>
-                                    <input id="typeID" name="type" type="number" min=0 class="form-control" placeholder="modify the subscription type's id">
+                                    <input id="typeID" name="type" type="text" class="form-control" placeholder="modify the subscription type">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="dailyUnlocksID" class="">Daily Unlocks<span class="text-danger">*</span>
@@ -83,7 +83,10 @@ Preloader end
                                     <label for="fixedPriceID">Price<span class="text-danger">*</span>
                                     </label>
                                     <div class="input-group">
-                                        <input id="fixedPriceID" name="fixed_price" type="number" min=0 step=0.1 class="form-control" placeholder="modify the fixed price">
+                                        <div class="input-group">
+                                            <div class="input-group-text">€</div>
+                                            <input id="fixedPriceID" name="fixed_price" type="number" min=0 step=0.1 class="form-control" placeholder="modify the fixed price">
+                                        </div>
                                     </div>
                                 </div>
                                 <div>
@@ -123,10 +126,10 @@ Preloader end
                                                 <td><span><c:out value="${subscription.dailyUnlocks}"/></span></td>
                                                 <td><span><c:out value="${subscription.validityPerDay}"/></span></td>
                                                 <td><span><c:out value="${subscription.fixedPrice}"/></span></td>
+
                                             </tr>
                                         </c:forEach>
                                         </tbody>
-
                                     </table>
                                 </c:if>
                             </div>
