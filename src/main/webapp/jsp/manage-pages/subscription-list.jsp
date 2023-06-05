@@ -210,7 +210,7 @@ Preloader end
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
     $(document).ready(function() {
-        $('#batteryLifeID').flatpickr({
+        $('#validityPerDayID').flatpickr({
             enableTime: true,
             noCalendar: true,
             dateFormat: 'H:i:S',
@@ -219,7 +219,7 @@ Preloader end
         });
     });
     $(document).ready(function (){
-        $('#canvasModelBattery').flatpickr({
+        $('#canvasSubValidityPerDay').flatpickr({
             enableTime: true,
             noCalendar: true,
             dateFormat: 'H:i:S',
