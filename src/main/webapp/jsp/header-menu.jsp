@@ -8,11 +8,12 @@ Nav header start
 <div class="nav-header">
     <a href="dashboard" class="brand-logo"><img class="logo-abbr" width="40" height="40" viewBox="0 0 50 50" src="${pageContext.request.contextPath}/media/logo/logo-orange-white.png"><span class="brand-title" style="font-size: medium;color: white;">WASCOOT</span></a>
     <div class="nav-control">
-        <div class="hamburger">
+        <%--couldn't acheive--%>
+        <%--<div class="hamburger">
             <span class="line"></span>
             <span class="line"></span>
             <span class="line"></span>
-        </div>
+        </div>--%>
     </div>
 </div>
 <!--**********************************
