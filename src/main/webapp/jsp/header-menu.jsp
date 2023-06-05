@@ -71,8 +71,12 @@ Header start
                 <div>
                     <h6>Email: ${sessionScope.email}</h6>
                 </div>
+                <div class="header-media">
+                    <img src="${pageContext.request.contextPath}/media/adminPhoto/${sessionScope.id}.png" alt="">
+                </div>
             </div>
             <div class="modal-footer">
+                <button id="updateAdminPassword" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Change Password</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
