@@ -19,6 +19,11 @@ $(document).ready(function () {
   });
 
 
+  $("#infoAccount").click(function () {
+    console.log("clicked");
+    $("#infoAdmin").modal("show");
+  });
+
   var confirm_button = $("#confirm");
   confirm_button.on("click", function () {
     var title_selected = $("#tv_select").val();
