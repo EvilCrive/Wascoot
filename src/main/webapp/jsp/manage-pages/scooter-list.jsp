@@ -90,7 +90,7 @@ Preloader end
                   <label for="idScooterrackID">Scooter's scooterrack id<span class="text-danger">*</span>
                   </label>
                   <div class="input-group">
-                    <input id="idScooterrackID" name="id_scooterrack" type="number" class="form-control" placeholder="modify the scooterrack id">
+                    <input id="idScooterrackID" name="id_scooterrack" type="number" min=0 step=1 class="form-control" placeholder="modify the scooterrack id">
                   </div>
                 </div>
                 <div>
@@ -178,15 +178,15 @@ Preloader end
             </div>
             <div class="col-xl-6 mb-3">
               <label for="canvasModelKmtraveled" class="form-label">Km Traveled<span class="text-danger">*</span></label>
-              <input name="km_traveled" type="text" class="form-control" id="canvasModelKmtraveled" placeholder="" >
+              <input name="km_traveled" type="number" min=0 step=0.1 class="form-control" id="canvasModelKmtraveled" placeholder="" >
             </div>
             <div class="col-xl-6 mb-3">
               <label for="canvasModelModelname" class="form-label">Model Name<span class="text-danger">*</span></label>
               <input name="model" type="text" class="form-control" id="canvasModelModelname" placeholder="">
             </div>
             <div class="col-xl-6 mb-3">
-              <label for="canvasModelRemainingbatterylife" class="form-label">Remaining Battery Life<span class="text-danger">*</span></label>
-              <input name="remaining_battery_life" type="text" class="form-control" id="canvasModelRemainingbatterylife" placeholder="">
+              <label for="canvasModelRemainingbatterylife" class="form-label">Remaining Battery<span class="text-danger">*</span></label>
+              <input name="remaining_battery_life" type="number" min=0 max=100 step=0.1 class="form-control" id="canvasModelRemainingbatterylife" placeholder="">
             </div>
             <div class="col-xl-6 mb-3">
               <label for="canvasModelScooterrackid" class="form-label">Scooterrack id<span class="text-danger">*</span></label>
