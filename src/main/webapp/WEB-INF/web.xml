@@ -36,14 +36,13 @@
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
         <url-pattern>/scooterrack/list/</url-pattern>
-        <!--<url-pattern>/jsp/*</url-pattern>-->
+        <url-pattern>/jsp/*</url-pattern>
         <url-pattern>/model/*</url-pattern>
         <url-pattern>/dashboard/*</url-pattern>
         <url-pattern>/model</url-pattern>
         <url-pattern>/scooter/*</url-pattern>
         <url-pattern>/subscription/*</url-pattern>
         <url-pattern>/rentals</url-pattern>
-
     </filter-mapping>
 
     <servlet>

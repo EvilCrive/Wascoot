@@ -80,6 +80,8 @@ Preloader end
             </div>
         </div>
 
+
+
         <div class="container">
             <div class="row">
                 <div class="col-md-3"></div>
@@ -102,7 +104,13 @@ Preloader end
                                 >
                                     Confirm
                                 </button>
-
+                                <button
+                                        type="button"
+                                        id="reset"
+                                        class="select btn btn-danger btn-sm"
+                                >
+                                    Remove
+                                </button>
                             </div>
                         </div>
                     </div>
