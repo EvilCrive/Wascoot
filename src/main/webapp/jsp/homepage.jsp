@@ -39,7 +39,7 @@ Preloader end
         Nav header start
     ***********************************-->
     <div class="nav-header">
-        <a href="homepage.jsp" class="brand-logo"><img class="logo-abbr" width="40" height="40" viewBox="0 0 50 50" src="${pageContext.request.contextPath}/media/logo/logo-orange-white.png"><span class="brand-title" style="font-size: medium;color: white;">WASCOOT</span></a>
+        <a href="dashboard.jsp" class="brand-logo"><img class="logo-abbr" width="40" height="40" viewBox="0 0 50 50" src="${pageContext.request.contextPath}/media/logo/logo-orange-white.png"><span class="brand-title" style="font-size: medium;color: white;">WASCOOT</span></a>
     </div>
     <!--**********************************
         Nav header end
@@ -58,14 +58,16 @@ Preloader end
                     <ul class="navbar-nav header-right">
                         <li class="nav-item align-items-center header-border"><a href="${pageContext.request.contextPath}/admin/logout" class="btn btn-primary btn-sm">Logout</a></li>
                         <li class="nav-item ps-3">
-                            <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link" href="dashboard.jsp" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="header-info2 d-flex align-items-center">
                                     <div class="header-media">
-                                        <img src="${pageContext.request.contextPath}/media/avatar/admin_girl.png" alt="">
+                                        <a href="homepage.jsp"><img src="${pageContext.request.contextPath}/media/avatar/admin_girl.png" alt=""></a>
                                     </div>
                                     <div class="header-info">
+                                        <a href="homepage.jsp">
                                         <h6>WASCOOT Admin</h6>
                                         <p>admin@wascoot.com</p>
+                                        </a>
                                     </div>
 
                                 </div>
