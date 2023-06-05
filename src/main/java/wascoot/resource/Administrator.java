@@ -50,6 +50,7 @@ public class Administrator extends AbstractResource{
 		this.id = id;
 		this.email = email;
 		this.password = password;
+		this.name = name;
 		this.photo = photo;
 		this.photoMediaType = photoMediaType;
 	}

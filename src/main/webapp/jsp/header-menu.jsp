@@ -34,16 +34,13 @@ Header start
                     <li class="nav-item ps-3">
                         <a class="nav-link" href="/dashboard" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="header-info2 d-flex align-items-center">
-                                <div class="header-media">
-                                    <a href="${pageContext.request.contextPath}/jsp/homepage.jsp"><img src="${pageContext.request.contextPath}/media/adminPhoto/${sessionScope.id}.png" alt=""></a>
-
+                                <div class="header-media" id="infoAccount">
+                                    <img src="${pageContext.request.contextPath}/media/adminPhoto/${sessionScope.id}.png" alt="">
                                 </div>
                                 <div class="header-info">
                                     <a href="${pageContext.request.contextPath}/jsp/homepage.jsp">
                                     <h6>WASCOOT Admin</h6>
                                     <p>${sessionScope.email}</p>
-
-
                                     </a>
                                 </div>
 
@@ -53,6 +50,32 @@ Header start
                 </ul>
             </div>
         </nav>
+    </div>
+</div>
+
+
+<div class="modal fade" id="infoAdmin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Administrator
+            </div>
+            <div class="modal-body">
+                <div>
+                    <h6>Name: ${sessionScope.name}</h6>
+                </div>
+                <div>
+                    <h6>ID number: ${sessionScope.id}</h6>
+                </div>
+                <div id="adms"></div>
+                <div>
+                    <h6>Email: ${sessionScope.email}</h6>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
 </div>
 <!--**********************************
