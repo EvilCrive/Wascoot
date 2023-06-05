@@ -128,12 +128,26 @@ The repository is organised as follows:
             * `log4j2.xml`
         * webapp
           * css
+            * `cssstyle.css`
+            * `dashboard.css`
+            * `style.css`
           * html
           * js
-          * jsp
+            * `administrator.js`
+            * `ajax_administrator_email.js`
+            * `ajax_administrator_id.js`
+            * `dashboard.js`
+            * `js_script.js`
+            * `managePages.js`
+            * `utils.js`
+            * `wascoot.js`
+          * jsp here there various jsp files related to our servlets and rests and the jsp files below are imported to each jsp file
+            * `head.jsp`
+            * `header-menu.jsp`
+            * `foot.jsp`
+            * `footer.jsp`
           * media
           * META-INF
-          * scss
           * WEB-INF
             
 * `homework-1`: This folder contains the report describing the structure of the database and our backend.
