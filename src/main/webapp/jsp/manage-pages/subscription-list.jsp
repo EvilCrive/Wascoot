@@ -126,7 +126,6 @@ Preloader end
                                                 <td><span><c:out value="${subscription.dailyUnlocks}"/></span></td>
                                                 <td><span><c:out value="${subscription.validityPerDay}"/></span></td>
                                                 <td><span><c:out value="${subscription.fixedPrice}"/></span></td>
-
                                             </tr>
                                         </c:forEach>
                                         </tbody>
