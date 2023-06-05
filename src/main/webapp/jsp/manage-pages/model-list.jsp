@@ -170,7 +170,10 @@ Preloader end
                         </div>
                         <div class="col-xl-6 mb-3">
                             <label for="canvasModelPrice" class="form-label">Price Per Min<span class="text-danger">*</span></label>
-                            <input name="price_per_min" type="number" min=0 step=0.1 class="form-control" id="canvasModelPrice" placeholder="">
+                            <div class="input-group">
+                                <div class="input-group-text">€</div>
+                                <input name="price_per_min" type="number" min=0 step=0.1 class="form-control" id="canvasModelPrice" placeholder="">
+                            </div>
                         </div>
                     </div>
                     <div>

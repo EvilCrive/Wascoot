@@ -76,7 +76,7 @@ Preloader end
                   <label for="postalCodeID">Postal Code<span class="text-danger">*</span>
                   </label>
                   <div class="input-group">
-                    <input id="postalCodeID" name="postalcode" type="text" class="form-control" placeholder="modify the postalcode">
+                    <input id="postalCodeID" name="postalcode" type="number" min=0 step=1 class="form-control" placeholder="modify the postalcode">
                   </div>
                 </div>
                 <div class="form-group mb-3">
@@ -173,7 +173,7 @@ Preloader end
             </div>
             <div class="col-xl-6 mb-3">
               <label for="canvasScooterrackPostalcode" class="form-label">Postal Code<span class="text-danger">*</span></label>
-              <input name="postalcode" type="text" class="form-control" id="canvasScooterrackPostalcode" placeholder="">
+              <input name="postalcode" type="number" min=0 step=1 class="form-control" id="canvasScooterrackPostalcode" placeholder="">
             </div>
             <div class="col-xl-6 mb-3">
               <label for="canvasScooterrackAddress" class="form-label">Address<span class="text-danger">*</span></label>
