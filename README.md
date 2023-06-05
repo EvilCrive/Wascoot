@@ -145,9 +145,8 @@ helping them improve the efficiency and control over their operations.
 
 ## How to run and use the codes? ##
 
-Create directory to insert project
-Into directory : git clone https://bitbucket.org/upd-dei-stud-prj/wascoot/src/master/README.md?mode=edit&at=master
-cd wascoot
-Change pom.xml and context.xml file to adapt your local settings
-To build : mvn clean package
-...
+Create directory to insert project.
+Into directory : git clone https://bitbucket.org/upd-dei-stud-prj/wascoot/src/master/README.md?mode=edit&at=master.
+cd wascoot.
+Change pom.xml and context.xml file to adapt your local settings.
+To build : mvn clean package.
