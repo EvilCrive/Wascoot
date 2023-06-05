@@ -177,8 +177,8 @@ Preloader end
                         </div>
                     </div>
                     <div>
-                        <button class="btn btn-primary">Submit</button>
-                        <button class="btn btn-danger light">Clear Form</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-danger light">Clear Form</button>
                     </div>
                 </form>
             </div>

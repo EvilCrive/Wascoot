@@ -5,9 +5,9 @@
 <c:choose>
 	<c:when test="${message.error}">
 		<ul>
-			<li>error code: <c:out value="${message.errorCode}"/></li>
-			<li>message: <c:out value="${message.message}"/></li>
-			<li>details: <c:out value="${message.errorDetails}"/></li>
+			<li>Error code: <c:out value="${message.errorCode}"/></li>
+			<li>Message: <c:out value="${message.message}"/></li>
+			<li>Details: <c:out value="${message.errorDetails}"/></li>
 		</ul>
 	</c:when>
 
