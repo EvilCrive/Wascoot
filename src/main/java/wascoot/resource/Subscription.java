@@ -2,7 +2,7 @@ package wascoot.resource;
 
 import java.sql.Time;
 
-public class Subscription {
+public class Subscription implements Comparable<Subscription> {
 
     private  int id;
     private final String type;
@@ -30,4 +30,9 @@ public class Subscription {
     public final int getDailyUnlocks(){ return dailyUnlocks; }
     public final Time getValidityPerDay(){ return validityPerDay; }
     public final double getFixedPrice(){ return fixedPrice; }
+
+    @Override
+    public int compareTo(Subscription o) {
+        return Integer.compare(this.id, o.id);
+    }
 }

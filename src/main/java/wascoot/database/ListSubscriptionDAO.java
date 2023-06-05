@@ -3,6 +3,7 @@ package wascoot.database;
 import wascoot.resource.Subscription;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -42,6 +43,10 @@ public final class ListSubscriptionDAO extends AbstractDAO<List<Subscription>> {
             }
 
             LOGGER.info("Subscription(s) successfully listed.");
+
+            Collections.sort(subscriptions);
+
+            LOGGER.info("Subscription(s) successfully sorted.");
         } finally {
             if (rs != null) {
                 rs.close();
