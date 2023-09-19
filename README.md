@@ -33,38 +33,12 @@ Build procedure is done with maven : mvn clean package.
 
 The repository is organised as follows:
 
-* `src`: This folder contains the source code of the developed web application.
+* `src` This folder contains the source code of the developed web application.
     * `main` :
-        * `database`
-          * `db_schema.sql` : The sql file for creating wascoot database
-          * `insert.sql` : Inject data to Wascoot database
-          * `query.sql` : Test whether the databse structure is working
-        * `java`
-            * `wascoot`
-                * `database` : this folder contains the classes that connect to database (DAO)
-               
-                * `resource` : this folder contains the resources' classes, such as administrator, customer, scooter,...
-                * `rest` : in this folder we have the classes for the REST APIs
-                * `servlet` : in this folder we have classes for Servlets
-                * `utils`
-                * `filter`
+        * `database` This folder we have the `.sql` files for the database (create, populate, test)
+        * `java` This folder contains the backend of the web application. It contains `wascoot` folder, which contains 6 subfolders: `database`, which contains classes to interact with the DB, `resource`, `rest`, which contains classes for the RESTful APIs, `servlet`, which contains classes for servlets, `utils` and `filter`. 
         * `resources`
-            * `log4j2.xml`
-        * webapp
-          * `css`
-            * `cssstyle.css`
-            * `dashboard.css`
-            * `style.css`
-          * `html`
-          * `js` : this folder contains JavaScript scripts, used in the JSPs
-          * `jsp` : this folder contains the jsp files related to our webapplication, in particular we highlight the "template JSPs" common to every JSP page 
-            * `head.jsp`
-            * `header-menu.jsp`
-            * `foot.jsp`
-            * `footer.jsp`
-          * media
-          * META-INF
-          * WEB-INF
+        * `webapp` This folder contains the frontend of the web application. It contains 7 subfolders: `css`, `html`, `js`, `jsp`, Java Server Page, which are the core of the frontend, `media`, `META-INF`, with the **context.xml** and `WEB-INF`, with configuration file for REST and servlets URIs and other configuration files.
             
 * `homework-1`: This folder contains the report describing the structure of the database and our backend.
 * `homework-2`: This folder contains the presentation of our web application.
