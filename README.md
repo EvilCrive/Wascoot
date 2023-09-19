@@ -19,12 +19,15 @@ The application provides data analytics and reporting features, allowing the com
 
 ## Project Description ##
 
-This project aims at developing a web application related to our Web Application course from the University of Padova from Professor Nicola Ferro. It's a tool for managers of a scooter business, with the aim of improving the efficiency and control over their operations.
+This project aims at developing a web application related to our Web Application course from the University of Padova from Professor Nicola Ferro. 
 
-## How to run and use the codes? ##
+It's a tool for managers of a scooter business, with the aim of improving the efficiency and control over their operations.
+
+## Replicability ##
 
 Clone this repository and change pom.xml and context.xml file to adapt your local settings (**pom.xml** for java dependencies and **context.xml** for database settings).
-To build : mvn clean package.
+
+Build procedure is done with maven : mvn clean package.
 
 ## Organisation of the repository ###
 
@@ -38,121 +41,23 @@ The repository is organised as follows:
           * `query.sql` : Test whether the databse structure is working
         * `java`
             * `wascoot`
-                * `database`
-                    * `AbstractDAO.java`
-                    * `AdminLoginDAO.java`
-                    * `CreateAdministratorDAO.java`
-                    * `CreateModelDAO.java`
-                    * `CreateScooterDAO.java`
-                    * `CreateScooterrackDAO.java`
-                    * `CreateSubscriptionDAO.java`
-                    * `CustomerAvgAgeDAO.java`
-                    * `CustomerDAO.java`
-                    * `CustomerDAO.java`
-                    * `CustomerGenderDisDAO.java`
-                    * `DataAccessObject.java`
-                    * `DeleteAdministratorDAO.java`
-                    * `getModelListDatabase.java`
-                    * `InsertNewModelDAO.java`
-                    * `ListAdminstratorDAO.java`
-                    * `ListModelDAO.java`
-                    * `ListPaymentMethodDAO.java`
-                    * `ListRentalsDAO.java`
-                    * `ListScootersDAO.java`
-                    * `ListSubscriptionDAO.java`
-                    * `LoadAdminstratorPhoto.java`
-                    * `package-info.java`
-                    * `PaymentWithoutSubscriptionDatabase.java`
-                    * `PaymentWithSubscriptionDatabase.java`
-                    * `ReadAdministratorDAO.java`
-                    * `RentalDatabase.java`
-                    * `ScooterRackDatabase.java`
-                    * `SearchAdministratorByEmailDAO.java`
-                    * `SearchAdministratorByIdDAO.java`
-                    * `UpdateAdministratorDAO.java`
-                    * `UpdateModelDAO.java`
-                    * `UpdatePaymentMethodDAO.java`
-                    * `UpdateScooterDAO.java`
-                    * `UpdateScooterrackDAO.java`
-                    * `UpdateSubscriptionDAO.java`
-                * `filter`
-                    * `AbstractFilter.java`
-                    * `LoginFilter.java`
-                * `resource`
-                    * `AbstractResource.java`
-                    * `Actions.java`
-                    * `Administrator.java`
-                    * `Customer.java`
-                    * `GenderDistributionResource.java`
-                    * `LogContext.java`
-                    * `MapEntryResource.java`
-                    * `Message.java`
-                    * `Model.java`
-                    * `package-info.java.java`
-                    * `PaymentMethod.java`
-                    * `PaymentWithoutSubscription.java`
-                    * `Rental.java`
-                    * `Resource.java`
-                    * `ResourceList.java`
-                    * `Revenue.java`
-                    * `Scooter.java`
-                    * `Scooterrack.java`
-                    * `Subscription.java`
-                * `rest`
-                    * `Abstract.java`
-                    * `CreateAdministratorRR.java`
-                    * `CustomerAvgAgeRR.java`
-                    * `CustomerGenderDisRR.java`
-                    * `CustomerRR.java`
-                    * `DeleteAdministratorRR.java`
-                    * `ListAdministratorRR.java`
-                    * `ListModelRR.java`
-                    * `ListScooterracksRR.java`
-                    * `ListScooterRR.java`
-                    * `package-info.java.java`
-                    * `ReadAdministratorRR.java`
-                    * `RestResource.java`
-                    * `SearchAdministratorByEmailRR.java`
-                    * `SearchAdministratorByIdRR.java`
-                    * `UpdateAdministratorRR.java`
-                * `servlet`
-                    * `AbstractDatabaseServlet.java`
-                    * `AdminLoginJspServlet.java`
-                    * `CreateAdministratorNoPhotoServlet.java`
-                    * `CreateAdministratorServlet.java`
-                    * `DashboardServlet.java`
-                    * `ListCustomerServlet.java`
-                    * `ListRentalsServlet.java`
-                    * `LoadAdministratorPhotoServlet.java`
-                    * `ModelServlet.java`
-                    * `package-info.java`
-                    * `PaymentMethodServlet.java`
-                    * `RestDispatcherServlet.java`
-                    * `ScooterrackServlet.java`
-                    * `ScooterServlet.java`
-                    * `SearchAdministratorByEmailServlet.java`
-                    * `SearchAdministratorByIdServlet.java`
-                    * `SubscriptionServlet.java`
+                * `database` : this folder contains the classes that connect to database (DAO)
+               
+                * `resource` : this folder contains the resources' classes, such as administrator, customer, scooter,...
+                * `rest` : in this folder we have the classes for the REST APIs
+                * `servlet` : in this folder we have classes for Servlets
                 * `utils`
-                  * `ErrorCode.java`
+                * `filter`
         * `resources`
             * `log4j2.xml`
         * webapp
-          * css
+          * `css`
             * `cssstyle.css`
             * `dashboard.css`
             * `style.css`
-          * html
-          * js
-            * `administrator.js`
-            * `ajax_administrator_email.js`
-            * `ajax_administrator_id.js`
-            * `dashboard.js`
-            * `js_script.js`
-            * `managePages.js`
-            * `utils.js`
-            * `wascoot.js`
-          * jsp here there various jsp files related to our servlets and rests and the jsp files below are imported to each jsp file
+          * `html`
+          * `js` : this folder contains JavaScript scripts, used in the JSPs
+          * `jsp` : this folder contains the jsp files related to our webapplication, in particular we highlight the "template JSPs" common to every JSP page 
             * `head.jsp`
             * `header-menu.jsp`
             * `foot.jsp`
