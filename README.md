@@ -22,10 +22,7 @@ This project aims at developing a web application related to our Web Application
 
 ## How to run and use the codes? ##
 
-Create directory to insert project.
-Into directory : git clone https://bitbucket.org/upd-dei-stud-prj/wascoot/src/master/README.md?mode=edit&at=master.
-cd wascoot.
-Change pom.xml and context.xml file to adapt your local settings.
+Clone this repository and change pom.xml and context.xml file to adapt your local settings (**pom.xml** for java dependencies and **context.xml** for database settings).
 To build : mvn clean package.
 
 ## Organisation of the repository ###
