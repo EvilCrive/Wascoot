@@ -7,13 +7,26 @@ The application provides data analytics and reporting features, allowing the com
 
 | Surname       | Name          | ID       |
 | ------------- | ------------- |----------|
-| Crivellari	| Alberto	| 2061934	 |
+| **Crivellari**	| **Alberto**	| 2061934	 |
 | Gharehzad		| Shiva	| 2041385  |
 | Huang	| Borwoei	| 2044019	 |
 | kuijpers        | nickclauder	| 2096202	 |
 | Mada | Sreeshalini | 2049543  |
 | Niknamhesar | Sara | 2085443  |
 | Tahan		| Paria		| 2043889	 |
+
+
+## Project Description ##
+
+This project aims at developing a web application related to our Web Application course from the University of Padova from Professor Nicola Ferro. It's a tool for managers of a scooter business, with the aim of improving the efficiency and control over their operations.
+
+## How to run and use the codes? ##
+
+Create directory to insert project.
+Into directory : git clone https://bitbucket.org/upd-dei-stud-prj/wascoot/src/master/README.md?mode=edit&at=master.
+cd wascoot.
+Change pom.xml and context.xml file to adapt your local settings.
+To build : mvn clean package.
 
 ## Organisation of the repository ###
 
@@ -152,15 +165,3 @@ The repository is organised as follows:
             
 * `homework-1`: This folder contains the report describing the structure of the database and our backend.
 * `homework-2`: This folder contains the presentation of our web application.
-## Project Description ##
-
-This project aims at developping a web application related to our Web Application course from the University of Padoue from Professor Nicola Ferro. It a tool for managers of a scooter business, 
-helping them improve the efficiency and control over their operations.
-
-## How to run and use the codes? ##
-
-Create directory to insert project.
-Into directory : git clone https://bitbucket.org/upd-dei-stud-prj/wascoot/src/master/README.md?mode=edit&at=master.
-cd wascoot.
-Change pom.xml and context.xml file to adapt your local settings.
-To build : mvn clean package.
